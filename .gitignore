@@ -1,0 +1,25 @@
+# macOS 与 Obsidian 本机状态
+.DS_Store
+**/.DS_Store
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.trash/
+
+# 开发与运行缓存
+__pycache__/
+*.pyc
+node_modules/
+
+# 凭据文件永不入库
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+secrets.yaml
+secrets.yml
+

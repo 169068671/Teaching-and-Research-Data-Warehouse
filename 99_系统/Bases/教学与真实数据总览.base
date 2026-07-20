@@ -1,0 +1,89 @@
+filters:
+  and:
+    - file.ext == "md"
+    - or:
+        - file.inFolder("10_Daily")
+        - file.inFolder("40_真实数据")
+    - record_type != ""
+formulas:
+  title_link: file.asLink(if(title != "", title, file.basename))
+  privacy_icon: 'if(sensitivity == "restricted", "🔒", if(sensitivity == "internal", "🔐", "🌐"))'
+  verify_icon: 'if(verification_status == "verified", "✅", if(verification_status == "partially_verified", "🟡", "⚪"))'
+  last_update: file.mtime.relative()
+properties:
+  formula.title_link:
+    displayName: 标题
+  formula.privacy_icon:
+    displayName: 敏感级别
+  formula.verify_icon:
+    displayName: 核验
+  formula.last_update:
+    displayName: 更新
+views:
+  - type: table
+    name: 每日教学数据
+    filters:
+      and:
+        - record_type == "daily_teaching"
+    order:
+      - formula.title_link
+      - grade
+      - class_code
+      - course_module
+      - lesson_topic
+      - research_theme
+      - formula.privacy_icon
+      - formula.last_update
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: 教学反思
+    filters:
+      and:
+        - record_type == "teaching_reflection"
+    order:
+      - formula.title_link
+      - grade
+      - class_code
+      - course_module
+      - evidence_note
+      - research_theme
+      - formula.last_update
+  - type: table
+    name: 数据规划与数据集
+    filters:
+      or:
+        - record_type == "data_plan"
+        - record_type == "dataset"
+    groupBy:
+      property: record_type
+      direction: ASC
+    order:
+      - formula.title_link
+      - research_theme
+      - status
+      - sample_size
+      - version
+      - formula.verify_icon
+      - formula.privacy_icon
+      - formula.last_update
+  - type: table
+    name: 课堂观察与学生作品
+    filters:
+      or:
+        - record_type == "classroom_observation"
+        - record_type == "student_artifact"
+        - record_type == "questionnaire"
+        - record_type == "interview"
+    groupBy:
+      property: record_type
+      direction: ASC
+    order:
+      - formula.title_link
+      - grade
+      - class_code
+      - research_theme
+      - formula.privacy_icon
+      - formula.last_update
+

@@ -1,0 +1,11 @@
+{
+  "id": "teaching-research-data-github-sync",
+  "name": "教科研数据 GitHub Sync",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "一键核验、提交并安全推送整个教科研数据 Obsidian 仓库到固定 GitHub 仓库。",
+  "author": "169068671",
+  "authorUrl": "https://github.com/169068671",
+  "isDesktopOnly": true
+}
+

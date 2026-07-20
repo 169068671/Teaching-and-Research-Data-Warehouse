@@ -1,0 +1,115 @@
+filters:
+  and:
+    - file.ext == "md"
+    - or:
+        - file.inFolder("20_研究项目")
+        - file.inFolder("30_研究资料")
+        - file.inFolder("50_分析与成果")
+    - record_type != ""
+formulas:
+  title_link: file.asLink(if(title != "", title, file.basename))
+  verify_icon: 'if(verification_status == "verified", "✅", if(verification_status == "partially_verified", "🟡", if(verification_status == "rejected", "⛔", "⚪")))'
+  last_update: file.mtime.relative()
+properties:
+  formula.title_link:
+    displayName: 标题
+  formula.verify_icon:
+    displayName: 核验
+  formula.last_update:
+    displayName: 更新
+  record_type:
+    displayName: 类型
+  status:
+    displayName: 状态
+  research_theme:
+    displayName: 研究主题
+views:
+  - type: table
+    name: 研究项目
+    filters:
+      and:
+        - record_type == "research_project"
+    order:
+      - formula.title_link
+      - status
+      - research_theme
+      - start_date
+      - end_date
+      - formula.last_update
+  - type: table
+    name: 研究方向与主题
+    filters:
+      or:
+        - record_type == "research_direction"
+        - record_type == "research_theme"
+    groupBy:
+      property: record_type
+      direction: ASC
+    order:
+      - formula.title_link
+      - status
+      - research_direction
+      - method
+      - formula.last_update
+  - type: table
+    name: 参考文献
+    filters:
+      and:
+        - record_type == "literature"
+    order:
+      - formula.title_link
+      - authors
+      - year
+      - research_theme
+      - formula.verify_icon
+      - formula.last_update
+    sort:
+      - property: year
+        direction: DESC
+  - type: table
+    name: 政策与同行研究
+    filters:
+      or:
+        - record_type == "policy"
+        - record_type == "peer_research"
+        - record_type == "teaching_research_activity"
+    groupBy:
+      property: record_type
+      direction: ASC
+    order:
+      - formula.title_link
+      - source
+      - research_theme
+      - formula.verify_icon
+      - formula.last_update
+  - type: table
+    name: AI摘要待核验
+    filters:
+      and:
+        - record_type == "ai_summary"
+        - verification_status != "verified"
+    order:
+      - formula.title_link
+      - source_note
+      - ai_tool
+      - model
+      - formula.verify_icon
+      - formula.last_update
+  - type: table
+    name: 分析与证据
+    filters:
+      or:
+        - record_type == "analysis_memo"
+        - record_type == "evidence_chain"
+        - record_type == "finding"
+        - record_type == "output"
+    groupBy:
+      property: record_type
+      direction: ASC
+    order:
+      - formula.title_link
+      - research_theme
+      - dataset
+      - formula.verify_icon
+      - formula.last_update
+
