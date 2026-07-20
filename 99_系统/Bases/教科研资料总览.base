@@ -23,6 +23,16 @@ properties:
     displayName: 状态
   research_theme:
     displayName: 研究主题
+  metadata_status:
+    displayName: 元数据
+  full_text_status:
+    displayName: 全文
+  reading_status:
+    displayName: 阅读
+  citation_status:
+    displayName: 引用
+  literature_role:
+    displayName: 文献角色
 views:
   - type: table
     name: 研究项目
@@ -60,12 +70,52 @@ views:
       - formula.title_link
       - authors
       - year
+      - document_type
+      - literature_role
       - research_theme
+      - metadata_status
+      - full_text_status
+      - reading_status
+      - citation_status
       - formula.verify_icon
       - formula.last_update
     sort:
       - property: year
         direction: DESC
+  - type: table
+    name: 待整理文献
+    filters:
+      and:
+        - record_type == "literature"
+        - or:
+            - metadata_status != "verified"
+            - verification_status != "verified"
+            - reading_status == "unread"
+            - full_text_status == "unknown"
+    order:
+      - formula.title_link
+      - authors
+      - year
+      - metadata_status
+      - full_text_status
+      - reading_status
+      - citation_status
+      - research_theme
+      - formula.verify_icon
+      - formula.last_update
+  - type: table
+    name: 材料分解复核
+    filters:
+      and:
+        - record_type == "material_review"
+    order:
+      - formula.title_link
+      - decomposition_note
+      - reviewer
+      - review_date
+      - review_result
+      - verification_status
+      - formula.last_update
   - type: table
     name: 政策与同行研究
     filters:
@@ -112,4 +162,3 @@ views:
       - dataset
       - formula.verify_icon
       - formula.last_update
-
