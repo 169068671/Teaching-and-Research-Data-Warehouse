@@ -86,4 +86,23 @@ views:
       - research_theme
       - formula.privacy_icon
       - formula.last_update
-
+  - type: table
+    name: 学生交流数据
+    filters:
+      and:
+        - record_type == "student_communication"
+    order:
+      - formula.title_link
+      - communication_type
+      - channel
+      - grade
+      - class_code
+      - student_or_group_code
+      - research_theme
+      - consent_status
+      - formula.verify_icon
+      - formula.privacy_icon
+      - formula.last_update
+    sort:
+      - property: created
+        direction: DESC
