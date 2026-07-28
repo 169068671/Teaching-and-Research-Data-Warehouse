@@ -16,9 +16,26 @@ DEFAULT_BRANCH = "main"
 DEFAULT_VAULT = Path(__file__).resolve().parents[3]
 TIMEOUT = 180
 
+# 确保 Git LFS、gh 等 Homebrew 工具在 PATH 中可被找到（macOS GUI 应用 PATH 不包含 Homebrew）
+EXTRA_PATHS = [
+    "/opt/homebrew/bin",   # Apple Silicon Mac
+    "/usr/local/bin",      # Intel Mac
+    "/opt/homebrew/sbin",
+    "/usr/local/sbin",
+]
+
+
 
 class SyncError(RuntimeError):
     pass
+
+
+def _augment_path(env: dict[str, str]) -> None:
+    """确保 PATH 包含 Homebrew 等常见路径，避免 GUI 应用下找不到 git-lfs、gh 等工具。"""
+    existing = env.get("PATH", "").split(":")
+    added = [p for p in EXTRA_PATHS if p and p not in existing and Path(p).is_dir()]
+    if added:
+        env["PATH"] = ":".join(added + existing)
 
 
 def run(
@@ -29,6 +46,7 @@ def run(
     git_command: bool = False,
 ) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
+    _augment_path(env)
     if git_command:
         env["GIT_TERMINAL_PROMPT"] = "0"
     result = subprocess.run(
