@@ -1,0 +1,62 @@
+{
+  "paper_metadata": {
+    "title": "基于大概念的高中通用技术教学设计——以\"发现与明确设计问题\"为例",
+    "author": "邹小双",
+    "institution": "贵州省凤冈县第二中学",
+    "degree_or_journal": "新课程导学",
+    "advisor_or_editor": "—",
+    "year": "2023",
+    "pages": 4,
+    "page_offset": 0
+  },
+  "summary": {
+    "reference_labels": 2,
+    "unique_entities": 2,
+    "citation_occurrences": 0,
+    "cited_labels": 0,
+    "not_cited_labels": [
+      1,
+      2
+    ],
+    "duplicate_groups": []
+  },
+  "references": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "reference_text": "中华人民共和国教育部.普通高中通用技术课程标准(2017年版2020年修订)[S].人民教育出版社,2020.",
+      "authors": "中华人民共和国教育部",
+      "title": "普通高中通用技术课程标准(2017年版2020年修订)",
+      "document_type": "S",
+      "source_container": "人民教育出版社",
+      "year": "2020"
+    },
+    {
+      "label": "2",
+      "entity_id": "E002",
+      "reference_text": "李刚,吕立杰.落实学科核心素养:围绕学科大概念的课程转化设计[J].教育发展研究,2020,40(Z2):86-93.",
+      "authors": "李刚,吕立杰",
+      "title": "落实学科核心素养:围绕学科大概念的课程转化设计",
+      "document_type": "J",
+      "source_container": "教育发展研究",
+      "year": "2020"
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "E001",
+      "reference_labels": "1",
+      "canonical_reference": "中华人民共和国教育部.普通高中通用技术课程标准(2017年版2020年修订)[S].人民教育出版社,2020.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E002",
+      "reference_labels": "2",
+      "canonical_reference": "李刚,吕立杰.落实学科核心素养:围绕学科大概念的课程转化设计[J].教育发展研究,2020,40(Z2):86-93.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    }
+  ],
+  "citations": []
+}

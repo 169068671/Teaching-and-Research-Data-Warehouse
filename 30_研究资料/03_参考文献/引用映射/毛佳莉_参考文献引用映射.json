@@ -1,0 +1,2834 @@
+{
+  "paper_metadata": {
+    "title": "基于STEAM教育理念的高中函数教学设计研究",
+    "author": "毛佳莉",
+    "institution": "辽宁师范大学",
+    "degree_or_journal": "教育硕士",
+    "advisor_or_editor": "金美月教授",
+    "year": "2020",
+    "pages": 109,
+    "page_offset": 7
+  },
+  "summary": {
+    "reference_labels": 116,
+    "unique_entities": 116,
+    "citation_occurrences": 205,
+    "cited_labels": 101,
+    "not_cited_labels": [
+      36,
+      97,
+      98,
+      104,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+    ],
+    "duplicate_groups": []
+  },
+  "references": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "reference_text": "范文翔，张一春.STEAM 教育:发展、内涵与可能路径[J].现代教育技术，2018，2803: 99-105."
+    },
+    {
+      "label": "2",
+      "entity_id": "E002",
+      "reference_text": "中华人民共和国教育部.基础教育课程改革纲要[M].北京:人民教育出版社,2017．"
+    },
+    {
+      "label": "3",
+      "entity_id": "E003",
+      "reference_text": "中华人民共和国教育部.普通高中数学课程标准(2017 年版)[M].北京:人民教育出版 社,2017．"
+    },
+    {
+      "label": "4",
+      "entity_id": "E004",
+      "reference_text": "赵慧臣,陆晓婷.发展、内涵与可能路径——访美国 STEAM 教育知名学者格雷特·亚克门 教授[J].开放教育研究,2016,2205:4-10."
+    },
+    {
+      "label": "5",
+      "entity_id": "E005",
+      "reference_text": "魏晓东,于冰,于海波.美国 STEAM 教育的框架、特点及启示[J].华东师范大学学报(教育 科学版),2017,3504:40-46+134-135."
+    },
+    {
+      "label": "6",
+      "entity_id": "E006",
+      "reference_text": "彭敏,朱德全.STEAM有效教学的关键特征与实施路径——基于美国STEAM教师的视角[J]. 远程教育杂志,2018,3602:48-55."
+    },
+    {
+      "label": "7",
+      "entity_id": "E007",
+      "reference_text": "李王伟,徐晓东.统整艺术与STEM实践的创新力培养——来自美国八大STEAM教育案例的 启示[J].外国中小学教育,2018,12:9-17."
+    },
+    {
+      "label": "8",
+      "entity_id": "E008",
+      "reference_text": "赵书琪,于洪波.美国 STEM教育研究 30 年:历程、特点与启示[J].现代教育技术,2019, 29(01):5-10."
+    },
+    {
+      "label": "9",
+      "entity_id": "E009",
+      "reference_text": "杜文彬.国外 STEM 教育研究的热点主题与特点探析[J].电化教育研究,2018,39(11): 120-128."
+    },
+    {
+      "label": "10",
+      "entity_id": "E010",
+      "reference_text": "李王伟,徐晓东.作为一种学习方式存在的 STEAM 教育:路径何为[J].电化教育研 究,2018,3909:28-36."
+    },
+    {
+      "label": "11",
+      "entity_id": "E011",
+      "reference_text": "彭敏,郭梦娇.STEAM 教育的基本内涵与发展路径研究[J].教育理论与实践,2018,3825: 14-18."
+    },
+    {
+      "label": "12",
+      "entity_id": "E012",
+      "reference_text": "严文法,芦瑾,金普军.基于6E设计型学习模式的STEAM活动设计——以青铜器文物除锈 为例[J].化学教学,2018,11:61-65."
+    },
+    {
+      "label": "13",
+      "entity_id": "E013",
+      "reference_text": "郭芬芬.创造力培养视野下的 STEAM 课程评价研究[D].中央民族大学,2018."
+    },
+    {
+      "label": "14",
+      "entity_id": "E014",
+      "reference_text": "高凯涛,高杰,贾嫚.STEM 教育理念下技术与课程的融合探究[J].现代教育技术, 2018,28(09):106-112."
+    },
+    {
+      "label": "15",
+      "entity_id": "E015",
+      "reference_text": "赵呈领,赵文君,蒋志辉.面向 STEM 教育的 5E 探究式教学模式设计[J].现代教育技 术,2018,28(03):106-112."
+    },
+    {
+      "label": "16",
+      "entity_id": "E016",
+      "reference_text": "祝智庭,雷云鹤.STEM 教育的国策分析与实践模式[J].电化教育研究,2018, 39(01): 75-85."
+    },
+    {
+      "label": "17",
+      "entity_id": "E017",
+      "reference_text": "张屹,赵亚萍,何玲,白清玉.基于 STEM 的跨学科教学设计与实践[J].现代远程教育研 究,2017(06):75-84."
+    },
+    {
+      "label": "18",
+      "entity_id": "E018",
+      "reference_text": "许亮亮,邹正,马嘉源.基于 STEAM教育的高中化学创新实验研究——以“化学红绿灯振 荡反应最优条件探究”为例[J].化学教育(中英文),2017,3821:55-59."
+    },
+    {
+      "label": "19",
+      "entity_id": "E019",
+      "reference_text": "周玉琴,郑欣进,陈实.STEAM 教育理念在高中地理教学中的应用初探——以“大气的受 热过程”为例[J].地理教学,2018,11:13-16+20."
+    },
+    {
+      "label": "20",
+      "entity_id": "E020",
+      "reference_text": "熊小菊,廖春贵,熊开宏,胡宝清.STEAM 教育理念在中学地理教学中的运用[J].教学与 管理,2019,15:115-117. 基于 STEAM 教育理念的高中函数教学设计研究 72"
+    },
+    {
+      "label": "21",
+      "entity_id": "E021",
+      "reference_text": "史颜君.基于 STEAM 理念的初中物理课程设计研究[D].广西师范大学,2017."
+    },
+    {
+      "label": "22",
+      "entity_id": "E022",
+      "reference_text": "匡丽媛.基于 STEAM 教育理念的数学活动的开发[D].上海师范大学,2018."
+    },
+    {
+      "label": "23",
+      "entity_id": "E023",
+      "reference_text": "王坚.STEAM教育理念下的物理教学初探[D].华中师范大学,2017."
+    },
+    {
+      "label": "24",
+      "entity_id": "E024",
+      "reference_text": "汪成臣.探究 STEAM 教育在生物教学中的应用[D].贵州师范大学,2018."
+    },
+    {
+      "label": "25",
+      "entity_id": "E025",
+      "reference_text": "朱彩虹.基于初中物理小制作活动的 STEAM 教育实践[D].内蒙古师范大学,2018."
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "reference_text": "余胜泉,胡翔.STEM 教育理念与跨学科整合模式[J].开放教育研究，2015，21(04): 13-22."
+    },
+    {
+      "label": "27",
+      "entity_id": "E027",
+      "reference_text": "高凯涛，高杰，贾嫚.STEM教育理念下技术与课程的融合探究[J].现代教育技术，2018， 28(09):106-112."
+    },
+    {
+      "label": "28",
+      "entity_id": "E028",
+      "reference_text": "金美月.中学数学教学设计.重庆:西南大学出版社,待版."
+    },
+    {
+      "label": "29",
+      "entity_id": "E029",
+      "reference_text": "孙江山,吴永和,任友群.3D 打印教育创新:创客空间、创新实验室和 STEAM[J].现代远 程教育研究,2015,(4):96-103."
+    },
+    {
+      "label": "30",
+      "entity_id": "E030",
+      "reference_text": "王娟,吴永和.“互联网+”时代 STEAM 教育应用的反思与创新路径[J].远程教育杂 志,2016,(2):90-97."
+    },
+    {
+      "label": "31",
+      "entity_id": "E031",
+      "reference_text": "李小涛,高海燕,邹佳人,等.“互联网+”背景下的 STEAM 教育到创客教育之变迁——从 基于项目的学习到 创新能力的培养[J].远程教育杂志,2016,(1):28-36."
+    },
+    {
+      "label": "32",
+      "entity_id": "E032",
+      "reference_text": "赵慧臣,周昱希,李彦奇,等.跨学科视野下“工匠型”创新人才的培养策略——基于美国 STEAM 教育活动设计的启示[J].远程教育杂志,2017,(1):94-101."
+    },
+    {
+      "label": "33",
+      "entity_id": "E033",
+      "reference_text": "秦瑾若，傅钢善.STEM 教育:基于真实问题情景的跨学科式教育[J].中国电化教育， 2017(04):67-74."
+    },
+    {
+      "label": "34",
+      "entity_id": "E034",
+      "reference_text": "乌美娜.教学设计.北京：高等教育出版社,1994:11."
+    },
+    {
+      "label": "35",
+      "entity_id": "E035",
+      "reference_text": "张奠宙,宋乃庆.数学教育概论.北京:北京高等教育出版社,2004:12."
+    },
+    {
+      "label": "36",
+      "entity_id": "E036",
+      "reference_text": "何小亚,姚静.中数学数学教学设计.北京:科学出版社,2009:8-10."
+    },
+    {
+      "label": "37",
+      "entity_id": "E037",
+      "reference_text": "仲娇娇. STEAM教学活动设计与应用研究[D].华东师范大学,2018."
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "reference_text": "王坚. STEAM 教育理念下的物理教学初探[D].华中师范大学,2017."
+    },
+    {
+      "label": "39",
+      "entity_id": "E039",
+      "reference_text": "郑贤. 基于 STEAM 的小学《3D 打印》课程设计与教学实践研究[J]. 中国电化教育, 2016(08):82-86."
+    },
+    {
+      "label": "40",
+      "entity_id": "E040",
+      "reference_text": "王巍,袁磊. 幼小衔接阶段基于项目的 STEAM 课程教学模式研究[J]. 现代远距离教 育,2018(03):51-58."
+    },
+    {
+      "label": "41",
+      "entity_id": "E041",
+      "reference_text": "张煊宜,侯璐. 基于云 GIS 平台将 STEAM 理念引入中学地理教学设计[J]. 地理教学, 2018(06):56-59."
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "reference_text": "周玉琴,郑欣进,陈实. STEAM 教育理念在高中地理教学中的应用初探——以 “大气的 受热过程”为例[J]. 地理教学,2018(11):13-16+20."
+    },
+    {
+      "label": "43",
+      "entity_id": "E043",
+      "reference_text": "熊小菊,廖春贵,熊开宏,胡宝清. STEAM 教育理念在中学地理教学中的运用[J]. 教学与 管理,2019(15):115-117."
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "reference_text": "苏乐. STEAM 视角下的小学《科学》教学设计研究[D].曲阜师范大学,2017."
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "reference_text": "史颜君. 基于 STEAM理念的初中物理课程设计研究[D].广西师范大学,2017."
+    },
+    {
+      "label": "46",
+      "entity_id": "E046",
+      "reference_text": "马云霞. STEAM教育理念下师范院校机器人教学实践研究[D].陕西师范大学,2017. 辽宁师范大学硕士学位论文 73"
+    },
+    {
+      "label": "47",
+      "entity_id": "E047",
+      "reference_text": "基于 STEAM教育的小学机器人教育课程开发与实践[D].重庆师范大学,2018."
+    },
+    {
+      "label": "48",
+      "entity_id": "E048",
+      "reference_text": "基于项目式学习的小学机器人课程设计研究[D].陕西师范大学,2018."
+    },
+    {
+      "label": "49",
+      "entity_id": "E049",
+      "reference_text": "王英杰. STEAM 教育理念下通用技术校本课程设计与实践研究[D].河北师范大学,2019."
+    },
+    {
+      "label": "50",
+      "entity_id": "E050",
+      "reference_text": "董恬序. STEAM 教育理念下小学信息技术课程教学项目设计的研究[D].河北科技师范学 院,2019."
+    },
+    {
+      "label": "51",
+      "entity_id": "E051",
+      "reference_text": "秦德增,秦瑾若. 数学学科核心素养视角下的 STEAM 跨学科融合模式研究[J]. 教育理 论与实践,2018,38(22):52-56."
+    },
+    {
+      "label": "52",
+      "entity_id": "E052",
+      "reference_text": "李彤彤. 创客式教学:面向数学学科核心素养培养的 STEAM 课程教学新范式[J]. 中国 电化教育,2018(09):40-47."
+    },
+    {
+      "label": "53",
+      "entity_id": "E053",
+      "reference_text": "刘静. 依托数学文化的 STEAM课程研究与设计[D].河北师范大学,2019."
+    },
+    {
+      "label": "54",
+      "entity_id": "E054",
+      "reference_text": "面向 STEAM教育的高中 App Inventor 创新实践课程研究[D].四川师范大学,2017."
+    },
+    {
+      "label": "55",
+      "entity_id": "E055",
+      "reference_text": "杨希. 基于 STEAM 理念的高中 App Inventor 创意编程课教学研究[D].河北师范大 学,2019."
+    },
+    {
+      "label": "56",
+      "entity_id": "E056",
+      "reference_text": "魏晓东,于冰,于海波. 美国 STEAM教育的框架、特点及启示[J]. 华东师范大学学报(教 育科学版),2017,35(04):40-46+134-135."
+    },
+    {
+      "label": "57",
+      "entity_id": "E057",
+      "reference_text": "范文翔,张一春. STEAM教育:发展、内涵与可能路径[J].现代教育技术, 2018, 28(03): 99-105."
+    },
+    {
+      "label": "58",
+      "entity_id": "E058",
+      "reference_text": "吕翠灵. 幼儿园中大班 STEAM纸艺课程构建实践研究[D].上海师范大学,2018."
+    },
+    {
+      "label": "59",
+      "entity_id": "E059",
+      "reference_text": "项目教学视野下学前 STEM教学活动的建构与反思[D].陕西师范大学,2018."
+    },
+    {
+      "label": "60",
+      "entity_id": "E060",
+      "reference_text": "李媛. STEAM 教育理论在初中说明文教学中的应用研究[D].集美大学,2018."
+    },
+    {
+      "label": "61",
+      "entity_id": "E061",
+      "reference_text": "马晨钰. STEAM 教育理论下初中美术“综合·探索”模块教学的设计研究[D].曲阜师范 大学,2018."
+    },
+    {
+      "label": "62",
+      "entity_id": "E062",
+      "reference_text": "王腾宇. 跨学科视域下的 STEAM 教育对音乐教育的启示[J].中国音乐,2019(03): 123-128+142."
+    },
+    {
+      "label": "63",
+      "entity_id": "E063",
+      "reference_text": "吕翠灵. 幼儿园中大班 STEAM纸艺课程构建实践研究[D].上海师范大学,2018."
+    },
+    {
+      "label": "64",
+      "entity_id": "E064",
+      "reference_text": "陈学伟. 关于初高中“过渡阶段”数学学习困难的调查研究[D].首都师范大学,2008."
+    },
+    {
+      "label": "65",
+      "entity_id": "E065",
+      "reference_text": "张姿. 新课程标准下数学教师如何做好初、高中教学的过渡[D].首都师范大学,2009."
+    },
+    {
+      "label": "66",
+      "entity_id": "E066",
+      "reference_text": "周芝环. 新课程背景下初高中数学课程衔接问题的探究[D].延边大学,2010."
+    },
+    {
+      "label": "67",
+      "entity_id": "E067",
+      "reference_text": "周礼平. 初高中函数概念衔接教学研究[D].苏州大学,2011."
+    },
+    {
+      "label": "68",
+      "entity_id": "E068",
+      "reference_text": "张新村. 高中新课程标准下“函数概念”的教与学[D].苏州大学,2010."
+    },
+    {
+      "label": "69",
+      "entity_id": "E069",
+      "reference_text": "宋健. 高中新课程函数概念理解的调查研究[D].东北师范大学,2012."
+    },
+    {
+      "label": "70",
+      "entity_id": "E070",
+      "reference_text": "赵华. 数学思想与方法在高中教学中的渗透研究[D].苏州大学,2011."
+    },
+    {
+      "label": "71",
+      "entity_id": "E071",
+      "reference_text": "红梅. 高中函数类化研究[D].内蒙古师范大学,2014."
+    },
+    {
+      "label": "72",
+      "entity_id": "E072",
+      "reference_text": "陈兴. 利用数学思想突破高中数学教学难点[D].华中师范大学,2011."
+    },
+    {
+      "label": "73",
+      "entity_id": "E073",
+      "reference_text": "刘佰秋. 函数与方程思想在普通高中教学中的实践研究[D].东北师范大学,2012. 基于 STEAM 教育理念的高中函数教学设计研究 74"
+    },
+    {
+      "label": "74",
+      "entity_id": "E074",
+      "reference_text": "郑玲艳. 高中数学教学中的数学文化[D].内蒙古师范大学,2008."
+    },
+    {
+      "label": "75",
+      "entity_id": "E075",
+      "reference_text": "徐红星. 高中数学课堂体现数学文化价值的行动研究[D].华东师范大学,2011."
+    },
+    {
+      "label": "76",
+      "entity_id": "E076",
+      "reference_text": "潘静红. 高中阶段数学文化教育的研究[D].上海师范大学,2011."
+    },
+    {
+      "label": "77",
+      "entity_id": "E077",
+      "reference_text": "岑盛锋. 基于几何画板的高中数学实验的教学研究[D].广西师范大学,2007."
+    },
+    {
+      "label": "78",
+      "entity_id": "E078",
+      "reference_text": "陈婕. 内地新疆高中班使用多媒体辅助数学教学的案例研究[D].天津师范大学,2014."
+    },
+    {
+      "label": "79",
+      "entity_id": "E079",
+      "reference_text": "孙丽丽. 几何画板在高中数学教学中的应用研究[D].辽宁师范大学,2013."
+    },
+    {
+      "label": "80",
+      "entity_id": "E080",
+      "reference_text": "韩旭. 几何画板在高中数学实验教学中的应用研究[D].河北师范大学,2016."
+    },
+    {
+      "label": "81",
+      "entity_id": "E081",
+      "reference_text": "董瑞. 基础教育阶段“数与代数”教材分析研究[D].华中师范大学,2015."
+    },
+    {
+      "label": "82",
+      "entity_id": "E082",
+      "reference_text": "江自龙. 应用尝试教学法进行高中数学教学的研究[D].江西师范大学,2006."
+    },
+    {
+      "label": "83",
+      "entity_id": "E083",
+      "reference_text": "龚雪霜. 数学实验在高中数学探究教学中的应用研究[D].重庆师范大学,2016."
+    },
+    {
+      "label": "84",
+      "entity_id": "E084",
+      "reference_text": "卢向敏. 数形结合方法在高中数学教学中的应用[D].内蒙古师范大学,2013."
+    },
+    {
+      "label": "85",
+      "entity_id": "E085",
+      "reference_text": "姜秋亚. 数形结合思想方法在高中教学中的应用情况研究[D].华中师范大学,2015."
+    },
+    {
+      "label": "86",
+      "entity_id": "E086",
+      "reference_text": "左丽娥. 高一数学中“指数与指数函数”衔接教学的调查研究[D].贵州师范大学,2016."
+    },
+    {
+      "label": "87",
+      "entity_id": "E087",
+      "reference_text": "邱忠娟. 基于规则空间模型的高中三角函数认知诊断研究[D].西南大学,2016."
+    },
+    {
+      "label": "88",
+      "entity_id": "E088",
+      "reference_text": "田宇卓. 高中数学教科书中微积分的变迁研究[D].内蒙古师范大学,2013."
+    },
+    {
+      "label": "89",
+      "entity_id": "E089",
+      "reference_text": "吴沛东. 高中生在导数问题解决中的学习调查与对策研究[D].贵州师范大学,2014."
+    },
+    {
+      "label": "90",
+      "entity_id": "E090",
+      "reference_text": "李剑. 高中与初中数学函数概念教学的衔接研究[D].重庆师范大学,2012."
+    },
+    {
+      "label": "91",
+      "entity_id": "E091",
+      "reference_text": "张姿. 新课程标准下数学教师如何做好初、高中教学的过渡[D].首都师范大学,2009."
+    },
+    {
+      "label": "92",
+      "entity_id": "E092",
+      "reference_text": "王洪艳. 农村高中数学教师应用几何画板的现状调查及教学案例分析[D].贵州师范大 学,2016."
+    },
+    {
+      "label": "93",
+      "entity_id": "E093",
+      "reference_text": "林静. 基于初高中衔接的函数教学研究[D].福建师范大学,2015."
+    },
+    {
+      "label": "94",
+      "entity_id": "E094",
+      "reference_text": "曹静慧. 初高中函数教学衔接研究[D].内蒙古师范大学,2013."
+    },
+    {
+      "label": "95",
+      "entity_id": "E095",
+      "reference_text": "苏美俊. 高中函数探究式教学研究[D].内蒙古师范大学,2014."
+    },
+    {
+      "label": "96",
+      "entity_id": "E096",
+      "reference_text": "童永健. 高中数学教材中数学建模内容的分析及再设计[D].华东师范大学,2016."
+    },
+    {
+      "label": "97",
+      "entity_id": "E097",
+      "reference_text": "陈学伟. 关于初高中“过渡阶段”数学学习困难的调查研究[D].首都师范大学,2008."
+    },
+    {
+      "label": "98",
+      "entity_id": "E098",
+      "reference_text": "孔令伟. 数形结合思想方法在高中数学教学与解题中的应用[D].辽宁师范大学,2012."
+    },
+    {
+      "label": "99",
+      "entity_id": "E099",
+      "reference_text": "张卓. 高中数学教学策略变革研究[D].东北师范大学,2006."
+    },
+    {
+      "label": "100",
+      "entity_id": "E100",
+      "reference_text": "刘敏. 高中函数概念教学研究[D].陕西师范大学,2011."
+    },
+    {
+      "label": "101",
+      "entity_id": "E101",
+      "reference_text": "王丹. 数学建模思想在高中函数教学中的应用研究[D].陕西师范大学,2016."
+    },
+    {
+      "label": "102",
+      "entity_id": "E102",
+      "reference_text": "朱菊花. 基于自主学习的高中函数教学设计的研究[D].苏州大学,2016."
+    },
+    {
+      "label": "103",
+      "entity_id": "E103",
+      "reference_text": "张婉璐. 基于数学文化应用的高中数学教学研究[D].哈尔滨师范大学,2018."
+    },
+    {
+      "label": "104",
+      "entity_id": "E104",
+      "reference_text": "赵晔明. 现代教育技术条件下高中数学教学研究[D].内蒙古师范大学,2009."
+    },
+    {
+      "label": "105",
+      "entity_id": "E105",
+      "reference_text": "丁建艳. 高中数学课程与信息技术的整合研究[D].曲阜师范大学,2011."
+    },
+    {
+      "label": "106",
+      "entity_id": "E106",
+      "reference_text": "［法］卡米拉·弗 拉马利翁．大众天文学[M]．李珩译．桂林：广西师范大学出版社， 2003． 辽宁师范大学硕士学位论文 75"
+    },
+    {
+      "label": "107",
+      "entity_id": "E107",
+      "reference_text": "Keane,L., & Keane, M. (2016). STEAM by design. Design andTechnology Education, 21(1), 61-82."
+    },
+    {
+      "label": "108",
+      "entity_id": "E108",
+      "reference_text": "Robinson, C. (2017). Add more STEAM to your classes. Science Scope, 41(1), 18-22."
+    },
+    {
+      "label": "109",
+      "entity_id": "E109",
+      "reference_text": "Herro, D., Quigley, C., Andrews, J., & Delacruz, G. (2017). Co-measure: Developing an assessment for student collaboration in STEAM activities. International Journal of STEM Education,4(1),1-12."
+    },
+    {
+      "label": "110",
+      "entity_id": "E110",
+      "reference_text": "Ozkan, G., & Topsakal, U. U. (2017). Examining students' opinions about STEAM activities. Journal of Education and Training Studies, 5(9), 115-123."
+    },
+    {
+      "label": "111",
+      "entity_id": "E111",
+      "reference_text": "Herro, D., & Quigley, C. (2016). Innovating with STEAM in middle school classrooms: Remixing education. On the Horizon, 24(3), 190-204."
+    },
+    {
+      "label": "112",
+      "entity_id": "E112",
+      "reference_text": "Han, S. (2017). Korean students‟ attitudes toward STEM project-based learning and major selection. Educational Sciences: Theory & Practice, 17(2), 529-548."
+    },
+    {
+      "label": "113",
+      "entity_id": "E113",
+      "reference_text": "Kelley, T. R., & Knowles, J. G. (2016). A conceptual framework for integrated STEM education. International Journal of STEM Education, 3(1), 11."
+    },
+    {
+      "label": "114",
+      "entity_id": "E114",
+      "reference_text": "Guzey, S. S., Harwell, M., Moreno, M., Peralta, Y., & Moore, T. J. (2017). The Impact of Design-Based STEM Integration Curricula on Student Achievement in Engineering, Science, and Mathematics. Journal of Science Education and Technology, 26(2), 207-222."
+    },
+    {
+      "label": "115",
+      "entity_id": "E115",
+      "reference_text": "Corlu, M. A., & Aydin, E. (2016). Evaluation of Learning Gains through Integrated STEM Projects. International Journal of Education in Mathematics, Science and Technology, 4(1), 20-29."
+    },
+    {
+      "label": "116",
+      "entity_id": "E116",
+      "reference_text": "Baran, E., Canbazoglu, B. S., Mesutoglu, C., & Ocak, C. (2016). Moving STEM beyond schools: Students‟ perceptions about an out-of-school STEM education program. International Journal of Education in Mathematics, Science and Technology, 4(1), 9-19. 基于 STEAM 教育理念的高中函数教学设计研究 76 附录 A“指数函数、对数函数与幂函数”调查问卷 亲爱的同学： 你好！感谢你抽出宝贵的时间填写这份问卷，本问卷旨在了解本次课程对你 产生的影响以及你对在高中数学课堂中实施 STEAM 教育的看法。本问卷采用匿 名形式并保证对你所填的信息保密，所获数据仅限于课题研究，对同学们无影响， 请在符合自己的选项栏中打“√”。谢谢你的支持和配合。 题号 内容描述 完 全 符合 基 本 符合 一 般 符合 基 本 不 符 合 完 全 不 符 合 1 你觉得本节课的学习方式吸引你吗？ 2 你在本节课中投入很大的热情？ 3 你更好地掌握指数、对数、幂函数的知识了 吗？ 4 通过本节课的学习，你会运用多学科的知识 来解决问题吗？ 5 在本节课中，你掌握解决数学问题的各种技 术吗？ 6 在本节课的学习中，你能根据探究的问题设 计出实验吗？ 7 你掌握了利用函数解决实际问题的一般方法 吗？ 8 你在这个活动中和小组成员积极合作吗？ 9 你认为本节课的学习有益于形成积极的创新 态度吗？ 10 以后你会尝试各种方法去克服困难吗？ 11 本节课的教学形式与一般数学教学形式相比，你更喜欢哪一种呢？为什么？"
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "E001",
+      "reference_labels": "1",
+      "canonical_reference": "范文翔，张一春.STEAM 教育:发展、内涵与可能路径[J].现代教育技术，2018，2803: 99-105.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E002",
+      "reference_labels": "2",
+      "canonical_reference": "中华人民共和国教育部.基础教育课程改革纲要[M].北京:人民教育出版社,2017．",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E003",
+      "reference_labels": "3",
+      "canonical_reference": "中华人民共和国教育部.普通高中数学课程标准(2017 年版)[M].北京:人民教育出版 社,2017．",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E004",
+      "reference_labels": "4",
+      "canonical_reference": "赵慧臣,陆晓婷.发展、内涵与可能路径——访美国 STEAM 教育知名学者格雷特·亚克门 教授[J].开放教育研究,2016,2205:4-10.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E005",
+      "reference_labels": "5",
+      "canonical_reference": "魏晓东,于冰,于海波.美国 STEAM 教育的框架、特点及启示[J].华东师范大学学报(教育 科学版),2017,3504:40-46+134-135.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E006",
+      "reference_labels": "6",
+      "canonical_reference": "彭敏,朱德全.STEAM有效教学的关键特征与实施路径——基于美国STEAM教师的视角[J]. 远程教育杂志,2018,3602:48-55.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E007",
+      "reference_labels": "7",
+      "canonical_reference": "李王伟,徐晓东.统整艺术与STEM实践的创新力培养——来自美国八大STEAM教育案例的 启示[J].外国中小学教育,2018,12:9-17.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E008",
+      "reference_labels": "8",
+      "canonical_reference": "赵书琪,于洪波.美国 STEM教育研究 30 年:历程、特点与启示[J].现代教育技术,2019, 29(01):5-10.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E009",
+      "reference_labels": "9",
+      "canonical_reference": "杜文彬.国外 STEM 教育研究的热点主题与特点探析[J].电化教育研究,2018,39(11): 120-128.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E010",
+      "reference_labels": "10",
+      "canonical_reference": "李王伟,徐晓东.作为一种学习方式存在的 STEAM 教育:路径何为[J].电化教育研 究,2018,3909:28-36.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E011",
+      "reference_labels": "11",
+      "canonical_reference": "彭敏,郭梦娇.STEAM 教育的基本内涵与发展路径研究[J].教育理论与实践,2018,3825: 14-18.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E012",
+      "reference_labels": "12",
+      "canonical_reference": "严文法,芦瑾,金普军.基于6E设计型学习模式的STEAM活动设计——以青铜器文物除锈 为例[J].化学教学,2018,11:61-65.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E013",
+      "reference_labels": "13",
+      "canonical_reference": "郭芬芬.创造力培养视野下的 STEAM 课程评价研究[D].中央民族大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E014",
+      "reference_labels": "14",
+      "canonical_reference": "高凯涛,高杰,贾嫚.STEM 教育理念下技术与课程的融合探究[J].现代教育技术, 2018,28(09):106-112.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E015",
+      "reference_labels": "15",
+      "canonical_reference": "赵呈领,赵文君,蒋志辉.面向 STEM 教育的 5E 探究式教学模式设计[J].现代教育技 术,2018,28(03):106-112.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E016",
+      "reference_labels": "16",
+      "canonical_reference": "祝智庭,雷云鹤.STEM 教育的国策分析与实践模式[J].电化教育研究,2018, 39(01): 75-85.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E017",
+      "reference_labels": "17",
+      "canonical_reference": "张屹,赵亚萍,何玲,白清玉.基于 STEM 的跨学科教学设计与实践[J].现代远程教育研 究,2017(06):75-84.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E018",
+      "reference_labels": "18",
+      "canonical_reference": "许亮亮,邹正,马嘉源.基于 STEAM教育的高中化学创新实验研究——以“化学红绿灯振 荡反应最优条件探究”为例[J].化学教育(中英文),2017,3821:55-59.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E019",
+      "reference_labels": "19",
+      "canonical_reference": "周玉琴,郑欣进,陈实.STEAM 教育理念在高中地理教学中的应用初探——以“大气的受 热过程”为例[J].地理教学,2018,11:13-16+20.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E020",
+      "reference_labels": "20",
+      "canonical_reference": "熊小菊,廖春贵,熊开宏,胡宝清.STEAM 教育理念在中学地理教学中的运用[J].教学与 管理,2019,15:115-117. 基于 STEAM 教育理念的高中函数教学设计研究 72",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E021",
+      "reference_labels": "21",
+      "canonical_reference": "史颜君.基于 STEAM 理念的初中物理课程设计研究[D].广西师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E022",
+      "reference_labels": "22",
+      "canonical_reference": "匡丽媛.基于 STEAM 教育理念的数学活动的开发[D].上海师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E023",
+      "reference_labels": "23",
+      "canonical_reference": "王坚.STEAM教育理念下的物理教学初探[D].华中师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E024",
+      "reference_labels": "24",
+      "canonical_reference": "汪成臣.探究 STEAM 教育在生物教学中的应用[D].贵州师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E025",
+      "reference_labels": "25",
+      "canonical_reference": "朱彩虹.基于初中物理小制作活动的 STEAM 教育实践[D].内蒙古师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E026",
+      "reference_labels": "26",
+      "canonical_reference": "余胜泉,胡翔.STEM 教育理念与跨学科整合模式[J].开放教育研究，2015，21(04): 13-22.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E027",
+      "reference_labels": "27",
+      "canonical_reference": "高凯涛，高杰，贾嫚.STEM教育理念下技术与课程的融合探究[J].现代教育技术，2018， 28(09):106-112.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E028",
+      "reference_labels": "28",
+      "canonical_reference": "金美月.中学数学教学设计.重庆:西南大学出版社,待版.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E029",
+      "reference_labels": "29",
+      "canonical_reference": "孙江山,吴永和,任友群.3D 打印教育创新:创客空间、创新实验室和 STEAM[J].现代远 程教育研究,2015,(4):96-103.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E030",
+      "reference_labels": "30",
+      "canonical_reference": "王娟,吴永和.“互联网+”时代 STEAM 教育应用的反思与创新路径[J].远程教育杂 志,2016,(2):90-97.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E031",
+      "reference_labels": "31",
+      "canonical_reference": "李小涛,高海燕,邹佳人,等.“互联网+”背景下的 STEAM 教育到创客教育之变迁——从 基于项目的学习到 创新能力的培养[J].远程教育杂志,2016,(1):28-36.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E032",
+      "reference_labels": "32",
+      "canonical_reference": "赵慧臣,周昱希,李彦奇,等.跨学科视野下“工匠型”创新人才的培养策略——基于美国 STEAM 教育活动设计的启示[J].远程教育杂志,2017,(1):94-101.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E033",
+      "reference_labels": "33",
+      "canonical_reference": "秦瑾若，傅钢善.STEM 教育:基于真实问题情景的跨学科式教育[J].中国电化教育， 2017(04):67-74.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E034",
+      "reference_labels": "34",
+      "canonical_reference": "乌美娜.教学设计.北京：高等教育出版社,1994:11.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E035",
+      "reference_labels": "35",
+      "canonical_reference": "张奠宙,宋乃庆.数学教育概论.北京:北京高等教育出版社,2004:12.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E036",
+      "reference_labels": "36",
+      "canonical_reference": "何小亚,姚静.中数学数学教学设计.北京:科学出版社,2009:8-10.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E037",
+      "reference_labels": "37",
+      "canonical_reference": "仲娇娇. STEAM教学活动设计与应用研究[D].华东师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E038",
+      "reference_labels": "38",
+      "canonical_reference": "王坚. STEAM 教育理念下的物理教学初探[D].华中师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E039",
+      "reference_labels": "39",
+      "canonical_reference": "郑贤. 基于 STEAM 的小学《3D 打印》课程设计与教学实践研究[J]. 中国电化教育, 2016(08):82-86.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E040",
+      "reference_labels": "40",
+      "canonical_reference": "王巍,袁磊. 幼小衔接阶段基于项目的 STEAM 课程教学模式研究[J]. 现代远距离教 育,2018(03):51-58.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E041",
+      "reference_labels": "41",
+      "canonical_reference": "张煊宜,侯璐. 基于云 GIS 平台将 STEAM 理念引入中学地理教学设计[J]. 地理教学, 2018(06):56-59.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E042",
+      "reference_labels": "42",
+      "canonical_reference": "周玉琴,郑欣进,陈实. STEAM 教育理念在高中地理教学中的应用初探——以 “大气的 受热过程”为例[J]. 地理教学,2018(11):13-16+20.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E043",
+      "reference_labels": "43",
+      "canonical_reference": "熊小菊,廖春贵,熊开宏,胡宝清. STEAM 教育理念在中学地理教学中的运用[J]. 教学与 管理,2019(15):115-117.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E044",
+      "reference_labels": "44",
+      "canonical_reference": "苏乐. STEAM 视角下的小学《科学》教学设计研究[D].曲阜师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E045",
+      "reference_labels": "45",
+      "canonical_reference": "史颜君. 基于 STEAM理念的初中物理课程设计研究[D].广西师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E046",
+      "reference_labels": "46",
+      "canonical_reference": "马云霞. STEAM教育理念下师范院校机器人教学实践研究[D].陕西师范大学,2017. 辽宁师范大学硕士学位论文 73",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E047",
+      "reference_labels": "47",
+      "canonical_reference": "基于 STEAM教育的小学机器人教育课程开发与实践[D].重庆师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E048",
+      "reference_labels": "48",
+      "canonical_reference": "基于项目式学习的小学机器人课程设计研究[D].陕西师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E049",
+      "reference_labels": "49",
+      "canonical_reference": "王英杰. STEAM 教育理念下通用技术校本课程设计与实践研究[D].河北师范大学,2019.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E050",
+      "reference_labels": "50",
+      "canonical_reference": "董恬序. STEAM 教育理念下小学信息技术课程教学项目设计的研究[D].河北科技师范学 院,2019.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E051",
+      "reference_labels": "51",
+      "canonical_reference": "秦德增,秦瑾若. 数学学科核心素养视角下的 STEAM 跨学科融合模式研究[J]. 教育理 论与实践,2018,38(22):52-56.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E052",
+      "reference_labels": "52",
+      "canonical_reference": "李彤彤. 创客式教学:面向数学学科核心素养培养的 STEAM 课程教学新范式[J]. 中国 电化教育,2018(09):40-47.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E053",
+      "reference_labels": "53",
+      "canonical_reference": "刘静. 依托数学文化的 STEAM课程研究与设计[D].河北师范大学,2019.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E054",
+      "reference_labels": "54",
+      "canonical_reference": "面向 STEAM教育的高中 App Inventor 创新实践课程研究[D].四川师范大学,2017.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E055",
+      "reference_labels": "55",
+      "canonical_reference": "杨希. 基于 STEAM 理念的高中 App Inventor 创意编程课教学研究[D].河北师范大 学,2019.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E056",
+      "reference_labels": "56",
+      "canonical_reference": "魏晓东,于冰,于海波. 美国 STEAM教育的框架、特点及启示[J]. 华东师范大学学报(教 育科学版),2017,35(04):40-46+134-135.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E057",
+      "reference_labels": "57",
+      "canonical_reference": "范文翔,张一春. STEAM教育:发展、内涵与可能路径[J].现代教育技术, 2018, 28(03): 99-105.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E058",
+      "reference_labels": "58",
+      "canonical_reference": "吕翠灵. 幼儿园中大班 STEAM纸艺课程构建实践研究[D].上海师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E059",
+      "reference_labels": "59",
+      "canonical_reference": "项目教学视野下学前 STEM教学活动的建构与反思[D].陕西师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E060",
+      "reference_labels": "60",
+      "canonical_reference": "李媛. STEAM 教育理论在初中说明文教学中的应用研究[D].集美大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E061",
+      "reference_labels": "61",
+      "canonical_reference": "马晨钰. STEAM 教育理论下初中美术“综合·探索”模块教学的设计研究[D].曲阜师范 大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E062",
+      "reference_labels": "62",
+      "canonical_reference": "王腾宇. 跨学科视域下的 STEAM 教育对音乐教育的启示[J].中国音乐,2019(03): 123-128+142.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E063",
+      "reference_labels": "63",
+      "canonical_reference": "吕翠灵. 幼儿园中大班 STEAM纸艺课程构建实践研究[D].上海师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E064",
+      "reference_labels": "64",
+      "canonical_reference": "陈学伟. 关于初高中“过渡阶段”数学学习困难的调查研究[D].首都师范大学,2008.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E065",
+      "reference_labels": "65",
+      "canonical_reference": "张姿. 新课程标准下数学教师如何做好初、高中教学的过渡[D].首都师范大学,2009.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E066",
+      "reference_labels": "66",
+      "canonical_reference": "周芝环. 新课程背景下初高中数学课程衔接问题的探究[D].延边大学,2010.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E067",
+      "reference_labels": "67",
+      "canonical_reference": "周礼平. 初高中函数概念衔接教学研究[D].苏州大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E068",
+      "reference_labels": "68",
+      "canonical_reference": "张新村. 高中新课程标准下“函数概念”的教与学[D].苏州大学,2010.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E069",
+      "reference_labels": "69",
+      "canonical_reference": "宋健. 高中新课程函数概念理解的调查研究[D].东北师范大学,2012.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E070",
+      "reference_labels": "70",
+      "canonical_reference": "赵华. 数学思想与方法在高中教学中的渗透研究[D].苏州大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E071",
+      "reference_labels": "71",
+      "canonical_reference": "红梅. 高中函数类化研究[D].内蒙古师范大学,2014.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E072",
+      "reference_labels": "72",
+      "canonical_reference": "陈兴. 利用数学思想突破高中数学教学难点[D].华中师范大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E073",
+      "reference_labels": "73",
+      "canonical_reference": "刘佰秋. 函数与方程思想在普通高中教学中的实践研究[D].东北师范大学,2012. 基于 STEAM 教育理念的高中函数教学设计研究 74",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E074",
+      "reference_labels": "74",
+      "canonical_reference": "郑玲艳. 高中数学教学中的数学文化[D].内蒙古师范大学,2008.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E075",
+      "reference_labels": "75",
+      "canonical_reference": "徐红星. 高中数学课堂体现数学文化价值的行动研究[D].华东师范大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E076",
+      "reference_labels": "76",
+      "canonical_reference": "潘静红. 高中阶段数学文化教育的研究[D].上海师范大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E077",
+      "reference_labels": "77",
+      "canonical_reference": "岑盛锋. 基于几何画板的高中数学实验的教学研究[D].广西师范大学,2007.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E078",
+      "reference_labels": "78",
+      "canonical_reference": "陈婕. 内地新疆高中班使用多媒体辅助数学教学的案例研究[D].天津师范大学,2014.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E079",
+      "reference_labels": "79",
+      "canonical_reference": "孙丽丽. 几何画板在高中数学教学中的应用研究[D].辽宁师范大学,2013.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E080",
+      "reference_labels": "80",
+      "canonical_reference": "韩旭. 几何画板在高中数学实验教学中的应用研究[D].河北师范大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E081",
+      "reference_labels": "81",
+      "canonical_reference": "董瑞. 基础教育阶段“数与代数”教材分析研究[D].华中师范大学,2015.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E082",
+      "reference_labels": "82",
+      "canonical_reference": "江自龙. 应用尝试教学法进行高中数学教学的研究[D].江西师范大学,2006.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E083",
+      "reference_labels": "83",
+      "canonical_reference": "龚雪霜. 数学实验在高中数学探究教学中的应用研究[D].重庆师范大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E084",
+      "reference_labels": "84",
+      "canonical_reference": "卢向敏. 数形结合方法在高中数学教学中的应用[D].内蒙古师范大学,2013.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E085",
+      "reference_labels": "85",
+      "canonical_reference": "姜秋亚. 数形结合思想方法在高中教学中的应用情况研究[D].华中师范大学,2015.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E086",
+      "reference_labels": "86",
+      "canonical_reference": "左丽娥. 高一数学中“指数与指数函数”衔接教学的调查研究[D].贵州师范大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E087",
+      "reference_labels": "87",
+      "canonical_reference": "邱忠娟. 基于规则空间模型的高中三角函数认知诊断研究[D].西南大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E088",
+      "reference_labels": "88",
+      "canonical_reference": "田宇卓. 高中数学教科书中微积分的变迁研究[D].内蒙古师范大学,2013.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E089",
+      "reference_labels": "89",
+      "canonical_reference": "吴沛东. 高中生在导数问题解决中的学习调查与对策研究[D].贵州师范大学,2014.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E090",
+      "reference_labels": "90",
+      "canonical_reference": "李剑. 高中与初中数学函数概念教学的衔接研究[D].重庆师范大学,2012.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E091",
+      "reference_labels": "91",
+      "canonical_reference": "张姿. 新课程标准下数学教师如何做好初、高中教学的过渡[D].首都师范大学,2009.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E092",
+      "reference_labels": "92",
+      "canonical_reference": "王洪艳. 农村高中数学教师应用几何画板的现状调查及教学案例分析[D].贵州师范大 学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E093",
+      "reference_labels": "93",
+      "canonical_reference": "林静. 基于初高中衔接的函数教学研究[D].福建师范大学,2015.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E094",
+      "reference_labels": "94",
+      "canonical_reference": "曹静慧. 初高中函数教学衔接研究[D].内蒙古师范大学,2013.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E095",
+      "reference_labels": "95",
+      "canonical_reference": "苏美俊. 高中函数探究式教学研究[D].内蒙古师范大学,2014.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E096",
+      "reference_labels": "96",
+      "canonical_reference": "童永健. 高中数学教材中数学建模内容的分析及再设计[D].华东师范大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E097",
+      "reference_labels": "97",
+      "canonical_reference": "陈学伟. 关于初高中“过渡阶段”数学学习困难的调查研究[D].首都师范大学,2008.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E098",
+      "reference_labels": "98",
+      "canonical_reference": "孔令伟. 数形结合思想方法在高中数学教学与解题中的应用[D].辽宁师范大学,2012.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E099",
+      "reference_labels": "99",
+      "canonical_reference": "张卓. 高中数学教学策略变革研究[D].东北师范大学,2006.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E100",
+      "reference_labels": "100",
+      "canonical_reference": "刘敏. 高中函数概念教学研究[D].陕西师范大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E101",
+      "reference_labels": "101",
+      "canonical_reference": "王丹. 数学建模思想在高中函数教学中的应用研究[D].陕西师范大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E102",
+      "reference_labels": "102",
+      "canonical_reference": "朱菊花. 基于自主学习的高中函数教学设计的研究[D].苏州大学,2016.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E103",
+      "reference_labels": "103",
+      "canonical_reference": "张婉璐. 基于数学文化应用的高中数学教学研究[D].哈尔滨师范大学,2018.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E104",
+      "reference_labels": "104",
+      "canonical_reference": "赵晔明. 现代教育技术条件下高中数学教学研究[D].内蒙古师范大学,2009.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E105",
+      "reference_labels": "105",
+      "canonical_reference": "丁建艳. 高中数学课程与信息技术的整合研究[D].曲阜师范大学,2011.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E106",
+      "reference_labels": "106",
+      "canonical_reference": "［法］卡米拉·弗 拉马利翁．大众天文学[M]．李珩译．桂林：广西师范大学出版社， 2003． 辽宁师范大学硕士学位论文 75",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E107",
+      "reference_labels": "107",
+      "canonical_reference": "Keane,L., & Keane, M. (2016). STEAM by design. Design andTechnology Education, 21(1), 61-82.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E108",
+      "reference_labels": "108",
+      "canonical_reference": "Robinson, C. (2017). Add more STEAM to your classes. Science Scope, 41(1), 18-22.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E109",
+      "reference_labels": "109",
+      "canonical_reference": "Herro, D., Quigley, C., Andrews, J., & Delacruz, G. (2017). Co-measure: Developing an assessment for student collaboration in STEAM activities. International Journal of STEM Education,4(1),1-12.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E110",
+      "reference_labels": "110",
+      "canonical_reference": "Ozkan, G., & Topsakal, U. U. (2017). Examining students' opinions about STEAM activities. Journal of Education and Training Studies, 5(9), 115-123.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E111",
+      "reference_labels": "111",
+      "canonical_reference": "Herro, D., & Quigley, C. (2016). Innovating with STEAM in middle school classrooms: Remixing education. On the Horizon, 24(3), 190-204.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E112",
+      "reference_labels": "112",
+      "canonical_reference": "Han, S. (2017). Korean students‟ attitudes toward STEM project-based learning and major selection. Educational Sciences: Theory & Practice, 17(2), 529-548.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E113",
+      "reference_labels": "113",
+      "canonical_reference": "Kelley, T. R., & Knowles, J. G. (2016). A conceptual framework for integrated STEM education. International Journal of STEM Education, 3(1), 11.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E114",
+      "reference_labels": "114",
+      "canonical_reference": "Guzey, S. S., Harwell, M., Moreno, M., Peralta, Y., & Moore, T. J. (2017). The Impact of Design-Based STEM Integration Curricula on Student Achievement in Engineering, Science, and Mathematics. Journal of Science Education and Technology, 26(2), 207-222.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E115",
+      "reference_labels": "115",
+      "canonical_reference": "Corlu, M. A., & Aydin, E. (2016). Evaluation of Learning Gains through Integrated STEM Projects. International Journal of Education in Mathematics, Science and Technology, 4(1), 20-29.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E116",
+      "reference_labels": "116",
+      "canonical_reference": "Baran, E., Canbazoglu, B. S., Mesutoglu, C., & Ocak, C. (2016). Moving STEM beyond schools: Students‟ perceptions about an out-of-school STEM education program. International Journal of Education in Mathematics, Science and Technology, 4(1), 9-19. 基于 STEAM 教育理念的高中函数教学设计研究 76 附录 A“指数函数、对数函数与幂函数”调查问卷 亲爱的同学： 你好！感谢你抽出宝贵的时间填写这份问卷，本问卷旨在了解本次课程对你 产生的影响以及你对在高中数学课堂中实施 STEAM 教育的看法。本问卷采用匿 名形式并保证对你所填的信息保密，所获数据仅限于课题研究，对同学们无影响， 请在符合自己的选项栏中打“√”。谢谢你的支持和配合。 题号 内容描述 完 全 符合 基 本 符合 一 般 符合 基 本 不 符 合 完 全 不 符 合 1 你觉得本节课的学习方式吸引你吗？ 2 你在本节课中投入很大的热情？ 3 你更好地掌握指数、对数、幂函数的知识了 吗？ 4 通过本节课的学习，你会运用多学科的知识 来解决问题吗？ 5 在本节课中，你掌握解决数学问题的各种技 术吗？ 6 在本节课的学习中，你能根据探究的问题设 计出实验吗？ 7 你掌握了利用函数解决实际问题的一般方法 吗？ 8 你在这个活动中和小组成员积极合作吗？ 9 你认为本节课的学习有益于形成积极的创新 态度吗？ 10 以后你会尝试各种方法去克服困难吗？ 11 本节课的教学形式与一般数学教学形式相比，你更喜欢哪一种呢？为什么？",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    }
+  ],
+  "citations": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "pdf_page": 8,
+      "raw_marker": "[1]",
+      "context": "”(艺 术)，成为了 STEAM 教育，它是由美国弗吉尼亚科技大学的学者格雷特·亚克门 (Yakman，G.)第一次提出[1]。STEAM，是科学（Science）、技术（Technology）、 工程（Engineering）、数学（Mathe"
+    },
+    {
+      "label": "2",
+      "entity_id": "E002",
+      "pdf_page": 8,
+      "raw_marker": "[2]",
+      "context": "置九年一贯的课程门类和课时比例，并设置综合课程，以适应不同地区和学生发 展的需要，体现课程结构的均衡性、综合性和选择性[2]。”许多专家和学者都已 经意识到了我国数学教育目前面临的挑战和问题，中国学生题海战术很强，做封 闭性题目的能力很高，但是"
+    },
+    {
+      "label": "3",
+      "entity_id": "E003",
+      "pdf_page": 8,
+      "raw_marker": "[3]",
+      "context": "通高中数学课程标准》中指出 要围绕发展学生的数学学科数学学科核心素养开展数学活动，特别要重视数学建 模活动和数学探究活动[3]。STEAM 教育和数学活动的中心点达成了一致，都是 紧紧围绕学生的数学学科核心素养开展的学习方式。 近年来我国也越来越"
+    },
+    {
+      "label": "4",
+      "entity_id": "E004",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "5",
+      "entity_id": "E005",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "6",
+      "entity_id": "E006",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "7",
+      "entity_id": "E007",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "8",
+      "entity_id": "E008",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "9",
+      "entity_id": "E009",
+      "pdf_page": 9,
+      "raw_marker": "[4-9]",
+      "context": "TEAM 教育的研究在快速增加，但仍以介绍、 基于 STEAM 教育理念的高中函数教学设计研究 2 解读或述评的文章居多[4-9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[1"
+    },
+    {
+      "label": "10",
+      "entity_id": "E010",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "11",
+      "entity_id": "E011",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "12",
+      "entity_id": "E012",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "13",
+      "entity_id": "E013",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "14",
+      "entity_id": "E014",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "15",
+      "entity_id": "E015",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "16",
+      "entity_id": "E016",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "17",
+      "entity_id": "E017",
+      "pdf_page": 9,
+      "raw_marker": "[10-17]",
+      "context": "9]，并且，对于 STEAM 教育的理论研究较多，主要包 括 STEAM 的内涵、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上"
+    },
+    {
+      "label": "18",
+      "entity_id": "E018",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "19",
+      "entity_id": "E019",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "20",
+      "entity_id": "E020",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "21",
+      "entity_id": "E021",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "22",
+      "entity_id": "E022",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "23",
+      "entity_id": "E023",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "24",
+      "entity_id": "E024",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "25",
+      "entity_id": "E025",
+      "pdf_page": 9,
+      "raw_marker": "[18-25]",
+      "context": "、特征以及整合模式、教学案例的开发研究等[10-17]。就具体学 科在 STEAM 教育理念下进行教学设计的文章也有增加[18-25]，但是在数学学科， 尤其是高中数学课堂上融入 STEAM 教育理念的教学研究还是极少的。这是因为 数学是更贴近一门计算性"
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "pdf_page": 10,
+      "raw_marker": "[26]",
+      "context": "（Technology）、工程（Engineering）、 数学（Mathematics）和艺术（Arts）五个词的缩写[26]。 （2）STEAM 教育 STEAM 教育就是培养学生科学、技术、工程、数学和艺术综合素养的教育， 是根据解决现实问题"
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "pdf_page": 10,
+      "raw_marker": "[26]",
+      "context": "程、数学和艺术综合素养的教育， 是根据解决现实问题的需要，将来自这几个不同学科的零碎知识有效地整合成相 互联系的统一整体[26]。 （3）STEAM 教育理念 STEAM 教育理念是一种整合的教育理念，是指在真实的问题情境或项目中 运用多学科知识解"
+    },
+    {
+      "label": "27",
+      "entity_id": "E027",
+      "pdf_page": 10,
+      "raw_marker": "[27]",
+      "context": "学生共同协作进行 工程设计，从而学习到工程设计和（或）技术才能，体会科目的意义，学会理论 联系实践，深入地掌握知识的本质[27]。 （4）数学教学设计 数学教学设计包括教案设计、教学实施、教学反思三个部分。其中教案设计 包括课程标准分析、教学内容分"
+    },
+    {
+      "label": "28",
+      "entity_id": "E028",
+      "pdf_page": 10,
+      "raw_marker": "[28]",
+      "context": "实施是根据教案设计 的具体内容，在课堂上实施教案的过程。教学反思是在教案设计成果得到教学实 施后对其进行评价和完善的过程[28]。 （5）教学实施效果 教学实施效果是指依据教案设计进行实际教学后，通过分析提供给老师的观 测表的结果以及学生调查问卷的"
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "pdf_page": 10,
+      "raw_marker": "[26]",
+      "context": "echnology）、工程（Engineering）、 数学（Mathematics）、艺术（Arts）英语首字母的缩写[26]。作为一种基于真实情 景的学习理念与方法，它重视科学、技术、工程、数学和艺术人文学科的内在联 系，并对涉及的多学科知识进"
+    },
+    {
+      "label": "29",
+      "entity_id": "E029",
+      "pdf_page": 12,
+      "raw_marker": "[29]",
+      "context": "础上扩展了艺 术教育领域，即从某个问题出发，引导学习者综合利用数学、科学、技术、工程 和艺术等领域的知识，实现的教学创新[29]。王娟等[30]指出，STEAM教育是一门 整合多学科知识，并且注重实践过程的教育。让学生理解各领域之间的知识联系 与迁"
+    },
+    {
+      "label": "30",
+      "entity_id": "E030",
+      "pdf_page": 12,
+      "raw_marker": "[30]",
+      "context": "教育领域，即从某个问题出发，引导学习者综合利用数学、科学、技术、工程 和艺术等领域的知识，实现的教学创新[29]。王娟等[30]指出，STEAM教育是一门 整合多学科知识，并且注重实践过程的教育。让学生理解各领域之间的知识联系 与迁移。支持创新人才"
+    },
+    {
+      "label": "31",
+      "entity_id": "E031",
+      "pdf_page": 12,
+      "raw_marker": "[31]",
+      "context": "务、以解决实际情景中的具体问题 的教学模式。在该模式培养出学生创新性解决问题的能力，并可持续地为社会、 企业输出优秀人才[31]。支持素养说的学者认为：学习者通过 STEAM 教育，在项 目学习中获得了创新精神和 STEAM 素养[32]。支持社会"
+    },
+    {
+      "label": "32",
+      "entity_id": "E032",
+      "pdf_page": 12,
+      "raw_marker": "[32]",
+      "context": "出优秀人才[31]。支持素养说的学者认为：学习者通过 STEAM 教育，在项 目学习中获得了创新精神和 STEAM 素养[32]。支持社会服务说的学者认为： STEAM 教育目的是培养出一批能够为社会设计出创新型产品、对实际问题提供 解决方案的人才"
+    },
+    {
+      "label": "33",
+      "entity_id": "E033",
+      "pdf_page": 12,
+      "raw_marker": "[33]",
+      "context": "。支持社会服务说的学者认为： STEAM 教育目的是培养出一批能够为社会设计出创新型产品、对实际问题提供 解决方案的人才[33]。 该文通过分析上述文献，发现它们具有 4 个相同点：①STEAM 教育以真实 情境为背景。②STEAM 教育整合了多个"
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "pdf_page": 10,
+      "raw_marker": "[26]",
+      "context": "将学生的困难概念与学生的学习生活紧密联系起来，有效地提高学生解决问题的 积极性。它以项目为基础，整合了来自多个学科的知识[26]。 艺术素养是指欣赏和表达艺术的能力的综合表现。在自然科学教学中，有目 的地提高学生对社会科学和人文科学的欣赏和重视，不"
+    },
+    {
+      "label": "16",
+      "entity_id": "E016",
+      "pdf_page": 13,
+      "raw_marker": "[16]",
+      "context": "情况下对数学问题进行挖掘、阐述、分析和处理时， 将数学概念和方法应用于各种客观事物，进行分析、思考和实践思想交流的能力 [16]。 这五个方面是相互交织的，相互联系且不可分割。科学是课题背景的基本组 成部分，课题背景中必然蕴含科学；技术和工程不仅是"
+    },
+    {
+      "label": "34",
+      "entity_id": "E034",
+      "pdf_page": 13,
+      "raw_marker": "[34]",
+      "context": "，结合数学课程标准，采用系统化观点、方法整合课程资源、形成教 学活动基本方案并对初步方案进行必要的反思、修改和完善的过程[34]。张奠宙提 出数学教学设计是在数学课程标准的指导下结合现代教育理论、教师经验、学生 需求、课程性质分析，预设教学方法与教"
+    },
+    {
+      "label": "35",
+      "entity_id": "E035",
+      "pdf_page": 13,
+      "raw_marker": "[35]",
+      "context": "设计是在数学课程标准的指导下结合现代教育理论、教师经验、学生 需求、课程性质分析，预设教学方法与教学活动的一种可操作过程[35]。 该文的数学教学设计概念包括教案设计、教学实施、教学反思三个部分。其 中教案设计包括课程标准分析、教学内容分析、学习者"
+    },
+    {
+      "label": "28",
+      "entity_id": "E028",
+      "pdf_page": 10,
+      "raw_marker": "[28]",
+      "context": "实施是根 据教案设计的具体内容，在课堂上实施教案的过程。教学反思是在教案设计成果 得到教学实施后对其进行评价和完善的过程[28]。 2.1.2 理论基础 STEAM 教育强调以真实的情境问题为导向，学习者综合运用学科知识去解 决问题，并形成系统化的"
+    },
+    {
+      "label": "26",
+      "entity_id": "E026",
+      "pdf_page": 10,
+      "raw_marker": "[26]",
+      "context": "将 这五种学科的零碎知识变成相互联系的统一整体，是一种将教学置于真实情境下 问题驱动式的跨学科教育，STEAM 教育理念[26]有以下方面： 第一，围绕真实情境进行跨学科融合。它与常规教育的只传授孤立分离学科 知识不同，而是结合实际问题创设一种情境"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 14,
+      "raw_marker": "[38]",
+      "context": "的教学目标以及学科特点确定的， 并且还要考虑学生的思维水平以及心理特征。在目前的中学数学教学中，主要有 以下几个基本原则[38]。 抽象与具体相结合原则，是教学中抽象思维与生动具体对象统一规律的反 应。在数学教学中，教师通过提供给学生具体的现实情境"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 14,
+      "raw_marker": "[38]",
+      "context": "对研究问题所涉及的内容进 行集中融合，以便应对实际生产需要和重难点突破，是融合了现实世界的生产实 践和具体问题的学习方法[38]。 2.2文献综述 2.2.1 基于 STEAM 教育理念教学设计 在 CNKI 平台中以“STEAM 教育”并含“教学"
+    },
+    {
+      "label": "37",
+      "entity_id": "E037",
+      "pdf_page": 18,
+      "raw_marker": "[37]",
+      "context": "文献。 在研究内容方面，有的学者通过剖析和设计 STEAM 教学活动的要素和框 架，构建了 STEAM 教学活动设计模式[37]，依据该 STEAM 教学活动设计模式实 施了三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "39",
+      "entity_id": "E039",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "40",
+      "entity_id": "E040",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "41",
+      "entity_id": "E041",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "43",
+      "entity_id": "E043",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "三轮教学活动，以调整和确认该设计模式的可行性；有的学者将 STEAM 教 育理念融入某学科，开发了教学设计案例并进行实施[38-45]，以 STEAM 教育理念 为指导，使之与某一学科教学相融合，通过具体的教学案例为实例来分析 STEAM 融入该学科的价"
+    },
+    {
+      "label": "46",
+      "entity_id": "E046",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "学者从 STEAM 教育的角度提出机器人教学项目的设计 策略，设计并实施了基于 STEAM 教育理念的机器人课程教学实践[46-48]，根据研 究对象的学习需求、机器人实验课程的学习目标与学习内容、依据相应理论，建 构了 STEAM 教育理念下的机器人知"
+    },
+    {
+      "label": "47",
+      "entity_id": "E047",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "学者从 STEAM 教育的角度提出机器人教学项目的设计 策略，设计并实施了基于 STEAM 教育理念的机器人课程教学实践[46-48]，根据研 究对象的学习需求、机器人实验课程的学习目标与学习内容、依据相应理论，建 构了 STEAM 教育理念下的机器人知"
+    },
+    {
+      "label": "48",
+      "entity_id": "E048",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "学者从 STEAM 教育的角度提出机器人教学项目的设计 策略，设计并实施了基于 STEAM 教育理念的机器人课程教学实践[46-48]，根据研 究对象的学习需求、机器人实验课程的学习目标与学习内容、依据相应理论，建 构了 STEAM 教育理念下的机器人知"
+    },
+    {
+      "label": "49",
+      "entity_id": "E049",
+      "pdf_page": 18,
+      "raw_marker": "[49]",
+      "context": "、依据相应理论，建 构了 STEAM 教育理念下的机器人知识学习过程；有的学者开发了基于 STEAM 教育理念的校本课程[49]，采用斯基尔贝克的情景模式为理论基础开发了基于 STEAM 理念的《唐山皮影》校本课程；有的学者开发了基于 STEAM"
+    },
+    {
+      "label": "50",
+      "entity_id": "E050",
+      "pdf_page": 18,
+      "raw_marker": "[50]",
+      "context": "了基于 STEAM 理念的《唐山皮影》校本课程；有的学者开发了基于 STEAM 教育理念 的信息技术课程教学项目设计方案[50]，该项目教学设计流程包括：确定主题、创 设情境、项目设计、确定目标、活动实施、成果展示和多元评价；有的学者提出 了在数学"
+    },
+    {
+      "label": "51",
+      "entity_id": "E051",
+      "pdf_page": 18,
+      "raw_marker": "[51-52]",
+      "context": "设计、确定目标、活动实施、成果展示和多元评价；有的学者提出 了在数学学科核心素养视角下的 STEAM 跨学科融合模式设计[51-52]，并与创客式 教学进行了融合；有的学者将数学文化融入到 STEAM课程中，并进行研究与设 计[53]，以提高学生数学学科"
+    },
+    {
+      "label": "52",
+      "entity_id": "E052",
+      "pdf_page": 18,
+      "raw_marker": "[51-52]",
+      "context": "设计、确定目标、活动实施、成果展示和多元评价；有的学者提出 了在数学学科核心素养视角下的 STEAM 跨学科融合模式设计[51-52]，并与创客式 教学进行了融合；有的学者将数学文化融入到 STEAM课程中，并进行研究与设 计[53]，以提高学生数学学科"
+    },
+    {
+      "label": "53",
+      "entity_id": "E053",
+      "pdf_page": 18,
+      "raw_marker": "[53]",
+      "context": "科融合模式设计[51-52]，并与创客式 教学进行了融合；有的学者将数学文化融入到 STEAM课程中，并进行研究与设 计[53]，以提高学生数学学科核心素养的目的，设计了校本课程——新新课堂；有 的学者开发了基于 STEAM 教育理念的 App I"
+    },
+    {
+      "label": "54",
+      "entity_id": "E054",
+      "pdf_page": 18,
+      "raw_marker": "[54-55]",
+      "context": "，设计了校本课程——新新课堂；有 的学者开发了基于 STEAM 教育理念的 App Inventor 创意编程课教学设计[54-55]， 阐述了 App Inventor 教学设计思想，搭建了基于 STEAM 的 App Inventor 创意编程课教学"
+    },
+    {
+      "label": "55",
+      "entity_id": "E055",
+      "pdf_page": 18,
+      "raw_marker": "[54-55]",
+      "context": "，设计了校本课程——新新课堂；有 的学者开发了基于 STEAM 教育理念的 App Inventor 创意编程课教学设计[54-55]， 阐述了 App Inventor 教学设计思想，搭建了基于 STEAM 的 App Inventor 创意编程课教学"
+    },
+    {
+      "label": "56",
+      "entity_id": "E056",
+      "pdf_page": 18,
+      "raw_marker": "[56-57]",
+      "context": "基于 STEAM 的 App Inventor 创意编程课教学设计框架。 在研究方法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM"
+    },
+    {
+      "label": "57",
+      "entity_id": "E057",
+      "pdf_page": 18,
+      "raw_marker": "[56-57]",
+      "context": "基于 STEAM 的 App Inventor 创意编程课教学设计框架。 在研究方法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "39",
+      "entity_id": "E039",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "40",
+      "entity_id": "E040",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "41",
+      "entity_id": "E041",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "43",
+      "entity_id": "E043",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "法方面，所有的研究中都采用了文本分析法[56-57]，分析 STEAM 教 育的内涵及特征；大部分的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美"
+    },
+    {
+      "label": "37",
+      "entity_id": "E037",
+      "pdf_page": 18,
+      "raw_marker": "[37,47,48]",
+      "context": "的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美术学院 1 1.52% 哈尔滨师范大学 1 1.52% 河北科技师范学院 1 1.52% 内蒙古师范大学"
+    },
+    {
+      "label": "47",
+      "entity_id": "E047",
+      "pdf_page": 18,
+      "raw_marker": "[37,47,48]",
+      "context": "的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美术学院 1 1.52% 哈尔滨师范大学 1 1.52% 河北科技师范学院 1 1.52% 内蒙古师范大学"
+    },
+    {
+      "label": "48",
+      "entity_id": "E048",
+      "pdf_page": 18,
+      "raw_marker": "[37,47,48]",
+      "context": "的研究采用了案例分析法[38-45]，以某节课程为例说明基 于 STEAM 教育理念的教学设计；有的研究采用了问卷调查法[37,47,48]、访谈法 中央美术学院 1 1.52% 哈尔滨师范大学 1 1.52% 河北科技师范学院 1 1.52% 内蒙古师范大学"
+    },
+    {
+      "label": "37",
+      "entity_id": "E037",
+      "pdf_page": 19,
+      "raw_marker": "[37,49,54,55]",
+      "context": "2% 内蒙古师范大学 1 1.52% 合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进"
+    },
+    {
+      "label": "49",
+      "entity_id": "E049",
+      "pdf_page": 19,
+      "raw_marker": "[37,49,54,55]",
+      "context": "2% 内蒙古师范大学 1 1.52% 合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进"
+    },
+    {
+      "label": "54",
+      "entity_id": "E054",
+      "pdf_page": 19,
+      "raw_marker": "[37,49,54,55]",
+      "context": "2% 内蒙古师范大学 1 1.52% 合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进"
+    },
+    {
+      "label": "55",
+      "entity_id": "E055",
+      "pdf_page": 19,
+      "raw_marker": "[37,49,54,55]",
+      "context": "2% 内蒙古师范大学 1 1.52% 合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进"
+    },
+    {
+      "label": "50",
+      "entity_id": "E050",
+      "pdf_page": 19,
+      "raw_marker": "[50,53-55]",
+      "context": "合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进行调查与分析，以检验该模式的可行"
+    },
+    {
+      "label": "53",
+      "entity_id": "E053",
+      "pdf_page": 19,
+      "raw_marker": "[50,53-55]",
+      "context": "合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进行调查与分析，以检验该模式的可行"
+    },
+    {
+      "label": "54",
+      "entity_id": "E054",
+      "pdf_page": 19,
+      "raw_marker": "[50,53-55]",
+      "context": "合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进行调查与分析，以检验该模式的可行"
+    },
+    {
+      "label": "55",
+      "entity_id": "E055",
+      "pdf_page": 19,
+      "raw_marker": "[50,53-55]",
+      "context": "合计 36 54.55% 基于 STEAM 教育理念的高中函数教学设计研究 12 [37,49,54,55]，行动研究法[50,53-55]对基于 STEAM 教育理念的教学设计实施效果进行 分析，以及对 STEAM 教学模式进行调查与分析，以检验该模式的可行"
+    },
+    {
+      "label": "58",
+      "entity_id": "E058",
+      "pdf_page": 19,
+      "raw_marker": "[58-59]",
+      "context": "TEAM 教学模式进行调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的"
+    },
+    {
+      "label": "59",
+      "entity_id": "E059",
+      "pdf_page": 19,
+      "raw_marker": "[58-59]",
+      "context": "TEAM 教学模式进行调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的"
+    },
+    {
+      "label": "39",
+      "entity_id": "E039",
+      "pdf_page": 19,
+      "raw_marker": "[39,44,47,48,50]",
+      "context": "调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45"
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "pdf_page": 19,
+      "raw_marker": "[39,44,47,48,50]",
+      "context": "调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45"
+    },
+    {
+      "label": "47",
+      "entity_id": "E047",
+      "pdf_page": 19,
+      "raw_marker": "[39,44,47,48,50]",
+      "context": "调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45"
+    },
+    {
+      "label": "48",
+      "entity_id": "E048",
+      "pdf_page": 19,
+      "raw_marker": "[39,44,47,48,50]",
+      "context": "调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45"
+    },
+    {
+      "label": "50",
+      "entity_id": "E050",
+      "pdf_page": 19,
+      "raw_marker": "[39,44,47,48,50]",
+      "context": "调查与分析，以检验该模式的可行性和有效 性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 19,
+      "raw_marker": "[45]",
+      "context": "性。 在研究对象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41"
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "pdf_page": 19,
+      "raw_marker": "[42,44,45]",
+      "context": "象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术"
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "pdf_page": 19,
+      "raw_marker": "[42,44,45]",
+      "context": "象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 19,
+      "raw_marker": "[42,44,45]",
+      "context": "象方面，按照学段进行划分，学者们分别从学前 [58-59]、小学 [39,44,47,48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 19,
+      "raw_marker": "[38,45]",
+      "context": "48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 19,
+      "raw_marker": "[38,45]",
+      "context": "48,50]、初中[45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别"
+    },
+    {
+      "label": "41",
+      "entity_id": "E041",
+      "pdf_page": 19,
+      "raw_marker": "[41-43]",
+      "context": "45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-"
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "pdf_page": 19,
+      "raw_marker": "[41-43]",
+      "context": "45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-"
+    },
+    {
+      "label": "43",
+      "entity_id": "E043",
+      "pdf_page": 19,
+      "raw_marker": "[41-43]",
+      "context": "45]以及高中[42,44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-"
+    },
+    {
+      "label": "60",
+      "entity_id": "E060",
+      "pdf_page": 19,
+      "raw_marker": "[60]",
+      "context": ",44,45]的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本"
+    },
+    {
+      "label": "61",
+      "entity_id": "E061",
+      "pdf_page": 19,
+      "raw_marker": "[61]",
+      "context": "的教学设计四个方面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、"
+    },
+    {
+      "label": "62",
+      "entity_id": "E062",
+      "pdf_page": 19,
+      "raw_marker": "[62]",
+      "context": "面进行研究；按照融入的学 科类型划分；学者们从物理[38,45]、地理[41-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[5"
+    },
+    {
+      "label": "46",
+      "entity_id": "E046",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种"
+    },
+    {
+      "label": "47",
+      "entity_id": "E047",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种"
+    },
+    {
+      "label": "48",
+      "entity_id": "E048",
+      "pdf_page": 18,
+      "raw_marker": "[46-48]",
+      "context": "-43]、语文[60]、美术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种"
+    },
+    {
+      "label": "49",
+      "entity_id": "E049",
+      "pdf_page": 18,
+      "raw_marker": "[49]",
+      "context": "术[61]以及音乐[62]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种 课型进行研究。 在"
+    },
+    {
+      "label": "50",
+      "entity_id": "E050",
+      "pdf_page": 18,
+      "raw_marker": "[50]",
+      "context": "2]等七个 方面进行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种 课型进行研究。 在研究结论方面，有的学者"
+    },
+    {
+      "label": "63",
+      "entity_id": "E063",
+      "pdf_page": 19,
+      "raw_marker": "[63]",
+      "context": "行研究；按照融入的课程类型划分，学者们分别从机器人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种 课型进行研究。 在研究结论方面，有的学者得到 STEAM"
+    },
+    {
+      "label": "54",
+      "entity_id": "E054",
+      "pdf_page": 18,
+      "raw_marker": "[54-55]",
+      "context": "人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种 课型进行研究。 在研究结论方面，有的学者得到 STEAM 教学活动设计模式在一定的教学情 境中具有有效性和可行性"
+    },
+    {
+      "label": "55",
+      "entity_id": "E055",
+      "pdf_page": 18,
+      "raw_marker": "[54-55]",
+      "context": "人课程[46-48]、校本 课程[49]、信息技术课程[50]、纸艺课程[63]、App Inventor 创新实践课程[54-55]等五种 课型进行研究。 在研究结论方面，有的学者得到 STEAM 教学活动设计模式在一定的教学情 境中具有有效性和可行性"
+    },
+    {
+      "label": "38",
+      "entity_id": "E038",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "39",
+      "entity_id": "E039",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "40",
+      "entity_id": "E040",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "41",
+      "entity_id": "E041",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "42",
+      "entity_id": "E042",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "43",
+      "entity_id": "E043",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "44",
+      "entity_id": "E044",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "45",
+      "entity_id": "E045",
+      "pdf_page": 18,
+      "raw_marker": "[38-45]",
+      "context": "教育理念的教学设计研究中 得到 STEAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含"
+    },
+    {
+      "label": "51",
+      "entity_id": "E051",
+      "pdf_page": 18,
+      "raw_marker": "[51-52]",
+      "context": "EAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含“高中教学”为主题词，时间跨度设置为"
+    },
+    {
+      "label": "52",
+      "entity_id": "E052",
+      "pdf_page": 18,
+      "raw_marker": "[51-52]",
+      "context": "EAM 教育可以促进学科间的融合培养学生的创新能力、实践能力、综合 解决问题的能力[38-45]，以及对数学学科核心素养[51-52]的发展有一定的帮助。 2.2.2 高中函数教学 在 CNKI 平台中以“函数”并含“高中教学”为主题词，时间跨度设置为"
+    },
+    {
+      "label": "64",
+      "entity_id": "E064",
+      "pdf_page": 19,
+      "raw_marker": "[64-66]",
+      "context": "象、研究结论四个维度梳理文献。 在研究内容方面，有的学者通过分析初高中数学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71"
+    },
+    {
+      "label": "65",
+      "entity_id": "E065",
+      "pdf_page": 19,
+      "raw_marker": "[64-66]",
+      "context": "象、研究结论四个维度梳理文献。 在研究内容方面，有的学者通过分析初高中数学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71"
+    },
+    {
+      "label": "66",
+      "entity_id": "E066",
+      "pdf_page": 19,
+      "raw_marker": "[64-66]",
+      "context": "象、研究结论四个维度梳理文献。 在研究内容方面，有的学者通过分析初高中数学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71"
+    },
+    {
+      "label": "67",
+      "entity_id": "E067",
+      "pdf_page": 19,
+      "raw_marker": "[67-69]",
+      "context": "学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者"
+    },
+    {
+      "label": "68",
+      "entity_id": "E068",
+      "pdf_page": 19,
+      "raw_marker": "[67-69]",
+      "context": "学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者"
+    },
+    {
+      "label": "69",
+      "entity_id": "E069",
+      "pdf_page": 19,
+      "raw_marker": "[67-69]",
+      "context": "学教学上的差异，提出了初高 中衔接教育方面的理念[64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者"
+    },
+    {
+      "label": "70",
+      "entity_id": "E070",
+      "pdf_page": 19,
+      "raw_marker": "[70-71]",
+      "context": "64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学"
+    },
+    {
+      "label": "71",
+      "entity_id": "E071",
+      "pdf_page": 19,
+      "raw_marker": "[70-71]",
+      "context": "64-66]。有的学者通过对高中函数的概念性学习，提出相应 的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学"
+    },
+    {
+      "label": "72",
+      "entity_id": "E072",
+      "pdf_page": 19,
+      "raw_marker": "[72-73]",
+      "context": "的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助"
+    },
+    {
+      "label": "73",
+      "entity_id": "E073",
+      "pdf_page": 19,
+      "raw_marker": "[72-73]",
+      "context": "的教学内容[67-69]。有的学者对数学思想和方法教学相结合[70-71]，将问题进行类化 分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助"
+    },
+    {
+      "label": "74",
+      "entity_id": "E074",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育"
+    },
+    {
+      "label": "75",
+      "entity_id": "E075",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育"
+    },
+    {
+      "label": "76",
+      "entity_id": "E076",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "分析，以便应用到解题过程当中[72-73]。有的学者将高中阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育"
+    },
+    {
+      "label": "77",
+      "entity_id": "E077",
+      "pdf_page": 19,
+      "raw_marker": "[77]",
+      "context": "阶段数学的文化现象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法["
+    },
+    {
+      "label": "78",
+      "entity_id": "E078",
+      "pdf_page": 19,
+      "raw_marker": "[78]",
+      "context": "象与教 育相结合，保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教"
+    },
+    {
+      "label": "79",
+      "entity_id": "E079",
+      "pdf_page": 19,
+      "raw_marker": "[79-81]",
+      "context": "保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合["
+    },
+    {
+      "label": "80",
+      "entity_id": "E080",
+      "pdf_page": 19,
+      "raw_marker": "[79-81]",
+      "context": "保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合["
+    },
+    {
+      "label": "81",
+      "entity_id": "E081",
+      "pdf_page": 19,
+      "raw_marker": "[79-81]",
+      "context": "保证学生学习过程中的趣味性[74-76]。有的学者推崇利用现有条件辅助 教学，数学实验[77]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合["
+    },
+    {
+      "label": "82",
+      "entity_id": "E082",
+      "pdf_page": 19,
+      "raw_marker": "[82]",
+      "context": "]，多媒体[78]，几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [8"
+    },
+    {
+      "label": "83",
+      "entity_id": "E083",
+      "pdf_page": 19,
+      "raw_marker": "[83]",
+      "context": "几何画板[79-81]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87"
+    },
+    {
+      "label": "79",
+      "entity_id": "E079",
+      "pdf_page": 19,
+      "raw_marker": "[79,84-85]",
+      "context": "]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]"
+    },
+    {
+      "label": "84",
+      "entity_id": "E084",
+      "pdf_page": 19,
+      "raw_marker": "[79,84-85]",
+      "context": "]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]"
+    },
+    {
+      "label": "85",
+      "entity_id": "E085",
+      "pdf_page": 19,
+      "raw_marker": "[79,84-85]",
+      "context": "]作为辅助工具应用到实践教育中来。 其中有的学者提出一些新的教育思路，尝试教学法[82]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]"
+    },
+    {
+      "label": "86",
+      "entity_id": "E086",
+      "pdf_page": 19,
+      "raw_marker": "[86]",
+      "context": "2]，创新型教育[83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]，从而更具体化，专业化的对高中数学函 数进行剖析，来针对疑难问题做出相应"
+    },
+    {
+      "label": "87",
+      "entity_id": "E087",
+      "pdf_page": 19,
+      "raw_marker": "[87]",
+      "context": "83]，数形结 合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]，从而更具体化，专业化的对高中数学函 数进行剖析，来针对疑难问题做出相应的教学对策。 在研"
+    },
+    {
+      "label": "88",
+      "entity_id": "E088",
+      "pdf_page": 19,
+      "raw_marker": "[88]",
+      "context": "合[79,84-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]，从而更具体化，专业化的对高中数学函 数进行剖析，来针对疑难问题做出相应的教学对策。 在研究方法方面，所有"
+    },
+    {
+      "label": "89",
+      "entity_id": "E089",
+      "pdf_page": 19,
+      "raw_marker": "[89]",
+      "context": "-85]的一系列教育思维。还有的学者对某一领域的函数进行专项研究：指数 [86]、三角函数[87]、微积分[88]、导数[89]，从而更具体化，专业化的对高中数学函 数进行剖析，来针对疑难问题做出相应的教学对策。 在研究方法方面，所有的研究都采用了"
+    },
+    {
+      "label": "90",
+      "entity_id": "E090",
+      "pdf_page": 19,
+      "raw_marker": "[90-91]",
+      "context": "的对高中数学函 数进行剖析，来针对疑难问题做出相应的教学对策。 在研究方法方面，所有的研究都采用了查阅相关文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查"
+    },
+    {
+      "label": "91",
+      "entity_id": "E091",
+      "pdf_page": 19,
+      "raw_marker": "[90-91]",
+      "context": "的对高中数学函 数进行剖析，来针对疑难问题做出相应的教学对策。 在研究方法方面，所有的研究都采用了查阅相关文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查"
+    },
+    {
+      "label": "72",
+      "entity_id": "E072",
+      "pdf_page": 19,
+      "raw_marker": "[72,75,91]",
+      "context": "法方面，所有的研究都采用了查阅相关文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73"
+    },
+    {
+      "label": "75",
+      "entity_id": "E075",
+      "pdf_page": 19,
+      "raw_marker": "[72,75,91]",
+      "context": "法方面，所有的研究都采用了查阅相关文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73"
+    },
+    {
+      "label": "91",
+      "entity_id": "E091",
+      "pdf_page": 19,
+      "raw_marker": "[72,75,91]",
+      "context": "法方面，所有的研究都采用了查阅相关文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73"
+    },
+    {
+      "label": "72",
+      "entity_id": "E072",
+      "pdf_page": 19,
+      "raw_marker": "[72,79,92]",
+      "context": "文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法"
+    },
+    {
+      "label": "79",
+      "entity_id": "E079",
+      "pdf_page": 19,
+      "raw_marker": "[72,79,92]",
+      "context": "文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法"
+    },
+    {
+      "label": "92",
+      "entity_id": "E092",
+      "pdf_page": 19,
+      "raw_marker": "[72,79,92]",
+      "context": "文献研究的方法[90-91]，分析 了解高中函数的教学内容。大部分研究采用了调查问卷法[72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法"
+    },
+    {
+      "label": "66",
+      "entity_id": "E066",
+      "pdf_page": 19,
+      "raw_marker": "[66,69,73]",
+      "context": "72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究"
+    },
+    {
+      "label": "69",
+      "entity_id": "E069",
+      "pdf_page": 19,
+      "raw_marker": "[66,69,73]",
+      "context": "72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究"
+    },
+    {
+      "label": "73",
+      "entity_id": "E073",
+      "pdf_page": 19,
+      "raw_marker": "[66,69,73]",
+      "context": "72,75,91]与案例分析法 [72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究"
+    },
+    {
+      "label": "91",
+      "entity_id": "E091",
+      "pdf_page": 19,
+      "raw_marker": "[91]",
+      "context": "[72,79,92]，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进"
+    },
+    {
+      "label": "92",
+      "entity_id": "E092",
+      "pdf_page": 19,
+      "raw_marker": "[92-94]",
+      "context": "，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高"
+    },
+    {
+      "label": "93",
+      "entity_id": "E093",
+      "pdf_page": 19,
+      "raw_marker": "[92-94]",
+      "context": "，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高"
+    },
+    {
+      "label": "94",
+      "entity_id": "E094",
+      "pdf_page": 19,
+      "raw_marker": "[92-94]",
+      "context": "，来调查高中生对于函数数学方面的理解与渗透。有一部分研究用了访谈 法[66,69,73]，行动研究法[91]，案例分析法[92-94]，对比高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高"
+    },
+    {
+      "label": "67",
+      "entity_id": "E067",
+      "pdf_page": 19,
+      "raw_marker": "[67,71,76,95-96]",
+      "context": "高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13"
+    },
+    {
+      "label": "71",
+      "entity_id": "E071",
+      "pdf_page": 19,
+      "raw_marker": "[67,71,76,95-96]",
+      "context": "高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13"
+    },
+    {
+      "label": "76",
+      "entity_id": "E076",
+      "pdf_page": 19,
+      "raw_marker": "[67,71,76,95-96]",
+      "context": "高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13"
+    },
+    {
+      "label": "95",
+      "entity_id": "E095",
+      "pdf_page": 19,
+      "raw_marker": "[67,71,76,95-96]",
+      "context": "高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13"
+    },
+    {
+      "label": "96",
+      "entity_id": "E096",
+      "pdf_page": 19,
+      "raw_marker": "[67,71,76,95-96]",
+      "context": "高中教育模式与设计进行调查 分析，用来检验教育模式的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13"
+    },
+    {
+      "label": "91",
+      "entity_id": "E091",
+      "pdf_page": 19,
+      "raw_marker": "[91,93-94]",
+      "context": "的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71"
+    },
+    {
+      "label": "93",
+      "entity_id": "E093",
+      "pdf_page": 19,
+      "raw_marker": "[91,93-94]",
+      "context": "的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71"
+    },
+    {
+      "label": "94",
+      "entity_id": "E094",
+      "pdf_page": 19,
+      "raw_marker": "[91,93-94]",
+      "context": "的可靠性。 在研究对象方面，根据学段进行划分，学者们主要着重于高中阶段[67,71,76,95-96] 和初高中衔接阶段[91,93-94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71"
+    },
+    {
+      "label": "71",
+      "entity_id": "E071",
+      "pdf_page": 20,
+      "raw_marker": "[71]",
+      "context": "94]的教学模式与教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层"
+    },
+    {
+      "label": "74",
+      "entity_id": "E074",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策"
+    },
+    {
+      "label": "75",
+      "entity_id": "E075",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策"
+    },
+    {
+      "label": "76",
+      "entity_id": "E076",
+      "pdf_page": 19,
+      "raw_marker": "[74-76]",
+      "context": "教育设计，并对之进行探讨与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策"
+    },
+    {
+      "label": "77",
+      "entity_id": "E077",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学"
+    },
+    {
+      "label": "78",
+      "entity_id": "E078",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学"
+    },
+    {
+      "label": "79",
+      "entity_id": "E079",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学"
+    },
+    {
+      "label": "80",
+      "entity_id": "E080",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学"
+    },
+    {
+      "label": "92",
+      "entity_id": "E092",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "与研究。根据 辽宁师范大学硕士学位论文 13 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学"
+    },
+    {
+      "label": "82",
+      "entity_id": "E082",
+      "pdf_page": 20,
+      "raw_marker": "[82-84]",
+      "context": "3 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,"
+    },
+    {
+      "label": "83",
+      "entity_id": "E083",
+      "pdf_page": 20,
+      "raw_marker": "[82-84]",
+      "context": "3 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,"
+    },
+    {
+      "label": "84",
+      "entity_id": "E084",
+      "pdf_page": 20,
+      "raw_marker": "[82-84]",
+      "context": "3 内容进行划分时，学者们从数学思想[71]，数学文化[74-76]，辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,"
+    },
+    {
+      "label": "89",
+      "entity_id": "E089",
+      "pdf_page": 20,
+      "raw_marker": "[89,99-102]",
+      "context": "辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结"
+    },
+    {
+      "label": "99",
+      "entity_id": "E099",
+      "pdf_page": 20,
+      "raw_marker": "[89,99-102]",
+      "context": "辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结"
+    },
+    {
+      "label": "100",
+      "entity_id": "E100",
+      "pdf_page": 20,
+      "raw_marker": "[89,99-102]",
+      "context": "辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结"
+    },
+    {
+      "label": "101",
+      "entity_id": "E101",
+      "pdf_page": 20,
+      "raw_marker": "[89,99-102]",
+      "context": "辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结"
+    },
+    {
+      "label": "102",
+      "entity_id": "E102",
+      "pdf_page": 20,
+      "raw_marker": "[89,99-102]",
+      "context": "辅助工具[77-80,92]，和新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结"
+    },
+    {
+      "label": "70",
+      "entity_id": "E070",
+      "pdf_page": 19,
+      "raw_marker": "[70-71]",
+      "context": "新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初"
+    },
+    {
+      "label": "71",
+      "entity_id": "E071",
+      "pdf_page": 19,
+      "raw_marker": "[70-71]",
+      "context": "新 概念的教育模式[82-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初"
+    },
+    {
+      "label": "74",
+      "entity_id": "E074",
+      "pdf_page": 20,
+      "raw_marker": "[74,76,103]",
+      "context": "-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中"
+    },
+    {
+      "label": "76",
+      "entity_id": "E076",
+      "pdf_page": 20,
+      "raw_marker": "[74,76,103]",
+      "context": "-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中"
+    },
+    {
+      "label": "103",
+      "entity_id": "E103",
+      "pdf_page": 20,
+      "raw_marker": "[74,76,103]",
+      "context": "-84]四个模式进行划分。在研究教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中"
+    },
+    {
+      "label": "34",
+      "entity_id": "E034",
+      "pdf_page": 20,
+      "raw_marker": "[34,74,77]",
+      "context": "教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中数 学学习的衔接问题，并提出相"
+    },
+    {
+      "label": "74",
+      "entity_id": "E074",
+      "pdf_page": 20,
+      "raw_marker": "[34,74,77]",
+      "context": "教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中数 学学习的衔接问题，并提出相"
+    },
+    {
+      "label": "77",
+      "entity_id": "E077",
+      "pdf_page": 20,
+      "raw_marker": "[34,74,77]",
+      "context": "教学层面，学者们分别从解题策 略[89,99-102]，教学思想[70-71]，数学文化[74,76,103]，教学设计[34,74,77]四个研究方面进行 研究。 在研究结论方面，有的学者通过将初高中数学进行对比，得出初中到高中数 学学习的衔接问题，并提出相"
+    },
+    {
+      "label": "87",
+      "entity_id": "E087",
+      "pdf_page": 20,
+      "raw_marker": "[87,90]",
+      "context": "将初高中数学进行对比，得出初中到高中数 学学习的衔接问题，并提出相应的教学计划与设计,来培养数学方面的数学学科 核心素养[87,90]。有的学者将信息技术与教学活动融入到一起，设置出良好的授课 体验，并激发学生对信息技术的兴趣[99,105]。有的学者利"
+    },
+    {
+      "label": "90",
+      "entity_id": "E090",
+      "pdf_page": 20,
+      "raw_marker": "[87,90]",
+      "context": "将初高中数学进行对比，得出初中到高中数 学学习的衔接问题，并提出相应的教学计划与设计,来培养数学方面的数学学科 核心素养[87,90]。有的学者将信息技术与教学活动融入到一起，设置出良好的授课 体验，并激发学生对信息技术的兴趣[99,105]。有的学者利"
+    },
+    {
+      "label": "99",
+      "entity_id": "E099",
+      "pdf_page": 20,
+      "raw_marker": "[99,105]",
+      "context": "学科 核心素养[87,90]。有的学者将信息技术与教学活动融入到一起，设置出良好的授课 体验，并激发学生对信息技术的兴趣[99,105]。有的学者利用辅助工具结合教学， 有利于学生对教学内容的理解，提高课堂效率[77-80,92]。 2.3小结 通过对高中"
+    },
+    {
+      "label": "105",
+      "entity_id": "E105",
+      "pdf_page": 20,
+      "raw_marker": "[99,105]",
+      "context": "学科 核心素养[87,90]。有的学者将信息技术与教学活动融入到一起，设置出良好的授课 体验，并激发学生对信息技术的兴趣[99,105]。有的学者利用辅助工具结合教学， 有利于学生对教学内容的理解，提高课堂效率[77-80,92]。 2.3小结 通过对高中"
+    },
+    {
+      "label": "77",
+      "entity_id": "E077",
+      "pdf_page": 20,
+      "raw_marker": "[77-80,92]",
+      "context": "验，并激发学生对信息技术的兴趣[99,105]。有的学者利用辅助工具结合教学， 有利于学生对教学内容的理解，提高课堂效率[77-80,92]。 2.3小结 通过对高中函数教学的文献梳理研究发现，函数贯穿整个高中数学，对于以 后更高层次的数学学习起到铺垫作用。该"
+    }
+  ]
+}

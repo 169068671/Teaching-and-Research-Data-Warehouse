@@ -1,0 +1,55 @@
+{
+  "paper_metadata": {
+    "title": "OBE视角下GAI赋能高中技术与工程教学路径的实践探究",
+    "author": "蒋艳丽",
+    "institution": "未标注",
+    "degree_or_journal": "期刊论文(未标注)",
+    "advisor_or_editor": "—",
+    "year": "2025",
+    "pages": 6,
+    "page_offset": 0
+  },
+  "summary": {
+    "reference_labels": 1,
+    "unique_entities": 1,
+    "citation_occurrences": 1,
+    "cited_labels": 1,
+    "not_cited_labels": [],
+    "duplicate_groups": []
+  },
+  "references": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "reference_text": "钟柏昌,裴永漫.面向工程教育的TIE提示语框架的设计与应用研究[J].电化教育研究,2025,46(4):40-48.",
+      "authors": "钟柏昌,裴永漫",
+      "title": "面向工程教育的TIE提示语框架的设计与应用研究",
+      "document_type": "J",
+      "source_container": "电化教育研究",
+      "year": "2025"
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "E001",
+      "reference_labels": "1",
+      "canonical_reference": "钟柏昌,裴永漫.面向工程教育的TIE提示语框架的设计与应用研究[J].电化教育研究,2025,46(4):40-48.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    }
+  ],
+  "citations": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "raw_marker": "[1]",
+      "pdf_page": 2,
+      "thesis_page": 2,
+      "section": "二、解决问题和破解方法",
+      "citation_context": "教师对GAI在教育中的定位认识不清，缺少系统的GAI提示语指导和人机协同流程设计[1]",
+      "citation_mode": "转述/概述",
+      "citation_purpose": "研究背景或问题提出",
+      "mapping_confidence": "高"
+    }
+  ]
+}

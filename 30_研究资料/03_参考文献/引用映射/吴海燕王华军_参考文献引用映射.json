@@ -1,0 +1,188 @@
+{
+  "paper_metadata": {
+    "title": "基于STEAM理念的P3D融合教学评价体系构建与实践",
+    "author": "吴海燕,王华军",
+    "institution": "江苏东台中学",
+    "degree_or_journal": "中学教学参考",
+    "advisor_or_editor": "责编 黄露",
+    "year": "2026",
+    "pages": 5,
+    "page_offset": 0
+  },
+  "summary": {
+    "reference_labels": 9,
+    "unique_entities": 9,
+    "citation_occurrences": 0,
+    "cited_labels": 0,
+    "not_cited_labels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "duplicate_groups": []
+  },
+  "references": [
+    {
+      "label": "1",
+      "entity_id": "E001",
+      "reference_text": "中华人民共和国教育部.普通高中信息技术课程标准(2017年版2020年修订)[M].北京:人民教育出版社,2020.",
+      "authors": "中华人民共和国教育部",
+      "title": "普通高中信息技术课程标准(2017年版2020年修订)",
+      "document_type": "M",
+      "source_container": "人民教育出版社",
+      "year": "2020"
+    },
+    {
+      "label": "2",
+      "entity_id": "E002",
+      "reference_text": "中华人民共和国教育部.普通高中通用技术课程标准(2017年版2020年修订)[M].北京:人民教育出版社,2020.",
+      "authors": "中华人民共和国教育部",
+      "title": "普通高中通用技术课程标准(2017年版2020年修订)",
+      "document_type": "M",
+      "source_container": "人民教育出版社",
+      "year": "2020"
+    },
+    {
+      "label": "3",
+      "entity_id": "E003",
+      "reference_text": "黄志红.STEM课程设计与实施[M].北京:教育科学出版社,2023.",
+      "authors": "黄志红",
+      "title": "STEM课程设计与实施",
+      "document_type": "M",
+      "source_container": "教育科学出版社",
+      "year": "2023"
+    },
+    {
+      "label": "4",
+      "entity_id": "E004",
+      "reference_text": "钱向,孙利帅.中小学工程教育的属性、困境与应对[J].江苏教育研究,2025(6):102-106.",
+      "authors": "钱向,孙利帅",
+      "title": "中小学工程教育的属性、困境与应对",
+      "document_type": "J",
+      "source_container": "江苏教育研究",
+      "year": "2025"
+    },
+    {
+      "label": "5",
+      "entity_id": "E005",
+      "reference_text": "吕东龙.践行STEAM教育理念构建\"做中学\"模式[J].小学科学,2025(15):74-76.",
+      "authors": "吕东龙",
+      "title": "践行STEAM教育理念构建\"做中学\"模式",
+      "document_type": "J",
+      "source_container": "小学科学",
+      "year": "2025"
+    },
+    {
+      "label": "6",
+      "entity_id": "E006",
+      "reference_text": "詹泽慧,钟煊妍,邹萱萱,骆丽霞.基于BERT-HAN增强人机对话的计算思维评估模型[J].计算机工程,2024,50(12):110-123.",
+      "authors": "詹泽慧,钟煊妍,邹萱萱,骆丽霞",
+      "title": "基于BERT-HAN增强人机对话的计算思维评估模型",
+      "document_type": "J",
+      "source_container": "计算机工程",
+      "year": "2024"
+    },
+    {
+      "label": "7",
+      "entity_id": "E007",
+      "reference_text": "余竹玛,贺军,龚育超.新工科视域下3D打印课程教学改革与探索[J].中国现代教育装备,2025(11):62-64.",
+      "authors": "余竹玛,贺军,龚育超",
+      "title": "新工科视域下3D打印课程教学改革与探索",
+      "document_type": "J",
+      "source_container": "中国现代教育装备",
+      "year": "2025"
+    },
+    {
+      "label": "8",
+      "entity_id": "E008",
+      "reference_text": "周桦,陈婷.跨学科项目式学习评价量规制订策略:以\"茅以升公益桥\"项目为例[J].湖北教育(教育教学),2025(4):47-49.",
+      "authors": "周桦,陈婷",
+      "title": "跨学科项目式学习评价量规制订策略:以\"茅以升公益桥\"项目为例",
+      "document_type": "J",
+      "source_container": "湖北教育(教育教学)",
+      "year": "2025"
+    },
+    {
+      "label": "9",
+      "entity_id": "E009",
+      "reference_text": "吕琳,余峻展,钟柏昌.面向计算思维培养的跨学科教育项目设计:以STEAM教育项目\"模拟投篮游戏\"为例[J].中小学数字化教学,2022(11):10-14.",
+      "authors": "吕琳,余峻展,钟柏昌",
+      "title": "面向计算思维培养的跨学科教育项目设计:以STEAM教育项目\"模拟投篮游戏\"为例",
+      "document_type": "J",
+      "source_container": "中小学数字化教学",
+      "year": "2022"
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "E001",
+      "reference_labels": "1",
+      "canonical_reference": "中华人民共和国教育部.普通高中信息技术课程标准(2017年版2020年修订)[M].北京:人民教育出版社,2020.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E002",
+      "reference_labels": "2",
+      "canonical_reference": "中华人民共和国教育部.普通高中通用技术课程标准(2017年版2020年修订)[M].北京:人民教育出版社,2020.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E003",
+      "reference_labels": "3",
+      "canonical_reference": "黄志红.STEM课程设计与实施[M].北京:教育科学出版社,2023.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E004",
+      "reference_labels": "4",
+      "canonical_reference": "钱向,孙利帅.中小学工程教育的属性、困境与应对[J].江苏教育研究,2025(6):102-106.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E005",
+      "reference_labels": "5",
+      "canonical_reference": "吕东龙.践行STEAM教育理念构建\"做中学\"模式[J].小学科学,2025(15):74-76.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E006",
+      "reference_labels": "6",
+      "canonical_reference": "詹泽慧,钟煊妍,邹萱萱,骆丽霞.基于BERT-HAN增强人机对话的计算思维评估模型[J].计算机工程,2024,50(12):110-123.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E007",
+      "reference_labels": "7",
+      "canonical_reference": "余竹玛,贺军,龚育超.新工科视域下3D打印课程教学改革与探索[J].中国现代教育装备,2025(11):62-64.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E008",
+      "reference_labels": "8",
+      "canonical_reference": "周桦,陈婷.跨学科项目式学习评价量规制订策略:以\"茅以升公益桥\"项目为例[J].湖北教育(教育教学),2025(4):47-49.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    },
+    {
+      "entity_id": "E009",
+      "reference_labels": "9",
+      "canonical_reference": "吕琳,余峻展,钟柏昌.面向计算思维培养的跨学科教育项目设计:以STEAM教育项目\"模拟投篮游戏\"为例[J].中小学数字化教学,2022(11):10-14.",
+      "dedup_basis": "独立",
+      "external_verification": "未核验"
+    }
+  ],
+  "citations": []
+}

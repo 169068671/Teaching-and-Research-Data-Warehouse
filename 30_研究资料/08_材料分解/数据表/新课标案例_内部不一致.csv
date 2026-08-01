@@ -1,0 +1,2 @@
+﻿inconsistency_id,description,location_a,location_b,impact,handling
+I01,"案例2控制单元课时为4-8课时(弹性),其他单元固定4课时",案例2控制单元,案例2其他单元,课时不一致,"保留,控制单元复杂度更高合理"
