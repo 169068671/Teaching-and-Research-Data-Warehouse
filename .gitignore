@@ -1,25 +1,16 @@
-# macOS 与 Obsidian 本机状态
+# 大文件不纳入git(超过5MB的附件)
+60_原始资料/文献原文/FreeCAD课题资料_按开题论证书设计_中期汇报_MD和PDF版本.zip
+60_原始资料/文献原文/标准压缩-普通高中教科书·通用技术__必修技术与设计1.pdf
+60_原始资料/文献原文/标准压缩-普通高中教科书·通用技术_必修技术与设计2.pdf
+60_原始资料/文献原文/【印前确认】吴海燕、王华军.pdf
+60_原始资料/文献原文/Python教学网站与教改申报材料.zip
+60_原始资料/文献原文/2026江苏省基础教育教学改革优秀案例_申报材料_王华军.zip
+
+# 临时文件
+tmp/
+output/
+
+# 系统文件
 .DS_Store
-**/.DS_Store
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/cache/
-.trash/
-
-# 开发与运行缓存
-__pycache__/
-*.pyc
-node_modules/
-
-# 凭据文件永不入库
-.env
-.env.*
-*.pem
-*.key
-*.p12
-*.pfx
-credentials.json
-secrets.json
-secrets.yaml
-secrets.yml
-
+__MACOSX/
+.zcode/
