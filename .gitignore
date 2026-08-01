@@ -1,11 +1,5 @@
-# 系统文件
 .DS_Store
 __MACOSX/
 .zcode/
-
-# 临时文件(无关教科研)
 tmp/
 output/
-
-# 超大文件(本地保留,不推送)
-60_原始资料/文献原文/FreeCAD课题资料_按开题论证书设计_中期汇报_MD和PDF版本.zip
