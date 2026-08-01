@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # 大型教科研附件使用 Git LFS
 *.pdf filter=lfs diff=lfs merge=lfs -text
 *.doc filter=lfs diff=lfs merge=lfs -text
@@ -20,3 +21,7 @@
 *.ppt !text !filter !merge !diff
 *.pptx !text !filter !merge !diff
 *.xls !text !filter !merge !diff
+=======
+# 大型教科研附件不再使用 Git LFS（Gitee免费版不支持）
+# PDF/DOCX/ZIP等文件直接作为普通git对象存储
+>>>>>>> Stashed changes
