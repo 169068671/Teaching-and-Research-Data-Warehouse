@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第2课 · FreeCAD初体验与安全规范</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块一</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+
+<section class="lesson-header">
+  <div class="lesson-num">模块一 · 第2课</div>
+  <h1>🖥️ FreeCAD初体验与安全规范</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 基础启蒙</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 课前预习 -->
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>安装FreeCAD软件（老师提供安装包，或从 freecad.org 下载）</li>
+      <li>打开FreeCAD，找到以下界面元素：菜单栏、工作台选择器、树视图、3D视图、Python控制台</li>
+      <li>在"工作台选择器"下拉菜单中找到"Part"工作台并切换过去</li>
+      <li>尝试用鼠标在3D视图中旋转、平移、缩放视图（左键旋转、右键平移、滚轮缩放）</li>
+      <li>阅读3D打印安全操作规程（老师提供），记住3条以上安全要求</li>
+    </ul>
+    <div class="preview-warn">⚠️ 如果没有提前安装FreeCAD，本课将无法跟做！请在上课前一天完成安装并确认能正常打开。</div>
+  </div>
+
+  <!-- 教学目标 -->
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>认识FreeCAD软件界面的主要组成部分</li>
+      <li>掌握视图操作（旋转、平移、缩放、正交/等角切换）</li>
+      <li>了解"工作台"概念，能切换到Part工作台</li>
+      <li>观看基础几何体创建演示（立方体、圆柱、球体）</li>
+      <li>掌握3D打印安全操作规范</li>
+    </ul>
+  </div>
+
+  <!-- 知识点1：界面 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🖥️</span> FreeCAD界面认识</h3>
+    <p>FreeCAD是开源免费的参数化3D建模软件，本课程全部使用FreeCAD。</p>
+    <p><strong>界面主要组成部分：</strong></p>
+    <p>🔹 <strong>菜单栏</strong>（顶部）：文件、编辑、视图等</p>
+    <p>🔹 <strong>工作台选择器</strong>（顶部下拉）：切换不同功能模块</p>
+    <p>🔹 <strong>树视图</strong>（左侧）：显示模型对象层级</p>
+    <p>🔹 <strong>3D视图</strong>（中间）：模型显示区域</p>
+    <p>🔹 <strong>Python控制台</strong>（底部）：输入代码执行（本课程核心！）</p>
+    <p>🔹 <strong>属性面板</strong>（左侧下部）：修改对象参数</p>
+  </div>
+
+  <!-- 知识点2：视图操作 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🖱️</span> 视图操作</h3>
+    <p><strong>鼠标操作：</strong></p>
+    <p>🖱️ <strong>左键拖动</strong>：旋转视图</p>
+    <p>🖱️ <strong>右键拖动</strong>：平移视图</p>
+    <p>🖱️ <strong>滚轮滚动</strong>：缩放视图</p>
+    <p>🖱️ <strong>滚轮点击</strong>：以鼠标位置为中心旋转</p>
+    <p><strong>视图快捷键：</strong></p>
+    <p>⌨️ <strong>数字键 0</strong>：正视图</p>
+    <p>⌨️ <strong>数字键 1</strong>：等角视图（轴测图）</p>
+    <p>⌨️ <strong>V</strong>：切换正交/透视投影</p>
+    <p>⌨️ <strong>Ctrl+Shift+S</strong>：截图</p>
+  </div>
+
+  <!-- 知识点3：工作台 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔧</span> 工作台概念</h3>
+    <p>FreeCAD通过"工作台"（Workbench）组织功能，不同工作台提供不同工具。</p>
+    <p>本课程使用的工作台：</p>
+    <p>🔹 <strong>Part工作台</strong>：基础几何体创建（模块一/三/四重点使用）</p>
+    <p>🔹 <strong>Sketcher工作台</strong>：草图绘制（模块二使用）</p>
+    <p>🔹 <strong>PartDesign工作台</strong>：特征建模（模块二使用）</p>
+    <p>🔹 <strong>Mesh工作台</strong>：STL导出（模块五使用）</p>
+    <div class="code-block">
+      <pre>
+# 切换到Part工作台后，在Python控制台输入：
+import Part
+
+# 创建一个立方体（长25 宽25 高25）
+box = Part.makeBox(25, 25, 25)
+
+# 显示在3D视图中
+Part.show(box)
+print("立方体已显示！")
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <ol class="code-steps">
+        <li><code>import Part</code>：导入基础几何模块。</li>
+        <li><code>box = Part.makeBox(25, 25, 25)</code>：创建25×25×25mm立方体，并把它保存到变量<code>box</code>。</li>
+        <li><code>Part.show(box)</code>：把内存中的几何体加入当前FreeCAD文档，使它出现在对象树和3D视图中。</li>
+        <li><code>print(...)</code>：在Python控制台给出执行完成提示，不会改变模型。</li>
+      </ol>
+      <div class="code-result"><strong>运行结果：</strong>对象树出现一个Shape对象，3D视图显示立方体，控制台输出“立方体已显示！”。</div>
+      <div class="code-warning"><strong>易错点：</strong>若只执行<code>makeBox()</code>而漏掉<code>Part.show()</code>，几何体已创建但看不见；若控制台报<code>NameError</code>，先确认已执行<code>import Part</code>。</div>
+    </div>
+    <p>这段代码将在模块三详细学习，本课先跟着老师完成“导入—创建—显示—确认”四步体验。</p>
+  </div>
+
+  <!-- 知识点4：基础几何体演示 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> 基础几何体演示</h3>
+    <p>老师将演示创建以下基础几何体：</p>
+    <div class="workshow">
+      <div class="work-card">
+        <img src="../assets/images/06_模块一_3D打印启蒙演示.png" alt="基础几何体">
+        <div class="info">
+          <h4>5个基础几何体</h4>
+          <p>立方体、圆柱、球体、圆锥、组合</p>
+        </div>
+      </div>
+    </div>
+    <p>这些几何体是3D打印的基础——所有复杂模型都是由这些基础形状组合而成的。</p>
+  </div>
+
+  <!-- 知识点5：安全规范 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">⚠️</span> 3D打印安全操作规范</h3>
+    <p><strong>🔴 禁止事项：</strong></p>
+    <p>❌ 打印机运行时触摸喷嘴（温度200℃以上，会烫伤！）</p>
+    <p>❌ 打印过程中打开打印机门或移动平台</p>
+    <p>❌ 用手直接取刚打印完的模型（高温，须等冷却）</p>
+    <p>❌ 向打印机内投入任何异物</p>
+    <p><strong>🟢 必须事项：</strong></p>
+    <p>✅ 取件前等待平台冷却至室温</p>
+    <p>✅ 发现异常（异味、异响、冒烟）立即断电并报告老师</p>
+    <p>✅ 保持打印区域整洁，及时清理支撑残留</p>
+    <p>✅ 使用铲刀取件，不用手硬掰</p>
+  </div>
+
+  <!-- 课后任务 -->
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty easy">简单</span></h3>
+    <p>1. 在FreeCAD中练习视图操作：旋转、平移、缩放，直到熟练</p>
+    <p>2. 切换到Part工作台，在Python控制台输入课上演示的代码，创建一个立方体</p>
+    <p>3. 在笔记本上写下3D打印安全规范的5条要点</p>
+    <p>4. <strong>预习模块二第3课</strong>：了解"草图"概念，思考如何用FreeCAD画一个矩形</p>
+  </div>
+
+  <!-- 课时导航 -->
+  <div class="lesson-nav">
+    <a href="lesson01.html" class="prev">← 第1课</a>
+    <a href="../module2/index.html" class="next">模块二 →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

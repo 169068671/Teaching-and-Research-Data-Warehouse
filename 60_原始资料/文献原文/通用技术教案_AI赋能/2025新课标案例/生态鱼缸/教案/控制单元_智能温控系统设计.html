@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制单元 智能温控系统设计 | 生态鱼缸的设计与制作</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f1f8e9;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(27,94,32,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 5px; }
+        .header .meta { font-size: 14px; opacity: 0.8; }
+        .content {
+            background: #fff;
+            padding: 40px 35px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .section-card {
+            border-left: 5px solid #1B5E20;
+            background: #f1f8e9;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1B5E20;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8e6c9;
+        }
+        .section-card h3 {
+            color: #2E7D32;
+            font-size: 18px;
+            margin: 18px 0 10px;
+        }
+        .section-card h4 {
+            color: #388E3C;
+            font-size: 16px;
+            margin: 15px 0 8px;
+        }
+        .section-card p { margin-bottom: 12px; text-align: justify; }
+        .section-card ul, .section-card ol { margin: 10px 0 12px 22px; }
+        .section-card li { margin-bottom: 6px; }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #1B5E20, #2E7D32, #4CAF50, #81C784);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 18px 22px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e8f5e9;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1B5E20;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #1B5E20;
+        }
+        .time-tag {
+            display: inline-block;
+            background: #1B5E20;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1B5E20;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p { margin-bottom: 8px; font-size: 15px; }
+        .timeline-item ul { margin-left: 20px; font-size: 15px; }
+
+        /* AI应用环节 */
+        .ai-block {
+            border: 2px solid #2E7D32;
+            background: #e8f5e9;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .ai-block::before {
+            content: 'AI赋能环节 · 控制参数优化助手';
+            display: block;
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .ai-block p { margin-bottom: 6px; }
+
+        /* FreeCAD应用环节 */
+        .freecad-block {
+            border: 2px solid #E65100;
+            background: #fff3e0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .freecad-block::before {
+            content: 'FreeCAD建模与分析';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .freecad-block p { margin-bottom: 6px; }
+
+        /* 原创工具 */
+        .tool-box {
+            border: 2px dashed #6A1B9A;
+            background: linear-gradient(135deg, #f3e5f5, #faf0fc);
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .tool-box::before {
+            content: '原创教学工具';
+            display: block;
+            font-weight: bold;
+            color: #6A1B9A;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .tool-box h4 { color: #6A1B9A; margin-bottom: 6px; }
+
+        /* 教学目标网格 */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 16px;
+            border-top: 4px solid #2E7D32;
+        }
+        .goal-item h4 {
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .goal-item p { font-size: 14px; margin-bottom: 0; }
+
+        /* 板书设计 */
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 28px 30px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", "楷体", serif;
+            font-size: 17px;
+            line-height: 2.2;
+            margin: 15px 0;
+            border: 3px solid #1a252f;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+        }
+        .blackboard .bk-title {
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 1px solid #3d566e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .blackboard .bk-section { margin-bottom: 12px; }
+
+        /* 表格样式 */
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .table-style th {
+            background: #1B5E20;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #1B5E20;
+        }
+        .table-style td {
+            padding: 10px 12px;
+            border: 1px solid #cfd8dc;
+            text-align: center;
+        }
+        .table-style tr:nth-child(even) td { background: #f1f8e9; }
+        .table-style tr:hover td { background: #e8f5e9; }
+
+        /* 评价量规 */
+        .rubric-box {
+            background: linear-gradient(135deg, #e0f2f1, #e8f5e9);
+            border-left: 4px solid #00695C;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        .rubric-box h4 { color: #00695C; margin-bottom: 8px; }
+
+        /* 单元作品 */
+        .work-box {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border: 2px solid #F9A825;
+            padding: 20px 24px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .work-box::before {
+            content: '单元作品要求';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .work-box h4 { color: #E65100; margin-bottom: 6px; }
+
+        .highlight {
+            background: #fff59d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2E7D32;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .info-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1B5E20;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin: 2px 4px 2px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .overview-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+            text-align: center;
+        }
+        .overview-item .label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .overview-item .value {
+            font-size: 16px;
+            color: #1B5E20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 页头 -->
+    <div class="header">
+        <div class="subtitle">2025新课标项目式教学案例 · 普通高中通用技术</div>
+        <h1>控制单元 智能温控系统设计</h1>
+        <div class="meta">必修模块2：技术与工程设计2 ｜ 课时：6课时（可扩展至8课时）｜ 核心概念：控制 ｜ 项目载体：生态鱼缸的设计与制作</div>
+    </div>
+
+    <!-- 内容主体 -->
+    <div class="content">
+
+        <!-- 零、单元概述 -->
+        <div class="section-card">
+            <h2>零、单元概述</h2>
+            <p>本单元为"生态鱼缸的设计与制作"项目的终结单元，在4单元16-20课时的项目序列中承担<strong>"智能升级"</strong>的关键角色。以"<strong>控制</strong>"大概念为统领，围绕鱼缸智能温控系统、自动喂食器、远程监控的设计展开，引导学生从生态循环系统已建成的真实情境出发，认知控制系统的构成、理解闭环反馈控制思想，并通过温度闭环控制实现鱼缸的智能恒温，体会控制设计在工程实践中的价值。</p>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="label">所属项目</div>
+                    <div class="value">生态鱼缸的设计与制作</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课标来源</div>
+                    <div class="value">附录2 案例2</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课时安排</div>
+                    <div class="value">6课时（可扩8课时）</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">核心概念</div>
+                    <div class="value">控制</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">控制类型</div>
+                    <div class="value">闭环反馈控制</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">承载项目</div>
+                    <div class="value">结构+流程+系统成果</div>
+                </div>
+            </div>
+            <div class="quote-box">核心概念链：结构（承重与稳定）→ 流程（造景工序时序）→ 系统（生态循环关联）→ 控制（温控反馈闭环）。本单元为链条终点，控制是生态鱼缸的"神经"，让结构、流程、系统协同运行并实现智能自我调节。</div>
+        </div>
+
+        <!-- 一、教材分析 -->
+        <div class="section-card">
+            <h2>一、教材分析</h2>
+            <p>本单元教学内容源自《普通高中技术与工程课程标准（2017年版2025年修订）》附录2案例2，隶属必修模块2"技术与工程设计2"。控制是通过信息采集、处理和执行使被控对象按预定规律运行的过程，闭环反馈控制是工程中应用最广的控制方式。鱼缸智能温控系统通过温度传感器采集水温、控制器比较设定值与实际值、驱动加热棒或风扇执行调节，形成典型闭环控制回路，是控制概念学习的理想载体。</p>
+            <p>本单元承接结构单元的缸体支架、流程单元的造景、系统单元的生态循环三大成果。FreeCAD数字模型包含温度传感器、加热棒、LED灯条等部件，可清晰展示传感器与执行器的空间布局和控制回路。学生将在真实项目中认知控制系统的构成（被控对象、传感器、控制器、执行器、设定值、反馈）、理解开环与闭环的区别，并通过闭环控制实现鱼缸智能恒温，体会反馈控制的核心思想。</p>
+            <p>本单元作为项目终结单元，与项目其他单元存在内在贯通：结构单元的缸体壁面为温度传感器提供贴附位置；流程单元的造景为传感器布点提供参考；系统单元的温控子系统是控制单元的直接对象，控制单元将其从"被动温控"升级为"智能闭环温控"。控制设计收束全项目，体现了"大概念贯通式项目设计"中从物质载体到智能反馈的完整闭环逻辑。本单元同时整合自动喂食器与远程监控，拓展控制系统的应用边界。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section-card">
+            <h2>二、学情分析</h2>
+            <p>本单元授课对象为高一年级学生，学生在生活中接触过各类自动控制设备（如空调恒温、电饭煲定时），对"自动""智能"有朴素认识，但缺乏对控制系统构成、开环与闭环、反馈等系统化概念认知，难以将日常经验提炼为工程化的控制设计语言。</p>
+            <p>学生在前三个单元中已掌握鱼缸的结构、流程、系统特征，对鱼缸作为"生态系统"有较深认知，但对于"如何让鱼缸自动维持恒温""传感器与执行器如何协同"等问题缺乏系统思考。部分学生具有初步的编程或单片机经验，但多数未接触过闭环控制算法。学生对AI工具（如大语言模型）有使用热情，但尚需引导其将AI作为控制参数优化助手而非简单问答工具使用。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section-card">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <p style="margin-bottom: 10px;">依据技术与工程课程核心素养五维框架，设定如下教学目标：</p>
+            <div class="goal-grid">
+                <div class="goal-item">
+                    <h4>技术意识</h4>
+                    <p>通过鱼缸智能温控系统实例分析，体会控制设计在工程产品中的智能性作用，形成"反馈控制实现自动调节"的技术意识，能从控制视角审视生活中的自动设备。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>工程思维</h4>
+                    <p>运用控制系统分析方法，识别温控系统的被控对象、传感器、控制器、执行器及反馈回路，理解开环与闭环的区别，能进行基本的闭环控制要素分析与参数整定。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>创新设计</h4>
+                    <p>能根据鱼缸恒温需求，提出至少两种控制方案，借助AI工具进行控制参数优化，运用"闭环控制设计画布"进行多维度评价，体现精准与稳定兼顾的设计取向。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>图样表达</h4>
+                    <p>能使用规范符号绘制控制方框图，表达控制系统的输入、输出、反馈与执行路径，能借助FreeCAD模型展示传感器布局和控制回路的空间关系。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>物化能力</h4>
+                    <p>能根据设计方案组装智能温控系统并编程调试，实现温度闭环控制，通过运行测试验证控制精度与稳定性，在制作过程中体现规范操作与工匠精神。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section-card">
+            <h2>四、教学重难点</h2>
+            <table class="table-style">
+                <tr>
+                    <th style="width: 15%;">类别</th>
+                    <th style="width: 45%;">内容</th>
+                    <th style="width: 40%;">突破策略</th>
+                </tr>
+                <tr>
+                    <td><strong>教学重点</strong></td>
+                    <td>控制系统构成要素；开环与闭环的区别；闭环反馈控制原理；控制方框图绘制；智能温控系统集成</td>
+                    <td>情境对比+方框图绘制实践+FreeCAD模型传感器布局可视化+AI参数优化+闭环控制设计画布量化评价</td>
+                </tr>
+                <tr>
+                    <td><strong>教学难点</strong></td>
+                    <td>反馈回路的理解（为何反馈能实现自动调节）；控制参数整定（阈值设定、响应延迟）；闭环稳定性与精度的权衡</td>
+                    <td>FreeCAD模型控制回路展示+反例情境分析（开环失控）+教师示范编程+小组协作调试</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section-card">
+            <h2>五、教学策略与方法</h2>
+            <h3>5.1 总体策略</h3>
+            <p>采用<strong>"大概念贯通式项目学习法"</strong>，以"为已完成生态系统的鱼缸设计智能温控系统并实现闭环控制"为驱动任务，将控制概念学习嵌入真实工程实践。遵循"认知—分析—设计—编程—调试—反思"的工程思维路径，6课时形成完整的学习闭环。教学过程中融合AI智能工具辅助控制参数优化和FreeCAD工程模型传感器布局可视化，实现"手脑机"协同的技术学习新形态。</p>
+            <h3>5.2 教学方法</h3>
+            <ul>
+                <li><strong>情境对比法</strong>：以开环温控（手动开关加热棒）与闭环温控（自动恒温）的对比导入，激发控制设计的必要性认识</li>
+                <li><strong>图样表达法</strong>：通过控制方框图的规范绘制，建立控制的工程化表达语言</li>
+                <li><strong>AI辅助优化法</strong>：运用AI作为控制参数优化助手，辅助多方案参数整定与稳定性预测</li>
+                <li><strong>建模可视化法</strong>：运用FreeCAD模型的传感器布局展示，将控制回路空间关系可视化</li>
+                <li><strong>编程调试法</strong>：编写闭环控制程序并实测调参，通过运行验证控制精度与稳定性</li>
+            </ul>
+
+            <h3>5.3 原创教学工具</h3>
+            <div class="tool-box">
+                <h4>闭环控制设计画布</h4>
+                <p>本工具为本单元原创设计，用于引导学生从<strong>控制精度、响应速度、稳定性、抗干扰性、可扩展性</strong>五个维度对控制方案进行量化评估。每个维度采用1-5分制评分，并设置权重系数，最终计算加权综合得分，辅助学生进行控制方案优选决策。</p>
+                <table class="table-style" style="margin-top: 12px;">
+                    <tr>
+                        <th>评估维度</th>
+                        <th>权重</th>
+                        <th>评分标准（5分制）</th>
+                        <th>考察要点</th>
+                    </tr>
+                    <tr>
+                        <td>控制精度</td>
+                        <td>0.30</td>
+                        <td>1分（偏差大）—5分（精准）</td>
+                        <td>稳态误差、温度波动范围</td>
+                    </tr>
+                    <tr>
+                        <td>响应速度</td>
+                        <td>0.25</td>
+                        <td>1分（迟缓）—5分（迅捷）</td>
+                        <td>上升时间、调节时间</td>
+                    </tr>
+                    <tr>
+                        <td>稳定性</td>
+                        <td>0.20</td>
+                        <td>1分（振荡）—5分（平稳）</td>
+                        <td>超调量、振荡次数、稳态平稳</td>
+                    </tr>
+                    <tr>
+                        <td>抗干扰性</td>
+                        <td>0.15</td>
+                        <td>1分（易受扰）—5分（抗扰强）</td>
+                        <td>环境温度变化、电源波动影响</td>
+                    </tr>
+                    <tr>
+                        <td>可扩展性</td>
+                        <td>0.10</td>
+                        <td>1分（难扩展）—5分（易扩展）</td>
+                        <td>喂食/远程监控集成、参数可调</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px; font-size: 14px;">综合得分 = Σ（维度得分 × 权重），满分5.0分。建议3.5分以上方案方可采用实施。</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section-card">
+            <h2>六、教学过程（6课时）</h2>
+            <p>本单元教学过程共6课时（可扩展至8课时），以时间轴形式呈现完整教学流程。</p>
+
+            <div class="timeline">
+                <!-- 课时1 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第1-15分钟</span>
+                    <h4>环节一：情境导入——温度波动的"失控之困"</h4>
+                    <p><strong>教师活动：</strong>展示两个鱼缸在昼夜温差下的温度曲线：鱼缸A使用手动开关加热棒（开环控制），夜间温度降至20℃时鱼儿未及时发现、白天温度升至32℃时才关掉加热棒，温度在20-32℃间剧烈波动，鱼儿应激患病；鱼缸B使用智能温控器（闭环控制），温度始终稳定在26±1℃，鱼儿健康活跃。讲述情境故事："两位同学都装了加热棒，为什么温度控制效果天差地别？"</p>
+                    <p><strong>学生活动：</strong>观察两条温度曲线的差异，小组讨论："手动控制与自动控制有什么本质区别？自动控制是如何'知道'该开该关的？"</p>
+                    <p><strong>设计意图：</strong>以正反对比情境激发学生对反馈控制的觉察，引出"控制系统""开环/闭环""反馈"的探究需求。</p>
+                </div>
+
+                <!-- 课时1 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第16-40分钟</span>
+                    <h4>环节二：概念建构——控制系统、开环与闭环</h4>
+                    <p><strong>教师活动：</strong>结合实物与图片，讲解控制系统的核心概念：</p>
+                    <ul>
+                        <li><strong>控制系统：</strong>通过信息采集、处理和执行使被控对象按预定规律运行的系统</li>
+                        <li><strong>开环控制：</strong>无反馈，输出不影响输入，如手动开关加热棒（无法根据实际水温自动调节）</li>
+                        <li><strong>闭环控制：</strong>有反馈，输出经传感器反馈到输入端与设定值比较，如智能温控器（传感器测水温→与设定值比较→自动启停加热棒）</li>
+                        <li><strong>闭环控制要素：</strong>被控对象（水温）、传感器（温度传感器）、控制器（单片机/温控器）、执行器（加热棒/风扇）、设定值（目标温度）、反馈量（实测温度）</li>
+                    </ul>
+                    <p><strong>控制方框图符号讲授：</strong>教师讲解控制方框图的基本符号——矩形（环节）、圆圈（比较节点）、箭头（信号流向）、分支点（反馈取出）。</p>
+                    <p><strong>探究活动：</strong>学生分组分析常见控制设备（电饭煲、空调、马桶水箱），判断开环/闭环，用方框图符号绘制简单控制方框图。</p>
+                    <p><strong>学生活动：</strong>归纳"反馈是闭环控制的核心"这一规律：正是反馈让系统能根据实际输出自动修正输入，实现精确控制。</p>
+                </div>
+
+                <!-- 课时1 环节二续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第41-45分钟</span>
+                    <h4>环节二续：鱼缸温控系统初识与FreeCAD模型导入</h4>
+                    <p>教师引导学生初步识别鱼缸智能温控系统的闭环要素，并思考传感器与执行器的位置选择。</p>
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型导入：</strong>教师展示已建好的生态鱼缸三维模型（EcoFishTank），引导学生观察模型中温度传感器、加热棒、LED灯条等部件的空间位置，建立"控制回路由空间分布的传感器与执行器构成"的直观认知。</p>
+                        <p>模型参数：温度传感器贴附缸体侧壁中部（代表性强、响应快），加热棒吸附缸体后壁下部（热对流均匀），控制器置于支架中层隔板（防水防潮）。部件的空间布局正是控制回路的物理映射。</p>
+                    </div>
+                    <p>布置课后任务：观察家中一项自动控制电器，绘制其控制方框图。</p>
+                </div>
+
+                <!-- 课时2 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第1-20分钟</span>
+                    <h4>环节三：设计实践（一）——闭环控制要素识别与AI参数优化</h4>
+                    <p><strong>任务驱动：</strong>"为已完成生态系统的400×250×300mm鱼缸设计智能温控系统，实现26±1℃恒温闭环控制。"</p>
+                    <p><strong>教师活动：</strong>引导学生识别闭环控制要素：</p>
+                    <ul>
+                        <li><strong>被控对象：</strong>鱼缸水温（约30升水体）</li>
+                        <li><strong>传感器：</strong>温度传感器（DS18B20数字温度传感器，精度±0.5℃）</li>
+                        <li><strong>控制器：</strong>单片机（Arduino/ESP32），比较设定值与实测值</li>
+                        <li><strong>执行器：</strong>加热棒（50W，升温）+ 直流风扇（降温，应对夏季高温）</li>
+                        <li><strong>设定值：</strong>26℃（热带鱼适宜温度）</li>
+                        <li><strong>反馈量：</strong>传感器实测水温</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>教师示范如何使用AI助手进行控制参数优化。</p>
+                        <p><strong>提示词示范：</strong>"请帮我优化生态鱼缸智能温控系统的控制参数。鱼缸水量30升，目标恒温26±1℃，使用DS18B20温度传感器（精度±0.5℃）、50W加热棒、直流降温风扇，Arduino控制器。请：① 给出两种控制算法方案（简单阈值控制 vs PID控制）并对比其精度与稳定性；② 推荐阈值控制的上下限参数（如低于25.5℃开加热棒、高于26.5℃关加热棒/开风扇）；③ 预测两种方案的温度波动曲线；④ 分析传感器位置对控制精度的影响。"</p>
+                        <p><strong>学生活动：</strong>各小组向AI输入不同的参数优化需求，获取AI生成的控制参数表和方案对比，并对AI输出结果进行<strong>批判性审查</strong>——核查参数是否合理、算法选择是否适配。</p>
+                        <p><strong>教师引导：</strong>提醒学生AI可能误判某些参数，例如阈值控制的回差（hysteresis）设置过小会导致加热棒频繁启停影响寿命。引导学生关注精度与稳定性的权衡——更窄的阈值更精准但更易振荡。</p>
+                    </div>
+
+                    <p><strong>成果产出：</strong>各小组完成《智能温控系统初步设计书》，包含闭环要素表、AI参数优化表和小组验证结论。</p>
+                </div>
+
+                <!-- 课时2 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第21-45分钟</span>
+                    <h4>环节三：设计实践（二）——控制方框图绘制与闭环控制设计画布应用</h4>
+                    <p><strong>教师活动：</strong>讲解控制方框图绘制规范，示范如何用规范符号表达鱼缸温控闭环回路：设定值→比较节点（⊗）→控制器→执行器→被控对象→输出（水温）→传感器→反馈至比较节点。</p>
+                    <p><strong>学生活动：</strong>各小组根据AI参数优化结果，绘制两种控制方案（阈值控制、PID控制）的控制方框图，标注各环节和反馈回路。</p>
+
+                    <div class="tool-box">
+                        <h4>闭环控制设计画布——应用实践</h4>
+                        <p>各小组运用"闭环控制设计画布"对阈值控制方案和PID控制方案进行评分：</p>
+                        <ul>
+                            <li>控制精度（0.30）：评估稳态误差（如阈值控制约±1℃，PID约±0.3℃）</li>
+                            <li>响应速度（0.25）：评估升温/降温调节时间（如50W加热棒升温30升水约需多久）</li>
+                            <li>稳定性（0.20）：评估超调量与振荡（如阈值控制有无温度过冲）</li>
+                            <li>抗干扰性（0.15）：评估环境温度变化、换水扰动下的恢复能力</li>
+                            <li>可扩展性（0.10）：评估后续集成自动喂食、远程监控的便利度</li>
+                        </ul>
+                        <p>计算加权综合得分，选择最优方案。要求3.5分以上方案方可进入编程实施环节。</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第1-25分钟</span>
+                    <h4>环节三：设计实践（三）——FreeCAD模型传感器布局与控制回路可视化</h4>
+                    <p><strong>任务驱动：</strong>"将抽象的控制回路转化为可视化的传感器与执行器空间布局，验证控制方案的合理性。"</p>
+                    <p><strong>教师活动：</strong>讲解控制回路与空间布局的对应关系——控制回路的信号流向本质上是传感器与执行器在鱼缸中的空间分布与协同。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型传感器布局分析任务：</strong>教师展示已建好的鱼缸模型，引导学生通过模型的分层显示与装配树，理解温度传感器、加热棒等控制部件的空间位置和控制回路。</p>
+                        <p><strong>分析要点：</strong></p>
+                        <ol>
+                            <li>在FreeCAD装配树中识别控制部件：温度传感器（传感环节）、加热棒（执行环节）、控制器（中层隔板）</li>
+                            <li>单独显示温度传感器，观察其贴附缸体侧壁中部的位置，分析为何选中部——水深层温度代表性强、远离加热棒避免局部干扰</li>
+                            <li>叠加显示加热棒，观察其吸附缸体后壁下部的位置，分析为何选下部——热对流自下而上均匀升温</li>
+                            <li>分析传感器与加热棒的空间距离：避免过近导致传感器误判局部高温（提前关断加热棒）</li>
+                            <li>叠加显示控制器（中层隔板），观察其与传感器、加热棒的走线路径，分析防水走线的合理性</li>
+                            <li>使用剖面工具截取缸体横向截面，直观呈现"传感器—水体—加热棒"的空间关系和控制回路物理映射</li>
+                        </ol>
+                        <p><strong>学生活动：</strong>各小组在FreeCAD中操作模型，按控制回路逐层显示部件，绘制传感器布局图与控制回路空间映射图，将控制方框图与空间布局图对照。讨论：传感器位置如何影响控制精度？</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 优化 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第26-45分钟</span>
+                    <h4>环节三：设计实践（四）——控制方案优化与定稿</h4>
+                    <p><strong>教师活动：</strong>讲解控制优化的核心思想——在保证精度的前提下，通过合理布局传感器、优化阈值参数、引入回差防抖来提升稳定性，同时兼顾响应速度与执行器寿命。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD辅助优化任务：</strong>基于模型空间关系，分析控制优化机会。</p>
+                        <p><strong>优化分析：</strong></p>
+                        <ol>
+                            <li>传感器位置优化：避免靠近加热棒/出水口，选择水流适中处保证测温代表性</li>
+                            <li>执行器布局优化：加热棒居中下部利用热对流，风扇对准水面加速降温</li>
+                            <li>阈值回差优化：设下限25.5℃开加热棒、上限26.5℃关加热棒，避免频繁启停</li>
+                            <li>抗干扰优化：换水后温度骤变时控制器能否快速恢复（分析水量与加热功率匹配）</li>
+                            <li>在FreeCAD中模拟"传感器贴近加热棒"的错误布局，观察控制误判的可视化后果（教师演示反例）</li>
+                        </ol>
+                    </div>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>各小组将优化后的控制方案提交AI进行二次预测。</p>
+                        <p><strong>提示词示范：</strong>"请帮我评估以下优化后的鱼缸智能温控方案：阈值控制（下限25.5℃开加热棒、上限26.5℃关/开风扇），DS18B20传感器置于缸体侧壁中部（远离加热棒），50W加热棒置于后壁下部，Arduino控制器。请评估该方案的控制精度、响应速度、稳定性、抗干扰性，并给出进一步优化建议。"</p>
+                        <p><strong>学生活动：</strong>各小组对比AI建议与自身设计，进行方案定稿，更新闭环控制设计画布评分。</p>
+                    </div>
+
+                    <p><strong>设计意图：</strong>通过FreeCAD模型的传感器布局可视化和AI的参数优化双重辅助，让学生体验工程师"建模—分析—优化—定稿"的完整控制设计工作流。</p>
+                </div>
+
+                <!-- 课时4 环节四 编程 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第1-25分钟</span>
+                    <h4>环节四：编程实施（一）——闭环控制程序编写</h4>
+                    <p><strong>任务驱动：</strong>"根据定稿方案编写Arduino闭环温控程序，实现温度采集—比较—执行的全自动调节。"</p>
+                    <p><strong>教师活动：</strong>讲解控制程序的基本逻辑结构，示范阈值控制程序的编写：</p>
+                    <ul>
+                        <li><strong>初始化：</strong>定义传感器引脚、加热棒继电器引脚、风扇继电器引脚、设定值（26℃）、上下限（25.5℃/26.5℃）</li>
+                        <li><strong>采集：</strong>读取DS18B20温度值</li>
+                        <li><strong>比较判断：</strong>若实测温度 &lt; 25.5℃，开加热棒、关风扇；若实测温度 &gt; 26.5℃，关加热棒、开风扇；若在区间内，维持现状</li>
+                        <li><strong>执行输出：</strong>控制继电器启停加热棒与风扇</li>
+                        <li><strong>延时循环：</strong>每5秒采集一次，避免频繁读取</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>教师示范如何使用AI辅助编程。</p>
+                        <p><strong>提示词示范：</strong>"请帮我用Arduino C++编写鱼缸温控程序：DS18B20温度传感器接数字引脚2，加热棒继电器接引脚8（低电平触发），风扇继电器接引脚9。设定温度26℃，下限25.5℃开加热棒，上限26.5℃关加热棒开风扇，区间内维持。每5秒采集一次，串口输出当前温度和执行状态。请给出完整代码并注释关键逻辑。"</p>
+                        <p><strong>学生活动：</strong>各小组向AI请求代码辅助，获取程序框架，并对AI生成的代码进行<strong>批判性审查</strong>——核查引脚定义、逻辑判断、继电器触发电平是否正确。</p>
+                        <p><strong>教师引导：</strong>提醒学生AI生成的代码可能存在逻辑漏洞，需逐行审查；继电器低电平触发与高电平触发需与硬件对应；强调"代码必须与硬件匹配"的工程原则。</p>
+                    </div>
+
+                    <p><strong>学生活动：</strong>各小组在Arduino IDE中编写并编译控制程序，准备烧录调试。</p>
+                </div>
+
+                <!-- 课时4 环节四续 硬件 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第26-45分钟</span>
+                    <h4>环节四：编程实施（二）——硬件组装与程序烧录</h4>
+                    <p><strong>教师活动：</strong>讲解硬件组装规范与安全注意事项：</p>
+                    <ul>
+                        <li>传感器安装：DS18B20探头贴附缸体侧壁中部，防水封装，引线沿支架走线</li>
+                        <li>执行器安装：加热棒吸附缸体后壁下部，完全浸水；风扇固定于缸口上方</li>
+                        <li>控制器接线：Arduino+继电器模块置于中层隔板，传感器/继电器/电源按电路图连接</li>
+                        <li>程序烧录：USB连接Arduino→烧录程序→断电后接入强电回路</li>
+                    </ul>
+                    <p><strong>安全提示：</strong>强电（220V加热棒）与弱电（Arduino 5V）严格隔离，继电器模块绝缘；加热棒通电前必须确认完全浸水；接线检查无误后方可通电。</p>
+                    <p><strong>学生活动：</strong>各小组按设计组装硬件并烧录程序，记录接线图和硬件清单。教师巡回指导，重点检查强弱电隔离和接线正确性。</p>
+                    <div class="quote-box">组装过程融入规范操作教育：强弱电隔离、防水走线、继电器绝缘、通电前复核，安全是控制系统的生命线。</div>
+                </div>
+
+                <!-- 课时5 环节五 调试 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时5 · 第1-25分钟</span>
+                    <h4>环节五：调试优化（一）——闭环控制运行与参数整定</h4>
+                    <p><strong>任务驱动：</strong>"通电运行闭环温控系统，通过实测数据整定控制参数，实现26±1℃恒温。"</p>
+                    <p><strong>调试方案：</strong>系统通电后运行60分钟，通过串口监视器记录温度曲线和执行器启停状态。</p>
+                    <p><strong>调试记录要点：</strong></p>
+                    <ul>
+                        <li>初始温度→目标温度的升温过程：上升时间、是否过冲</li>
+                        <li>稳态温度波动：是否在26±1℃区间内？振荡幅度？</li>
+                        <li>加热棒启停频率：是否过于频繁（回差过小）？是否过于迟钝（回差过大）？</li>
+                        <li>降温响应：高于上限时风扇是否及时启动？降温速率？</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>各小组将实测温度曲线和启停记录提交AI进行参数整定分析。</p>
+                        <p><strong>提示词示范：</strong>"请帮我整定鱼缸温控系统参数。实测数据：初始水温22℃，加热50W，设定26℃，下限25.5℃开加热棒、上限26.5℃关加热棒开风扇。运行曲线显示：升温至26℃用时约18分钟，但稳态时温度在25.3-26.8℃间振荡，加热棒每90秒启停一次。请分析振荡原因，并给出参数调整建议（如调整回差区间、增加延时、优化传感器位置）。"</p>
+                        <p><strong>学生活动：</strong>各小组根据AI建议调整阈值参数或传感器位置，重新运行测试，迭代优化。</p>
+                    </div>
+
+                    <p><strong>学生活动：</strong>各小组执行参数整定，填写《闭环控制调试记录表》，记录迭代过程与最终参数。</p>
+                </div>
+
+                <!-- 课时5 环节五续 扩展 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时5 · 第26-45分钟</span>
+                    <h4>环节五：调试优化（二）——自动喂食器与远程监控集成</h4>
+                    <p><strong>任务驱动：</strong>"在温控系统基础上集成自动喂食器与远程监控，拓展控制系统功能边界。"</p>
+                    <p><strong>教师活动：</strong>讲解控制系统的可扩展性，示范功能集成：</p>
+                    <ul>
+                        <li><strong>自动喂食器：</strong>舵机驱动旋转分粮盘，定时定量投喂（每日早8点/晚8点各1次，每次约0.5g）</li>
+                        <li><strong>远程监控：</strong>ESP32连接WiFi，将温度数据上传至物联网平台（如Blynk/ThingsBoard），手机App实时查看</li>
+                        <li><strong>报警功能：</strong>温度超限（&lt;24℃或&gt;30℃）时App推送报警</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>各小组向AI请求集成方案建议。</p>
+                        <p><strong>提示词示范：</strong>"请帮我设计鱼缸控制系统的功能扩展方案：在Arduino温控基础上集成舵机自动喂食器（每日8:00/20:00各投喂0.5g）和ESP32 WiFi远程监控（温度上传物联网平台，超限报警）。请给出硬件清单、接线方案、程序框架，并分析扩展后系统的可维护性。"</p>
+                        <p><strong>学生活动：</strong>各小组根据时间和能力选做自动喂食器或远程监控（或两者），完成功能集成。</p>
+                    </div>
+
+                    <p><strong>设计意图：</strong>通过功能扩展让学生体会控制系统的可扩展性，理解"同一控制器可集成多控制回路"的工程思想。</p>
+                </div>
+
+                <!-- 课时6 环节五续 测试 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时6 · 第1-25分钟</span>
+                    <h4>环节五：调试优化（三）——系统综合测试与抗干扰验证</h4>
+                    <p><strong>测试方案：</strong>对完整智能温控系统进行综合测试与抗干扰验证。</p>
+                    <p><strong>测试记录要点：</strong></p>
+                    <ul>
+                        <li>恒温精度：24小时温度曲线，稳态波动是否在±1℃内</li>
+                        <li>抗干扰测试：模拟换水扰动（注入低温水使温度骤降2℃），记录恢复时间</li>
+                        <li>自动喂食：定时投喂是否准确？投喂量是否合适？</li>
+                        <li>远程监控：温度数据上传是否实时？App显示是否准确？报警是否触发？</li>
+                        <li>系统稳定性：长时间运行有无死机、误动作、数据丢失</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>各小组执行综合测试，填写《智能温控系统测试报告》，记录测试数据与问题诊断。对出现问题的环节进行参数调优或硬件排查。</p>
+                </div>
+
+                <!-- 课时6 环节六 总结 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时6 · 第26-45分钟</span>
+                    <h4>环节六：总结反思——控制设计复盘与项目收官</h4>
+                    <p><strong>教师活动：</strong>组织全班进行智能温控系统成果展示与互评。引导总结：</p>
+                    <ul>
+                        <li>闭环反馈控制如何实现自动恒温？反馈的核心价值是什么？</li>
+                        <li>控制参数整定在精度与稳定性间如何权衡？</li>
+                        <li>AI参数优化和FreeCAD传感器布局可视化分别带来了哪些帮助？</li>
+                    </ul>
+                    <p><strong>项目收官总结：</strong>教师带领全班回顾整个"生态鱼缸的设计与制作"项目四大单元的核心概念链：结构（骨骼）→ 流程（经络）→ 系统（血脉）→ 控制（神经），体会大概念贯通式项目学习的完整逻辑。从物质载体到有序运行、从系统集成到智能反馈，鱼缸从"空容器"成长为"智能生态体"。</p>
+                    <div class="quote-box">"结构让它立得住，流程让它做得对，系统让它活得久，控制让它变得聪明。"——四个大概念共同支撑了一个完整的工程产品。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 七、评价方式 -->
+        <div class="section-card">
+            <h2>七、评价方式</h2>
+            <p>本单元采用<strong>多元过程性评价</strong>，融合教师评价、同伴互评和自我反思三个维度，贯穿教学全过程。</p>
+            <table class="table-style">
+                <tr>
+                    <th>评价环节</th>
+                    <th>评价内容</th>
+                    <th>评价方式</th>
+                    <th>权重</th>
+                </tr>
+                <tr>
+                    <td>课堂参与</td>
+                    <td>方框图绘制练习投入度、讨论发言质量、概念理解程度</td>
+                    <td>教师观察记录</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>AI批判审查</td>
+                    <td>AI参数优化与代码生成的核实质量、批判性思维表现</td>
+                    <td>教师评价+小组互评</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>闭环控制设计画布报告</td>
+                    <td>评估维度完整性、评分依据充分性、决策合理性</td>
+                    <td>教师评价（量规）</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>FreeCAD模型分析</td>
+                    <td>传感器布局图准确性、控制回路空间映射理解、方框图规范性</td>
+                    <td>教师评价+作品展示</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>编程与调试</td>
+                    <td>程序逻辑正确性、参数整定迭代、系统测试完整性</td>
+                    <td>教师评价+同伴互评</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>单元与项目反思</td>
+                    <td>学习收获总结、大概念贯通理解、工程思维迁移意识</td>
+                    <td>自我反思</td>
+                    <td>10%</td>
+                </tr>
+            </table>
+            <div class="rubric-box">
+                <h4>核心评价指标——智能温控系统设计报告量规</h4>
+                <table class="table-style">
+                    <tr>
+                        <th>等级</th>
+                        <th>闭环要素识别</th>
+                        <th>方框图规范性</th>
+                        <th>参数整定</th>
+                    </tr>
+                    <tr>
+                        <td>优秀（A）</td>
+                        <td>完整识别闭环六要素，反馈回路清晰</td>
+                        <td>符号规范、回路完整、信号流向准确</td>
+                        <td>整定依据充分，精度稳定性兼顾</td>
+                    </tr>
+                    <tr>
+                        <td>良好（B）</td>
+                        <td>基本识别主要要素，个别遗漏</td>
+                        <td>符号基本规范，个别环节缺失</td>
+                        <td>整定方向正确，依据较充分</td>
+                    </tr>
+                    <tr>
+                        <td>合格（C）</td>
+                        <td>要素识别不完整，需引导</td>
+                        <td>符号使用欠规范，回路有误</td>
+                        <td>整定意识不足，需指导</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 八、板书设计 -->
+        <div class="section-card">
+            <h2>八、板书设计</h2>
+            <div class="blackboard">
+                <div class="bk-title">控制单元 智能温控系统设计</div>
+                <div class="bk-section">
+                    一、控制概念<br>
+                    　　开环控制：无反馈（手动开关）<br>
+                    　　闭环控制：有反馈（自动恒温）<br>
+                    　　要素：被控对象/传感器/控制器/执行器/设定值/反馈量
+                </div>
+                <div class="bk-section">
+                    二、温控系统设计<br>
+                    　　设定26℃→比较→控制器→加热棒/风扇→水温→传感器→反馈<br>
+                    　　AI参数优化 → 闭环控制设计画布 → 方案定稿
+                </div>
+                <div class="bk-section">
+                    三、FreeCAD传感器布局<br>
+                    　　传感器→缸壁中部 / 加热棒→后壁下部 / 控制器→中层隔板<br>
+                    　　空间布局 = 控制回路<br>
+                    　　剖面图验证测温代表性
+                </div>
+                <div class="bk-section">
+                    四、编程调试<br>
+                    　　阈值控制（25.5℃开/26.5℃关）→ 实测整定 → 扩展喂食/监控<br>
+                    　　验证：精度 ±1℃ + 响应 + 稳定性 + 抗干扰
+                </div>
+                <div class="bk-section">
+                    【贯通】结构 → 流程 → 系统 → 控制<br>
+                    【工具】闭环控制设计画布
+                </div>
+            </div>
+        </div>
+
+        <!-- 九、单元作品 -->
+        <div class="section-card">
+            <h2>九、单元作品要求</h2>
+            <div class="work-box">
+                <h4>作品一：鱼缸智能温控系统设计报告（小组）</h4>
+                <p>各小组提交完整的控制设计报告，须包含以下内容：</p>
+                <ul>
+                    <li><strong>控制方案设计：</strong>智能温控系统初步设计书（含闭环要素表、AI参数优化表、批判审查记录）</li>
+                    <li><strong>控制方框图绘制：</strong>阈值控制方案和PID控制方案的规范控制方框图（含环节、反馈回路）</li>
+                    <li><strong>FreeCAD模型分析：</strong>传感器布局图、控制回路空间映射图、剖面截图、布局合理性分析</li>
+                    <li><strong>闭环控制设计画布评分：</strong>两方案五维评分表、加权综合得分、定稿方案及优化依据</li>
+                    <li><strong>编程与调试记录：</strong>控制程序代码（含注释）、硬件接线图、调试记录表（迭代过程、最终参数）、综合测试报告</li>
+                    <li><strong>功能扩展（选做）：</strong>自动喂食器方案、远程监控方案、集成测试记录</li>
+                </ul>
+            </div>
+            <div class="work-box">
+                <h4>作品二：鱼缸智能温控系统实物成果（小组）</h4>
+                <p>各小组完成智能温控系统组装、编程与调试的实物作品，需满足：</p>
+                <ul>
+                    <li>闭环温控运行正常，稳态温度稳定在26±1℃区间</li>
+                    <li>传感器布局合理，测温具有代表性，控制无严重误判</li>
+                    <li>加热棒/风扇执行器响应正确，启停逻辑符合阈值设定</li>
+                    <li>抗干扰测试通过（换水扰动后能在合理时间内恢复）</li>
+                    <li>强弱电隔离规范，防水走线整齐，体现安全意识与工匠精神</li>
+                    <li>（选做）自动喂食定时准确、远程监控数据上传实时</li>
+                </ul>
+            </div>
+            <div class="quote-box">
+                <strong>作品交付节点：</strong>课时6结束时提交设计报告和实物作品，作为本单元终结性评价依据，同时作为整个"生态鱼缸的设计与制作"项目的终结成果，体现结构、流程、系统、控制四大概念的贯通集成。
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        2025新课标项目式教学案例 · 生态鱼缸的设计与制作 · 控制单元（项目终结单元）<br>
+        普通高中技术与工程课程标准（2017年版2025年修订）附录2案例2
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第5课 · 拉伸特征与实践项目1</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块二</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块二 · 第5课 · 实践作业1</div>
+  <h1>🔑 拉伸特征与实践项目1——钥匙扣</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 完成作品</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>复习第4课：确保能画一个完全约束的矩形+圆孔草图</li>
+      <li>了解"拉伸（Pad）"概念：把2D草图沿垂直方向拉成3D实体，像把纸片变成立体</li>
+      <li>构思你的钥匙扣设计：什么形状？多大？挂孔在哪里？要不要装饰图案？</li>
+      <li>在纸上画一个钥匙扣设计草图（手绘即可），标注大致尺寸</li>
+      <li>查看：本课页面下方有钥匙扣样件图</li>
+    </ul>
+    <div class="preview-warn">⚠️ 本课要完成实践作业1（钥匙扣），是第一个计分作品（实践作业30%均分内）。不预习设计思路，课堂45分钟来不及完成。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>掌握Pad（拉伸）特征的创建方法</li>
+      <li>掌握Pocket（挖孔）特征的创建方法</li>
+      <li>完成实践作业1：个性化书签/钥匙扣</li>
+      <li>按命名规范保存文件并提交</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> Pad（拉伸特征）</h3>
+    <p><strong>Pad</strong> = 把2D草图沿垂直方向拉伸成3D实体。</p>
+    <p>类比：把一张纸片（2D草图）向上拉起来变成一块砖头（3D实体）。</p>
+    <p><strong>操作步骤：</strong></p>
+    <p>1. 选中完全约束的草图</p>
+    <p>2. 点击PartDesign工作台的"Pad"按钮</p>
+    <p>3. 设置拉伸长度（如3mm）</p>
+    <p>4. 确认生成实体</p>
+    <div class="code-block">
+      <pre>
+# 用Python创建Pad（核心步骤）
+import PartDesign
+
+# 前置条件：doc已创建，sketch将绘制为闭合轮廓
+body = doc.addObject("PartDesign::Body", "Body")
+sketch = body.newObject("Sketcher::SketchObject", "Sketch")
+# 此处用草图工具或addGeometry()绘制闭合轮廓
+
+pad = body.newObject("PartDesign::Pad", "Pad")
+pad.Profile = sketch   # 指定拉伸的草图
+pad.Length = 3.0       # 拉伸长度3mm
+pad.Type = 0           # 类型=尺寸
+doc.recompute()        # 重新计算生成实体
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <ol class="code-steps">
+        <li><code>PartDesign::Body</code>：创建特征建模容器，Sketch、Pad等特征必须按顺序放在Body中。</li>
+        <li><code>body.newObject("Sketcher::SketchObject", "Sketch")</code>：在Body内部创建草图；草图必须是可拉伸的闭合轮廓。</li>
+        <li><code>body.newObject("PartDesign::Pad", "Pad")</code>：创建拉伸特征，但此时还没有指定截面和高度。</li>
+        <li><code>pad.Profile = sketch</code>：把草图指定为拉伸截面；<code>pad.Length = 3.0</code>设置拉伸3mm。</li>
+        <li><code>pad.Type = 0</code>选择“按尺寸”方式，<code>doc.recompute()</code>触发计算并生成实体。</li>
+      </ol>
+      <div class="code-result"><strong>运行结果：</strong>闭合草图沿法向拉伸3mm，Body中出现Pad特征和一个实体。</div>
+      <div class="code-warning"><strong>易错点：</strong>本段展示Pad核心流程，不能跳过“绘制闭合草图”。草图有缺口、自交或不在Body内时，Pad会失败；<code>doc</code>需先由<code>FreeCAD.newDocument()</code>创建。</div>
+    </div>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🕳️</span> Pocket（挖孔特征）</h3>
+    <p><strong>Pocket</strong> = 在实体上挖一个孔或槽（反向的Pad）。</p>
+    <p><strong>操作步骤：</strong></p>
+    <p>1. 在实体表面创建新草图（画圆/矩形等孔的形状）</p>
+    <p>2. 选中草图，点击Pocket按钮</p>
+    <p>3. 设置挖孔深度</p>
+    <p>4. 确认生成孔</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔑</span> 实践项目1：钥匙扣</h3>
+    <p><strong>设计要求（课程方案原文）：</strong></p>
+    <p>🔹 设计一款个性化的书签/钥匙扣</p>
+    <p>🔹 必须是完全约束的草图</p>
+    <p>🔹 包含至少一个圆形或圆弧元素，用于穿绳子</p>
+    <p><strong>参数：</strong></p>
+    <p>矩形主体45×20×3mm + 挂环外R7内R3.5 + 2个装饰孔R2</p>
+    <div class="workshow">
+      <div class="work-card fade-in">
+        <img src="../assets/images/01_钥匙扣.png" alt="钥匙扣">
+        <div class="info">
+          <h4>🔑 钥匙扣</h4>
+          <p>矩形主体+挂环+装饰孔</p>
+        </div>
+      </div>
+      <div class="work-card fade-in">
+        <img src="../assets/images/01b_模块二_钥匙扣_手动建模版.png" alt="手动建模版">
+        <div class="info">
+          <h4>✏️ 手动建模版</h4>
+          <p>草图+约束+Pad+Pocket</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task-box fade-in">
+    <h3>📝 实践作业1（计分） <span class="difficulty medium">中等</span></h3>
+    <p><strong>任务：</strong>设计并制作一个个性化钥匙扣</p>
+    <p>1. 在纸上画出你的设计草图（含尺寸标注）</p>
+    <p>2. 在FreeCAD中创建草图，添加几何约束和尺寸约束（完全约束）</p>
+    <p>3. 用Pad拉伸成实体（厚度3mm）</p>
+    <p>4. 用Pocket挖穿绳孔和装饰孔</p>
+    <p>5. 保存文件：学号-姓名-钥匙扣.FCStd</p>
+    <p>6. 导出STL：学号-姓名-钥匙扣.stl</p>
+    <p style="margin-top:8px;color:#c53030;"><strong>评分标准：</strong>完成度40% + 技术性40%（草图全约束）+ 规范性20%（命名规范）</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="lesson04.html" class="prev">← 第4课</a>
+    <a href="../module3/index.html" class="next">模块三 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

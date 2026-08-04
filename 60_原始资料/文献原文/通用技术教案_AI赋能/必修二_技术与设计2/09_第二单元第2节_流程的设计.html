@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教案9：第二单元第2节 流程的设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d7df0);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.15);
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 14px; opacity: 0.9; }
+        .header .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .header .meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .section {
+            border-left: 4px solid #1a56c4;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            background: #fafcff;
+            border-radius: 0 8px 8px 0;
+        }
+        .section h2 {
+            color: #1a56c4;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #e65100;
+            border-radius: 3px;
+        }
+        .section h3 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin: 15px 0 8px 0;
+        }
+        .section p { margin-bottom: 10px; font-size: 14px; text-align: justify; }
+        .section ul, .section ol { margin-left: 25px; margin-bottom: 10px; font-size: 14px; }
+        .section li { margin-bottom: 6px; }
+        .tag-ai {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-freecad {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-paradigm {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-top: 15px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a56c4;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid #1a56c4;
+            border-radius: 50%;
+        }
+        .timeline-item .time-label {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p, .timeline-item ul, .timeline-item ol {
+            font-size: 14px;
+        }
+        .ai-block {
+            background: #e8f0fe;
+            border: 1px solid #1a56c4;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 1px solid #e65100;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .prompt-box {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .prompt-box .label { color: #e65100; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        th {
+            background: #1a56c4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .obj-card {
+            background: #fff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .obj-card .icon { font-size: 22px; margin-bottom: 6px; }
+        .obj-card h4 { color: #1a56c4; font-size: 13px; margin-bottom: 6px; }
+        .obj-card p { font-size: 12px; text-align: center; }
+        .blackboard {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 13px;
+            line-height: 2;
+            white-space: pre-line;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #43a047;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .tool-box h4 { color: #2e7d32; font-size: 14px; margin-bottom: 8px; }
+        .reflection-list li { margin-bottom: 8px; }
+        .flow-diagram {
+            background: #f0f4c3;
+            border: 2px dashed #827717;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 12px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .flow-step {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+        }
+        .flow-arrow {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 4px;
+        }
+        .obe-tag {
+            background: #7b1fa2;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .layer-card {
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin: 8px 0;
+        }
+        .layer-basic { background: #e3f2fd; border-left: 4px solid #1976d2; }
+        .layer-advanced { background: #fff3e0; border-left: 4px solid #e65100; }
+        .layer-extra { background: #f3e5f5; border-left: 4px solid #7b1fa2; }
+        .layer-card h4 { font-size: 13px; margin-bottom: 6px; }
+        .layer-card p { font-size: 13px; margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>第二单元第2节 流程的设计</h1>
+        <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》| 教学设计教案</div>
+        <div class="meta">
+            <span>课时：1课时（45分钟）</span>
+            <span>课型：项目化实践课</span>
+            <span>OBE-GAI范式</span>
+            <span>AI辅助决策教学</span>
+        </div>
+    </div>
+    <div class="content">
+
+        <!-- 一、教材分析 -->
+        <div class="section">
+            <h2>一、教材分析</h2>
+            <p>本节为苏教版《技术与设计2》第二单元"流程及其设计"的第2节，承接第1节"流程的概述"中对流程、环节、时序等基本概念的学习，进入流程设计的核心实践阶段。教材以生活和生产中的典型流程为案例，引导学生理解流程设计的基本要求与方法，学习如何科学合理地设计一个流程，并具备对流程进行评价和优化的能力。</p>
+            <p>本节课的核心价值在于帮助学生建立"流程思维"——即面对任何复杂任务时，能够将其分解为有序的环节和合理的时序，并考虑资源分配与异常处理。结合OBE理念，本课预期学习产出定义为：<strong>学生能独立设计一个"带盖储物盒"的装配流程，输出标准流程图，并运用AI辅助决策进行流程优化，形成"目标—分解—排序—优化"的系统化流程设计能力。</strong></p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section">
+            <h2>二、学情分析</h2>
+            <p>高二学生在日常生活中已接触大量流程实例（如做饭、考试报名、旅行规划等），对"先做什么、后做什么"有朴素认识，但缺乏将经验上升为系统化流程设计方法的意识。学生在信息技术课程中学习过简单的流程图符号，但将流程图用于工程设计仍需训练。部分学生存在"流程设计就是排顺序"的简化认知，忽视了资源分配、异常处理等关键维度。对AI工具的使用仍偏向"查答案"模式，需要引导其学会用AI进行"假如……会怎样"的模拟推演。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="icon">🔍</div>
+                    <h4>技术意识</h4>
+                    <p>理解科学流程对提高效率、降低出错率的价值，形成流程优化意识</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">⚙️</div>
+                    <h4>工程思维</h4>
+                    <p>掌握"流程设计六步法"，能运用系统思维分解任务、排列时序、预判异常</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">💡</div>
+                    <h4>创新设计</h4>
+                    <p>能设计多种装配流程方案，结合AI模拟结果选择最优方案并进行创新优化</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">📐</div>
+                    <h4>图样表达</h4>
+                    <p>能规范绘制标准流程图，正确使用开始/结束、处理、判断、流程线等符号</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">🔨</div>
+                    <h4>物化能力</h4>
+                    <p>能按设计的装配流程实际组装储物盒，验证流程的可行性与效率</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section">
+            <h2>四、教学重难点</h2>
+            <h3>教学重点</h3>
+            <ul>
+                <li>流程设计六步法的理解与运用（目标确定→环节分解→时序排列→资源分配→异常处理→优化输出）</li>
+                <li>规范绘制标准流程图，正确使用流程图符号</li>
+                <li>运用AI模拟不同装配顺序的效率与风险，进行数据驱动决策</li>
+            </ul>
+            <h3>教学难点</h3>
+            <ul>
+                <li>理解环节之间的串行与并行关系，合理安排时序</li>
+                <li>设计异常处理流程，预判可能的装配失误并制定应对策略</li>
+                <li>对AI给出的流程模拟预测结果进行批判性分析和决策判断</li>
+            </ul>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section">
+            <h2>五、教学策略与方法</h2>
+            <p><span class="obe-tag">OBE反向设计</span> 本课以"产出一份带盖储物盒装配流程设计文档及标准流程图"为终点，倒推教学活动。采用"体验对比→方法建构→AI模拟→绘图输出→优化迭代"的教学路径，让学生在真实任务中习得流程设计能力。</p>
+            <p><span class="tag-paradigm">分层任务策略</span> 结合AI辅助决策，设置三层递进任务：</p>
+            <div class="layer-card layer-basic">
+                <h4>基础层：标准流程图绘制</h4>
+                <p>学生将储物盒装配过程分解为环节，按合理时序绘制标准流程图，标注每个环节的操作内容和预估耗时。</p>
+            </div>
+            <div class="layer-card layer-advanced">
+                <h4>提升层：AI辅助数据决策</h4>
+                <p>学生用AI模拟不同装配顺序的效率与出错率，获得预测数据后进行决策分析，选择最优流程方案。</p>
+            </div>
+            <div class="layer-card layer-extra">
+                <h4>拓展层：异常处理流程设计</h4>
+                <p>学生在最优流程基础上增加异常处理分支（如胶水未干、零件缺失等），设计完整的容错流程。</p>
+            </div>
+            <div class="tool-box">
+                <h4>原创教学工具：流程设计六步法</h4>
+                <div class="flow-diagram">
+                    <span class="flow-step">目标确定</span><span class="flow-arrow">→</span>
+                    <span class="flow-step">环节分解</span><span class="flow-arrow">→</span>
+                    <span class="flow-step">时序排列</span><span class="flow-arrow">→</span>
+                    <span class="flow-step">资源分配</span><span class="flow-arrow">→</span>
+                    <span class="flow-step">异常处理</span><span class="flow-arrow">→</span>
+                    <span class="flow-step">优化输出</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section">
+            <h2>六、教学过程</h2>
+            <div class="timeline">
+
+                <!-- 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-label">5分钟</span>
+                    <h4>环节一：情境导入——两种装配顺序的体验对比</h4>
+                    <p><strong>体验活动：</strong>教师邀请两组学生上台，每组发放一套散装的储物盒零件（底板、侧板×4、盖板、槽口配件、白胶）。A组按"先装盖子再装底座"的顺序组装，B组按"先装底座再装盖子"的顺序组装，限时2分钟。</p>
+                    <p><strong>对比发现：</strong>A组因先装盖子导致底座组装时操作空间受限，耗时较长且出现胶水涂抹不便的问题；B组先装底座建立稳定基座，后续组装顺畅。教师引导提问："为什么同样的零件，装配顺序不同会导致效率差异？这说明什么？"</p>
+                    <p><strong>任务发布：</strong>教师宣布本课核心任务——"为带盖储物盒设计一个最优装配流程，并用标准流程图表达"。明确OBE产出：每人提交一份完整的装配流程设计文档（含流程图、时间估算、异常处理方案）。</p>
+                    <div class="freecad-block">
+                        <div class="fc-title">FreeCAD模型引用 | 带盖储物盒装配模型</div>
+                        <p>教师展示用FreeCAD建立的带盖储物盒三维装配模型，展示底座、侧板、盖板、槽口配件的装配关系和顺序。通过爆炸图功能逐一展示各零件的装配位置和先后关系，帮助学生直观理解装配流程的空间逻辑。</p>
+                        <ul>
+                            <li><strong>底座组件：</strong>底板+四块侧板，侧板通过槽口与底板卡接</li>
+                            <li><strong>盖板组件：</strong>盖板通过铰链槽口与后侧板连接</li>
+                            <li><strong>装配顺序可视化：</strong>FreeCAD装配动画展示"底板→侧板→盖板"的空间依赖关系</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节二：概念建构——流程设计六步法</h4>
+                    <p><strong>Step 1：六步法推导（7分钟）</strong></p>
+                    <p>教师以"如果你是工厂主管，要安排储物盒的装配流水线，你需要想清楚哪些问题"为引，引导学生逐步推导出六步法：</p>
+                    <ul>
+                        <li><strong>目标确定：</strong>要装配什么？最终产出是什么？质量标准是什么？</li>
+                        <li><strong>环节分解：</strong>装配过程可以分成哪几个步骤？每步做什么？</li>
+                        <li><strong>时序排列：</strong>哪些步骤必须先做？哪些可以同时做？为什么？</li>
+                        <li><strong>资源分配：</strong>每个环节需要什么工具、材料、人力？</li>
+                        <li><strong>异常处理：</strong>如果某个环节出了问题怎么办？有备选方案吗？</li>
+                        <li><strong>优化输出：</strong>整个流程还能更高效吗？瓶颈在哪里？</li>
+                    </ul>
+                    <p>教师通过板书呈现六步法流程图，并以储物盒装配为例进行示范分析。</p>
+
+                    <p><strong>Step 2：流程图符号规范（5分钟）</strong></p>
+                    <p>教师复习标准流程图符号：圆角矩形（开始/结束）、矩形（处理/操作）、菱形（判断/决策）、平行四边形（输入/输出）、箭头（流程方向）。学生在练习本上快速绘制符号并标注含义。</p>
+
+                    <p><strong>Step 3：串行与并行概念（3分钟）</strong></p>
+                    <p>教师以"烧水泡茶"经典问题为例讲解串行与并行：串行方案（烧水→洗杯→泡茶，共15分钟）vs 并行方案（烧水的同时洗杯，共10分钟）。引导学生理解：合理的并行安排可以显著缩短总流程时间，这是流程优化的关键思路。</p>
+                </div>
+
+                <!-- 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节三：深度探究——AI辅助流程模拟与决策</h4>
+                    <p><strong>Step 1：流程方案设计（5分钟）</strong></p>
+                    <p>学生根据六步法，设计储物盒装配的2种流程方案：方案A（先装底座后装盖子）和方案B（先装盖子后装底座）。每种方案列出环节清单和时序安排，标注预估耗时。</p>
+
+                    <p><strong>Step 2：AI辅助流程效率模拟（7分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 流程效率模拟与决策</div>
+                        <p>学生将两种方案描述给AI，请求AI模拟不同装配顺序的效率和出错风险。教师提供分层提示词：</p>
+                        <div class="prompt-box">
+<span class="label">【提升层提示词】</span>
+我要设计一个带盖储物盒的装配流程，有两种方案：
+方案A：先装底座（底板+四侧板），再装盖子（盖板+铰链）
+方案B：先装盖子（盖板+铰链+后侧板），再装底座（底板+其余侧板）
+请模拟两种方案的时间和出错率，给出数据对比和推荐建议。
+                        </div>
+                        <p><strong>AI典型预测回复（示例）：</strong></p>
+                        <table>
+                            <tr><th>对比维度</th><th>方案A（先底座后盖子）</th><th>方案B（先盖子后底座）</th></tr>
+                            <tr><td>预计耗时</td><td>15分钟</td><td>12分钟</td></tr>
+                            <tr><td>出错率</td><td>约10%</td><td>约40%（底座组装空间受限）</td></tr>
+                            <tr><td>操作便利性</td><td>高（基座稳定）</td><td>低（盖子悬空晃动）</td></tr>
+                            <tr><td>胶水固化等待</td><td>可并行进行</td><td>需串行等待</td></tr>
+                        </table>
+                        <p><strong>学生决策环节：</strong>学生需基于AI预测结果做出决策。典型决策过程："AI说方案B虽然快3分钟，但出错率高达40%。我觉得出错率高意味着返工概率大，返工一次可能浪费5分钟以上，综合来看方案A更可靠。而且方案A的胶水固化可以和其他环节并行，实际时间差没那么大。"<strong>我选择方案A。</strong></p>
+                        <p>教师强调核心原则：AI给出预测数据，但决策权在学生手中。学生需要理解"效率"不只是时间长短，还包含出错风险、返工成本等多维度因素。</p>
+                    </div>
+
+                    <p><strong>Step 3：流程图绘制（3分钟）</strong></p>
+                    <p>学生根据选定的最优方案，用标准流程图符号绘制完整的装配流程图。要求标注每个环节的操作内容、预估耗时，并体现串行/并行关系。教师巡视指导流程图符号的规范使用。</p>
+                </div>
+
+                <!-- 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-label">8分钟</span>
+                    <h4>环节四：迁移应用——异常处理设计与流程优化</h4>
+                    <p><strong>Step 1：异常处理流程设计（4分钟）</strong></p>
+                    <p><span class="tag-paradigm">拓展层任务</span> 学生在最优流程基础上，增加异常处理分支。教师引导思考："装配过程中可能出现哪些意外？如果白胶不够了怎么办？如果侧板槽口尺寸不匹配怎么办？"</p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 异常场景模拟</div>
+                        <p>学生用AI模拟异常场景下的处理方案：</p>
+                        <div class="prompt-box">
+<span class="label">【拓展层提示词】</span>
+在储物盒装配流程中，可能出现的异常包括：
+1. 白胶未干时零件移位  2. 侧板槽口尺寸偏差  3. 盖板铰链卡死
+请为每种异常设计一个判断节点和应急处理流程，
+用流程图描述符号表达。
+                        </div>
+                        <p>学生根据AI建议，在流程图中增加菱形判断节点和异常处理分支，形成完整的容错流程。</p>
+                    </div>
+
+                    <p><strong>Step 2：流程优化迭代（4分钟）</strong></p>
+                    <p>学生回顾整个流程，寻找优化空间。教师引导使用"瓶颈分析法"：找出流程中耗时最长的环节，思考能否拆分、并行或简化。例如，"胶水固化等待"是瓶颈环节，能否在等待期间进行其他不依赖该零件的装配操作？</p>
+                    <p>学生将优化后的流程图与初始版本对比，记录优化前后的时间差异和改进点，填写《流程优化记录表》。</p>
+                </div>
+
+                <!-- 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-label">2分钟</span>
+                    <h4>环节五：总结反思——流程思维的内化</h4>
+                    <p>教师带领学生回顾流程设计六步法，强调"好的流程设计不仅是排顺序，更是对资源、时序、异常的全面考量"。提问引导反思："AI的模拟预测对你的决策有多大帮助？有没有AI没考虑到但你认为重要的因素？"</p>
+                    <p>最后点明流程设计的价值不仅限于技术制作，在项目管理、活动策划、学习方法等领域同样适用——流程思维是一种可迁移的核心能力。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 七、板书设计 -->
+        <div class="section">
+            <h2>七、板书设计</h2>
+            <div class="blackboard">流程的设计
+
+一、流程设计六步法
+  目标确定 → 环节分解 → 时序排列
+  → 资源分配 → 异常处理 → 优化输出
+
+二、串行 vs 并行
+  串行：A→B→C（总时间=各环节之和）
+  并行：A同时B→C（总时间可缩短）
+
+三、AI辅助决策
+  AI模拟 → 预测数据 → 学生判断 → 决策
+  （效率≠速度，需考虑出错率/返工成本）
+
+四、流程图符号
+  ○ 开始/结束  □ 处理  ◇ 判断  ▱ 输入/输出</div>
+        </div>
+
+        <!-- 八、教学反思预设 -->
+        <div class="section">
+            <h2>八、教学反思预设</h2>
+            <ul class="reflection-list">
+                <li><strong>体验活动效果：</strong>开场两种装配顺序的对比体验直观有效，但需注意控制时间（2分钟），避免变成手工课。可提前准备预切好的零件以节约课堂时间。</li>
+                <li><strong>AI决策环节深度：</strong>学生对AI给出的"出错率40%"等量化预测可能缺乏质疑意识。需在教学中追问"AI怎么得出这个数据的？你认为是高了还是低了？"引导学生理解AI预测的局限性——它是基于一般情况的估算，不一定适用于具体场景。</li>
+                <li><strong>分层任务覆盖：</strong>基础层流程图绘制和提升层AI决策是核心要求，拓展层异常处理可能时间不足。建议将拓展层设为选做任务，学有余力的学生完成，其他学生课后完善。</li>
+                <li><strong>流程图规范性：</strong>部分学生可能流程图符号使用不规范，需在环节二强化符号训练，并在巡视中及时纠正。</li>
+                <li><strong>FreeCAD装配模型展示：</strong>三维装配模型的爆炸图展示有助于学生理解装配顺序的空间逻辑，但需注意模型复杂度不宜过高，聚焦底座→侧板→盖板的核心装配关系即可。</li>
+            </ul>
+        </div>
+
+        <!-- 九、AI应用说明 -->
+        <div class="section">
+            <h2>九、AI应用说明</h2>
+            <h3>范式定位：OBE-GAI模式 + 分层任务策略</h3>
+            <p>本教案AI应用的核心定位是<strong>"流程模拟器与决策顾问"</strong>，AI负责提供不同方案的预测数据，学生负责基于数据进行决策判断。具体应用如下：</p>
+            <table>
+                <tr><th>环节</th><th>AI应用方式</th><th>顾问定位体现</th><th>学生决策任务</th></tr>
+                <tr><td>环节三</td><td>模拟两种装配方案的时间与出错率</td><td>提供量化预测数据</td><td>综合多维度因素做出方案选择</td></tr>
+                <tr><td>环节四</td><td>模拟异常场景并建议处理方案</td><td>提供风险预判参考</td><td>设计异常处理判断节点和应急分支</td></tr>
+            </table>
+            <h3>分层提示词设计</h3>
+            <div class="prompt-box">
+<span class="label">【基础层】</span>请列出带盖储物盒装配的基本环节，
+并说明哪些环节必须先做、哪些可以同时做。
+<span class="label">【提升层】</span>我要设计一个带盖储物盒的装配流程，有两种方案：
+方案A：先装底座再装盖子  方案B：先装盖子再装底座
+请模拟两种方案的时间和出错率，给出数据对比和推荐建议。
+<span class="label">【拓展层】</span>在储物盒装配流程中，可能出现的异常包括：
+白胶未干移位、侧板槽口偏差、盖板铰链卡死。
+请为每种异常设计判断节点和应急处理流程，用流程图符号表达。
+            </div>
+            <h3>AI交互记录表（流程设计文档核心字段）</h3>
+            <table>
+                <tr><th>字段</th><th>说明</th></tr>
+                <tr><td>方案描述</td><td>描述两种候选装配流程方案</td></tr>
+                <tr><td>AI预测结果</td><td>记录AI给出的时间、出错率、便利性等预测数据</td></tr>
+                <tr><td>学生决策</td><td>记录最终选择的方案</td></tr>
+                <tr><td>决策理由</td><td>说明选择该方案的理由（须引用AI数据+个人判断）</td></tr>
+                <tr><td>异常处理</td><td>记录设计的异常判断节点和应急方案</td></tr>
+                <tr><td>优化记录</td><td>记录优化前后的流程对比及改进点</td></tr>
+            </table>
+            <h3>FreeCAD模型引用说明</h3>
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD模型引用 | 带盖储物盒装配模型</div>
+                <p>本课引用<strong>带盖储物盒FreeCAD装配模型</strong>，通过三维爆炸图展示底座、侧板、盖板、槽口配件的装配关系和顺序，帮助学生直观理解装配流程的空间逻辑依赖关系。</p>
+                <ul>
+                    <li><strong>装配关系展示：</strong>底板与侧板的槽口卡接关系、盖板与后侧板的铰链连接</li>
+                    <li><strong>装配顺序可视化：</strong>通过爆炸图动画展示"底板→侧板→盖板"的装配顺序</li>
+                    <li><strong>空间依赖分析：</strong>展示为何"先装盖子"会导致底座组装空间受限的几何原因</li>
+                </ul>
+            </div>
+            <h3>评价量规</h3>
+            <table>
+                <tr><th>评价维度</th><th>权重</th><th>优秀（90-100）</th><th>合格（60-89）</th><th>待改进（<60）</th></tr>
+                <tr><td>流程图规范性</td><td>25%</td><td>符号规范、逻辑清晰、含异常分支</td><td>符号基本规范、逻辑正确</td><td>符号使用错误或逻辑混乱</td></tr>
+                <tr><td>AI交互质量</td><td>25%</td><td>有采纳/否决理由，决策有据</td><td>有AI交互记录，决策基本合理</td><td>全盘接受AI建议无判断</td></tr>
+                <tr><td>流程优化能力</td><td>25%</td><td>有创新性优化且说明理由</td><td>能识别瓶颈并提出改进</td><td>无明显优化</td></tr>
+                <tr><td>异常处理设计</td><td>15%</td><td>预判全面、应急方案可行</td><td>有基本异常处理节点</td><td>无异常处理</td></tr>
+                <tr><td>表达与协作</td><td>10%</td><td>表达清晰、团队协作好</td><td>能完成基本表达</td><td>表达不清晰</td></tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

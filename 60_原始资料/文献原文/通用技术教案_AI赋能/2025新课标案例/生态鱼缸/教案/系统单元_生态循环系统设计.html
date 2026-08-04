@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统单元 生态循环系统设计 | 生态鱼缸的设计与制作</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f1f8e9;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(27,94,32,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 5px; }
+        .header .meta { font-size: 14px; opacity: 0.8; }
+        .content {
+            background: #fff;
+            padding: 40px 35px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .section-card {
+            border-left: 5px solid #1B5E20;
+            background: #f1f8e9;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1B5E20;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8e6c9;
+        }
+        .section-card h3 {
+            color: #2E7D32;
+            font-size: 18px;
+            margin: 18px 0 10px;
+        }
+        .section-card h4 {
+            color: #388E3C;
+            font-size: 16px;
+            margin: 15px 0 8px;
+        }
+        .section-card p { margin-bottom: 12px; text-align: justify; }
+        .section-card ul, .section-card ol { margin: 10px 0 12px 22px; }
+        .section-card li { margin-bottom: 6px; }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #1B5E20, #2E7D32, #4CAF50, #81C784);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 18px 22px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e8f5e9;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1B5E20;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #1B5E20;
+        }
+        .time-tag {
+            display: inline-block;
+            background: #1B5E20;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1B5E20;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p { margin-bottom: 8px; font-size: 15px; }
+        .timeline-item ul { margin-left: 20px; font-size: 15px; }
+
+        /* AI应用环节 */
+        .ai-block {
+            border: 2px solid #2E7D32;
+            background: #e8f5e9;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .ai-block::before {
+            content: 'AI赋能环节 · 生态平衡预测助手';
+            display: block;
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .ai-block p { margin-bottom: 6px; }
+
+        /* FreeCAD应用环节 */
+        .freecad-block {
+            border: 2px solid #E65100;
+            background: #fff3e0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .freecad-block::before {
+            content: 'FreeCAD建模与分析';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .freecad-block p { margin-bottom: 6px; }
+
+        /* 原创工具 */
+        .tool-box {
+            border: 2px dashed #6A1B9A;
+            background: linear-gradient(135deg, #f3e5f5, #faf0fc);
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .tool-box::before {
+            content: '原创教学工具';
+            display: block;
+            font-weight: bold;
+            color: #6A1B9A;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .tool-box h4 { color: #6A1B9A; margin-bottom: 6px; }
+
+        /* 教学目标网格 */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 16px;
+            border-top: 4px solid #2E7D32;
+        }
+        .goal-item h4 {
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .goal-item p { font-size: 14px; margin-bottom: 0; }
+
+        /* 板书设计 */
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 28px 30px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", "楷体", serif;
+            font-size: 17px;
+            line-height: 2.2;
+            margin: 15px 0;
+            border: 3px solid #1a252f;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+        }
+        .blackboard .bk-title {
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 1px solid #3d566e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .blackboard .bk-section { margin-bottom: 12px; }
+
+        /* 表格样式 */
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .table-style th {
+            background: #1B5E20;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #1B5E20;
+        }
+        .table-style td {
+            padding: 10px 12px;
+            border: 1px solid #cfd8dc;
+            text-align: center;
+        }
+        .table-style tr:nth-child(even) td { background: #f1f8e9; }
+        .table-style tr:hover td { background: #e8f5e9; }
+
+        /* 评价量规 */
+        .rubric-box {
+            background: linear-gradient(135deg, #e0f2f1, #e8f5e9);
+            border-left: 4px solid #00695C;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        .rubric-box h4 { color: #00695C; margin-bottom: 8px; }
+
+        /* 单元作品 */
+        .work-box {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border: 2px solid #F9A825;
+            padding: 20px 24px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .work-box::before {
+            content: '单元作品要求';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .work-box h4 { color: #E65100; margin-bottom: 6px; }
+
+        .highlight {
+            background: #fff59d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2E7D32;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .info-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1B5E20;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin: 2px 4px 2px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .overview-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+            text-align: center;
+        }
+        .overview-item .label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .overview-item .value {
+            font-size: 16px;
+            color: #1B5E20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 页头 -->
+    <div class="header">
+        <div class="subtitle">2025新课标项目式教学案例 · 普通高中通用技术</div>
+        <h1>系统单元 生态循环系统设计</h1>
+        <div class="meta">必修模块2：技术与工程设计2 ｜ 课时：4课时 ｜ 核心概念：系统 ｜ 项目载体：生态鱼缸的设计与制作</div>
+    </div>
+
+    <!-- 内容主体 -->
+    <div class="content">
+
+        <!-- 零、单元概述 -->
+        <div class="section-card">
+            <h2>零、单元概述</h2>
+            <p>本单元为"生态鱼缸的设计与制作"项目的第三单元，在4单元16-20课时的项目序列中承担<strong>"系统集成"</strong>的关键角色。以"<strong>系统</strong>"大概念为统领，围绕鱼缸生态循环系统设计展开，引导学生从造景已完成的真实情境出发，认知系统与子系统的构成、理解系统关联与整体性思想，并通过过滤、增氧、温控三大子系统的关联设计，体会系统设计在工程实践中的价值。</p>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="label">所属项目</div>
+                    <div class="value">生态鱼缸的设计与制作</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课标来源</div>
+                    <div class="value">附录2 案例2</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课时安排</div>
+                    <div class="value">4课时</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">核心概念</div>
+                    <div class="value">系统</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">三大子系统</div>
+                    <div class="value">过滤/增氧/温控</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">承载项目</div>
+                    <div class="value">结构+流程成果</div>
+                </div>
+            </div>
+            <div class="quote-box">核心概念链：结构（承重与稳定）→ 流程（造景工序时序）→ 系统（生态循环关联）→ 控制（温控反馈闭环）。本单元为链条第三环，系统是生态鱼缸的"血脉"，让结构之"骨骼"与流程之"经络"协同运行、自我维持。</div>
+        </div>
+
+        <!-- 一、教材分析 -->
+        <div class="section-card">
+            <h2>一、教材分析</h2>
+            <p>本单元教学内容源自《普通高中技术与工程课程标准（2017年版2025年修订）》附录2案例2，隶属必修模块2"技术与工程设计2"。系统是由相互关联的若干组成部分构成的具有特定功能的有机整体，任何工程产品都可视为系统。鱼缸生态循环系统由过滤子系统、增氧子系统、温控子系统三大功能模块构成，三者通过水流、能量、信息的传递相互关联，共同维持鱼缸生态平衡，是系统概念学习的理想载体。</p>
+            <p>本单元承接结构单元的缸体支架成果和流程单元的造景成果。FreeCAD数字模型包含过滤箱、水泵、输水管、温度传感器、LED灯条、中层隔板等部件，可清晰展示各子系统在鱼缸整体中的空间位置和连接关系。学生将在真实项目中认知系统的构成（子系统、要素、关联、边界、环境）、理解系统的整体性与相关性，并通过子系统关联设计体会"1+1>2"的系统思想。</p>
+            <p>本单元与项目其他单元存在内在贯通：结构单元的支架中层隔板为过滤箱提供安装平台；流程单元的造景时序为管路安装预留工序窗口；系统单元确定的子系统布局为<strong>控制单元</strong>温控传感器的精确布置和控制回路设计提供物理基础。系统集成承前启后，体现了"大概念贯通式项目设计"中从有序运行到智能反馈的递进逻辑。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section-card">
+            <h2>二、学情分析</h2>
+            <p>本单元授课对象为高一年级学生，学生在生活中接触过各类系统（如自来水系统、供暖系统），对"配套""整体"有朴素认识，但缺乏对系统、子系统、关联、边界等系统化概念认知，难以将日常经验提炼为工程化的系统设计语言。</p>
+            <p>学生在结构单元和流程单元中已掌握鱼缸的结构特征和造景流程，对鱼缸作为"容器"有较深认知，但对于"鱼缸如何成为自我维持的生态系统""各功能模块如何协同"等问题缺乏系统思考。部分学生具有初步的系统图绘制经验，但多数未接触过系统关联分析方法。学生对AI工具（如大语言模型）有使用热情，但尚需引导其将AI作为生态平衡预测助手而非简单问答工具使用。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section-card">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <p style="margin-bottom: 10px;">依据技术与工程课程核心素养五维框架，设定如下教学目标：</p>
+            <div class="goal-grid">
+                <div class="goal-item">
+                    <h4>技术意识</h4>
+                    <p>通过鱼缸生态循环系统实例分析，体会系统设计在工程产品中的整体性作用，形成"系统大于部分之和"的技术意识，能从系统视角审视生活中的多功能产品。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>工程思维</h4>
+                    <p>运用系统分析方法，识别鱼缸生态系统的子系统构成与关联关系，理解整体性、相关性、动态性等系统基本特性，能进行基本的子系统划分与关联分析。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>创新设计</h4>
+                    <p>能根据鱼缸生态平衡需求，提出至少两种子系统布局方案，借助AI工具进行生态平衡预测，运用"系统关联图谱"进行多维度评价，体现整体优化的设计取向。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>图样表达</h4>
+                    <p>能使用规范符号绘制系统关联图，表达子系统的构成、关联与边界，能借助FreeCAD模型展示各子系统的空间位置和连接关系。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>物化能力</h4>
+                    <p>能根据系统设计方案组装过滤、增氧、温控子系统并完成联调，通过运行测试验证系统整体的协同性，在制作过程中体现规范操作与工匠精神。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section-card">
+            <h2>四、教学重难点</h2>
+            <table class="table-style">
+                <tr>
+                    <th style="width: 15%;">类别</th>
+                    <th style="width: 45%;">内容</th>
+                    <th style="width: 40%;">突破策略</th>
+                </tr>
+                <tr>
+                    <td><strong>教学重点</strong></td>
+                    <td>系统与子系统的概念；三大子系统的功能识别；子系统关联关系分析；系统整体性设计</td>
+                    <td>情境对比+系统图绘制实践+FreeCAD模型空间关系可视化+AI生态平衡预测+系统关联图谱量化评价</td>
+                </tr>
+                <tr>
+                    <td><strong>教学难点</strong></td>
+                    <td>子系统关联的识别（过滤与增氧的水流耦合）；系统整体性的理解（局部优化未必整体最优）；生态平衡的动态预测</td>
+                    <td>FreeCAD模型分层显示+反例情境分析（单子系统失效）+教师示范+小组协作探究</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section-card">
+            <h2>五、教学策略与方法</h2>
+            <h3>5.1 总体策略</h3>
+            <p>采用<strong>"大概念贯通式项目学习法"</strong>，以"为已完成造景的鱼缸设计生态循环系统"为驱动任务，将系统概念学习嵌入真实工程实践。遵循"认知—分析—设计—集成—测试—反思"的工程思维路径，4课时形成完整的学习闭环。教学过程中融合AI智能工具辅助生态平衡预测和FreeCAD工程模型空间关系可视化，实现"手脑机"协同的技术学习新形态。</p>
+            <h3>5.2 教学方法</h3>
+            <ul>
+                <li><strong>情境对比法</strong>：以有循环系统与无循环系统的鱼缸对比导入，激发系统设计的必要性认识</li>
+                <li><strong>图样表达法</strong>：通过系统关联图的规范绘制，建立系统的工程化表达语言</li>
+                <li><strong>AI辅助预测法</strong>：运用AI作为生态平衡预测助手，辅助多方案生态效果预测与决策</li>
+                <li><strong>建模可视化法</strong>：运用FreeCAD模型的分层显示，将子系统空间关系和连接可视化</li>
+                <li><strong>集成测试法</strong>：组装子系统并联调，通过运行测试验证系统整体协同性</li>
+            </ul>
+
+            <h3>5.3 原创教学工具</h3>
+            <div class="tool-box">
+                <h4>系统关联图谱</h4>
+                <p>本工具为本单元原创设计，用于引导学生从<strong>功能完整性、关联紧密度、协同效率、可靠性、可维护性</strong>五个维度对系统方案进行量化评估。每个维度采用1-5分制评分，并设置权重系数，最终计算加权综合得分，辅助学生进行系统方案优选决策。</p>
+                <table class="table-style" style="margin-top: 12px;">
+                    <tr>
+                        <th>评估维度</th>
+                        <th>权重</th>
+                        <th>评分标准（5分制）</th>
+                        <th>考察要点</th>
+                    </tr>
+                    <tr>
+                        <td>功能完整性</td>
+                        <td>0.30</td>
+                        <td>1分（功能缺失）—5分（功能完备）</td>
+                        <td>过滤/增氧/温控三大功能覆盖度</td>
+                    </tr>
+                    <tr>
+                        <td>关联紧密度</td>
+                        <td>0.25</td>
+                        <td>1分（松散孤立）—5分（紧密耦合）</td>
+                        <td>子系统间水流/能量/信息传递效率</td>
+                    </tr>
+                    <tr>
+                        <td>协同效率</td>
+                        <td>0.20</td>
+                        <td>1分（相互干扰）—5分（协同增效）</td>
+                        <td>整体能效、冗余度、1+1>2效应</td>
+                    </tr>
+                    <tr>
+                        <td>可靠性</td>
+                        <td>0.15</td>
+                        <td>1分（易失效）—5分（高可靠）</td>
+                        <td>单点故障影响、容错能力、备份</td>
+                    </tr>
+                    <tr>
+                        <td>可维护性</td>
+                        <td>0.10</td>
+                        <td>1分（难维护）—5分（易维护）</td>
+                        <td>部件可达性、清洗/更换便捷度</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px; font-size: 14px;">综合得分 = Σ（维度得分 × 权重），满分5.0分。建议3.5分以上方案方可采用实施。</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section-card">
+            <h2>六、教学过程（4课时）</h2>
+            <p>本单元教学过程共4课时，以时间轴形式呈现完整教学流程。</p>
+
+            <div class="timeline">
+                <!-- 课时1 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第1-15分钟</span>
+                    <h4>环节一：情境导入——鱼缸生态的"崩溃之困"</h4>
+                    <p><strong>教师活动：</strong>展示两个鱼缸运行一周后的对比：鱼缸A仅有造景无循环系统，水体浑浊发黄、水草萎蔫、鱼儿浮头喘息；鱼缸B装配了过滤、增氧、温控系统，水体清澈、水草舒展、鱼儿活跃。讲述情境故事："两位同学的鱼缸造景都很美，为什么一周后命运截然不同？"</p>
+                    <p><strong>学生活动：</strong>观察两个鱼缸的运行差异，小组讨论："除了造景，鱼缸还需要什么才能长期维持生态？这些功能之间有什么关系？"</p>
+                    <p><strong>设计意图：</strong>以正反对比情境激发学生对系统协同的觉察，引出"系统""子系统""关联"的探究需求。</p>
+                </div>
+
+                <!-- 课时1 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第16-40分钟</span>
+                    <h4>环节二：概念建构——系统、子系统与关联</h4>
+                    <p><strong>教师活动：</strong>结合实物与图片，讲解系统的核心概念：</p>
+                    <ul>
+                        <li><strong>系统：</strong>由相互关联的若干组成部分（要素）构成的具有特定功能的有机整体</li>
+                        <li><strong>子系统：</strong>系统中承担特定功能、相对独立的部分，如鱼缸生态系统的过滤子系统、增氧子系统、温控子系统</li>
+                        <li><strong>关联：</strong>子系统之间通过物质、能量、信息的传递形成的相互影响关系</li>
+                        <li><strong>系统基本特性：</strong>整体性（1+1>2）、相关性（子系统相互影响）、动态性（系统状态随时间变化）</li>
+                    </ul>
+                    <p><strong>系统图符号讲授：</strong>教师讲解系统关联图的基本符号——矩形（子系统/要素）、箭头（关联流向，标注物质/能量/信息）、虚线框（系统边界）。</p>
+                    <p><strong>探究活动：</strong>学生分组分析常见生活系统（自来水系统、供暖系统、自行车），用系统图符号绘制简单系统关联图，标注子系统和关联。</p>
+                    <p><strong>学生活动：</strong>归纳"子系统协同产生整体功能"这一核心规律：例如过滤子系统净化水质、增氧子系统补充溶解氧，二者通过水流关联共同维持鱼类生存。</p>
+                </div>
+
+                <!-- 课时1 环节二续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第41-45分钟</span>
+                    <h4>环节二续：鱼缸生态系统初识与FreeCAD模型导入</h4>
+                    <p>教师引导学生初步识别鱼缸生态循环系统的三大子系统及其功能边界。</p>
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型导入：</strong>教师展示已建好的生态鱼缸三维模型（EcoFishTank），引导学生观察模型中过滤箱、水泵、输水管、温度传感器、LED灯条等部件的空间分布，建立"系统由空间分布的各子系统构成"的直观认知。</p>
+                        <p>模型参数：过滤箱位于中层隔板，水泵驱动水流循环，输水管连接缸体与过滤箱，温度传感器贴附缸壁，LED灯条位于支架顶部。各部件的空间位置正是子系统功能的物理映射。</p>
+                    </div>
+                    <p>布置课后任务：观察家中一项多功能电器，绘制其系统关联图。</p>
+                </div>
+
+                <!-- 课时2 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第1-20分钟</span>
+                    <h4>环节三：设计实践（一）——三大子系统识别与AI生态平衡预测</h4>
+                    <p><strong>任务驱动：</strong>"为已完成造景的400×250×300mm生态鱼缸设计生态循环系统，需维持长期生态平衡。"</p>
+                    <p><strong>教师活动：</strong>引导学生识别三大子系统及其功能要素：</p>
+                    <ul>
+                        <li><strong>过滤子系统：</strong>物理过滤（过滤棉拦截残饵粪便）→ 生化过滤（陶瓷环培养硝化菌分解氨氮）→ 水流回流</li>
+                        <li><strong>增氧子系统：</strong>水泵跌水增氧 / 气泵气石增氧 → 溶解氧补充 → 满足鱼类与硝化菌呼吸</li>
+                        <li><strong>温控子系统：</strong>温度传感器监测 → 加热棒升温 / 风扇降温 → 维持适宜水温（24-28℃）</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>教师示范如何使用AI助手进行生态平衡预测。</p>
+                        <p><strong>提示词示范：</strong>"请帮我预测生态鱼缸的生态平衡状态。鱼缸尺寸400×250×300mm，水量约30升，计划养殖5条小型热带鱼，种植3株水草。配置过滤子系统（过滤棉+陶瓷环）、增氧子系统（水泵跌水）、温控子系统（加热棒+传感器）。请预测：① 氨氮循环能否建立平衡？② 溶解氧是否充足？③ 水温波动范围？④ 三个子系统的关联关系如何？⑤ 给出两种不同的系统配置方案（经济型 vs 高配型）并对比其生态稳定性。"</p>
+                        <p><strong>学生活动：</strong>各小组向AI输入不同的系统预测需求，获取AI生成的生态平衡分析表和方案对比，并对AI输出结果进行<strong>批判性审查</strong>——核查预测是否合理、关联判断是否成立。</p>
+                        <p><strong>教师引导：</strong>提醒学生AI可能误判某些关联的紧密度，例如过滤与增氧通过水流强耦合（水泵同时驱动过滤和跌水增氧），而温控相对独立。引导学生关注系统整体性——单子系统最优未必整体最优。</p>
+                    </div>
+
+                    <p><strong>成果产出：</strong>各小组完成《生态循环系统初步设计书》，包含子系统识别表、AI预测分析表和小组验证结论。</p>
+                </div>
+
+                <!-- 课时2 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第21-45分钟</span>
+                    <h4>环节三：设计实践（二）——系统关联图绘制与系统关联图谱应用</h4>
+                    <p><strong>教师活动：</strong>讲解系统关联图绘制规范，示范如何用规范符号表达三大子系统的构成、关联和边界，并标注关联类型（水流/能量/信息）。</p>
+                    <p><strong>学生活动：</strong>各小组根据AI预测结果，绘制两种系统方案（经济型、高配型）的系统关联图，标注子系统、关联流向和系统边界。</p>
+
+                    <div class="tool-box">
+                        <h4>系统关联图谱——应用实践</h4>
+                        <p>各小组运用"系统关联图谱"对经济型方案和高配型方案进行评分：</p>
+                        <ul>
+                            <li>功能完整性（0.30）：评估三大功能覆盖度（如经济型是否省略温控）</li>
+                            <li>关联紧密度（0.25）：评估子系统耦合度（如水泵是否同时驱动过滤与增氧）</li>
+                            <li>协同效率（0.20）：评估整体能效（如过滤回流水流是否兼作增氧跌水）</li>
+                            <li>可靠性（0.15）：评估单点故障影响（如水泵故障是否导致过滤增氧同时失效）</li>
+                            <li>可维护性（0.10）：评估部件可达性（如过滤棉是否便于清洗更换）</li>
+                        </ul>
+                        <p>计算加权综合得分，选择最优方案。要求3.5分以上方案方可进入实施环节。</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第1-25分钟</span>
+                    <h4>环节三：设计实践（三）——FreeCAD模型子系统空间关系可视化</h4>
+                    <p><strong>任务驱动：</strong>"将抽象的子系统关联转化为可视化的空间布局，验证系统方案的可行性。"</p>
+                    <p><strong>教师活动：</strong>讲解系统关联与空间布局的对应关系——子系统的关联本质上是部件在鱼缸整体中的空间连接关系。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型子系统空间分析任务：</strong>教师展示已建好的鱼缸模型，引导学生通过模型的分层显示与装配树，理解各子系统的空间位置和连接关系。</p>
+                        <p><strong>分析要点：</strong></p>
+                        <ol>
+                            <li>在FreeCAD装配树中识别子系统部件：过滤箱、水泵、输水管（过滤子系统）；水泵/气石（增氧子系统）；温度传感器、加热棒（温控子系统）</li>
+                            <li>单独显示过滤子系统：观察过滤箱位于中层隔板的位置，分析其利用支架中层空间的合理性</li>
+                            <li>叠加显示水泵与输水管，观察水流路径：缸体→输水管→过滤箱→水泵→回流缸体，形成闭环</li>
+                            <li>分析增氧与过滤的耦合：水泵回流水流跌入缸体水面形成跌水增氧，一泵两用体现系统协同</li>
+                            <li>叠加显示温度传感器，观察其贴附缸壁的位置，分析其监测水温的代表性</li>
+                            <li>使用剖面工具截取缸体与中层隔板的纵向截面，直观呈现"缸体—输水管—过滤箱—水泵"的空间连接关系</li>
+                        </ol>
+                        <p><strong>学生活动：</strong>各小组在FreeCAD中操作模型，按子系统逐层显示部件，绘制子系统空间布局图，将系统关联图与空间布局图对照。讨论：FreeCAD模型的空间连接如何印证子系统关联？</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 优化 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第26-45分钟</span>
+                    <h4>环节三：设计实践（四）——系统关联优化与方案定稿</h4>
+                    <p><strong>教师活动：</strong>讲解系统优化的核心思想——在保证功能完整的前提下，通过子系统耦合、共享资源、减少冗余来提升协同效率，同时通过冗余备份来降低单点故障风险。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD辅助优化任务：</strong>基于模型空间关系，分析系统优化机会。</p>
+                        <p><strong>优化分析：</strong></p>
+                        <ol>
+                            <li>识别耦合机会：水泵同时驱动过滤水流和跌水增氧，一泵两用提升协同效率</li>
+                            <li>识别独立模块：温控子系统（加热棒+传感器）相对独立，可单独调试不影响过滤增氧</li>
+                            <li>识别冗余风险：水泵是单点故障源，一旦失效过滤增氧同时瘫痪——讨论是否需要气泵备份增氧</li>
+                            <li>识别空间约束：过滤箱体积受中层隔板尺寸限制，影响生化过滤容量</li>
+                            <li>在FreeCAD中模拟"移除过滤箱"或"移除水泵"的反例，观察系统整体功能如何退化（教师演示反例）</li>
+                        </ol>
+                    </div>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>各小组将优化后的系统方案提交AI进行二次预测。</p>
+                        <p><strong>提示词示范：</strong>"请帮我评估以下优化后的鱼缸生态循环系统方案：过滤子系统（过滤棉+陶瓷环，过滤箱置于中层隔板）+ 增氧子系统（水泵跌水增氧，与过滤耦合）+ 温控子系统（加热棒+温度传感器，独立模块）。请评估该方案的生态平衡稳定性、子系统关联紧密度、单点故障风险，并给出进一步优化建议。"</p>
+                        <p><strong>学生活动：</strong>各小组对比AI建议与自身设计，进行方案定稿，更新系统关联图谱评分。</p>
+                    </div>
+
+                    <p><strong>设计意图：</strong>通过FreeCAD模型的空间关系可视化和AI的生态平衡预测双重辅助，让学生体验工程师"建模—分析—优化—定稿"的完整系统设计工作流。</p>
+                </div>
+
+                <!-- 课时4 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第1-20分钟</span>
+                    <h4>环节四：集成测试（一）——子系统组装与联调</h4>
+                    <p><strong>教师活动：</strong>讲解子系统组装规范与安全注意事项：</p>
+                    <ul>
+                        <li>过滤子系统：过滤棉铺设→陶瓷环填充→过滤箱就位中层隔板→输水管连接缸体与过滤箱</li>
+                        <li>增氧子系统：水泵安装于过滤箱出水口→调整出水角度形成跌水→检查气石（如有）</li>
+                        <li>温控子系统：加热棒吸附缸体后壁→温度传感器贴附缸体侧壁→连接控制器</li>
+                        <li>系统联调：注水至运行水位→启动水泵→检查水流循环→启动加热棒→监测温度</li>
+                    </ul>
+                    <p><strong>安全提示：</strong>电器设备（水泵、加热棒）通电前确认水中无裸露接头；加热棒必须完全浸水后通电；走线整齐避免水溅。</p>
+                    <p><strong>学生活动：</strong>各小组按优化后的系统方案组装三大子系统并联调，记录每个子系统的安装位置、连接方式和联调现象。教师巡回指导，重点检查子系统连接密封性和电气安全。</p>
+                    <div class="quote-box">组装过程融入规范操作教育：管路连接密封无渗漏、电气走线整齐防水、子系统联调循序启动，细节决定系统稳定。</div>
+                </div>
+
+                <!-- 课时4 环节四续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第21-40分钟</span>
+                    <h4>环节四：集成测试（二）——系统协同验证与整体评估</h4>
+                    <p><strong>评估方案：</strong>系统联调后运行观察30分钟，评估系统协同效果。</p>
+                    <p><strong>观察记录要点：</strong></p>
+                    <ul>
+                        <li>过滤效果：水流是否顺畅循环？过滤箱有无渗漏？水体浑浊度是否下降？</li>
+                        <li>增氧效果：跌水是否形成？水面有无气泡？溶解氧是否提升（可用试纸粗测）？</li>
+                        <li>温控效果：加热棒是否启停？温度是否稳定在设定区间？传感器读数是否准确？</li>
+                        <li>系统协同：三个子系统是否相互干扰？整体运行是否平稳？有无异常噪声？</li>
+                        <li>单点影响：暂停水泵，观察过滤增氧同时失效的后果（教师演示反例）</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>各小组执行系统协同评估，填写《生态系统运行记录表》，记录运行数据与整体评估。对出现问题的子系统进行关联诊断和改进建议。</p>
+                </div>
+
+                <!-- 课时4 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第41-45分钟</span>
+                    <h4>环节五：总结反思——系统设计复盘与项目衔接</h4>
+                    <p><strong>教师活动：</strong>组织全班进行系统设计成果展示与互评。引导总结：</p>
+                    <ul>
+                        <li>子系统关联设计如何影响系统整体性能？</li>
+                        <li>系统整体性思想在设计决策中发挥了什么作用？</li>
+                        <li>AI生态预测和FreeCAD模型空间可视化分别带来了哪些帮助？</li>
+                    </ul>
+                    <p><strong>项目衔接预告：</strong>"生态系统已经运转起来，水质清澈、溶氧充足、温度稳定。但一个新的问题出现了——温度会因昼夜波动、季节变化而偏离设定值，如何让鱼缸自动维持恒温？如何实现远程监控和自动喂食？这就是我们下一单元要学习的'控制设计'。"——自然过渡到控制单元。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 七、评价方式 -->
+        <div class="section-card">
+            <h2>七、评价方式</h2>
+            <p>本单元采用<strong>多元过程性评价</strong>，融合教师评价、同伴互评和自我反思三个维度，贯穿教学全过程。</p>
+            <table class="table-style">
+                <tr>
+                    <th>评价环节</th>
+                    <th>评价内容</th>
+                    <th>评价方式</th>
+                    <th>权重</th>
+                </tr>
+                <tr>
+                    <td>课堂参与</td>
+                    <td>系统图绘制练习投入度、讨论发言质量、概念理解程度</td>
+                    <td>教师观察记录</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>AI批判审查</td>
+                    <td>AI生态预测输出的核实质量、批判性思维表现</td>
+                    <td>教师评价+小组互评</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>系统关联图谱报告</td>
+                    <td>评估维度完整性、评分依据充分性、决策合理性</td>
+                    <td>教师评价（量规）</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>FreeCAD模型分析</td>
+                    <td>子系统空间布局图准确性、连接关系理解、系统图规范性</td>
+                    <td>教师评价+作品展示</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>集成与测试</td>
+                    <td>系统组装规范性、联调记录完整性、协同评估能力</td>
+                    <td>教师评价+同伴互评</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>单元反思</td>
+                    <td>学习收获总结、工程思维迁移意识</td>
+                    <td>自我反思</td>
+                    <td>10%</td>
+                </tr>
+            </table>
+            <div class="rubric-box">
+                <h4>核心评价指标——生态循环系统设计报告量规</h4>
+                <table class="table-style">
+                    <tr>
+                        <th>等级</th>
+                        <th>子系统识别</th>
+                        <th>关联分析</th>
+                        <th>整体优化</th>
+                    </tr>
+                    <tr>
+                        <td>优秀（A）</td>
+                        <td>完整识别三大子系统及要素，功能边界清晰</td>
+                        <td>关联流向准确，耦合关系识别到位</td>
+                        <td>整体优化依据充分，协同效率提升</td>
+                    </tr>
+                    <tr>
+                        <td>良好（B）</td>
+                        <td>基本识别主要子系统，个别要素遗漏</td>
+                        <td>关联基本准确，个别耦合遗漏</td>
+                        <td>优化方向正确，依据较充分</td>
+                    </tr>
+                    <tr>
+                        <td>合格（C）</td>
+                        <td>子系统识别不完整，需引导</td>
+                        <td>关联分析不清晰，需指导</td>
+                        <td>优化意识不足，需指导</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 八、板书设计 -->
+        <div class="section-card">
+            <h2>八、板书设计</h2>
+            <div class="blackboard">
+                <div class="bk-title">系统单元 生态循环系统设计</div>
+                <div class="bk-section">
+                    一、系统概念<br>
+                    　　系统 = 子系统 + 关联 + 边界<br>
+                    　　子系统：过滤 / 增氧 / 温控<br>
+                    　　特性：整体性 / 相关性 / 动态性
+                </div>
+                <div class="bk-section">
+                    二、生态系统设计<br>
+                    　　过滤（物理+生化）↕ 增氧（跌水）↕ 温控（加热+传感）<br>
+                    　　AI生态预测 → 系统关联图谱 → 方案定稿
+                </div>
+                <div class="bk-section">
+                    三、FreeCAD空间可视化<br>
+                    　　过滤箱→中层隔板 / 水泵→耦合 / 传感器→缸壁<br>
+                    　　空间连接 = 系统关联<br>
+                    　　剖面图验证耦合关系
+                </div>
+                <div class="bk-section">
+                    四、集成测试<br>
+                    　　子系统组装 → 联调运行30min<br>
+                    　　验证：过滤效果 + 增氧效果 + 温控效果 + 协同性
+                </div>
+                <div class="bk-section">
+                    【贯通】结构 → 流程 → 系统 → 控制<br>
+                    【工具】系统关联图谱
+                </div>
+            </div>
+        </div>
+
+        <!-- 九、单元作品 -->
+        <div class="section-card">
+            <h2>九、单元作品要求</h2>
+            <div class="work-box">
+                <h4>作品一：鱼缸生态循环系统设计报告（小组）</h4>
+                <p>各小组提交完整的系统设计报告，须包含以下内容：</p>
+                <ul>
+                    <li><strong>系统方案设计：</strong>生态循环系统初步设计书（含子系统识别表、AI预测分析表、批判审查记录）</li>
+                    <li><strong>系统关联图绘制：</strong>经济型方案和高配型方案的规范系统关联图（含子系统、关联流向、边界）</li>
+                    <li><strong>FreeCAD模型分析：</strong>子系统空间布局图、连接关系剖面截图、空间耦合分析说明</li>
+                    <li><strong>系统关联图谱评分：</strong>两方案五维评分表、加权综合得分、定稿方案及优化依据</li>
+                    <li><strong>集成与测试记录：</strong>组装记录表、联调运行记录表、协同评估表、问题诊断与改进建议</li>
+                </ul>
+            </div>
+            <div class="work-box">
+                <h4>作品二：鱼缸生态循环系统实物成果（小组）</h4>
+                <p>各小组完成三大子系统组装与联调的实物作品，需满足：</p>
+                <ul>
+                    <li>过滤子系统运行顺畅，水体循环无渗漏，浑浊度明显下降</li>
+                    <li>增氧子系统形成跌水，溶解氧达到鱼类生存标准</li>
+                    <li>温控子系统启停正常，温度稳定在设定区间（24-28℃）</li>
+                    <li>三个子系统协同运行无相互干扰，整体平稳</li>
+                    <li>电气走线整齐防水，体现规范操作与工匠精神</li>
+                </ul>
+            </div>
+            <div class="quote-box">
+                <strong>作品交付节点：</strong>课时4结束时提交设计报告和实物作品，作为本单元终结性评价依据，同时实物作品将作为后续控制单元的项目载体持续使用。
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        2025新课标项目式教学案例 · 生态鱼缸的设计与制作 · 系统单元<br>
+        普通高中技术与工程课程标准（2017年版2025年修订）附录2案例2
+    </div>
+</div>
+</body>
+</html>

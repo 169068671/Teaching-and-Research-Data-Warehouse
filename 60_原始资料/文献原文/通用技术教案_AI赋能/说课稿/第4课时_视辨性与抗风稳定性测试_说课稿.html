@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4课时 视辨性与抗风稳定性测试 说课稿</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #ffffff;
+    color: #333333;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    line-height: 1.95;
+    padding: 28px 18px 60px;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .title {
+    color: #B71C1C;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    margin: 8px 0 4px;
+    line-height: 1.4;
+  }
+  .subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 0.88em;
+    margin-bottom: 18px;
+  }
+  .mnemonic {
+    text-align: center;
+    color: #B71C1C;
+    background: #FFF5F5;
+    border: 1px solid #FFCDD2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 0 0 26px;
+    font-size: 1.02em;
+    letter-spacing: 1px;
+  }
+  .mnemonic strong { color: #B71C1C; font-weight: 700; }
+  .mnemonic .label { color: #888; font-size: 0.9em; }
+  h2.s {
+    color: #B71C1C;
+    font-size: 1.08em;
+    border-left: 4px solid #B71C1C;
+    padding-left: 10px;
+    margin: 26px 0 10px;
+    font-weight: 700;
+  }
+  p {
+    text-indent: 2em;
+    margin: 0 0 15px;
+    text-align: justify;
+    font-size: 1em;
+  }
+  .intro { text-indent: 2em; margin-bottom: 18px; }
+  .closing {
+    text-align: right;
+    color: #666;
+    margin-top: 26px;
+    font-size: 0.95em;
+    text-indent: 0;
+  }
+  .footer {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.78em;
+    margin-top: 30px;
+    border-top: 1px dashed #E0E0E0;
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="title">第4课时 视辨性与抗风稳定性测试</div>
+  <div class="subtitle">机动车三角警告牌系列技术试验 · 说课稿</div>
+  <div class="mnemonic"><span class="label">记忆口诀：</span><strong>风洞测辨，有限元析</strong></div>
+
+  <p class="intro">各位评委好，今天我说课的题目是《视辨性与抗风稳定性测试》，这是三角警告牌项目的第4课时，也是整个项目的高潮。</p>
+
+  <h2 class="s">一说教材</h2>
+  <p>本课双线并行：一手做简易风洞测可见距离，一手用FreeCAD做有限元抗风分析。它把物理实验与数字仿真结合，是工程思维的集中体现，也呼应了课标对"用计算机辅助工程"的要求。</p>
+
+  <h2 class="s">二说学情</h2>
+  <p>学生已具备测量能力，但缺乏"用计算机辅助工程"的经验，对有限元分析既好奇又畏惧，需要我搭好脚手架。</p>
+
+  <h2 class="s">三说目标</h2>
+  <p>我定三个目标：一是能用简易风洞测出三角警告牌在不同风速下的可见距离；二是借助FreeCAD模型理解FEM抗风分析；三是对比实验与仿真，体会两种方法的互补。</p>
+
+  <h2 class="s">四说重难点</h2>
+  <p>重点是双测试的操作，难点是理解FEM得出的安全系数4.23到67.71这一区间背后的工程含义。</p>
+
+  <h2 class="s">五说教法</h2>
+  <p>我采用实验加数字化的混合教法，原创工具"风洞视辨台"——一个集风洞、测距、数据录入于一体的实验台，配套FreeCAD的WarningTriangle十部件模型。</p>
+
+  <h2 class="s">六说过程</h2>
+  <p>这是本课核心，分六步走。第一步，启动简易风洞，模拟20至80公里每小时风速；第二步，让学生在风洞前观察并记录可见距离；第三步，打开FreeCAD，展示三角警告牌的十部件模型；第四步，运行FEM抗风分析，查看不同风速下的应力与变形；第五步，把实测可见距离与仿真安全系数并列对比；第六步，讨论"为什么仿真说安全，实测却看不清"。这一对比，正是工程思维的核心。</p>
+
+  <h2 class="s">七说板书</h2>
+  <p>板书以一张"双测试对照表"收尾，左列实验、右列仿真，学生一眼看出两种方法的差异。</p>
+
+  <p class="closing">以上就是我的说课，恳请评委指正。</p>
+
+  <div class="footer">项目式教学 · 5课时螺旋上升 · 第4/5课时</div>
+</div>
+</body>
+</html>

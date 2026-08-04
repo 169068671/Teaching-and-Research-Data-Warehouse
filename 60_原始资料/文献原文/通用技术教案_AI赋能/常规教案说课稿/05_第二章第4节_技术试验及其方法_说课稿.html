@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>说课稿 · 技术试验及其方法</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #fff;
+    color: #333;
+    line-height: 2;
+    padding: 24px 18px;
+}
+.container { max-width: 720px; margin: 0 auto; }
+.header { text-align: center; border-bottom: 3px solid #1a56c4; padding-bottom: 16px; margin-bottom: 22px; }
+.header h1 { color: #1a56c4; font-size: 22px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #eaf2ff; color: #1a56c4; border: 1px solid #1a56c4; border-radius: 20px; padding: 6px 18px; font-size: 15px; font-weight: bold; }
+.opening { background: #fafcff; border-left: 4px solid #1a56c4; padding: 14px 16px; margin-bottom: 20px; font-size: 15px; }
+.section { margin-bottom: 16px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 4px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 8px; text-align: justify; }
+.closing { text-align: center; color: #1a56c4; font-weight: bold; margin-top: 22px; font-size: 15px; }
+.footer { text-align: center; color: #999; font-size: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid #eee; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>说课稿 · 技术试验及其方法</h1>
+    <div class="mnemonic">记忆口诀：虚实双轨，方法五式</div>
+</div>
+
+<div class="opening">
+各位评委好，今天我说课的题目是《技术试验及其方法》。这是苏教版必修一第二章第四节，聚焦保障设计质量的关键环节，课时1节。
+</div>
+
+<div class="section">
+    <h2>一、说教材</h2>
+    <p>本节阐明技术试验是技术活动中为某种目的进行的尝试、检验、优化的探索性活动。按方法分优选试验法、模拟试验法、虚拟试验法、强化试验法、移植试验法。强调需严谨设计、规范记录、客观分析并撰写报告，是工程思维落地的核心场域。</p>
+</div>
+
+<div class="section">
+    <h2>二、说学情</h2>
+    <p>学生在物理课有实验经验，但易把"科学实验"和"技术试验"混淆——前者重在发现规律，后者重在检验优化产品。对虚拟试验、强化试验较陌生，缺规范撰写试验报告的训练。</p>
+</div>
+
+<div class="section">
+    <h2>三、说目标</h2>
+    <p>重在工程思维和物化能力。让学生区分技术试验与科学实验，能根据目的选合适方法设计规范方案，动手搭建简易实物试验装置完成测试与数据采集。</p>
+</div>
+
+<div class="section">
+    <h2>四、说重难点</h2>
+    <p>重点是试验目的分类和五种方法适用情境，报告规范撰写。难点是根据目的合理选方法并设计规范方案，理解虚拟试验法及其与实物试验的互补关系。</p>
+</div>
+
+<div class="section">
+    <h2>五、说教法</h2>
+    <p>用虚实对照策略，校园桥梁承重任务驱动，融入FreeCAD有限元模拟，组织报告互评。核心工具是原创的"虚实对照试验台"——双轨记录，左轨记实物承重测试的载荷变形破坏点，右轨记FreeCAD有限元分析的应力云图最大应力位置位移值，让学生在两轨间对照发现差异与互补。</p>
+</div>
+
+<div class="section">
+    <h2>六、说过程</h2>
+    <p>五个环节。环节一导入，放校园科技节纸桥承重比赛视频，纸桥加载中突然坍塌，问"如果事先能预演这次加载，结果会不同吗"，引出技术试验的必要。</p>
+    <p>环节二概念建构，讲定义分类和五种方法——优选如农业育种、模拟如风洞、虚拟如有限元分析、强化如轮胎耐久、移植如医学影像转工业检测，学生把方法与校园案例匹配。</p>
+    <p>环节三深度探究是核心，组织桥梁承重微项目。各组先用FreeCAD的FEM工作台对纸桥模型做虚拟试验，看应力云图识别最大应力集中区，预判变形趋势；再用实物加载测试验证，结果填入虚实对照试验台。学生采集两套数据后输入AI做数据分析辅助，让AI协助识别应力集中区与实物破坏点的吻合度、提示被忽略的影响因素，学生据此完善分析，但结论与归因由学生自行裁定。</p>
+    <p>环节四迁移应用，为校园物品选试验方法。环节五总结：试验让设计经得起检验。</p>
+</div>
+
+<div class="section">
+    <h2>七、说板书</h2>
+    <p>板书分三块：是什么（区别科学实验）、方法五式、报告五要素，附虚实对照试验台和FreeCAD应力云图分析。</p>
+</div>
+
+<div class="closing">以上就是我的说课，恳请评委指正。</div>
+<div class="footer">苏教版高中通用技术必修一 · 说课稿</div>
+</div>
+</body>
+</html>

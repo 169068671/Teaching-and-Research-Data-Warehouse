@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二单元第1节 流程的探析 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第二单元第1节 流程的探析</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第二单元第1节「流程的探析」是流程设计单元的起始课。本节教材从「什么是流程」「流程的构成」「流程的表达」三个层面展开，引导学生认识流程是事物进行的过程及环节的有序组合。教材通过生活实例（如泡茶、做菜、乘车）让学生体会流程无处不在，进而区分环节与时序两个关键概念，理解流程的科学表达方式——流程图。本节是后续「流程的设计」和「流程的优化」的基础，对学生建立流程思维、提升做事条理性具有重要意义。教材注重从生活经验出发，通过对比分析让学生领悟合理流程的价值，培养技术意识与图样表达能力。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>高一学生在日常生活中经常接触各种流程，如食堂打饭、做实验、参加考试等，对「先做什么后做什么」有朴素的认识。但学生对流程的「环节」和「时序」概念缺乏准确界定，难以区分串行与并行的时序关系，对流程图的标准画法也不够规范。学生更习惯于按部就班执行流程，而较少主动分析流程的合理性与优化空间。本节需要通过亲身体验与对比，唤醒学生的流程意识。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">通过校园生活中的流程案例，体会流程对效率与质量的影响，形成规范流程的技术意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">学会从环节与时序两个维度分析流程，初步建立流程的系统化思维方法。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够发现现有流程中的不合理之处，尝试提出改进的初步设想。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">掌握流程图的基本符号和绘制规范，能够用流程图清晰表达简单流程。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过体验真实流程并记录分析，提升流程观察与表达的实践能力。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>流程的概念及环节、时序两个关键要素</li>
+        <li>串行时序与并行时序的区别与判断</li>
+        <li>流程图的标准符号与绘制方法</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>环节与时序概念的准确区分及在复杂流程中的应用</li>
+        <li>并行时序的识别与流程图的规范绘制</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>体验先行：让学生<strong>亲身体验</strong>同一任务的两种不同流程，在对比中建立概念。</li>
+        <li>案例辨析：精选校园生活流程案例，引导学生辨析环节与时序的构成。</li>
+        <li>图样训练：分步指导流程图绘制，从简单到复杂逐步提升图样表达能力。</li>
+        <li>小组合作：分组分析不同流程并绘制流程图，在交流中完善理解。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：体验对比法</div>
+        <p>「体验对比法」是一种通过让学生亲身经历同一任务的两种不同流程（合理与不合理）来建立流程概念的原创教学工具。该方法设计两组对照任务：A组按规范流程操作，B组按打乱时序的流程操作，学生通过时间对比、质量对比、感受对比三个维度记录差异，从而深刻理解环节与时序对流程效率和质量的影响。工具配有「体验记录单」，引导学生从结果倒推流程的合理性。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>两种打饭方式——流程影响效率的直观体验</h4>
+            <p>教师邀请两组学生分别模拟食堂打饭的两种方式：A组按「排队—选菜—刷卡—端盘」的规范流程，B组按打乱时序的方式（先端盘再排队最后选菜再刷卡）。全班计时观察，体验后请两组学生分享感受。教师提问：「为什么同样的步骤，顺序不同结果差这么多？」由此引出流程的概念，让学生在亲身体验中感受流程对效率和质量的影响。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：流程对比数据生成</div>
+                <p>教师利用AI快速生成模拟食堂不同流程方案下的排队等待时间数据表，包括人均等待时间、最大排队长度、完成总时间等指标。AI辅助生成可视化数据对比图，让学生用数据直观看到流程差异对效率的影响，将感性体验与理性数据结合，为后续概念建构提供数据支撑。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（10分钟）</span>
+            <h4>环节与时序——流程的两个骨架</h4>
+            <p>教师从打饭体验中提炼概念：流程由若干「环节」按一定「时序」组成。环节是流程中相对独立的步骤或阶段，时序是环节之间的先后顺序。教师进一步区分串行时序（环节依次进行）与并行时序（环节同时进行），以「洗衣+晾晒」（串行）和「烧水+切菜」（并行）为例进行辨析。学生练习从校园生活流程中识别环节与时序类型。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>体验对比法——从感受到分析的桥梁</h4>
+            <p>教师介绍「体验对比法」这一原创教学工具，讲解其核心：通过A/B两组对照体验，从时间、质量、感受三维度记录差异，再倒推流程合理性。教师以「整理书包」为任务示范：A组按「倒出全部—分类—放入」，B组按「边拿边放」。学生填写体验记录单，记录每组完成时间、整理质量评分和操作感受，然后讨论哪种流程更合理、环节与时序如何影响结果。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 图样训练（12分钟）</span>
+            <h4>画一张流程图——用标准符号表达流程</h4>
+            <p>教师讲解流程图的基本符号：圆角矩形表示开始/结束，矩形表示环节，菱形表示判断，箭头表示时序。学生选择一个校园生活流程（如做值日、参加升旗仪式、提交作业）绘制流程图，要求标注串行与并行时序。教师巡视指导，关注符号使用规范和时序标注准确性。完成后小组互评，指出流程图中的问题并修正。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：流程图规范性检查</div>
+                <p>学生将手绘流程图拍照后请AI辅助检查规范性，AI从符号使用是否正确、时序箭头是否完整、开始结束节点是否齐全等维度给出反馈建议。AI作为图样表达的辅助检验工具，帮助学生发现自己绘图中容易被忽略的规范问题，但最终修改由学生根据反馈自主完成，确保学生掌握流程图绘制技能。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>流程意识——让做事更有条理</h4>
+            <p>教师总结本节核心概念：流程由环节按时序组成，串行与并行各有适用场景，流程图是表达流程的标准工具。教师引导学生反思：「生活中你做的哪些事可以梳理成更合理的流程？」布置课后任务：用体验对比法分析并绘制自己早晨起床到出门的流程图。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+流程的探析
+
+一、流程 = 环节 + 时序
+  环节：相对独立的步骤
+  时序：环节的先后顺序
+
+二、时序类型
+  串行：依次进行
+  并行：同时进行
+
+三、流程图符号
+  圆角矩形 → 开始/结束
+  矩形 → 环节
+  菱形 → 判断
+  箭头 → 时序
+
+四、体验对比法
+  A组 vs B组 → 时间/质量/感受 → 倒推合理性
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

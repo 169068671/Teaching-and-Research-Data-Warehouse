@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六章第3节 工艺的类别与选择 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第六章第3节 工艺的类别与选择</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第六章第三节内容，介绍工艺的基本概念、常见类别及工艺选择的方法。工艺是将材料转化为产品的加工方法与过程，包括切削、成型、连接、表面处理等基本类型。教材从工艺分类入手，讲解不同工艺的特点、适用材料与设备要求，强调工艺选择需综合考虑材料性能、加工精度、成本效率等因素。本节承接材料规划内容，是设计物化落地的关键环节，培养学生根据实际条件合理选择工艺的工程实践能力。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在劳动课中接触过简单的锯割、打磨等手工加工，但对工艺的系统分类缺乏认识，常将工艺等同于「手工活」。对机械加工、数控工艺等了解有限，工艺选择多凭经验。教学需结合校园木工制作项目，让学生在真实任务中体会工艺选择的依据与方法。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识工艺在产品制造中的关键作用，理解工艺与品质的关系。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握工艺分类与选择逻辑，能根据条件权衡加工方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能在设计中探索工艺创新的可能，优化加工流程。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能在图样上标注工艺要求，规范表达加工信息。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">初步掌握常见加工工艺的操作要领，安全规范地完成制作。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>工艺的基本类别与特点</li>
+        <li>工艺选择的依据与方法</li>
+        <li>常见加工工艺的操作要领</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>综合材料、精度、成本等因素选择合适工艺</li>
+        <li>理解不同工艺对产品结构与外观的影响</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园木质笔筒制作</strong>为任务贯穿，从工艺选择到动手实践</li>
+        <li>工艺流程拼图游戏化学习分类知识</li>
+        <li>实物演示与数字模拟结合，直观呈现加工过程</li>
+        <li>小组合作完成工艺方案设计，培养工程决策能力</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：工艺流程拼图</div>
+        <p>一套将木质笔筒制作工艺拆解为下料、划线、锯割、刨削、钻孔、打磨、组装、表面处理等工序卡片的拼图教具。卡片正面为工序名称与图示，背面为工艺要点。学生需按正确顺序排列工序卡片，在游戏中掌握工艺流程的组织逻辑。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>同一个笔筒不同的做法</h4>
+            <p><strong>教师活动</strong>：展示两个外观相似的校园木质笔筒，一个手工制作一个数控加工，提问制作方法有何不同，引出工艺话题。</p><p><strong>学生活动</strong>：观察对比两个笔筒的细节差异，思考加工方法的影响。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（13分钟）</span>
+            <h4>工艺大家族</h4>
+            <p><strong>教师活动</strong>：讲解工艺概念，分类介绍切削、成型、连接、表面处理工艺的特点与适用材料。</p><p><strong>学生活动</strong>：完成工艺流程拼图，记录各类工艺特点与应用场景。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：加工工艺的3D模拟</div>
+                <p>教师在FreeCAD的Path工作台中加载木质笔筒模型，模拟铣削加工刀路轨迹，展示下料与成型工序的三维加工过程。学生直观观察刀具如何从毛坯逐步切除材料形成成品，理解切削工艺的原理与工序安排，对比手工锯割与数控加工的差异。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（12分钟）</span>
+            <h4>工艺选择三步法</h4>
+            <p><strong>教师活动</strong>：讲解工艺选择的「看材料、看精度、看成本」三步法，结合笔筒制作案例示范选择过程。</p><p><strong>学生活动</strong>：运用三步法为笔筒各部件选择工艺，填写工艺方案表。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践体验（13分钟）</span>
+            <h4>动手锯一锯</h4>
+            <p><strong>教师活动</strong>：示范锯割、打磨的安全操作要领，指导学生为笔筒制作进行下料与初步加工。</p><p><strong>学生活动</strong>：分组完成木料锯割与边缘打磨，体验切削与表面处理工艺。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：工艺安全智能提示</div>
+                <p>学生操作前通过AI助手查询所用工具的安全规范与常见错误，获取个性化操作提示，将AI作为安全学习伙伴融入实践环节，强化规范操作意识。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结评价（2分钟）</span>
+            <h4>工艺决定品质</h4>
+            <p><strong>教师活动</strong>：总结工艺类别与选择要点，强调工艺对产品品质的影响。</p><p><strong>学生活动</strong>：整理工艺方案表，完成课堂自评。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+工艺的类别与选择
+一、工艺概念：材料→产品的加工方法
+二、工艺类别：
+  切削、成型、连接、表面处理
+三、选择三步法：
+  看材料→看精度→看成本
+四、安全规范：规范操作、防护到位
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一单元第2节 稳固结构的探析 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第一单元第2节 稳固结构的探析</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计2》第一单元第二节内容，深入探析影响结构稳固性的因素及稳固结构的设计方法。结构稳固性取决于重心位置、支撑面积、结构形状、材料强度与连接方式等多种因素。教材从稳定性与强度两个维度展开，通过实验探究重心、形状等因素对结构稳定性的影响，分析连接方式与材料对结构强度的作用，强调通过优化设计提升结构稳固性的工程思路。本节承接结构类型认识，是结构设计单元的核心内容，培养学生实验探究与工程优化的综合能力。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在上节已认识结构类型，对稳固性有生活直觉但缺乏系统分析。在校园搭建活动中常遇到结构不稳的问题却不知如何改进。教学需通过对比实验让学生定量感受各因素对稳固性的影响，结合数字化工具深化对结构受力的理解，培养实验探究与优化设计能力。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识稳固性对结构安全与功能的重要意义，树立安全设计意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握影响结构稳固性的因素及分析方法，建立优化设计思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能运用所学知识优化结构设计，提升稳固性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用受力分析图表达结构稳固性影响因素。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过实验与模型制作验证结构稳固性，提升实践探究能力。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>影响结构稳定性的因素（重心、支撑面积、形状）</li>
+        <li>影响结构强度的因素（材料、连接方式）</li>
+        <li>稳固结构的优化设计方法</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>综合分析多因素对稳固性的影响</li>
+        <li>运用实验数据指导结构优化设计</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园展示架稳固性</strong>为探究任务贯穿全课</li>
+        <li>对比实验定量探究各因素影响，培养实证思维</li>
+        <li>结合数字化受力分析深化理解</li>
+        <li>小组合作完成结构优化设计并验证效果</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：稳定性实验记录单</div>
+        <p>一份结构化实验记录表格，设有「实验变量」「控制变量」「实验现象」「倾覆角度/承重数据」「结论」等栏目。学生在探究重心高度、支撑面积、结构形状等因素对稳定性影响时逐项记录，将定性感受转化为定量结论，支撑后续优化设计决策。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>展示架为何倒了</h4>
+            <p><strong>教师活动</strong>：播放校园文化周展示架被风吹倒的视频，提问怎样才能让展示架更稳固，引出稳固性话题。</p><p><strong>学生活动</strong>：分析倒塌原因，初步猜测影响稳固性的因素。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（13分钟）</span>
+            <h4>稳固的秘密</h4>
+            <p><strong>教师活动</strong>：讲解稳定性与强度的概念，分析重心位置、支撑面积、结构形状对稳定性的影响及材料、连接方式对强度的影响。</p><p><strong>学生活动</strong>：在记录单上整理影响因素，建立知识框架。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 实验探究（15分钟）</span>
+            <h4>稳固因素大比拼</h4>
+            <p><strong>教师活动</strong>：组织重心高度、支撑面积、结构形状三个对比实验，提供模型与测角工具。</p><p><strong>学生活动</strong>：分组完成实验，在记录单上记录倾覆角度等数据，得出各因素影响结论。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：结构受力分析FEM</div>
+                <p>教师在FreeCAD的FEM工作台中加载校园展示架框架模型，施加风载与自重载荷，运行有限元分析生成应力云图与变形图。学生直观观察结构中应力集中部位与变形最大的区域，理解材料与连接方式对结构强度的影响，为优化设计提供数据依据。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 优化设计（10分钟）</span>
+            <h4>让展示架更稳</h4>
+            <p><strong>教师活动</strong>：要求小组根据实验结论优化展示架结构设计，降低重心、扩大支撑或加固连接。</p><p><strong>学生活动</strong>：小组讨论提出优化方案，绘制改进草图并说明依据。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：优化方案多维评估</div>
+                <p>学生将优化方案与实验数据输入AI助手，获取稳固性提升预测与潜在风险提示，结合AI反馈完善方案，体会数据驱动的设计优化。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结评价（2分钟）</span>
+            <h4>稳固源于科学设计</h4>
+            <p><strong>教师活动</strong>：总结稳固性影响因素与优化方法，强调实验探究与数据支撑的重要性。</p><p><strong>学生活动</strong>：整理记录单与优化方案，完成课堂小结。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+稳固结构的探析
+一、稳固性 = 稳定性 + 强度
+二、稳定性影响因素：
+  重心位置、支撑面积、结构形状
+三、强度影响因素：
+  材料、连接方式、截面形状
+四、优化思路：
+  降重心→扩支撑→强连接→优形状
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

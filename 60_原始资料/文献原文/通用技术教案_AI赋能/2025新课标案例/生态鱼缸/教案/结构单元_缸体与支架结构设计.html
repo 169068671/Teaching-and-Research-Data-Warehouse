@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结构单元 缸体与支架结构设计 | 生态鱼缸的设计与制作</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f1f8e9;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(27,94,32,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 5px; }
+        .header .meta { font-size: 14px; opacity: 0.8; }
+        .content {
+            background: #fff;
+            padding: 40px 35px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .section-card {
+            border-left: 5px solid #1B5E20;
+            background: #f1f8e9;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1B5E20;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8e6c9;
+        }
+        .section-card h3 {
+            color: #2E7D32;
+            font-size: 18px;
+            margin: 18px 0 10px;
+        }
+        .section-card h4 {
+            color: #388E3C;
+            font-size: 16px;
+            margin: 15px 0 8px;
+        }
+        .section-card p { margin-bottom: 12px; text-align: justify; }
+        .section-card ul, .section-card ol { margin: 10px 0 12px 22px; }
+        .section-card li { margin-bottom: 6px; }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #1B5E20, #2E7D32, #4CAF50, #81C784);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 18px 22px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e8f5e9;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1B5E20;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #1B5E20;
+        }
+        .time-tag {
+            display: inline-block;
+            background: #1B5E20;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1B5E20;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p { margin-bottom: 8px; font-size: 15px; }
+        .timeline-item ul { margin-left: 20px; font-size: 15px; }
+
+        /* AI应用环节 */
+        .ai-block {
+            border: 2px solid #2E7D32;
+            background: #e8f5e9;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .ai-block::before {
+            content: 'AI赋能环节 · 结构参数优化助手';
+            display: block;
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .ai-block p { margin-bottom: 6px; }
+
+        /* FreeCAD应用环节 */
+        .freecad-block {
+            border: 2px solid #E65100;
+            background: #fff3e0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .freecad-block::before {
+            content: 'FreeCAD建模与分析';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .freecad-block p { margin-bottom: 6px; }
+
+        /* 原创工具 */
+        .tool-box {
+            border: 2px dashed #6A1B9A;
+            background: linear-gradient(135deg, #f3e5f5, #faf0fc);
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .tool-box::before {
+            content: '原创教学工具';
+            display: block;
+            font-weight: bold;
+            color: #6A1B9A;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .tool-box h4 { color: #6A1B9A; margin-bottom: 6px; }
+
+        /* 教学目标网格 */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 16px;
+            border-top: 4px solid #2E7D32;
+        }
+        .goal-item h4 {
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .goal-item p { font-size: 14px; margin-bottom: 0; }
+
+        /* 板书设计 */
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 28px 30px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", "楷体", serif;
+            font-size: 17px;
+            line-height: 2.2;
+            margin: 15px 0;
+            border: 3px solid #1a252f;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+        }
+        .blackboard .bk-title {
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 1px solid #3d566e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .blackboard .bk-section { margin-bottom: 12px; }
+
+        /* 表格样式 */
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .table-style th {
+            background: #1B5E20;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #1B5E20;
+        }
+        .table-style td {
+            padding: 10px 12px;
+            border: 1px solid #cfd8dc;
+            text-align: center;
+        }
+        .table-style tr:nth-child(even) td { background: #f1f8e9; }
+        .table-style tr:hover td { background: #e8f5e9; }
+
+        /* 评价量规 */
+        .rubric-box {
+            background: linear-gradient(135deg, #e0f2f1, #e8f5e9);
+            border-left: 4px solid #00695C;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        .rubric-box h4 { color: #00695C; margin-bottom: 8px; }
+
+        /* 单元作品 */
+        .work-box {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border: 2px solid #F9A825;
+            padding: 20px 24px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .work-box::before {
+            content: '单元作品要求';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .work-box h4 { color: #E65100; margin-bottom: 6px; }
+
+        .highlight {
+            background: #fff59d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2E7D32;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .info-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1B5E20;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin: 2px 4px 2px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .overview-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+            text-align: center;
+        }
+        .overview-item .label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .overview-item .value {
+            font-size: 16px;
+            color: #1B5E20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 页头 -->
+    <div class="header">
+        <div class="subtitle">2025新课标项目式教学案例 · 普通高中通用技术</div>
+        <h1>结构单元 缸体与支架结构设计</h1>
+        <div class="meta">必修模块2：技术与工程设计2 ｜ 课时：4课时 ｜ 核心概念：结构 ｜ 项目载体：生态鱼缸的设计与制作</div>
+    </div>
+
+    <!-- 内容主体 -->
+    <div class="content">
+
+        <!-- 零、单元概述 -->
+        <div class="section-card">
+            <h2>零、单元概述</h2>
+            <p>本单元为"生态鱼缸的设计与制作"项目的起始单元，在4单元16-20课时的项目序列中承担<strong>"结构奠基"</strong>的关键角色。以"<strong>结构</strong>"大概念为统领，围绕鱼缸缸体（5块玻璃壳体结构）与铝型材支架（4立柱+8梁框架结构）的设计制作展开，引导学生从真实工程需求出发，认知结构类型、分析受力特点、完成结构选型与建模验证。</p>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="label">所属项目</div>
+                    <div class="value">生态鱼缸的设计与制作</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课标来源</div>
+                    <div class="value">附录2 案例2</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课时安排</div>
+                    <div class="value">4课时</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">核心概念</div>
+                    <div class="value">结构</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">模型尺寸</div>
+                    <div class="value">缸体400×250×300mm</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">支架尺寸</div>
+                    <div class="value">420×270×500mm</div>
+                </div>
+            </div>
+            <div class="quote-box">核心概念链：结构（承重与稳定）→ 流程（造景工序时序）→ 系统（生态循环关联）→ 控制（温控反馈闭环）。本单元为链条起点，结构是生态鱼缸的"骨骼"。</div>
+        </div>
+
+        <!-- 一、教材分析 -->
+        <div class="section-card">
+            <h2>一、教材分析</h2>
+            <p>本单元教学内容源自《普通高中技术与工程课程标准（2017年版2025年修订）》附录2案例2，隶属必修模块2"技术与工程设计2"。结构是技术设计的物质基础，鱼缸作为承装水体和生物的容器，其缸体结构承受水压、支架结构承受缸体及水体总重，是结构概念学习的绝佳载体。</p>
+            <p>本单元配套的FreeCAD数字模型包含缸体5块玻璃、铝型材支架（4立柱+8梁）、中层隔板等29个部件，缸体尺寸400×250×300mm，支架尺寸420×270×500mm。学生将在真实项目中认知结构类型（实体结构、框架结构、壳体结构）、理解结构稳定性与强度的决定因素，并将受力分析与材料选择落实到实际产品上。</p>
+            <p>本单元与后续三个单元存在内在贯通：确定的缸体结构尺寸与支架承载力，为<strong>流程单元</strong>造景工序提供物理空间约束，为<strong>系统单元</strong>过滤循环管路安装提供结构基础，更为<strong>控制单元</strong>传感器与加热器布置提供安装平台。结构设计先行，体现了"大概念贯通式项目设计"中从物质载体到功能实现的螺旋式上升逻辑。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section-card">
+            <h2>二、学情分析</h2>
+            <p>本单元授课对象为高一年级学生，学生在初中物理中已学习过力的基本概念和压强知识，对"受力""承重"有初步认识，但缺乏对结构类型与结构稳定性的系统认知，难以将力学知识迁移到工程结构设计中。</p>
+            <p>学生在生活中接触过各类容器和支架，对鱼缸有一定直观经验，但对于"缸体壁厚如何决定""支架为何采用特定构型"等问题缺乏深入思考。部分学生具有初步的三维建模兴趣，但多数未接触过FreeCAD等工程建模工具。学生对AI工具（如大语言模型）有使用热情，但尚需引导其将AI作为工程分析助手而非简单问答工具使用。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section-card">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <p style="margin-bottom: 10px;">依据技术与工程课程核心素养五维框架，设定如下教学目标：</p>
+            <div class="goal-grid">
+                <div class="goal-item">
+                    <h4>技术意识</h4>
+                    <p>通过鱼缸结构实例分析，体会结构设计在工程产品中的基础性作用，形成"结构决定功能实现"的技术意识，能从结构视角审视生活中的容器与支架产品。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>工程思维</h4>
+                    <p>运用受力分析方法，识别鱼缸缸体（壳体结构承受水压）与支架（框架结构承受总重）的主要受力形式，理解结构稳定性与强度的决定因素，能进行基本的结构选型与尺寸估算。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>创新设计</h4>
+                    <p>能根据鱼缸使用需求，提出至少两种缸体材料方案和支架结构方案，借助AI工具进行参数对比，运用"结构稳定五维评估器"进行多维度评价。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>图样表达</h4>
+                    <p>能使用FreeCAD建立鱼缸缸体与支架的三维模型，表达结构设计意图，能绘制结构受力分析简图，规范标注尺寸与材料信息。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>物化能力</h4>
+                    <p>能根据设计方案选择合适材料，完成缸体粘接和支架组装，通过注水承重测试验证结构设计的可靠性，在制作过程中体现工匠精神。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section-card">
+            <h2>四、教学重难点</h2>
+            <table class="table-style">
+                <tr>
+                    <th style="width: 15%;">类别</th>
+                    <th style="width: 45%;">内容</th>
+                    <th style="width: 40%;">突破策略</th>
+                </tr>
+                <tr>
+                    <td><strong>教学重点</strong></td>
+                    <td>结构类型识别；缸体材料性能对比与选择；支架结构受力分析；缸体与支架的结构稳定性设计</td>
+                    <td>实物观察+FreeCAD建模可视化+AI参数对比+五维评估器量化评价</td>
+                </tr>
+                <tr>
+                    <td><strong>教学难点</strong></td>
+                    <td>水压对缸体壁面的分布作用理解；支架节点受力传递路径分析；结构尺寸的定量计算与安全系数确定</td>
+                    <td>FreeCAD模型剖面展示+分层递进式受力分析任务+教师示范+小组协作</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section-card">
+            <h2>五、教学策略与方法</h2>
+            <h3>5.1 总体策略</h3>
+            <p>采用<strong>"大概念贯通式项目学习法"</strong>，以"为生态鱼缸设计缸体与支架"为驱动任务，将结构概念学习嵌入真实工程实践。遵循"认知—分析—设计—制作—测试—反思"的工程思维路径，4课时形成完整的学习闭环。教学过程中融合AI智能工具辅助决策和FreeCAD工程建模分析，实现"手脑机"协同的技术学习新形态。</p>
+            <h3>5.2 教学方法</h3>
+            <ul>
+                <li><strong>情境驱动法</strong>：以真实鱼缸选购困境导入，激发结构设计需求</li>
+                <li><strong>探究实验法</strong>：通过纸片承重、三角形框架稳定性等小实验建立结构直觉</li>
+                <li><strong>AI辅助分析法</strong>：运用AI作为结构参数优化助手，辅助多方案决策</li>
+                <li><strong>建模分析法</strong>：运用FreeCAD三维模型，将抽象受力可视化</li>
+                <li><strong>制作测试法</strong>：实物制作并注水测试，验证设计可靠性</li>
+            </ul>
+
+            <h3>5.3 原创教学工具</h3>
+            <div class="tool-box">
+                <h4>结构稳定五维评估器</h4>
+                <p>本工具为本单元原创设计，用于引导学生从<strong>承重能力、稳定性、耐久性、美观性、成本</strong>五个维度对结构方案进行量化评估。每个维度采用1-5分制评分，并设置权重系数，最终计算加权综合得分，辅助学生进行方案优选决策。</p>
+                <table class="table-style" style="margin-top: 12px;">
+                    <tr>
+                        <th>评估维度</th>
+                        <th>权重</th>
+                        <th>评分标准（5分制）</th>
+                        <th>考察要点</th>
+                    </tr>
+                    <tr>
+                        <td>承重能力</td>
+                        <td>0.30</td>
+                        <td>1分（极弱）—5分（远超需求）</td>
+                        <td>最大承载、安全系数、破坏模式</td>
+                    </tr>
+                    <tr>
+                        <td>稳定性</td>
+                        <td>0.25</td>
+                        <td>1分（易倾覆）—5分（抗侧翻）</td>
+                        <td>重心高度、支撑面积、抗倾覆</td>
+                    </tr>
+                    <tr>
+                        <td>耐久性</td>
+                        <td>0.20</td>
+                        <td>1分（短期）—5分（长期耐久）</td>
+                        <td>材料老化、防水性、维护周期</td>
+                    </tr>
+                    <tr>
+                        <td>美观性</td>
+                        <td>0.15</td>
+                        <td>1分（粗糙）—5分（精致）</td>
+                        <td>外观质感、工艺细节、整体协调</td>
+                    </tr>
+                    <tr>
+                        <td>成本</td>
+                        <td>0.10</td>
+                        <td>1分（昂贵）—5分（经济）</td>
+                        <td>材料费、加工费、维护成本</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px; font-size: 14px;">综合得分 = Σ（维度得分 × 权重），满分5.0分。建议3.5分以上方案方可采用。</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section-card">
+            <h2>六、教学过程（4课时）</h2>
+            <p>本单元教学过程共4课时，以时间轴形式呈现完整教学流程。</p>
+
+            <div class="timeline">
+                <!-- 课时1 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第1-15分钟</span>
+                    <h4>环节一：情境导入——鱼缸选购的"结构困境"</h4>
+                    <p><strong>教师活动：</strong>展示三款不同材质和结构的鱼缸图片（亚克力一体缸、玻璃拼接缸、钢化玻璃+铝合金支架缸），讲述情境故事："小明想买一个生态鱼缸，网店客服推荐了三种方案，价格从200元到800元不等，小明不知道该选哪种……"</p>
+                    <p><strong>学生活动：</strong>观察三款鱼缸的结构差异，小组讨论："为什么不同结构方案的鱼缸价格差异这么大？结构差异对鱼缸使用有什么影响？"</p>
+                    <p><strong>设计意图：</strong>以真实选购情境激发学生对结构差异的觉察，引出"结构类型"与"结构性能"的探究需求。</p>
+                </div>
+
+                <!-- 课时1 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第16-40分钟</span>
+                    <h4>环节二：概念建构——结构类型与受力认知</h4>
+                    <p><strong>教师活动：</strong>结合实物与图片，讲解三类基本结构：</p>
+                    <ul>
+                        <li><strong>实体结构：</strong>以自身实心形体承受载荷（如砖墙、堤坝），鱼缸中的底座实体垫块</li>
+                        <li><strong>框架结构：</strong>由杆件通过连接组成骨架承受载荷（如房屋框架、桥梁桁架），鱼缸铝型材支架（4立柱+8梁）</li>
+                        <li><strong>壳体结构：</strong>由薄壁曲面承受载荷（如鸡蛋壳、头盔），鱼缸缸体5块玻璃壁面</li>
+                    </ul>
+                    <p><strong>探究实验：</strong>分发A4纸和吸管，学生分组实验：</p>
+                    <ul>
+                        <li>实验A：平铺纸片 vs 折成W型纸片承重对比——理解形状对强度的影响</li>
+                        <li>实验B：三角形吸管框架 vs 四边形吸管框架按压对比——理解三角形的稳定性</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>记录实验现象，归纳"结构形状与连接方式决定结构稳定性和强度"的核心规律。将鱼缸结构进行归类：缸体=壳体结构，支架=框架结构，底座垫块=实体结构。</p>
+                </div>
+
+                <!-- 课时1 环节二续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第41-45分钟</span>
+                    <h4>环节二续：结构受力简图绘制</h4>
+                    <p>教师引导学生绘制鱼缸结构受力简图，标注水体对缸体壁面的侧向水压（P = ρgh，与深度成正比，底部压力最大），以及缸体+水体总重通过支架4根立柱传递到地面的受力路径。</p>
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型导入：</strong>教师展示已建好的生态鱼缸三维模型（EcoFishTank），引导学生观察模型中缸体5块玻璃的拼合方式和铝型材支架的杆件连接关系，建立空间认知。</p>
+                        <p>模型参数：缸体400×250×300mm（5块5mm厚玻璃），支架420×270×500mm（4根立柱+8根横梁，20×20mm铝型材）。</p>
+                    </div>
+                    <p>布置课后任务：测量家中鱼缸或水缸的尺寸，估算满水总重量。</p>
+                </div>
+
+                <!-- 课时2 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第1-20分钟</span>
+                    <h4>环节三：设计实践（一）——缸体材料选择与AI辅助方案对比</h4>
+                    <p><strong>任务驱动：</strong>"为400×250×300mm的生态鱼缸选择缸体材料，需承受约30升水的压力。"</p>
+                    <p><strong>教师活动：</strong>介绍常见缸体材料：普通玻璃、钢化玻璃、亚克力（PMMA），讲解各材料的基本力学特性和加工方式。</p>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>教师示范如何使用AI助手进行结构参数优化分析。</p>
+                        <p><strong>提示词示范：</strong>"请帮我对比普通玻璃、钢化玻璃、亚克力三种材料用作400×250×300mm鱼缸缸体的性能，从抗拉强度、抗冲击性、透光率、耐候性、加工难度、单位成本六个维度生成对比表格，并根据水深300mm计算底部最大水压，给出推荐壁厚建议。"</p>
+                        <p><strong>学生活动：</strong>各小组向AI输入不同的材料对比需求，获取AI生成的材料性能对比表，并对AI输出结果进行<strong>批判性审查</strong>——核实数据是否合理、建议是否安全。</p>
+                        <p><strong>教师引导：</strong>提醒学生AI输出可能存在数据偏差，需与课本数据和厂家技术参数交叉验证。引导学生关注安全系数——鱼缸壁厚通常需2-3倍安全余量。底部最大水压 P = 1000×9.8×0.3 = 2940 Pa ≈ 2.94 kPa。</p>
+                    </div>
+
+                    <p><strong>成果产出：</strong>各小组完成《缸体材料选择方案书》，包含AI对比表、小组验证结论和最终选材决定。</p>
+                </div>
+
+                <!-- 课时2 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第21-45分钟</span>
+                    <h4>环节三：设计实践（二）——缸体尺寸计算与五维评估</h4>
+                    <p><strong>教师活动：</strong>讲解缸体尺寸计算方法：</p>
+                    <ul>
+                        <li>水体体积计算：V = 长 × 宽 × 高（水位高度）= 0.4×0.25×0.3 = 0.03m³ = 30升 = 30kg</li>
+                        <li>缸体壁面水压估算：底部最大压强 P = ρgh = 1000×9.8×0.3 = 2940 Pa</li>
+                        <li>壁厚选择：根据材料许用应力与安全系数确定（安全系数取2-3）</li>
+                        <li>总重量估算：缸体自重（约6kg）+ 水重（30kg）+ 底砂/造景重量（约9kg）≈ 45kg</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>各小组根据选定材料和目标尺寸进行定量计算，填写缸体尺寸计算单。</p>
+
+                    <div class="tool-box">
+                        <h4>结构稳定五维评估器——应用实践</h4>
+                        <p>各小组运用"结构稳定五维评估器"对亚克力缸、普通玻璃缸、钢化玻璃缸三种方案进行评分：</p>
+                        <ul>
+                            <li>承重能力（0.30）：评估材料抗拉强度与壁厚是否满足水压要求</li>
+                            <li>稳定性（0.25）：评估缸体重心、底面支撑面积与抗侧翻能力</li>
+                            <li>耐久性（0.20）：评估材料耐水性、抗老化、黄变风险</li>
+                            <li>美观性（0.15）：评估透光率、边缘处理质感、整体视觉效果</li>
+                            <li>成本（0.10）：评估材料费、加工费的综合经济性</li>
+                        </ul>
+                        <p>计算加权综合得分，选择最优方案。要求3.5分以上方案方可进入制作环节。</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第1-25分钟</span>
+                    <h4>环节三：设计实践（三）——支架结构设计与FreeCAD模型分析</h4>
+                    <p><strong>任务驱动：</strong>"为选定缸体设计配套支架，需承受缸体+水+造景总重（约45kg），保证长期稳定不变形。"</p>
+                    <p><strong>教师活动：</strong>讲解框架结构设计要点：杆件截面选择（方管vs角铁）、节点连接方式（角码/螺栓）、重心与支撑面关系。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型分析任务：</strong>教师展示已建好的支架模型，引导学生分析铝型材支架的结构特点。</p>
+                        <p><strong>分析要点：</strong></p>
+                        <ol>
+                            <li>观察支架4根立柱（420mm铝型材，截面20×20×2mm）的分布——四角支撑，均匀承载</li>
+                            <li>观察8根横梁（4根顶部+4根中部）构成的两层框架——中层横梁为中层隔板提供支撑</li>
+                            <li>分析支架与缸体的空间关系：支架420×270mm略大于缸体400×250mm，缸体嵌入框架内部</li>
+                            <li>在FreeCAD中切换不同视角（正视图、俯视图、等轴测视图），观察支架各杆件的空间连接关系</li>
+                            <li>使用剖面工具截取支架中部截面，观察4立柱+4横梁的闭合框架结构</li>
+                        </ol>
+                        <p><strong>学生活动：</strong>各小组在FreeCAD中打开模型，尝试不同的观察视角，绘制支架结构三视图，标注杆件尺寸和连接方式。讨论：支架为何需要两层横梁？中层横梁有何功能？</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 受力分析 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第26-45分钟</span>
+                    <h4>环节三：设计实践（四）——缸体与支架受力分析</h4>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD受力分析任务：</strong>基于模型进行缸体壳体与支架框架的受力分析。</p>
+                        <p><strong>缸体受力分析（壳体结构）：</strong></p>
+                        <ol>
+                            <li>在FreeCAD中单独显示缸体5块玻璃，隐藏其他部件</li>
+                            <li>分析底板受力：承受水体重力（30kg）+底砂重力（约9kg），均布载荷约3.9kPa</li>
+                            <li>分析侧壁受力：承受侧向水压，P=ρgh，底部最大2.94kPa，顶部为0，呈三角形分布</li>
+                            <li>分析前后壁与左右壁的差异：长边壁面（400mm）承受总压力大于短边壁面（250mm）</li>
+                            <li>引导学生理解：缸体越深，底部水压越大，壁厚需求越高</li>
+                        </ol>
+                        <p><strong>支架受力分析（框架结构）：</strong></p>
+                        <ol>
+                            <li>在FreeCAD中单独显示铝型材支架，隐藏缸体</li>
+                            <li>分析受力路径：缸体+水总重（约45kg=441N）→ 顶部4根横梁 → 4根立柱 → 地面</li>
+                            <li>每根立柱承受约110N轴向压力，评估20×20×2mm铝型材的承压能力</li>
+                            <li>分析支架整体稳定性：支撑面积420×270mm，重心高度约250mm，抗倾覆能力评估</li>
+                            <li>讨论：若支架仅有4立柱+4顶梁（无中层梁），稳定性如何变化？中层梁的作用是什么？</li>
+                        </ol>
+                    </div>
+
+                    <p><strong>学生活动：</strong>各小组完成受力分析，填写《缸体与支架受力分析报告》。运用"结构稳定五维评估器"对最终支架方案评分。</p>
+                    <p><strong>设计意图：</strong>通过FreeCAD模型的分层显示和剖面分析，将抽象的力学分析转化为直观的空间可视化，让学生体验工程师"建模-分析-优化"的完整工作流。</p>
+                </div>
+
+                <!-- 课时4 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第1-20分钟</span>
+                    <h4>环节四：制作测试（一）——缸体制作与支架组装</h4>
+                    <p><strong>教师活动：</strong>讲解缸体制作工艺与安全注意事项：</p>
+                    <ul>
+                        <li>玻璃缸：玻璃切割（由专业店家完成）→ 边缘打磨 → 硅酮密封胶粘接 → 固化24h</li>
+                        <li>亚克力缸：亚克力板切割 → 边缘抛光 → 氯仿/专用胶水粘接 → 固化</li>
+                        <li>支架组装：铝型材切割 → 角码连接/螺栓紧固 → 水平校准</li>
+                    </ul>
+                    <p><strong>安全提示：</strong>玻璃边缘锋利需佩戴手套；密封胶有气味需通风操作；工具使用需遵守操作规程。</p>
+                    <p><strong>学生活动：</strong>各小组按设计图纸进行缸体粘接（使用预制切割好的板材）和支架组装。教师巡回指导，重点检查粘接密封性和支架节点紧固度。</p>
+                    <div class="quote-box">制作过程融入工匠精神教育：密封胶涂抹均匀无气泡，支架螺栓拧紧力矩一致，细节决定成败。</div>
+                </div>
+
+                <!-- 课时4 环节四续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第21-40分钟</span>
+                    <h4>环节四：制作测试（二）——注水承重测试与结构验证</h4>
+                    <p><strong>测试方案：</strong>分阶段注水测试——先注水1/3高度观察30分钟，再注水2/3观察30分钟，最后满水观察1小时。</p>
+                    <p><strong>观察记录要点：</strong></p>
+                    <ul>
+                        <li>缸体：粘接处有无渗漏？壁面有无明显变形？有无异常声响？</li>
+                        <li>支架：四脚是否均匀着地？有无倾斜？连接节点有无松动？</li>
+                        <li>整体：结构有无共振？放置面是否水平？</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>各小组执行注水测试，填写《结构测试记录表》，记录测试现象与数据。对出现问题的方案进行现场诊断和加固修复。</p>
+                </div>
+
+                <!-- 课时4 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第41-45分钟</span>
+                    <h4>环节五：总结反思——结构设计复盘与项目衔接</h4>
+                    <p><strong>教师活动：</strong>组织全班进行结构设计成果展示与互评。引导总结：</p>
+                    <ul>
+                        <li>结构类型选择如何影响产品性能？</li>
+                        <li>受力分析在设计决策中发挥了什么作用？</li>
+                        <li>AI参数对比和FreeCAD模型分析分别带来了哪些帮助？</li>
+                    </ul>
+                    <p><strong>项目衔接预告：</strong>"缸体和支架已经就位，接下来我们面临一个新的挑战——如何将底砂、水草、沉木等素材有序布置到鱼缸中？这就是我们下一单元要学习的'流程设计'。"——自然过渡到流程单元。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 七、评价方式 -->
+        <div class="section-card">
+            <h2>七、评价方式</h2>
+            <p>本单元采用<strong>多元过程性评价</strong>，融合教师评价、同伴互评和自我反思三个维度，贯穿教学全过程。</p>
+            <table class="table-style">
+                <tr>
+                    <th>评价环节</th>
+                    <th>评价内容</th>
+                    <th>评价方式</th>
+                    <th>权重</th>
+                </tr>
+                <tr>
+                    <td>课堂参与</td>
+                    <td>探究实验投入度、讨论发言质量、概念理解程度</td>
+                    <td>教师观察记录</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>AI批判审查</td>
+                    <td>AI输出数据的核实质量、批判性思维表现</td>
+                    <td>教师评价+小组互评</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>五维评估报告</td>
+                    <td>评估维度完整性、评分依据充分性、决策合理性</td>
+                    <td>教师评价（量规）</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>FreeCAD模型分析</td>
+                    <td>受力分析准确性、三视图规范性、空间认知表现</td>
+                    <td>教师评价+作品展示</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>制作与测试</td>
+                    <td>工艺质量、测试记录完整性、问题诊断能力</td>
+                    <td>教师评价+同伴互评</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>单元反思</td>
+                    <td>学习收获总结、工程思维迁移意识</td>
+                    <td>自我反思</td>
+                    <td>10%</td>
+                </tr>
+            </table>
+            <div class="rubric-box">
+                <h4>核心评价指标——结构受力分析报告量规</h4>
+                <table class="table-style">
+                    <tr>
+                        <th>等级</th>
+                        <th>受力路径分析</th>
+                        <th>定量计算</th>
+                        <th>模型运用</th>
+                    </tr>
+                    <tr>
+                        <td>优秀（A）</td>
+                        <td>完整标注缸体水压分布和支架传力路径，逻辑清晰</td>
+                        <td>水压、总重计算准确，安全系数合理</td>
+                        <td>熟练运用FreeCAD多视角分析，三视图规范</td>
+                    </tr>
+                    <tr>
+                        <td>良好（B）</td>
+                        <td>基本标注主要受力路径，个别遗漏</td>
+                        <td>计算基本正确，小误差</td>
+                        <td>能运用FreeCAD观察模型，三视图基本规范</td>
+                    </tr>
+                    <tr>
+                        <td>合格（C）</td>
+                        <td>受力路径标注不完整，需引导</td>
+                        <td>计算有误，但思路正确</td>
+                        <td>能打开模型观察，三视图欠规范</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 八、板书设计 -->
+        <div class="section-card">
+            <h2>八、板书设计</h2>
+            <div class="blackboard">
+                <div class="bk-title">结构单元 缸体与支架结构设计</div>
+                <div class="bk-section">
+                    一、结构类型<br>
+                    　　实体结构 → 底座垫块<br>
+                    　　框架结构 → 铝型材支架（4立柱+8梁）<br>
+                    　　壳体结构 → 缸体壁面（5块玻璃）
+                </div>
+                <div class="bk-section">
+                    二、缸体设计<br>
+                    　　材料：普通玻璃 / 钢化玻璃 / 亚克力<br>
+                    　　水压：P = ρgh （底部最大 2.94kPa）<br>
+                    　　壁厚：安全系数 × 计算厚度<br>
+                    　　AI参数对比 → 五维评估 → 选材决策
+                </div>
+                <div class="bk-section">
+                    三、支架设计<br>
+                    　　构型：4立柱+8横梁 铝型材框架<br>
+                    　　FreeCAD模型 → 受力路径分析<br>
+                    　　传力：缸体→顶梁→立柱→地面
+                </div>
+                <div class="bk-section">
+                    四、制作测试<br>
+                    　　粘接组装 → 分级注水 → 观察30min<br>
+                    　　验证：密封性 + 稳定性 + 承重性
+                </div>
+                <div class="bk-section">
+                    【贯通】结构 → 流程 → 系统 → 控制<br>
+                    【工具】结构稳定五维评估器
+                </div>
+            </div>
+        </div>
+
+        <!-- 九、单元作品 -->
+        <div class="section-card">
+            <h2>九、单元作品要求</h2>
+            <div class="work-box">
+                <h4>作品一：鱼缸缸体与支架结构设计报告（小组）</h4>
+                <p>各小组提交完整的结构设计报告，须包含以下内容：</p>
+                <ul>
+                    <li><strong>结构选型方案：</strong>缸体材料选择方案书（含AI对比表、批判审查记录、五维评估评分表）</li>
+                    <li><strong>尺寸计算单：</strong>水体体积、水压、壁厚、总重量的定量计算过程</li>
+                    <li><strong>FreeCAD模型分析：</strong>缸体壳体受力分析图、支架框架传力路径图、三视图（正视图/俯视图/侧视图）</li>
+                    <li><strong>制作与测试记录：</strong>制作工艺流程记录、分级注水测试记录表、问题诊断与修复记录</li>
+                </ul>
+            </div>
+            <div class="work-box">
+                <h4>作品二：鱼缸缸体与支架实物（小组）</h4>
+                <p>各小组完成缸体粘接和支架组装的实物作品，需满足：</p>
+                <ul>
+                    <li>缸体尺寸符合设计要求，粘接密封无渗漏</li>
+                    <li>支架结构稳固，四脚均匀着地，节点紧固</li>
+                    <li>通过分级注水承重测试（满水1小时无渗漏、无变形）</li>
+                    <li>外观整洁，体现工匠精神</li>
+                </ul>
+            </div>
+            <div class="quote-box">
+                <strong>作品交付节点：</strong>课时4结束时提交设计报告和实物作品，作为本单元终结性评价依据，同时实物作品将作为后续流程单元、系统单元、控制单元的项目载体持续使用。
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        2025新课标项目式教学案例 · 生态鱼缸的设计与制作 · 结构单元<br>
+        普通高中技术与工程课程标准（2017年版2025年修订）附录2案例2
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第七章第2节 技术作品说明书及其编写 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第七章第2节 技术作品说明书及其编写</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第七章第二节内容，介绍技术作品说明书的作用、结构与编写方法。说明书是技术作品的重要组成部分，承担向使用者传递产品信息、指导正确使用与维护的职能。教材从说明书的基本要素入手，讲解产品概况、功能原理、使用方法、注意事项、维护保养等内容的编写规范，强调说明书的准确性、完整性与可读性。本节是设计评价与交流环节的重要内容，培养学生从使用者视角审视设计、规范表达技术信息的能力，体现技术的人文关怀。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生日常接触各类产品说明书，但很少主动分析其结构要素，编写说明书时易遗漏关键信息或表述不清。在校园创新作品展示中，常出现作品优秀但说明书简陋的情况。教学需结合学生自制作品，让其在真实编写任务中体会说明书的价值，提升技术写作能力。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识说明书在技术传播与用户体验中的价值，树立服务用户的意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握说明书的结构要素与编写逻辑，系统组织技术信息。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能从用户视角优化说明书表达，提升产品的易用性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能在说明书中配合图示准确表达操作步骤。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过编写说明书完善作品交付，体会技术作品的完整性。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>说明书的基本结构与要素</li>
+        <li>说明书的编写规范与方法</li>
+        <li>从用户视角优化说明书表达</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>准确、清晰地表达技术信息</li>
+        <li>站在使用者角度组织说明书内容</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园创新作品说明书</strong>为真实任务驱动全课</li>
+        <li>对比优秀与问题说明书案例，发现要素与规范</li>
+        <li>运用检核表工具辅助编写，保证内容完整</li>
+        <li>角色扮演用户体验，优化表达效果</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：说明书要素检核表</div>
+        <p>一份列出说明书必备要素的检核清单，包括产品名称、功能简介、工作原理、使用步骤、技术参数、注意事项、维护保养、联系方式等条目。学生编写说明书时逐项勾选确认，确保内容完整不遗漏，每项后附简短编写提示。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>看不懂的说明书</h4>
+            <p><strong>教师活动</strong>：展示一份表述混乱的校园台灯说明书，请学生扮演用户尝试操作，体会说明书不清带来的困扰。</p><p><strong>学生活动</strong>：体验操作困难，讨论说明书应具备哪些要素。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（13分钟）</span>
+            <h4>说明书的骨架</h4>
+            <p><strong>教师活动</strong>：讲解说明书的基本结构与要素，对比优秀案例与问题案例，提炼编写规范。</p><p><strong>学生活动</strong>：运用检核表分析案例，记录说明书结构与编写要点。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（12分钟）</span>
+            <h4>用户视角的写作</h4>
+            <p><strong>教师活动</strong>：讲解从用户视角组织说明书内容的方法，强调准确性、可读性与图示配合。</p><p><strong>学生活动</strong>：针对校园自制作品，用检核表规划说明书结构与内容。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：说明书表达优化</div>
+                <p>学生将说明书初稿输入AI写作助手，获取表述清晰度与完整性的反馈建议，结合建议优化语言表达，体会AI辅助技术写作的效率提升。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 编写实践（13分钟）</span>
+            <h4>我为作品写说明</h4>
+            <p><strong>教师活动</strong>：指导学生为自制校园创新作品编写完整说明书，配合简图说明操作步骤。</p><p><strong>学生活动</strong>：独立完成说明书编写，运用检核表自查完整性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 交流评价（2分钟）</span>
+            <h4>好说明书让作品更好用</h4>
+            <p><strong>教师活动</strong>：组织说明书互评，总结编写要点，强调用户体验。</p><p><strong>学生活动</strong>：交换说明书互评，记录改进建议，完成课堂小结。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+技术作品说明书及其编写
+一、作用：传递信息、指导使用
+二、基本要素：
+  产品概况、功能原理、使用方法、
+  技术参数、注意事项、维护保养
+三、编写要求：
+  准确、完整、清晰、可读
+四、核心：用户视角
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

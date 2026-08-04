@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教案11：第四单元第3节 闭环控制系统</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d7df0);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.15);
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 14px; opacity: 0.9; }
+        .header .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .header .meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .section {
+            border-left: 4px solid #1a56c4;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            background: #fafcff;
+            border-radius: 0 8px 8px 0;
+        }
+        .section h2 {
+            color: #1a56c4;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #e65100;
+            border-radius: 3px;
+        }
+        .section h3 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin: 15px 0 8px 0;
+        }
+        .section p { margin-bottom: 10px; font-size: 14px; text-align: justify; }
+        .section ul, .section ol { margin-left: 25px; margin-bottom: 10px; font-size: 14px; }
+        .section li { margin-bottom: 6px; }
+        .tag-ai {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-freecad {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-paradigm {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-top: 15px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a56c4;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid #1a56c4;
+            border-radius: 50%;
+        }
+        .timeline-item .time-label {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p, .timeline-item ul, .timeline-item ol {
+            font-size: 14px;
+        }
+        .ai-block {
+            background: #e8f0fe;
+            border: 1px solid #1a56c4;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 1px solid #e65100;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .prompt-box {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .prompt-box .label { color: #e65100; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        th {
+            background: #1a56c4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .obj-card {
+            background: #fff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .obj-card .icon { font-size: 22px; margin-bottom: 6px; }
+        .obj-card h4 { color: #1a56c4; font-size: 13px; margin-bottom: 6px; }
+        .obj-card p { font-size: 12px; text-align: center; }
+        .blackboard {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 13px;
+            line-height: 2;
+            white-space: pre-line;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #43a047;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .tool-box h4 { color: #2e7d32; font-size: 14px; margin-bottom: 8px; }
+        .reflection-list li { margin-bottom: 8px; }
+        .obe-tag {
+            background: #7b1fa2;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .loop-diagram {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border: 2px solid #1565c0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        .loop-node {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .loop-node.sensor { background: #00897b; }
+        .loop-node.compare { background: #e65100; }
+        .loop-node.actuator { background: #6a1b9a; }
+        .loop-arrow {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 2px;
+        }
+        .loop-feedback {
+            display: block;
+            color: #c62828;
+            font-weight: bold;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .layer-card {
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin: 8px 0;
+        }
+        .layer-basic { background: #e3f2fd; border-left: 4px solid #1976d2; }
+        .layer-advanced { background: #fff3e0; border-left: 4px solid #e65100; }
+        .layer-extra { background: #f3e5f5; border-left: 4px solid #7b1fa2; }
+        .layer-card h4 { font-size: 13px; margin-bottom: 6px; }
+        .layer-card p { font-size: 13px; margin-bottom: 4px; }
+        .analogy-box {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            border: 2px solid #c62828;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .analogy-box h4 { color: #c62828; font-size: 14px; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>第四单元第3节 闭环控制系统</h1>
+        <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》| 教学设计教案</div>
+        <div class="meta">
+            <span>课时：1课时（45分钟）</span>
+            <span>课型：项目化探究课</span>
+            <span>OBE-GAI范式</span>
+            <span>跨学科类比教学</span>
+        </div>
+    </div>
+    <div class="content">
+
+        <!-- 一、教材分析 -->
+        <div class="section">
+            <h2>一、教材分析</h2>
+            <p>本节为苏教版《技术与设计2》第四单元"控制及其设计"的第3节，是承接开环控制和闭环控制概念之后的深化应用环节。教材以闭环控制系统的方框图为分析工具，引导学生理解闭环控制的核心机制——反馈，以及输入、传感器、比较器、执行器、输出、反馈六个环节的协作关系。</p>
+            <p>本节是整个必修二的收束性内容，将前面学习的结构、流程、系统知识综合运用于控制系统设计中。结合OBE-GAI范式，本课预期学习产出定义为：<strong>学生能运用"闭环控制·反馈环分析法"分析一个闭环控制系统（智能温室大棚），并结合AI辅助完成控制参数预测与控制方案设计，理解反馈机制在自动控制中的核心价值。</strong>课程采用跨学科类比策略，以人体体温调节类比工程闭环控制，帮助学生建立从生物到工程的迁移认知。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section">
+            <h2>二、学情分析</h2>
+            <p>高二学生在生物课程中已学习过人体体温调节、血糖调节等负反馈机制，对"反馈"概念有生物学层面的认知基础，但尚未将这一概念迁移到工程技术领域。学生在前两节课已学习开环控制和闭环控制的基本概念，能区分两者的差异，但对闭环控制六个环节的具体功能和协作关系理解不够深入。在实践层面，学生对传感器、控制器等电子元件有一定了解但缺乏系统设计经验。AI工具使用方面，学生需要学习如何用AI进行"如果改变某个控制参数，系统响应会怎样变化"的参数预测和系统行为模拟。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="icon">🔍</div>
+                    <h4>技术意识</h4>
+                    <p>理解闭环控制在现代智能系统中的普遍价值，形成"反馈使系统更智能"的技术观念</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">⚙️</div>
+                    <h4>工程思维</h4>
+                    <p>掌握"闭环控制·反馈环分析法"，能从六个环节系统分析闭环控制系统</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">💡</div>
+                    <h4>创新设计</h4>
+                    <p>能结合AI参数预测，设计智能温室大棚控制方案并进行参数优化</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">📐</div>
+                    <h4>图样表达</h4>
+                    <p>能绘制闭环控制系统方框图，标注六个环节及反馈路径</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">🔨</div>
+                    <h4>物化能力</h4>
+                    <p>能通过模拟实验体验传感器数据采集与控制响应过程</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section">
+            <h2>四、教学重难点</h2>
+            <h3>教学重点</h3>
+            <ul>
+                <li>闭环控制系统的六个环节及其功能（输入→传感器→比较器→执行器→输出→反馈）</li>
+                <li>"闭环控制·反馈环分析法"的运用</li>
+                <li>运用AI预测不同控制参数对系统响应效果的影响</li>
+            </ul>
+            <h3>教学难点</h3>
+            <ul>
+                <li>理解反馈机制如何使系统实现"自动纠偏"和"动态平衡"</li>
+                <li>跨学科迁移：从人体体温调节类比到工程闭环控制</li>
+                <li>对AI预测的控制参数效果进行批判性判断和方案优化</li>
+            </ul>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section">
+            <h2>五、教学策略与方法</h2>
+            <p><span class="obe-tag">OBE反向设计</span> 本课以"产出一个智能温室大棚闭环控制方案（含方框图、参数分析、AI交互记录）"为终点，倒推教学活动。采用跨学科类比策略——以人体体温调节（生物学）类比工程闭环控制（技术学），降低抽象概念的认知门槛。</p>
+            <p><span class="tag-paradigm">分层提示词策略</span></p>
+            <div class="layer-card layer-basic">
+                <h4>基础组：分析基本控制环节</h4>
+                <p>用AI辅助分析智能温室大棚闭环控制的基本环节，标注各环节的功能和信号流向。</p>
+            </div>
+            <div class="layer-card layer-advanced">
+                <h4>提升组：AI辅助参数优化</h4>
+                <p>用AI预测不同温度设定值和湿度参数对作物生长的影响，进行参数优化决策。</p>
+            </div>
+            <div class="layer-card layer-extra">
+                <h4>高阶组：设计自适应控制策略</h4>
+                <p>用AI辅助设计根据作物生长阶段自动调整控制参数的自适应控制策略。</p>
+            </div>
+            <div class="tool-box">
+                <h4>原创教学工具：闭环控制·反馈环分析法</h4>
+                <p>将任何闭环控制系统拆解为六个环节，逐环节分析其功能、输入输出信号和反馈路径：</p>
+                <div class="loop-diagram">
+                    <span class="loop-node">输入（设定值）</span><span class="loop-arrow">→</span>
+                    <span class="loop-node sensor">传感器</span><span class="loop-arrow">→</span>
+                    <span class="loop-node compare">比较器</span><span class="loop-arrow">→</span>
+                    <span class="loop-node actuator">执行器</span><span class="loop-arrow">→</span>
+                    <span class="loop-node">输出（被控量）</span>
+                    <span class="loop-feedback">↑←←← 反馈 ←←←↓</span>
+                </div>
+                <p style="text-align: center; font-size: 13px; color: #666;">六环节形成闭合回路，反馈是闭环控制的核心</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section">
+            <h2>六、教学过程</h2>
+            <div class="timeline">
+
+                <!-- 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-label">5分钟</span>
+                    <h4>环节一：情境导入——人体体温调节的跨学科类比</h4>
+                    <p><strong>情境创设：</strong>教师提问"当你从空调房走到烈日下，身体会发生什么变化？"引导学生回忆生物学知识：皮肤血管扩张散热→汗腺分泌增加→体温维持在37°C左右。教师追问："是谁在'指挥'这些变化？身体怎么知道该散热了？"</p>
+                    <div class="analogy-box">
+                        <h4>跨学科类比 | 人体体温调节 = 天然的闭环控制系统</h4>
+                        <p>教师引导学生将人体体温调节映射到控制系统六个环节：</p>
+                        <table>
+                            <tr><th>闭环控制环节</th><th>人体体温调节对应</th><th>功能说明</th></tr>
+                            <tr><td>输入（设定值）</td><td>下丘脑设定37°C</td><td>体温的正常设定值</td></tr>
+                            <tr><td>传感器</td><td>皮肤和内脏温度感受器</td><td>检测实际体温</td></tr>
+                            <tr><td>比较器</td><td>下丘脑</td><td>比较设定值与实际值</td></tr>
+                            <tr><td>执行器</td><td>血管、汗腺、肌肉</td><td>执行散热或产热动作</td></tr>
+                            <tr><td>输出（被控量）</td><td>实际体温</td><td>被控制的物理量</td></tr>
+                            <tr><td>反馈</td><td>体温变化被感受器再次检测</td><td>形成闭合回路</td></tr>
+                        </table>
+                    </div>
+                    <p><strong>概念引出：</strong>教师点明——人体就是一个精密的闭环控制系统！"反馈"是核心：身体不断检测实际体温并与设定值比较，一旦出现偏差就启动调节机制。工程上的闭环控制系统正是模仿了这种"检测→比较→执行→反馈"的机制。</p>
+                    <p><strong>任务发布：</strong>教师宣布本课项目——"设计一个智能温室大棚闭环控制系统"，学生将运用反馈环分析法分析控制系统，并用AI辅助预测控制参数效果。</p>
+                </div>
+
+                <!-- 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节二：概念建构——反馈环分析法与六环节解析</h4>
+                    <p><strong>Step 1：从类比到工程（5分钟）</strong></p>
+                    <p>教师引导学生从人体体温调节类比迁移到工程闭环控制："如果我们想控制温室大棚的温度，需要哪些环节？"学生参照人体类比，逐步推导出智能温室大棚的六环节：</p>
+                    <ul>
+                        <li><strong>输入（设定值）：</strong>目标温度25°C、湿度60%（由种植者设定）</li>
+                        <li><strong>传感器：</strong>温湿度传感器（如DHT22），实时检测棚内温湿度</li>
+                        <li><strong>比较器：</strong>控制器（如Arduino/PLC），比较设定值与实测值</li>
+                        <li><strong>执行器：</strong>加热器、风扇、喷雾器、遮阳帘（根据偏差启动对应设备）</li>
+                        <li><strong>输出（被控量）：</strong>棚内实际温湿度</li>
+                        <li><strong>反馈：</strong>传感器持续检测实际温湿度并传回控制器，形成闭合回路</li>
+                    </ul>
+
+                    <p><strong>Step 2：反馈机制深度讲解（5分钟）</strong></p>
+                    <p>教师重点讲解反馈的核心价值——"自动纠偏"。以温室温度控制为例：当棚内温度高于25°C设定值时，传感器检测到偏差→比较器计算偏差量→执行器启动风扇降温→温度下降→传感器再次检测→如果仍偏高则继续降温，直到温度回到设定值附近。这个"检测→比较→执行→再检测"的循环就是反馈回路。</p>
+                    <p>教师对比开环控制和闭环控制："开环控制就像定时浇水——不管土壤干湿，每天浇一次；闭环控制就像看土壤湿度计浇水——干了才浇，不干不浇。哪个更精准？当然是闭环，因为它有反馈。"</p>
+
+                    <p><strong>Step 3：方框图绘制规范（5分钟）</strong></p>
+                    <div class="freecad-block">
+                        <div class="fc-title">FreeCAD模型引用 | 控制系统结构模型</div>
+                        <p>教师展示用FreeCAD建立的控制系统的三维结构模型，展示传感器、控制器、执行器、被控对象（温室大棚）的空间布局和连接关系。</p>
+                        <ul>
+                            <li><strong>传感器位置：</strong>温湿度传感器安装在棚内中央，远离门口和通风口</li>
+                            <li><strong>控制器位置：</strong>控制柜安装在棚外便于操作处</li>
+                            <li><strong>执行器分布：</strong>加热器在棚内底部、风扇在顶部通风口、喷雾器在棚顶</li>
+                            <li><strong>线缆连接：</strong>展示传感器→控制器→执行器的信号传输路径</li>
+                        </ul>
+                        <p>教师引导学生绘制智能温室大棚闭环控制系统方框图，标注六个环节和信号流向。</p>
+                        <div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+                            <p style="margin:0 0 6px 0;"><strong>渲染图：</strong>智能温室大棚框架 (Greenhouse)</p>
+                            <img src="../FreeCAD配套模型/Greenhouse_render.png" alt="智能温室大棚框架 (Greenhouse)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+                            <p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型含55个部件，展示温室大棚的完整结构——5组人字屋架、纵向系杆、屋脊梁、门框，以及传感器支架和控制箱。学生可直观理解闭环控制系统的硬件组成在温室中的物理布局。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节三：深度探究——AI辅助参数预测与控制方案设计</h4>
+                    <p><strong>Step 1：AI辅助控制参数预测（7分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 控制参数效果预测</div>
+                        <p>学生用AI预测不同控制参数对温室大棚作物生长的影响，进行参数优化决策。</p>
+                        <div class="prompt-box">
+<span class="label">【提升组提示词】</span>
+我正在设计一个智能温室大棚的闭环控制系统，
+种植番茄，请预测以下参数组合的效果：
+方案1：温度设定25°C，湿度60%
+方案2：温度设定28°C，湿度70%
+方案3：温度设定22°C，湿度50%
+请从作物生长周期、能耗、病虫害风险三个维度
+给出预测数据和推荐建议。
+                        </div>
+                        <p><strong>AI典型预测回复（示例）：</strong></p>
+                        <table>
+                            <tr><th>参数方案</th><th>生长周期</th><th>能耗</th><th>病虫害风险</th><th>综合评价</th></tr>
+                            <tr><td>25°C/60%</td><td>标准周期（约90天）</td><td>中等</td><td>低</td><td>均衡推荐</td></tr>
+                            <tr><td>28°C/70%</td><td>缩短约15%（约77天）</td><td>高（降温耗能大）</td><td>高（高湿易病害）</td><td>速产但风险大</td></tr>
+                            <tr><td>22°C/50%</td><td>延长约20%（约108天）</td><td>低</td><td>极低</td><td>安全但周期长</td></tr>
+                        </table>
+                        <p><strong>学生判断环节：</strong>学生需判断AI预测是否合理。典型分析："AI说28°C能缩短生长周期15%，这跟我查到的番茄最适生长温度25-28°C一致，可信。但AI说高湿70%会增加病虫害风险，这跟生物课学的真菌繁殖需要高湿环境一致。所以虽然方案2生长快，但风险太大。方案1最均衡，我选择25°C/60%。"</p>
+                    </div>
+
+                    <p><strong>Step 2：AI模拟传感器数据变化（4分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 传感器数据模拟与响应分析</div>
+                        <p>学生用AI模拟一天内温室大棚传感器数据的变化，分析控制系统的响应过程。</p>
+                        <div class="prompt-box">
+<span class="label">【提升组提示词】</span>
+请模拟智能温室大棚在夏季一天的传感器数据变化：
+上午8点温度22°C湿度70%，中午12点温度35°C湿度40%，
+下午3点温度38°C湿度35%，傍晚6点温度28°C湿度55%。
+针对每个时段，分析闭环控制系统应该如何响应？
+各执行器（风扇、喷雾器、遮阳帘）何时启动/关闭？
+                        </div>
+                        <p><strong>AI典型回复摘要：</strong></p>
+                        <ul>
+                            <li>8:00 — 温度低于设定值25°C，加热器启动；湿度偏高，暂不喷雾</li>
+                            <li>12:00 — 温度远高于25°C，风扇全速运转+遮阳帘展开；湿度偏低，喷雾器间歇工作</li>
+                            <li>15:00 — 温度达峰值38°C，所有降温设备全开；持续喷雾维持湿度</li>
+                            <li>18:00 — 温度接近设定值，风扇降速；遮阳帘收起</li>
+                        </ul>
+                        <p>学生根据AI模拟数据，绘制一天内控制系统响应时间线，标注各执行器的启停时刻，理解闭环控制的动态响应过程。</p>
+                    </div>
+
+                    <p><strong>Step 3：控制方案设计（4分钟）</strong></p>
+                    <p>学生综合AI参数预测和传感器数据模拟结果，设计完整的智能温室大棚闭环控制方案，包含：系统方框图、控制参数设定值、各执行器启停逻辑、异常处理预案（如传感器故障时的应急策略）。填写《AI交互记录表》。</p>
+                </div>
+
+                <!-- 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-label">8分钟</span>
+                    <h4>环节四：迁移应用——自适应控制策略设计</h4>
+                    <p><strong>Step 1：高阶组挑战——自适应控制（4分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 自适应控制策略设计</div>
+                        <p><span class="tag-paradigm">高阶组任务</span> 学生用AI辅助设计根据作物生长阶段自动调整控制参数的自适应策略。</p>
+                        <div class="prompt-box">
+<span class="label">【高阶组提示词】</span>
+番茄的生长分为苗期、开花期、结果期三个阶段，
+每个阶段对温度和湿度的需求不同。
+请设计一个自适应控制策略：
+根据当前生长阶段自动调整温度和湿度的设定值，
+并说明控制器如何判断当前处于哪个生长阶段。
+                        </div>
+                        <p>AI给出建议后，学生需判断其合理性并完善方案。例如，AI可能建议用时间判断生长阶段（播种后第N天），学生可质疑："仅靠时间判断不够准确，因为温度变化会影响生长速度。应该增加图像识别传感器判断植株形态。"——这就是批判性使用AI的体现。</p>
+                    </div>
+
+                    <p><strong>Step 2：方案展示与互评（4分钟）</strong></p>
+                    <p>2-3组展示控制方案，其他组提问评价。教师引导学生关注：方框图是否完整标注六环节？反馈路径是否正确？控制参数选择是否有AI数据支撑和合理判断？</p>
+                </div>
+
+                <!-- 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-label">2分钟</span>
+                    <h4>环节五：总结反思——反馈的哲学</h4>
+                    <p>教师总结："闭环控制的核心是'反馈'——不断检测、比较、纠偏。这不仅是工程原理，也是一种思维方式：做事要像闭环控制一样，及时检查结果、与目标对比、调整行动。AI能帮我们预测参数效果和模拟系统响应，但判断什么参数最合适、怎么应对异常，需要我们结合多学科知识做决策。"</p>
+                    <p>提问引导反思："你生活中有哪些'闭环控制'的例子？（如学习中的纠错、运动中的调整）AI的参数预测你觉得可信吗？有没有不合理的地方？"总结必修二四大模块的内在联系：结构是基础，流程是过程，系统是整体，控制是智慧——四者共同构成技术与工程的完整图景。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 七、板书设计 -->
+        <div class="section">
+            <h2>七、板书设计</h2>
+            <div class="blackboard">闭环控制系统
+
+一、闭环控制·反馈环分析法
+  输入 → 传感器 → 比较器 → 执行器 → 输出
+    ↑                                        ↓
+    ←←←←←←← 反馈 ←←←←←←←←←←
+
+二、跨学科类比
+  人体体温调节 = 天然闭环控制
+  下丘脑=比较器  皮肤感受器=传感器
+  血管/汗腺=执行器  体温=输出
+
+三、智能温室大棚
+  设定25°C/60% → 传感器检测 → 控制器比较
+  → 风扇/加热器/喷雾器响应 → 温湿度变化 → 反馈
+
+四、AI辅助
+  参数预测 → 学生判断 → 方案优化
+  （AI给数据，结合生物/物理知识做决策）</div>
+        </div>
+
+        <!-- 八、教学反思预设 -->
+        <div class="section">
+            <h2>八、教学反思预设</h2>
+            <ul class="reflection-list">
+                <li><strong>跨学科类比效果：</strong>人体体温调节类比是本课亮点，能有效帮助学生从已有生物知识迁移到工程控制概念。但需注意类比的局限性——人体调节是非意识的自适应过程，而工程控制需要人为设计控制策略，两者在复杂度和灵活性上有差异。</li>
+                <li><strong>六环节理解深度：</strong>传感器和执行器环节学生容易理解，但"比较器"环节可能较抽象。需用"温度计读数与目标值相减得到偏差"这类具体例子帮助学生理解比较器的功能。</li>
+                <li><strong>AI参数预测可信度：</strong>AI给出的"温度设定25°C，湿度60%，预计作物生长周期缩短15%"等预测数据需要学生结合农业知识判断合理性。部分学生可能缺乏农业背景知识，教师可提前准备番茄生长最适温湿度的参考资料供学生对照。</li>
+                <li><strong>分层任务实施：</strong>基础组分析六环节和提升组参数预测是核心要求，高阶组自适应控制建议设为选做挑战。课堂时间优先保证反馈环分析法和AI辅助参数预测两个核心环节。</li>
+                <li><strong>FreeCAD模型展示：</strong>控制系统结构模型能帮助学生理解传感器、控制器、执行器的空间布局，但需注意聚焦控制系统结构而非建筑结构，避免偏离主题。</li>
+                <li><strong>与必修二整体的收束：</strong>本课作为必修二最后一个核心教学设计，应在总结环节点明四大模块的内在联系，帮助学生建立完整的技术与工程认知体系。</li>
+            </ul>
+        </div>
+
+        <!-- 九、AI应用说明 -->
+        <div class="section">
+            <h2>九、AI应用说明</h2>
+            <h3>范式定位：OBE-GAI模式</h3>
+            <p>本教案AI应用的核心定位是<strong>"控制参数预测器与系统行为模拟器"</strong>，AI负责预测不同控制参数的效果和模拟系统响应过程，学生负责基于预测结果进行参数优化决策和方案设计。具体应用：</p>
+            <table>
+                <tr><th>环节</th><th>AI应用方式</th><th>顾问定位体现</th><th>学生决策任务</th></tr>
+                <tr><td>环节三</td><td>预测不同温湿度参数对作物生长的影响</td><td>提供参数效果预测数据</td><td>结合农业知识判断合理性并选择参数</td></tr>
+                <tr><td>环节三</td><td>模拟一天内传感器数据变化和系统响应</td><td>提供系统行为动态模拟</td><td>分析控制系统的动态响应过程</td></tr>
+                <tr><td>环节四</td><td>辅助设计自适应控制策略</td><td>提供策略设计参考</td><td>批判性完善方案（质疑AI的判断依据）</td></tr>
+            </table>
+            <h3>分层提示词设计</h3>
+            <div class="prompt-box">
+<span class="label">【基础组】</span>请分析智能温室大棚闭环控制系统的六个环节，
+列出每个环节的名称、功能和输入输出信号，画出方框图。
+<span class="label">【提升组】</span>我正在设计智能温室大棚闭环控制系统，种植番茄，
+请预测温度25°C/湿度60%、温度28°C/湿度70%、温度22°C/湿度50%
+三种参数组合的效果，从生长周期、能耗、病虫害风险三个维度对比。
+<span class="label">【高阶组】</span>番茄分苗期、开花期、结果期，每阶段温湿度需求不同。
+请设计自适应控制策略：根据生长阶段自动调整设定值，
+并说明控制器如何判断当前生长阶段。请给出具体参数表。
+            </div>
+            <h3>AI交互记录表</h3>
+            <table>
+                <tr><th>字段</th><th>说明</th></tr>
+                <tr><td>六环节分析</td><td>记录智能温室大棚闭环控制六环节及功能</td></tr>
+                <tr><td>AI参数预测</td><td>记录AI对不同温湿度参数组合的预测数据</td></tr>
+                <tr><td>参数合理性判断</td><td>学生结合农业/生物知识判断AI预测是否合理</td></tr>
+                <tr><td>最终参数选择</td><td>记录选定的控制参数及选择理由</td></tr>
+                <tr><td>系统响应模拟</td><td>记录AI模拟的传感器数据变化和执行器响应</td></tr>
+                <tr><td>方案设计</td><td>完整的控制方案（方框图+参数+逻辑+异常处理）</td></tr>
+                <tr><td>AI建议的否决记录</td><td>记录否决的AI建议及否决理由（批判性核心）</td></tr>
+            </table>
+            <h3>评价量规</h3>
+            <table>
+                <tr><th>评价维度</th><th>权重</th><th>优秀（90-100）</th><th>合格（60-89）</th><th>待改进（<60）</th></tr>
+                <tr><td>反馈环分析</td><td>25%</td><td>六环节分析准确、反馈路径正确</td><td>能标注主要环节</td><td>环节缺失或反馈错误</td></tr>
+                <tr><td>AI交互质量</td><td>25%</td><td>有参数判断和否决理由</td><td>有AI交互记录</td><td>全盘接受AI建议</td></tr>
+                <tr><td>方案设计</td><td>25%</td><td>方框图规范、参数合理、含异常处理</td><td>有基本方案和方框图</td><td>方案不完整</td></tr>
+                <tr><td>跨学科迁移</td><td>15%</td><td>能准确类比人体调节与工程控制</td><td>理解类比关系</td><td>类比混淆</td></tr>
+                <tr><td>表达与协作</td><td>10%</td><td>展示清晰、能有效回应提问</td><td>能完成基本展示</td><td>表达不清晰</td></tr>
+            </table>
+            <h3>FreeCAD模型引用说明</h3>
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD模型引用 | 控制系统结构模型</div>
+                <p>本课引用<strong>智能温室大棚控制系统FreeCAD结构模型</strong>，展示传感器、控制器、执行器、被控对象（温室大棚）的空间布局和连接关系：</p>
+                <ul>
+                    <li><strong>空间布局展示：</strong>传感器安装在棚内中央，控制器在控制柜中，执行器分布在棚内各位置</li>
+                    <li><strong>信号路径可视化：</strong>用线条标注传感器→控制器→执行器的信号传输路径</li>
+                    <li><strong>反馈回路呈现：</strong>通过模型展示从执行器动作→被控对象变化→传感器检测的完整反馈回路</li>
+                </ul>
+                <div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+                    <p style="margin:0 0 6px 0;"><strong>渲染图：</strong>智能温室大棚框架 (Greenhouse)</p>
+                    <img src="../FreeCAD配套模型/Greenhouse_render.png" alt="智能温室大棚框架 (Greenhouse)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+                    <p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型含55个部件，展示温室大棚的完整结构——5组人字屋架、纵向系杆、屋脊梁、门框，以及传感器支架和控制箱。学生可直观理解闭环控制系统的硬件组成在温室中的物理布局。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

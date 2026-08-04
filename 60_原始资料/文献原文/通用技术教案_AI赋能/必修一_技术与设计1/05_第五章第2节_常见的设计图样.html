@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章第2节 常见的设计图样 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第五章第2节 常见的设计图样</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第五章第二节内容，系统介绍三视图、剖视图等常见技术图样的绘制规范与识读方法。三视图依据正投影原理，通过主视图、俯视图、左视图完整表达物体的形状与尺寸，是工程技术领域的通用语言。教材从投影基本概念切入，详细讲解三视图的形成规律与「长对正、高平齐、宽相等」的对应关系，并延伸到简单剖视图的应用。本节是图样表达核心素养的重点内容，为后续模型制作与工艺设计提供精确的图样依据。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已学习设计表现图，具备一定的图形表达能力，但对正投影原理较为陌生，空间想象能力参差不齐。从立体实物到平面视图的转换是认知难点，部分学生难以建立视图间的对应关系。教学需借助实物模型与三维软件对照，帮助学生在二维与三维间建立直观联系。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识三视图作为工程技术通用语言的重要价值。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握正投影原理，建立三维物体与二维视图的转换逻辑。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能用三视图准确表达设计方案的形体与结构特征。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能绘制简单物体的三视图并标注尺寸，遵循「长对正、高平齐、宽相等」规律。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过识读图样为后续模型加工奠定基础，理解图样的指导意义。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>正投影的基本原理</li>
+        <li>三视图的形成与对应规律</li>
+        <li>简单物体三视图的绘制与识读</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>空间形体到平面视图的转换</li>
+        <li>视图间「长对正、高平齐、宽相等」的准确对应</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园收纳盒</strong>为载体贯穿全课，从实物到图样层层递进</li>
+        <li>实物模型与三维软件同步演示，强化空间对应</li>
+        <li>分步绘制练习，先识读后绘制降低难度</li>
+        <li>小组合作完成三视图拼图，在游戏中巩固对应规律</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：三视图对照拼图</div>
+        <p>一套由若干常见几何体三视图卡片组成的拼图教具，每张卡片含一个视图（主视图、俯视图或左视图）。学生需根据给定的一个视图，从卡片中找出对应的另外两个视图并拼合，在动手匹配中深刻理解三视图的对应关系。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>一份看不懂的图纸</h4>
+            <p><strong>教师活动</strong>：展示一张校园书架的施工三视图，提问学生能否看懂并想象出实物形状，引出正投影与三视图话题。</p><p><strong>学生活动</strong>：尝试识读图纸，体会规范图样与草图的差异，产生学习三视图的需求。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（15分钟）</span>
+            <h4>正投影与三视图的形成</h4>
+            <p><strong>教师活动</strong>：讲解正投影概念，用光源照射实物演示投影过程，推导主视图、俯视图、左视图的形成，强调「长对正、高平齐、宽相等」规律。</p><p><strong>学生活动</strong>：观察投影演示，在学案上记录三视图位置关系，理解对应规律。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：三视图的CAD绘制</div>
+                <p>教师利用FreeCAD打开一个校园收纳盒的三维模型，切换到正交投影视图，分别展示主视图、俯视图、左视图，并在TechDraw工作台中自动生成标准三视图图纸。学生直观看到三维模型与三视图的实时对应关系，理解「长对正、高平齐、宽相等」在软件中的体现。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深化实践（12分钟）</span>
+            <h4>三视图拼图挑战</h4>
+            <p><strong>教师活动</strong>：分发三视图对照拼图，组织小组竞赛，给定一个视图要求补全另外两个视图。</p><p><strong>学生活动</strong>：小组合作完成拼图，讨论视图对应关系，加深对投影规律的理解。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 绘制练习（11分钟）</span>
+            <h4>我来画三视图</h4>
+            <p><strong>教师活动</strong>：给出一个简单积木组合体，指导学生分步绘制其三视图并标注主要尺寸。</p><p><strong>学生活动</strong>：在方格纸上完成三视图绘制，同伴互查对应关系是否正确。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：三视图对应关系智能核查</div>
+                <p>学生将手绘三视图拍照上传至AI图像识别工具，获取「长对正、高平齐、宽相等」对应关系的核查反馈，快速定位绘制偏差并修正，体会AI辅助图样自检的高效。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（2分钟）</span>
+            <h4>工程语言的规范之美</h4>
+            <p><strong>教师活动</strong>：总结三视图规律与绘制要点，强调规范图样在工程交流中的作用。</p><p><strong>学生活动</strong>：整理笔记，完成课堂自评卡。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+常见的设计图样——三视图
+一、正投影原理
+二、三视图：主视图、俯视图、左视图
+三、对应规律：
+  长对正（主、俯）
+  高平齐（主、左）
+  宽相等（俯、左）
+四、绘制步骤：选主视→定位置→逐视图绘制→标注尺寸
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第14课 · 正弦拱桁架桥设计</title><link rel="stylesheet" href="../css/style.css"></head>
+<body>
+<nav class="navbar"><a href="../index.html" class="logo">🖨️ 代码造物工坊</a><div class="nav-links"><a href="index.html">模块五</a><a href="../index.html#modules">全部课程</a></div></nav>
+<section class="lesson-header"><div class="lesson-num">模块五 · 第14课</div><h1>📐 正弦拱桁架桥设计</h1><div class="meta"><span>⏱️ 45分钟</span><span>🧩 S/T/E/M融合</span><span>🌉 桥梁项目</span></div></section>
+<div class="container">
+  <div class="objectives fade-in"><h3>🎯 学习任务</h3><ul><li>用z=16+26×sin(πx/120)生成拱肋站位</li><li>识别上弦、下弦、竖腹杆、斜腹杆和横向联系</li><li>画出从桥面到支座的传力路径</li><li>生成单一可打印桥梁实体</li></ul></div>
+  <div class="knowledge-card fade-in"><h3><span class="emoji">📈</span> 数学函数变成结构</h3><p>7个站位沿120mm跨度均匀分布；正弦函数控制拱肋高度，交叉腹杆提高平面稳定，横向联系防止两片桁架侧向失稳。</p></div>
+  <div class="code-block">
+    <pre># 计算7个正弦拱站位的x、z坐标
+import math
+span = 120.0
+base_z = 16.0
+rise = 26.0
+station_count = 7
+
+for i in range(station_count):
+    x = span * i / (station_count - 1)
+    z = base_z + rise * math.sin(math.pi * x / span)
+    print(i, "x =", round(x, 1), "z =", round(z, 1))</pre>
+  </div>
+  <div class="code-guide">
+    <h4>代码解读</h4>
+    <ol class="code-steps">
+      <li><code>station_count = 7</code>表示包含左右端点在内共7个站位，因此跨长被分成<code>7-1=6</code>等份。</li>
+      <li><code>x = span*i/(station_count-1)</code>依次得到0、20、40、60、80、100、120mm。</li>
+      <li><code>math.pi*x/span</code>把跨长位置映射到0～π；<code>sin()</code>在两端为0、跨中为1。</li>
+      <li><code>z = base_z + rise*sin(...)</code>让两端高度为16mm、跨中最高为42mm，形成对称拱线。</li>
+    </ol>
+    <div class="code-result"><strong>运行结果：</strong>输出7组对称坐标，随后可把相邻站位连接为上弦，并在同一x位置建立竖腹杆。</div>
+    <div class="code-warning"><strong>易错点：</strong><code>math.sin()</code>使用弧度，所以必须乘<code>math.pi</code>；分母要用<code>station_count-1</code>，否则最后一个站位到不了120mm端点。</div>
+  </div>
+  <div class="workshow"><div class="work-card fade-in"><img src="../assets/images/07_模块五_正弦拱桁架桥_有限元分析.png" alt="正弦拱桁架桥"><div class="info"><h4>正弦拱桁架桥</h4><p>单一打印实体，跨度120mm</p></div></div></div>
+  <div class="lesson-nav"><a href="../module4/lesson13.html" class="prev">← 上一课</a><a href="lesson15.html" class="next">下一课 →</a></div>
+</div>
+<footer class="footer"><p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p></footer><script src="../js/main.js"></script>
+</body></html>

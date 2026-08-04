@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第12课 · 储物盒槽口与装配</title><link rel="stylesheet" href="../css/style.css"></head>
+<body>
+<nav class="navbar"><a href="../index.html" class="logo">🖨️ 代码造物工坊</a><div class="nav-links"><a href="index.html">模块四</a><a href="../index.html#modules">全部课程</a></div></nav>
+<section class="lesson-header"><div class="lesson-num">模块四 · 第12课</div><h1>🗃️ 储物盒槽口与装配</h1><div class="meta"><span>⏱️ 45分钟</span><span>🧩 多实体</span><span>📦 实践作业5</span></div></section>
+<div class="container">
+  <div class="preview-box fade-in"><span class="preview-label">📖 课前预习</span><ul><li>区分槽宽、槽深、插入边厚度和装配间隙</li><li>观察盒体和盒盖的配合方向</li></ul></div>
+  <div class="objectives fade-in"><h3>🎯 学习任务</h3><ul><li>建立60×40×35mm盒体与2.5mm壁厚</li><li>建立3.2mm宽、6mm深的双边环形槽</li><li>保留0.35mm单边装配间隙</li><li>确认盒体与盒盖装配后无实体干涉</li></ul></div>
+  <div class="knowledge-card fade-in"><h3><span class="emoji">📏</span> 槽口为什么必须可见</h3><p>装配不是把两个实体移到一起。盒盖插入边必须进入真实槽口；槽宽 = 插入边厚度 + 两侧间隙。</p></div>
+  <div class="code-block">
+    <pre># 根据插入边厚度自动计算槽宽
+wall_T = 2.5
+clearance = 0.35
+groove_W = wall_T + 2 * clearance
+groove_D = 6.0
+
+print("环形槽宽 =", groove_W, "mm")
+print("环形槽深 =", groove_D, "mm")</pre>
+  </div>
+  <div class="code-guide">
+    <h4>代码解读</h4>
+    <div class="code-guide-grid">
+      <div class="code-guide-item"><strong>计算关系</strong>插入边厚2.5mm，左右两侧各留0.35mm，所以槽宽=2.5+0.35+0.35=3.2mm。</div>
+      <div class="code-guide-item"><strong>参数联动</strong>若修改壁厚或打印机所需间隙，<code>groove_W</code>会自动更新，避免盒沿和槽口口径不一致。</div>
+      <div class="code-guide-item"><strong>槽宽与槽深</strong><code>groove_W</code>控制横向配合松紧，<code>groove_D</code>控制插入深度和闭合定位，两者不能混用。</div>
+      <div class="code-guide-item"><strong>验证目标</strong>装配后应能顺畅插入、闭合到位，且干涉体积为0；太紧和过松都需要重新调整参数。</div>
+    </div>
+    <div class="code-result"><strong>运行结果：</strong>环形槽宽3.2mm、槽深6.0mm，与本课参数表一致。</div>
+    <div class="code-warning"><strong>易错点：</strong>不要把总间隙0.7mm误写成单侧间隙；不同打印机与材料需要通过间隙测试块校准0.35mm。</div>
+  </div>
+  <div class="workshow"><div class="work-card fade-in"><img src="../assets/images/05_带盖储物盒.png" alt="带盖储物盒"><div class="info"><h4>带盖储物盒</h4><p>真实双边槽口与打印装配间隙</p></div></div></div>
+  <div class="lesson-nav"><a href="lesson11.html" class="prev">← 上一课</a><a href="lesson13.html" class="next">下一课 →</a></div>
+</div>
+<footer class="footer"><p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p></footer><script src="../js/main.js"></script>
+</body></html>

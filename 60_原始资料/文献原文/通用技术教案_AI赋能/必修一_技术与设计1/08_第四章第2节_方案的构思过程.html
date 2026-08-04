@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四章第2节 方案的构思过程 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第四章第2节 方案的构思过程</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是明确问题后走向具体方案的关键环节。教材将方案构思过程归纳为<strong>收集信息、方案构思、方案呈现、方案筛选</strong>四个步骤，强调构思要充分发散、广开思路，呈现要规范清晰（草图、说明、图样），筛选要依据设计要求与人机目标进行评价优选。教材倡导运用头脑风暴、形态分析法、联想法等发散思维工具，并鼓励用三维模型呈现方案，为方案细化与原型制作铺路。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已掌握明确问题与人机目标，但构思时常出现两种极端：要么思路单一过早收敛，要么发散后无法收敛筛选。对头脑风暴、形态分析等工具缺乏结构化训练，方案呈现多停留在文字描述，缺乏图样与三维表达。教学需借助构思矩阵板与校园真实任务，让学生经历『发散—收敛—呈现』的完整构思。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能理解方案构思的四个步骤及发散—收敛的辩证关系。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能用形态分析法等工具系统生成方案组合并理性筛选。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能运用头脑风暴与联想法产生多样化、有创意的方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用草图与三维模型规范呈现方案，附设计说明。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能制作方案构思卡与简易三维模型，呈现筛选结果。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>方案构思四步骤：收集信息、构思、呈现、筛选</li>
+        <li>发散思维工具（头脑风暴、形态分析法、联想法）的运用</li>
+        <li>方案筛选的评价依据与呈现规范</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>在发散后理性收敛，依据设计要求与人机目标筛选</li>
+        <li>用图样与三维模型规范呈现方案，而非仅文字描述</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>构思矩阵板</strong>结构化策略，使发散可见可组合</li>
+        <li>运用<strong>校园真实任务</strong>驱动，以雨伞收纳问题贯穿构思全程</li>
+        <li>融入<strong>FreeCAD三维呈现</strong>，让方案从文字走向立体</li>
+        <li>组织<strong>方案路演与互评</strong>，在展示中深化筛选评价</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：构思矩阵板</div>
+        <p>一张二维矩阵板，横轴列出关键功能要素（如收纳方式、材质、占用空间），纵轴列出各要素的可选方案。学生在格子内组合生成多种整体方案，并配『方案评价卡』按设计要求与人机目标打分。矩阵板使发散过程结构化、可追溯，配套『方案呈现卡』要求含草图、说明与三维模型截图。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>雨天教室的「伞海」怎么办</h4>
+            <p><strong>教师活动</strong>：呈现雨天教室门口伞具散乱、地面湿滑照片，提问：「如果让你构思解决方案，第一步做什么？」引出构思过程的起点——收集信息。</p><p><strong>学生活动</strong>：说出自己会先了解什么信息，暴露对构思起点的认识。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>构思四步：发散之后要能收</h4>
+            <p><strong>教师活动</strong>：讲解四步骤——收集信息、方案构思、方案呈现、方案筛选。介绍发散工具：头脑风暴（数量优先、延迟评判）、形态分析法（要素组合）、联想法（跨界类比）。强调发散后须依据评价收敛。</p><p><strong>学生活动</strong>：领取构思矩阵板，针对雨伞收纳问题填入关键要素与可选项，组合生成3个以上方案。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：方案变体补充</div>
+                <p>学生组合方案受阻或同质化时，教师调用AI检索『雨伞收纳/沥水设计的常见思路』作为<strong>变体补充</strong>。学生从AI提供的思路中<strong>自主挑选并改造</strong>为有创意的方案，而非直接照搬，确保构思主导权与原创性在学生一方。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>把方案「立」起来再筛</h4>
+            <p><strong>教师活动</strong>：引导各组挑选2个方案，用FreeCAD建立简易三维模型呈现，附设计说明；再用方案评价卡按设计要求与人机目标打分，理性筛选出最优方案。</p><p><strong>学生活动</strong>：小组完成三维呈现与评价筛选，填写筛选理由，准备路演。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD方案三维呈现</div>
+                <p>在FreeCAD中为筛选出的方案建立简易三维模型（如壁挂沥水伞架、折叠伞桶），通过不同视角渲染与尺寸标注，使方案从文字描述升级为立体呈现，辅助方案评价与路演展示。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>方案路演：用图说话</h4>
+            <p><strong>教师活动</strong>：组织方案路演，每组用草图与三维模型展示最优方案，他组按评价卡打分提问。</p><p><strong>学生活动</strong>：完成路演与互评，在反馈中反思方案与人机目标的契合度。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>构思：敢发散，会收敛</h4>
+            <p><strong>教师活动</strong>：总结——方案构思要敢发散广开思路，也要会收敛理性筛选，最终用图样与模型让方案立得住。</p><p><strong>学生活动</strong>：用一句话写出『发散—收敛』给自己的启示。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第四章第2节 方案的构思过程
+
+四步：
+  ① 收集信息
+  ② 方案构思（发散）
+  ③ 方案呈现（图样/模型）
+  ④ 方案筛选（收敛）
+
+发散工具：头脑风暴 · 形态分析法 · 联想法
+筛选依据：设计要求 + 人机目标
+
+工具：构思矩阵板 + 方案评价卡
+FreeCAD：方案三维呈现
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

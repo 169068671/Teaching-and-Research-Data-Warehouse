@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>说课稿 · 控制单元 智能温控系统设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 2.0;
+            padding: 20px 16px;
+        }
+        .container { max-width: 680px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 30px 20px 24px;
+            border-bottom: 3px solid #1B5E20;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            color: #1B5E20;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .mnemonic {
+            background: #e8f5e9;
+            border: 2px solid #1B5E20;
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .mnemonic .label {
+            color: #1B5E20;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .mnemonic .text {
+            color: #1B5E20;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #1B5E20;
+            font-size: 19px;
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 5px solid #1B5E20;
+        }
+        .section p {
+            margin-bottom: 14px;
+            text-indent: 2em;
+            font-size: 16px;
+        }
+        .section strong {
+            color: #1B5E20;
+        }
+        .process-step {
+            background: #f9fbf9;
+            border-left: 4px solid #4CAF50;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+        .process-step .step-title {
+            color: #2E7D32;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            text-indent: 2em;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .process-step p:last-child { margin-bottom: 0; }
+        .blackboard {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 22px 24px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin-top: 10px;
+        }
+        .blackboard .bk-center {
+            text-align: center;
+            font-size: 18px;
+            color: #81C784;
+            margin-bottom: 10px;
+        }
+        .closing {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>智能温控系统设计</h1>
+        <div class="subtitle">生态鱼缸的设计与制作 · 控制单元（4-8课时）· 说课稿</div>
+    </div>
+
+    <div class="mnemonic">
+        <div class="label">记忆口诀</div>
+        <div class="text">闭环智控</div>
+    </div>
+
+    <div class="section">
+        <h2>一、说教材</h2>
+        <p>各位评委好，今天我说课的题目是《智能温控系统设计》，这是项目的第四单元，也是收官单元。记忆口诀——<strong>"闭环智控"</strong>。</p>
+        <p>本单元隶属必修二"技术与设计2"第四单元，核心概念是"控制"。热带鱼需要26度正负1度的恒温环境，室温波动大，必须设计自动温控系统。控制单元在项目中扮演<strong>"神经"</strong>角色——结构是骨骼、流程是经络、系统是血脉都已就位，控制就是给鱼缸装上神经系统，让它能自己感知温度、自动调节。本单元4到8课时，是整个项目的综合应用和升华。</p>
+    </div>
+
+    <div class="section">
+        <h2>二、说学情</h2>
+        <p>学生已完成前三个单元，有了实体鱼缸和生态系统。他们在物理课学过传感器基础，在信息技术课接触过简单编程，但对"闭环控制"的概念是空白的。"感知—决策—执行—反馈"这个闭环，需要从零建构。他们对智能硬件有好奇心，这是很好的切入点。</p>
+    </div>
+
+    <div class="section">
+        <h2>三、说目标</h2>
+        <p>三条。一是理解开环与闭环控制的区别，能画出温控系统的控制方框图。二是能设计26度正负1度的闭环温控方案，运用工具进行参数优化。三是能完成温度传感器布局、控制器编程和加热器联动调试，实现自动恒温。</p>
+    </div>
+
+    <div class="section">
+        <h2>四、说重难点</h2>
+        <p>重点是闭环控制方框图的绘制和理解。难点是控制参数的整定——温度阈值设多少、加热功率选多大、滞后怎么补偿。突破策略是<strong>"闭环控制设计画布"</strong>原创工具，把控制系统的输入、感知、决策、执行、反馈五个环节结构化，引导学生系统思考。</p>
+    </div>
+
+    <div class="section">
+        <h2>五、说教法</h2>
+        <p>"大概念贯通式项目学习法"，以"为鱼缸设计智能温控系统"驱动。四种方法：对比演示法区分开环闭环、方框图绘制法建框架、FreeCAD传感器布局分析法助设计、闭环控制设计画布做量化决策。画布从控制精度、响应速度、稳定性、可靠性、成本五个维度评分。同时引入AI做参数优化参考。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、说过程</h2>
+        <p>核心重点，分四到八课时，四步走。</p>
+
+        <div class="process-step">
+            <div class="step-title">课时一 · 控制认知与方框图绘制</div>
+            <p>我做一个对比演示：开环控制——人盯着温度计，冷了手动开加热棒；闭环控制——传感器检测温度，控制器自动开关加热棒。学生一看就懂区别。然后讲闭环四要素：传感器是"眼睛"，控制器是"大脑"，执行器是"手"，反馈是"神经回路"。学生画温控方框图。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时二 · 方案设计与传感器布局</div>
+            <p>任务：设计26度正负1度闭环温控。各小组提出两种方案：阈值控制方案——低于25度开加热、高于27度关加热；PID控制方案——根据偏差比例调节功率。用FreeCAD在模型中分析温度传感器布局：装在出水口还是缸体中部？离加热棒多远才不会误判？这些都要用模型来分析空间关系。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时三 · 参数优化与方案定稿</div>
+            <p>精华环节。各小组用"闭环控制设计画布"对两个方案打分：控制精度看温度波动范围，响应速度看升温时间，稳定性看是否震荡，可靠性看断电保护，成本看硬件总价。AI辅助做参数整定建议，比如加热功率按每升水1到2瓦估算，学生交叉验证。30升水选30到50瓦加热棒。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时四及后续 · 搭建调试与项目总结</div>
+            <p>这是物化落地。接线、编程、传感器固定、加热器安装。通电后观察温度曲线，调阈值、防震荡。能力强的组还拓展自动喂食器和远程监控。最后做项目总结展示，回顾四个单元的贯通：结构是骨骼承载一切，流程是经络规范工序，系统是血脉连通生态，控制是神经智能调节。一个大概念链条，从物质到功能到智能，螺旋上升。</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>七、说板书</h2>
+        <p>板书走"闭环回路式"：画一个完整回路——温度传感器到控制器到加热器到鱼缸水温再回到传感器，箭头循环。中心写"控制=神经"。旁边标注四单元贯通链。</p>
+        <div class="blackboard">
+            <div class="bk-center">控制 = 神经</div>
+            　　传感器 → 控制器 → 加热器<br>
+            　　　↑　　　　　　　　　↓<br>
+            　　　←── 鱼缸水温 ──←<br>
+            ────────────────────<br>
+            　骨骼→经络→血脉→神经<br>
+            　结构　流程　系统　控制
+        </div>
+    </div>
+
+    <div class="closing">
+        以上是我的说课，感谢各位评委。
+    </div>
+
+</div>
+</body>
+</html>

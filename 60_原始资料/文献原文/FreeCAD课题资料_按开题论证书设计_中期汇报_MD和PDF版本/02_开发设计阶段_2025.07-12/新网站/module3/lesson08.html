@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第8课 · 循环与函数</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块三</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块三 · 第8课</div>
+  <h1>🧱 循环、函数与标准乐高积木块</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 技术实践</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>复习第7课：确保能用makeBox和makeCylinder创建几何体</li>
+      <li>了解for循环：重复执行一段代码，如 for i in range(5): 会重复5次</li>
+      <li>了解def函数：把一段代码封装起来取个名字，方便重复使用</li>
+      <li>思考：如果要创建8个圆柱排成一排，手动写8行太麻烦，有没有更聪明的方法？</li>
+      <li>尝试在Python控制台输入 for i in range(3): print(i) 并回车</li>
+    </ul>
+    <div class="preview-warn">⚠️ for循环和def函数是编程建模进阶的关键。不预习将无法理解阵列和模块化设计。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>掌握for循环（for i in range(n):）</li>
+      <li>能用for循环批量创建几何体（阵列）</li>
+      <li>掌握def函数定义和调用</li>
+      <li>理解『模块化设计』——把重复代码封装成函数</li>
+      <li>能编写函数创建参数化几何体</li>
+      <li>完成实践作业3：标准2×4乐高式积木块</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔁</span> for循环</h3>
+    <p>for i in range(n): 重复执行n次。</p>
+    <p>i从0开始，每次加1，到n-1结束。</p>
+    <p>用途：批量创建几何体（如乐高积木顶部8个圆柱）。</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> def函数</h3>
+    <p>def 函数名(参数): 定义函数。</p>
+    <p>函数可以重复调用，避免代码重复。</p>
+    <p>参数让函数更灵活——传不同参数得到不同结果。</p>
+  </div>
+    <div class="code-block">
+      <pre># 实践作业3：用双重循环创建2×4凸点阵列
+import FreeCAD
+import Part
+
+brick = Part.makeBox(31.8, 15.8, 9.6)
+for row in range(2):
+    for col in range(4):
+        stud = Part.makeCylinder(
+            2.45, 1.8,
+            FreeCAD.Vector(3.9 + col*8, 3.9 + row*8, 9.6)
+        )
+        brick = brick.fuse(stud)
+Part.show(brick)</pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <div class="code-guide-grid">
+        <div class="code-guide-item"><strong>底座</strong><code>makeBox(31.8, 15.8, 9.6)</code>建立2×4积木主体，三个参数分别是长、宽、高。</div>
+        <div class="code-guide-item"><strong>循环次数</strong>外层<code>row</code>取0、1，共2行；内层<code>col</code>取0、1、2、3，共4列，因此循环体执行2×4=8次。</div>
+        <div class="code-guide-item"><strong>阵列坐标</strong><code>3.9 + col*8</code>和<code>3.9 + row*8</code>把列、行编号换算为圆柱中心坐标，相邻凸点中心距8mm。</div>
+        <div class="code-guide-item"><strong>创建与合并</strong><code>makeCylinder(2.45,1.8,...)</code>生成半径2.45mm、高1.8mm的凸点；每次用<code>brick.fuse(stud)</code>与当前主体做布尔并。</div>
+      </div>
+      <div class="code-result"><strong>运行结果：</strong>生成31.8×15.8×11.4mm的积木上半部，顶部有2行×4列共8个凸点。</div>
+      <div class="code-warning"><strong>易错点：</strong><code>for</code>行末必须有冒号，循环体必须统一缩进；漏写<code>brick =</code>会导致合并结果没有保存。底部空腔和3根加强管在第9课继续完成。</div>
+    </div>
+  <h2 class="section-title fade-in">作品展示</h2>
+  <div class="workshow">
+      <div class="work-card fade-in">
+        <img src="../assets/images/04_乐高式积木块_2x4.png" alt="乐高积木块">
+        <div class="info">
+          <h4>🧱 乐高积木块</h4>
+          <p>用for循环创建8个圆柱</p>
+        </div>
+      </div>
+  </div>
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty medium">medium</span></h3>
+    <p>1. 完成实践作业3：标准2×4乐高式积木块</p>
+    <p>2. 使用双重for循环生成顶部8个圆柱凸点</p>
+    <p>3. 保存为：学号-姓名-标准乐高式积木块.FCStd</p>
+    <p>4. 预习第9课：检查底部空腔、加强管和单一实体</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="lesson07.html" class="prev">← 上一课</a>
+    <a href="lesson09.html" class="next">下一课 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

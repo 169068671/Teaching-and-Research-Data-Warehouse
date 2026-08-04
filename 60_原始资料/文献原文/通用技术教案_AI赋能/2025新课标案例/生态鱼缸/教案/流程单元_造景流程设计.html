@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程单元 造景流程设计 | 生态鱼缸的设计与制作</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f1f8e9;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(27,94,32,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 5px; }
+        .header .meta { font-size: 14px; opacity: 0.8; }
+        .content {
+            background: #fff;
+            padding: 40px 35px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .section-card {
+            border-left: 5px solid #1B5E20;
+            background: #f1f8e9;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1B5E20;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8e6c9;
+        }
+        .section-card h3 {
+            color: #2E7D32;
+            font-size: 18px;
+            margin: 18px 0 10px;
+        }
+        .section-card h4 {
+            color: #388E3C;
+            font-size: 16px;
+            margin: 15px 0 8px;
+        }
+        .section-card p { margin-bottom: 12px; text-align: justify; }
+        .section-card ul, .section-card ol { margin: 10px 0 12px 22px; }
+        .section-card li { margin-bottom: 6px; }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #1B5E20, #2E7D32, #4CAF50, #81C784);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 18px 22px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e8f5e9;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #1B5E20;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #1B5E20;
+        }
+        .time-tag {
+            display: inline-block;
+            background: #1B5E20;
+            color: #fff;
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1B5E20;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p { margin-bottom: 8px; font-size: 15px; }
+        .timeline-item ul { margin-left: 20px; font-size: 15px; }
+
+        /* AI应用环节 */
+        .ai-block {
+            border: 2px solid #2E7D32;
+            background: #e8f5e9;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .ai-block::before {
+            content: 'AI赋能环节 · 流程时序分析助手';
+            display: block;
+            font-weight: bold;
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .ai-block p { margin-bottom: 6px; }
+
+        /* FreeCAD应用环节 */
+        .freecad-block {
+            border: 2px solid #E65100;
+            background: #fff3e0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .freecad-block::before {
+            content: 'FreeCAD建模与分析';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .freecad-block p { margin-bottom: 6px; }
+
+        /* 原创工具 */
+        .tool-box {
+            border: 2px dashed #6A1B9A;
+            background: linear-gradient(135deg, #f3e5f5, #faf0fc);
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .tool-box::before {
+            content: '原创教学工具';
+            display: block;
+            font-weight: bold;
+            color: #6A1B9A;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .tool-box h4 { color: #6A1B9A; margin-bottom: 6px; }
+
+        /* 教学目标网格 */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #cfd8dc;
+            border-radius: 8px;
+            padding: 16px;
+            border-top: 4px solid #2E7D32;
+        }
+        .goal-item h4 {
+            color: #1B5E20;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .goal-item p { font-size: 14px; margin-bottom: 0; }
+
+        /* 板书设计 */
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 28px 30px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", "楷体", serif;
+            font-size: 17px;
+            line-height: 2.2;
+            margin: 15px 0;
+            border: 3px solid #1a252f;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
+        }
+        .blackboard .bk-title {
+            text-align: center;
+            font-size: 22px;
+            border-bottom: 1px solid #3d566e;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .blackboard .bk-section { margin-bottom: 12px; }
+
+        /* 表格样式 */
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .table-style th {
+            background: #1B5E20;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: center;
+            border: 1px solid #1B5E20;
+        }
+        .table-style td {
+            padding: 10px 12px;
+            border: 1px solid #cfd8dc;
+            text-align: center;
+        }
+        .table-style tr:nth-child(even) td { background: #f1f8e9; }
+        .table-style tr:hover td { background: #e8f5e9; }
+
+        /* 评价量规 */
+        .rubric-box {
+            background: linear-gradient(135deg, #e0f2f1, #e8f5e9);
+            border-left: 4px solid #00695C;
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+        .rubric-box h4 { color: #00695C; margin-bottom: 8px; }
+
+        /* 单元作品 */
+        .work-box {
+            background: linear-gradient(135deg, #fff8e1, #fffde7);
+            border: 2px solid #F9A825;
+            padding: 20px 24px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .work-box::before {
+            content: '单元作品要求';
+            display: block;
+            font-weight: bold;
+            color: #E65100;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .work-box h4 { color: #E65100; margin-bottom: 6px; }
+
+        .highlight {
+            background: #fff59d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .quote-box {
+            background: #e8f5e9;
+            border-left: 4px solid #2E7D32;
+            padding: 14px 18px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+        }
+        .info-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #1B5E20;
+            font-size: 13px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin: 2px 4px 2px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .overview-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 14px 16px;
+            border: 1px solid #c8e6c9;
+            text-align: center;
+        }
+        .overview-item .label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .overview-item .value {
+            font-size: 16px;
+            color: #1B5E20;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 页头 -->
+    <div class="header">
+        <div class="subtitle">2025新课标项目式教学案例 · 普通高中通用技术</div>
+        <h1>流程单元 造景流程设计</h1>
+        <div class="meta">必修模块2：技术与工程设计2 ｜ 课时：4课时 ｜ 核心概念：流程 ｜ 项目载体：生态鱼缸的设计与制作</div>
+    </div>
+
+    <!-- 内容主体 -->
+    <div class="content">
+
+        <!-- 零、单元概述 -->
+        <div class="section-card">
+            <h2>零、单元概述</h2>
+            <p>本单元为"生态鱼缸的设计与制作"项目的第二单元，在4单元16-20课时的项目序列中承担<strong>"流程衔接"</strong>的关键角色。以"<strong>流程</strong>"大概念为统领，围绕鱼缸造景工序设计展开，引导学生从缸体结构已完成的真实情境出发，认知流程的环节与时序、理解流程优化的思想方法，并通过"清洗→铺设底砂→种植水草→注水"的造景流程设计，体会流程设计在工程实践中的价值。</p>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="label">所属项目</div>
+                    <div class="value">生态鱼缸的设计与制作</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课标来源</div>
+                    <div class="value">附录2 案例2</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">课时安排</div>
+                    <div class="value">4课时</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">核心概念</div>
+                    <div class="value">流程</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">关键工序</div>
+                    <div class="value">清洗→底砂→水草→注水</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">承载项目</div>
+                    <div class="value">结构单元成果</div>
+                </div>
+            </div>
+            <div class="quote-box">核心概念链：结构（承重与稳定）→ 流程（造景工序时序）→ 系统（生态循环关联）→ 控制（温控反馈闭环）。本单元为链条第二环，流程是生态鱼缸的"经络"，让结构之"骨骼"开始承担有序的功能实现。</div>
+        </div>
+
+        <!-- 一、教材分析 -->
+        <div class="section-card">
+            <h2>一、教材分析</h2>
+            <p>本单元教学内容源自《普通高中技术与工程课程标准（2017年版2025年修订）》附录2案例2，隶属必修模块2"技术与工程设计2"。流程是技术活动中将输入转化为输出的有序过程，任何工程产品从原料到成品都依赖科学合理的流程组织。鱼缸造景作为一项典型的多工序工程任务，其清洗、铺设底砂、种植水草、注水四道工序存在严格的时序依赖和空间约束，是流程概念学习的理想载体。</p>
+            <p>本单元承接结构单元已完成的缸体与支架实物成果。FreeCAD数字模型包含底砂、水体、3株水草、缸体、中层隔板等部件，可清晰展示造景各要素在缸体内部的空间叠置关系。学生将在真实项目中认知流程的环节构成、时序关系、流程图表达方法，并通过流程优化体会效率与质量兼顾的工程思想。</p>
+            <p>本单元与项目其他单元存在内在贯通：结构单元确定的缸体尺寸（400×250×300mm）限定了造景材料用量和操作空间；流程单元设计的造景时序为<strong>系统单元</strong>过滤循环管路安装预留了工序窗口；流程优化的思想方法也为<strong>控制单元</strong>温控系统调试的工序编排提供方法论支撑。流程设计承上启下，体现了"大概念贯通式项目设计"中从物质载体到有序运行的递进逻辑。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section-card">
+            <h2>二、学情分析</h2>
+            <p>本单元授课对象为高一年级学生，学生在生活中接触过各类需要按步骤操作的活动（如烹饪、组装家具），对"先后顺序""步骤"有朴素认识，但缺乏对流程的环节、时序、流程图等系统化概念认知，难以将日常经验提炼为工程化的流程设计语言。</p>
+            <p>学生在结构单元中已掌握鱼缸缸体与支架的结构特征，对缸体内部空间有初步认知，但对于"造景材料如何有序进入缸体""哪道工序必须先做"等问题缺乏系统思考。部分学生具有初步的流程图绘制经验，但多数未接触过工程流程优化方法。学生对AI工具（如大语言模型）有使用热情，但尚需引导其将AI作为流程时序分析助手而非简单问答工具使用。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section-card">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <p style="margin-bottom: 10px;">依据技术与工程课程核心素养五维框架，设定如下教学目标：</p>
+            <div class="goal-grid">
+                <div class="goal-item">
+                    <h4>技术意识</h4>
+                    <p>通过鱼缸造景流程实例分析，体会流程设计在工程产品制作中的组织性作用，形成"流程决定效率与质量"的技术意识，能从流程视角审视生活中的多步骤活动。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>工程思维</h4>
+                    <p>运用流程分析方法，识别造景流程的环节构成与时序依赖关系，理解串行与并行、关键路径等流程优化思想，能进行基本的流程时序分析与优化。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>创新设计</h4>
+                    <p>能根据鱼缸造景需求，提出至少两种流程时序方案，借助AI工具进行时序分析，运用"流程时序优化器"进行多维度评价，体现效率与质量兼顾的设计取向。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>图样表达</h4>
+                    <p>能使用规范符号绘制造景流程图，表达流程的环节、时序与决策节点，能借助FreeCAD模型展示造景各要素的空间关系和装配时序。</p>
+                </div>
+                <div class="goal-item">
+                    <h4>物化能力</h4>
+                    <p>能根据优化后的流程方案实施鱼缸造景，按工序完成清洗、铺设底砂、种植水草、注水等操作，在制作过程中体现规范操作与工匠精神。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section-card">
+            <h2>四、教学重难点</h2>
+            <table class="table-style">
+                <tr>
+                    <th style="width: 15%;">类别</th>
+                    <th style="width: 45%;">内容</th>
+                    <th style="width: 40%;">突破策略</th>
+                </tr>
+                <tr>
+                    <td><strong>教学重点</strong></td>
+                    <td>流程环节与时序的概念；流程图规范绘制；造景流程的时序依赖分析；流程优化思想的应用</td>
+                    <td>情境对比+流程图绘制实践+FreeCAD模型时序可视化+AI时序分析+流程时序优化器量化评价</td>
+                </tr>
+                <tr>
+                    <td><strong>教学难点</strong></td>
+                    <td>时序依赖关系的识别（为何注水必须在种植水草之后）；串行与并行的判别；关键路径与时序优化的定量分析</td>
+                    <td>FreeCAD模型分层装配演示+错序情境反例分析+教师示范+小组协作探究</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section-card">
+            <h2>五、教学策略与方法</h2>
+            <h3>5.1 总体策略</h3>
+            <p>采用<strong>"大概念贯通式项目学习法"</strong>，以"为已完成结构的鱼缸设计并实施造景流程"为驱动任务，将流程概念学习嵌入真实工程实践。遵循"认知—分析—设计—优化—实施—反思"的工程思维路径，4课时形成完整的学习闭环。教学过程中融合AI智能工具辅助时序决策和FreeCAD工程模型时序可视化，实现"手脑机"协同的技术学习新形态。</p>
+            <h3>5.2 教学方法</h3>
+            <ul>
+                <li><strong>情境对比法</strong>：以正确造景流程与错误造景流程的对比导入，激发流程设计的必要性认识</li>
+                <li><strong>图样表达法</strong>：通过流程图规范符号的讲授与练习，建立流程的工程化表达语言</li>
+                <li><strong>AI辅助分析法</strong>：运用AI作为流程时序分析助手，辅助多方案时序对比与优化决策</li>
+                <li><strong>建模可视化法</strong>：运用FreeCAD模型的分层装配展示，将造景时序转化为空间叠置可视化</li>
+                <li><strong>实施验证法</strong>：按优化流程实施造景，通过实际效果验证流程设计的合理性</li>
+            </ul>
+
+            <h3>5.3 原创教学工具</h3>
+            <div class="tool-box">
+                <h4>流程时序优化器</h4>
+                <p>本工具为本单元原创设计，用于引导学生从<strong>时序合理性、效率、质量风险、资源利用率、可操作性</strong>五个维度对流程方案进行量化评估。每个维度采用1-5分制评分，并设置权重系数，最终计算加权综合得分，辅助学生进行流程方案优选决策。</p>
+                <table class="table-style" style="margin-top: 12px;">
+                    <tr>
+                        <th>评估维度</th>
+                        <th>权重</th>
+                        <th>评分标准（5分制）</th>
+                        <th>考察要点</th>
+                    </tr>
+                    <tr>
+                        <td>时序合理性</td>
+                        <td>0.30</td>
+                        <td>1分（时序混乱）—5分（时序严谨）</td>
+                        <td>环节依赖、先后逻辑、不可逆操作前置</td>
+                    </tr>
+                    <tr>
+                        <td>效率</td>
+                        <td>0.25</td>
+                        <td>1分（耗时冗长）—5分（高效紧凑）</td>
+                        <td>总耗时、并行度、等待时间</td>
+                    </tr>
+                    <tr>
+                        <td>质量风险</td>
+                        <td>0.20</td>
+                        <td>1分（高风险）—5分（低风险）</td>
+                        <td>返工概率、材料损耗、操作容错</td>
+                    </tr>
+                    <tr>
+                        <td>资源利用率</td>
+                        <td>0.15</td>
+                        <td>1分（浪费大）—5分（集约）</td>
+                        <td>底砂水草用量、水资源、工具调用</td>
+                    </tr>
+                    <tr>
+                        <td>可操作性</td>
+                        <td>0.10</td>
+                        <td>1分（难执行）—5分（易执行）</td>
+                        <td>步骤清晰度、单人/小组分工适配</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 10px; font-size: 14px;">综合得分 = Σ（维度得分 × 权重），满分5.0分。建议3.5分以上方案方可采用实施。</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section-card">
+            <h2>六、教学过程（4课时）</h2>
+            <p>本单元教学过程共4课时，以时间轴形式呈现完整教学流程。</p>
+
+            <div class="timeline">
+                <!-- 课时1 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第1-15分钟</span>
+                    <h4>环节一：情境导入——造景的"顺序之困"</h4>
+                    <p><strong>教师活动：</strong>展示两个造景视频片段：片段A中操作者先注满水再试图铺设底砂和种植水草，结果水草漂浮、底砂扬起、水体浑浊，狼狈不堪；片段B中操作者按"清洗→铺设底砂→种植水草→缓慢注水"的顺序操作，最终水清草固、景观整洁。讲述情境故事："两位同学都想给自己的鱼缸造景，为什么结果天差地别？"</p>
+                    <p><strong>学生活动：</strong>观察两个视频片段的工序差异，小组讨论："造景的顺序为什么如此重要？哪些操作一旦做错就无法挽回？"</p>
+                    <p><strong>设计意图：</strong>以正反对比情境激发学生对流程时序的觉察，引出"流程""环节""时序"的探究需求。</p>
+                </div>
+
+                <!-- 课时1 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第16-40分钟</span>
+                    <h4>环节二：概念建构——流程、环节与时序</h4>
+                    <p><strong>教师活动：</strong>结合实物与图片，讲解流程的核心概念：</p>
+                    <ul>
+                        <li><strong>流程：</strong>将输入转化为输出的一组有序活动，包含若干环节和环节间的时序关系</li>
+                        <li><strong>环节：</strong>流程中相对独立的活动单元，如造景流程中的"清洗""铺设底砂""种植水草""注水"</li>
+                        <li><strong>时序：</strong>环节之间的先后顺序，分串行（必须依次进行）和并行（可同时进行）两种</li>
+                    </ul>
+                    <p><strong>流程图符号讲授：</strong>教师讲解流程图的基本符号——圆角矩形（开始/结束）、矩形（环节）、菱形（判断）、箭头（时序流向）。</p>
+                    <p><strong>探究活动：</strong>学生分组分析常见生活流程（泡茶、洗衣服、组装书架），用流程图符号绘制简单流程图，标注环节与时序。</p>
+                    <p><strong>学生活动：</strong>归纳"环节的不可逆性决定时序的刚性"这一核心规律：例如"注水"必须在"种植水草"之后，因为注水后无法在水下精确种植。</p>
+                </div>
+
+                <!-- 课时1 环节二续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时1 · 第41-45分钟</span>
+                    <h4>环节二续：造景流程初识与FreeCAD模型导入</h4>
+                    <p>教师引导学生初步识别鱼缸造景的四道核心工序，并思考每道工序的输入、输出和前置依赖。</p>
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型导入：</strong>教师展示已建好的生态鱼缸三维模型（EcoFishTank），引导学生观察模型中底砂、水草、水体、缸体的空间叠置关系，建立"造景是分层装配"的直观认知。</p>
+                        <p>模型参数：缸体400×250×300mm，底砂层约30mm厚，3株水草分布于底砂之上，水体覆盖底砂和水草。从下到上的空间层次正是造景时序的空间映射。</p>
+                    </div>
+                    <p>布置课后任务：观察生活中一项多步骤活动，绘制其流程图。</p>
+                </div>
+
+                <!-- 课时2 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第1-20分钟</span>
+                    <h4>环节三：设计实践（一）——造景流程初步设计与AI时序分析</h4>
+                    <p><strong>任务驱动：</strong>"为400×250×300mm的生态鱼缸设计完整的造景流程，需兼顾效率与质量。"</p>
+                    <p><strong>教师活动：</strong>引导学生细化四道核心工序，并识别每道工序的子环节：</p>
+                    <ul>
+                        <li><strong>清洗：</strong>清洗缸体内部 → 清洗底砂（去除粉尘） → 清洗造景石/沉木</li>
+                        <li><strong>铺设底砂：</strong>底砂分层铺设（前低后高形成坡度） → 造景石/沉木定位</li>
+                        <li><strong>种植水草：</strong>水草根部修剪 → 按布局插入底砂 → 轻压固定</li>
+                        <li><strong>注水：</strong>垫缓冲垫（塑料膜）→ 缓慢注水至水位线 → 取出缓冲垫</li>
+                    </ul>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>教师示范如何使用AI助手进行流程时序分析。</p>
+                        <p><strong>提示词示范：</strong>"请帮我分析生态鱼缸造景流程的时序依赖关系。四道核心工序是清洗、铺设底砂、种植水草、注水。请指出哪些工序必须串行、哪些可以并行，分析每道工序的前置依赖和不可逆性，并给出两种不同的时序方案（追求效率型 vs 追求质量型），对比其总耗时和质量风险。"</p>
+                        <p><strong>学生活动：</strong>各小组向AI输入不同的流程分析需求，获取AI生成的时序依赖分析表和方案对比，并对AI输出结果进行<strong>批判性审查</strong>——核查时序依赖是否合理、并行判断是否成立。</p>
+                        <p><strong>教师引导：</strong>提醒学生AI可能误判某些工序的并行性，例如"清洗底砂"与"清洗缸体"可并行，但"种植水草"与"铺设底砂"必须串行。引导学生关注不可逆操作——注水后无法重新铺设底砂。</p>
+                    </div>
+
+                    <p><strong>成果产出：</strong>各小组完成《造景流程初步设计书》，包含工序细化表、AI时序分析表和小组验证结论。</p>
+                </div>
+
+                <!-- 课时2 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时2 · 第21-45分钟</span>
+                    <h4>环节三：设计实践（二）——流程图绘制与时序优化器应用</h4>
+                    <p><strong>教师活动：</strong>讲解流程图绘制规范，示范如何用规范符号表达造景流程，并标注串行/并行关系和判断节点（如"底砂是否洗净？""水草布局是否满意？"）。</p>
+                    <p><strong>学生活动：</strong>各小组根据AI时序分析结果，绘制两种造景流程方案（效率型、质量型）的流程图，标注环节、时序、判断节点。</p>
+
+                    <div class="tool-box">
+                        <h4>流程时序优化器——应用实践</h4>
+                        <p>各小组运用"流程时序优化器"对效率型方案和质量型方案进行评分：</p>
+                        <ul>
+                            <li>时序合理性（0.30）：评估工序依赖是否严谨、不可逆操作是否前置</li>
+                            <li>效率（0.25）：评估总耗时、并行度（如清洗环节是否并行）</li>
+                            <li>质量风险（0.20）：评估返工概率（如未洗净底砂导致水体浑浊）</li>
+                            <li>资源利用率（0.15）：评估底砂水草用量、水资源浪费</li>
+                            <li>可操作性（0.10）：评估步骤清晰度、小组分工适配</li>
+                        </ul>
+                        <p>计算加权综合得分，选择最优方案。要求3.5分以上方案方可进入实施环节。</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第1-25分钟</span>
+                    <h4>环节三：设计实践（三）——FreeCAD模型装配时序可视化</h4>
+                    <p><strong>任务驱动：</strong>"将抽象的造景时序转化为可视化的空间装配关系，验证流程的合理性。"</p>
+                    <p><strong>教师活动：</strong>讲解流程时序与空间装配的对应关系——造景的时序本质上是材料在缸体内部从下到上的分层堆叠。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD模型装配时序分析任务：</strong>教师展示已建好的鱼缸模型，引导学生通过模型的分层显示与装配树，理解造景流程的空间时序。</p>
+                        <p><strong>分析要点：</strong></p>
+                        <ol>
+                            <li>在FreeCAD装配树中观察部件层级：缸体（5块玻璃）→ 底砂层 → 水草（3株）→ 水体，层级顺序对应装配时序</li>
+                            <li>单独显示缸体，分析造景前的"空缸"状态——清洗工序的作业空间</li>
+                            <li>叠加显示底砂层，观察底砂在缸体底部的覆盖范围（约30mm厚），分析铺设底砂工序的空间约束</li>
+                            <li>叠加显示3株水草，观察水草根部插入底砂的空间关系，分析种植水草工序为何必须在铺设底砂之后</li>
+                            <li>叠加显示水体，观察水体覆盖底砂和水草的关系，分析注水工序为何必须在种植水草之后</li>
+                            <li>使用剖面工具截取缸体纵向截面，直观呈现"缸体—底砂—水草—水体"的分层叠置结构</li>
+                        </ol>
+                        <p><strong>学生活动：</strong>各小组在FreeCAD中操作模型，按装配时序逐层显示部件，绘制造景装配时序图（空间叠置图），将流程图与时序图对照。讨论：FreeCAD模型的空间层次如何印证流程的时序刚性？</p>
+                    </div>
+                </div>
+
+                <!-- 课时3 环节三续 优化 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时3 · 第26-45分钟</span>
+                    <h4>环节三：设计实践（四）——流程时序优化与方案定稿</h4>
+                    <p><strong>教师活动：</strong>讲解流程优化的核心思想——在保证时序合理的前提下，通过并行化、合并环节、减少等待来提升效率，同时通过增加质量检查节点来降低返工风险。</p>
+
+                    <div class="freecad-block">
+                        <p><strong>FreeCAD辅助优化任务：</strong>基于模型空间关系，分析流程优化机会。</p>
+                        <p><strong>优化分析：</strong></p>
+                        <ol>
+                            <li>识别并行机会：清洗缸体、清洗底砂、清洗造景石可并行（不同容器、互不干扰）</li>
+                            <li>识别串行刚性：铺设底砂 → 种植水草 → 注水，三者空间叠置决定不可并行</li>
+                            <li>识别质量检查节点：底砂铺设后检查坡度、水草种植后检查布局，避免注水后无法调整</li>
+                            <li>识别缓冲操作：注水时垫缓冲垫（塑料膜）防止水流冲击底砂和水草</li>
+                            <li>在FreeCAD中模拟"先注水后种植"的错误时序，观察水草漂浮、底砂扬起的可视化后果（教师演示反例）</li>
+                        </ol>
+                    </div>
+
+                    <div class="ai-block">
+                        <p><strong>AI应用任务：</strong>各小组将优化后的流程方案提交AI进行二次分析。</p>
+                        <p><strong>提示词示范：</strong>"请帮我评估以下优化后的鱼缸造景流程方案：清洗环节并行化（缸体/底砂/造景石同时清洗）→ 铺设底砂（前低后高坡度）→ 质量检查（坡度/布局）→ 种植水草 → 质量检查（固定/布局）→ 垫缓冲垫缓慢注水。请评估该方案的时序合理性、效率提升幅度、潜在风险，并给出进一步优化建议。"</p>
+                        <p><strong>学生活动：</strong>各小组对比AI建议与自身设计，进行方案定稿，更新流程时序优化器评分。</p>
+                    </div>
+
+                    <p><strong>设计意图：</strong>通过FreeCAD模型的空间时序可视化和AI的时序分析双重辅助，让学生体验工程师"建模—分析—优化—定稿"的完整流程设计工作流。</p>
+                </div>
+
+                <!-- 课时4 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第1-20分钟</span>
+                    <h4>环节四：实施验证（一）——按优化流程实施造景</h4>
+                    <p><strong>教师活动：</strong>讲解造景操作规范与安全注意事项：</p>
+                    <ul>
+                        <li>清洗：底砂反复淘洗至水清，造景石/沉木刷洗去尘</li>
+                        <li>铺设底砂：用小平铲分层铺设，前低后高形成坡度（前30mm/后50mm）</li>
+                        <li>种植水草：长镊子夹住根部插入底砂，按布局图分株种植</li>
+                        <li>注水：塑料膜覆盖底砂，沿缸壁缓慢注水至水位线（约250mm）</li>
+                    </ul>
+                    <p><strong>安全提示：</strong>玻璃缸体操作轻柔避免撞击；水草修剪使用专用剪刀注意刀刃；注水分阶段避免一次过量。</p>
+                    <p><strong>学生活动：</strong>各小组按优化后的流程方案实施造景，记录每道工序的实际耗时、操作要点和突发情况。教师巡回指导，重点检查时序执行严格性和操作规范性。</p>
+                    <div class="quote-box">实施过程融入规范操作教育：严格遵循优化时序、质量检查节点不可省略、记录实际数据用于流程验证，细节决定造景成败。</div>
+                </div>
+
+                <!-- 课时4 环节四续 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第21-40分钟</span>
+                    <h4>环节四：实施验证（二）——流程效果评估与优化复盘</h4>
+                    <p><strong>评估方案：</strong>造景完成后静置观察30分钟，评估流程效果。</p>
+                    <p><strong>观察记录要点：</strong></p>
+                    <ul>
+                        <li>水体清澈度：是否因底砂未洗净或注水冲击导致浑浊？</li>
+                        <li>水草固定度：是否有水草漂浮或歪倒？是否因种植顺序问题？</li>
+                        <li>底砂坡度：是否保持设计坡度？是否因注水冲击变形？</li>
+                        <li>整体景观：是否符合设计意图？时序优化是否提升了最终质量？</li>
+                        <li>实际耗时：与预估耗时对比，分析偏差原因</li>
+                    </ul>
+                    <p><strong>学生活动：</strong>各小组执行效果评估，填写《造景流程实施记录表》，记录实际数据与优化复盘。对出现问题的环节进行时序诊断和改进建议。</p>
+                </div>
+
+                <!-- 课时4 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-tag">课时4 · 第41-45分钟</span>
+                    <h4>环节五：总结反思——流程设计复盘与项目衔接</h4>
+                    <p><strong>教师活动：</strong>组织全班进行流程设计成果展示与互评。引导总结：</p>
+                    <ul>
+                        <li>流程时序设计如何影响产品制作效率与质量？</li>
+                        <li>时序依赖分析在流程决策中发挥了什么作用？</li>
+                        <li>AI时序分析和FreeCAD模型可视化分别带来了哪些帮助？</li>
+                    </ul>
+                    <p><strong>项目衔接预告：</strong>"造景流程已经完成，鱼缸内部景观初现。但仅有景观还不够——水会变浑、鱼会缺氧、温度会波动。如何让鱼缸成为一个自我维持的生态系统？这就是我们下一单元要学习的'系统设计'。"——自然过渡到系统单元。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 七、评价方式 -->
+        <div class="section-card">
+            <h2>七、评价方式</h2>
+            <p>本单元采用<strong>多元过程性评价</strong>，融合教师评价、同伴互评和自我反思三个维度，贯穿教学全过程。</p>
+            <table class="table-style">
+                <tr>
+                    <th>评价环节</th>
+                    <th>评价内容</th>
+                    <th>评价方式</th>
+                    <th>权重</th>
+                </tr>
+                <tr>
+                    <td>课堂参与</td>
+                    <td>流程图绘制练习投入度、讨论发言质量、概念理解程度</td>
+                    <td>教师观察记录</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>AI批判审查</td>
+                    <td>AI时序分析输出的核实质量、批判性思维表现</td>
+                    <td>教师评价+小组互评</td>
+                    <td>15%</td>
+                </tr>
+                <tr>
+                    <td>流程时序优化器报告</td>
+                    <td>评估维度完整性、评分依据充分性、决策合理性</td>
+                    <td>教师评价（量规）</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>FreeCAD模型分析</td>
+                    <td>装配时序图准确性、空间层次理解、流程图规范性</td>
+                    <td>教师评价+作品展示</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>实施与验证</td>
+                    <td>流程执行严格性、实施记录完整性、效果评估能力</td>
+                    <td>教师评价+同伴互评</td>
+                    <td>20%</td>
+                </tr>
+                <tr>
+                    <td>单元反思</td>
+                    <td>学习收获总结、工程思维迁移意识</td>
+                    <td>自我反思</td>
+                    <td>10%</td>
+                </tr>
+            </table>
+            <div class="rubric-box">
+                <h4>核心评价指标——造景流程设计报告量规</h4>
+                <table class="table-style">
+                    <tr>
+                        <th>等级</th>
+                        <th>时序依赖分析</th>
+                        <th>流程图规范性</th>
+                        <th>优化决策</th>
+                    </tr>
+                    <tr>
+                        <td>优秀（A）</td>
+                        <td>完整识别串行/并行关系，时序依赖逻辑清晰</td>
+                        <td>符号规范、节点完整、时序流向准确</td>
+                        <td>优化依据充分，效率与质量兼顾</td>
+                    </tr>
+                    <tr>
+                        <td>良好（B）</td>
+                        <td>基本识别主要依赖关系，个别遗漏</td>
+                        <td>符号基本规范，个别节点缺失</td>
+                        <td>优化方向正确，依据较充分</td>
+                    </tr>
+                    <tr>
+                        <td>合格（C）</td>
+                        <td>依赖关系识别不完整，需引导</td>
+                        <td>符号使用欠规范，时序流向有误</td>
+                        <td>优化意识不足，需指导</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 八、板书设计 -->
+        <div class="section-card">
+            <h2>八、板书设计</h2>
+            <div class="blackboard">
+                <div class="bk-title">流程单元 造景流程设计</div>
+                <div class="bk-section">
+                    一、流程概念<br>
+                    　　流程 = 环节 + 时序<br>
+                    　　环节：清洗 / 铺底砂 / 种水草 / 注水<br>
+                    　　时序：串行（必须依次） / 并行（可同时）
+                </div>
+                <div class="bk-section">
+                    二、造景流程设计<br>
+                    　　清洗（并行）→ 铺底砂 → 质检 → 种水草 → 质检 → 注水<br>
+                    　　AI时序分析 → 流程时序优化器 → 方案定稿
+                </div>
+                <div class="bk-section">
+                    三、FreeCAD时序可视化<br>
+                    　　装配树：缸体→底砂→水草→水体<br>
+                    　　空间层次 = 装配时序<br>
+                    　　剖面图验证时序刚性
+                </div>
+                <div class="bk-section">
+                    四、实施验证<br>
+                    　　按优化流程实施 → 静置观察30min<br>
+                    　　验证：清澈度 + 固定度 + 坡度 + 耗时
+                </div>
+                <div class="bk-section">
+                    【贯通】结构 → 流程 → 系统 → 控制<br>
+                    【工具】流程时序优化器
+                </div>
+            </div>
+        </div>
+
+        <!-- 九、单元作品 -->
+        <div class="section-card">
+            <h2>九、单元作品要求</h2>
+            <div class="work-box">
+                <h4>作品一：鱼缸造景流程设计报告（小组）</h4>
+                <p>各小组提交完整的流程设计报告，须包含以下内容：</p>
+                <ul>
+                    <li><strong>流程方案设计：</strong>造景流程初步设计书（含工序细化表、AI时序分析表、批判审查记录）</li>
+                    <li><strong>流程图绘制：</strong>效率型方案和质量型方案的规范流程图（含环节、时序、判断节点）</li>
+                    <li><strong>FreeCAD模型分析：</strong>造景装配时序图（空间叠置图）、剖面截图、空间层次分析说明</li>
+                    <li><strong>流程时序优化器评分：</strong>两方案五维评分表、加权综合得分、定稿方案及优化依据</li>
+                    <li><strong>实施与验证记录：</strong>实施记录表（实际耗时、操作要点、突发情况）、效果评估表、优化复盘</li>
+                </ul>
+            </div>
+            <div class="work-box">
+                <h4>作品二：鱼缸造景实物成果（小组）</h4>
+                <p>各小组按优化流程完成鱼缸造景的实物作品，需满足：</p>
+                <ul>
+                    <li>严格遵循优化后的时序方案，质量检查节点有记录</li>
+                    <li>底砂铺设坡度合理，水草布局符合设计意图</li>
+                    <li>注水后水体清澈（静置30分钟无明显浑浊）</li>
+                    <li>水草固定良好，无漂浮歪倒</li>
+                    <li>实际耗时与预估偏差不超过20%</li>
+                </ul>
+            </div>
+            <div class="quote-box">
+                <strong>作品交付节点：</strong>课时4结束时提交设计报告和实物作品，作为本单元终结性评价依据，同时实物作品将作为后续系统单元、控制单元的项目载体持续使用。
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        2025新课标项目式教学案例 · 生态鱼缸的设计与制作 · 流程单元<br>
+        普通高中技术与工程课程标准（2017年版2025年修订）附录2案例2
+    </div>
+</div>
+</body>
+</html>

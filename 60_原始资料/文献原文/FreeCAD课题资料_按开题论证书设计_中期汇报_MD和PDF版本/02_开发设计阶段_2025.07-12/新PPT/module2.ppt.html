@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块二 · 手动建模基础（FreeCAD）</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+  <div class="slide bg-gradient active">
+    <div class="icon-large">✏️</div>
+    <h1>模块二</h1>
+    <h2>手动建模基础与实践（FreeCAD）</h2>
+    <p class="small" style="margin-top:24px;">3课时 · 第3-5课 · 技术实践</p>
+  </div>
+
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习！</h1>
+    <div class="preview-box">
+      <h3>📖 课前预习</h3>
+      <ul>
+        <li>复习模块一FreeCAD界面</li>
+        <li>切换到Sketcher工作台浏览工具</li>
+        <li>了解『草图』概念：2D平面上的线段组合</li>
+        <li>思考：画矩形需要几条线？</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide bg-dark code-slide">
+    <div class="icon-large">📁</div>
+    <h1>文件管理</h1>
+    <p>新建(Ctrl+N) · 保存(Ctrl+S) · 命名规范</p>
+    <div class="code-block">
+      <pre># Python控制台新建文档
+import FreeCAD
+doc = FreeCAD.newDocument('MySketch')
+print('文档已创建：', doc.Name)</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>作用</strong>newDocument()新建文档，返回值存入doc，后续草图和实体都添加到doc。</div>
+      <div class="summary-item"><strong>结果</strong>对象树出现MySketch；控制台输出文档名，但尚未保存成FCStd。</div>
+      <div class="summary-item"><strong>易错点</strong>同名文档可能冲突；运行后仍要Ctrl+S并按规范命名。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">✏️</div>
+    <h1>Sketcher草图工作台</h1>
+    <p>切换：工作台选择器 → Sketcher</p>
+    <ul>
+      <li>📏 线段：画直线</li>
+      <li>⭕ 圆：画圆</li>
+      <li>🌙 圆弧：画弧</li>
+      <li>📐 矩形：画矩形</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">📋</div>
+    <h1>创建草图步骤</h1>
+    <ul>
+      <li>1. 切换到Sketcher工作台</li>
+      <li>2. 点击『创建草图』</li>
+      <li>3. 选择平面（XY/XZ/YZ）</li>
+      <li>4. 用工具绘制图形</li>
+      <li>5. 添加约束（下页）</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">🔗</div>
+    <h1>几何约束</h1>
+    <p>管形状关系，不管大小</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>📏 水平</h3><p style="text-align:left;font-size:18px;">线段保持水平</p></div>
+      <div class="ppt-card"><h3>📐 垂直</h3><p style="text-align:left;font-size:18px;">线段保持垂直</p></div>
+      <div class="ppt-card"><h3>🔵 重合</h3><p style="text-align:left;font-size:18px;">两点重合（角点）</p></div>
+      <div class="ppt-card"><h3> Tangent 相切</h3><p style="text-align:left;font-size:18px;">线与弧相切</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">📏</div>
+    <h1>尺寸约束</h1>
+    <p>管具体数值</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>↔️ 水平距离</h3><p style="text-align:left;font-size:18px;">底边长度60mm</p></div>
+      <div class="ppt-card"><h3>↕️ 垂直距离</h3><p style="text-align:left;font-size:18px;">高度18mm</p></div>
+      <div class="ppt-card"><h3>🔄 角度</h3><p style="text-align:left;font-size:18px;">两线夹角</p></div>
+      <div class="ppt-card"><h3>⭕ 半径</h3><p style="text-align:left;font-size:18px;">圆半径2.5mm</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">✅</div>
+    <h1>完全约束</h1>
+    <p>所有自由度被约束，图形不能变形</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>🔴 欠约束</h3><p style="text-align:left;font-size:18px;">白色·可变形·需加约束</p></div>
+      <div class="ppt-card"><h3>🟢 完全约束</h3><p style="text-align:left;font-size:18px;">绿色·固定·理想状态</p></div>
+      <div class="ppt-card"><h3>🔴 过约束</h3><p style="text-align:left;font-size:18px;">红色·冲突·需删约束</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-warm">
+    <div class="icon-large">🔑</div>
+    <h1>约束口诀</h1>
+    <p>先几何 后尺寸</p>
+    <p style="font-size:26px;font-weight:600;">先形状 后大小</p>
+    <p style="font-size:22px;">看颜色 判状态</p>
+  </div>
+
+  <div class="slide bg-gradient code-slide">
+    <div class="icon-large">📦</div>
+    <h1>Pad拉伸特征</h1>
+    <p>把2D草图拉成3D实体</p>
+    <div class="code-block">
+      <pre># 创建Pad
+pad = body.newObject('PartDesign::Pad', 'Pad')
+pad.Profile = sketch
+pad.Length = 3.0  # 拉伸3mm
+doc.recompute()</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>逐行作用</strong>新建Pad → 指定闭合草图Profile → 设置3mm高度 → recompute生成实体。</div>
+      <div class="summary-item"><strong>前置条件</strong>body和sketch必须已存在，且sketch是Body内无缺口、无自交的闭合轮廓。</div>
+      <div class="summary-item"><strong>易错点</strong>草图未闭合或Profile指错时Pad失败；Length单位为mm。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">🕳️</div>
+    <h1>Pocket挖孔特征</h1>
+    <p>在实体上挖孔（反向Pad）</p>
+    <ul>
+      <li>1. 在实体表面创建新草图</li>
+      <li>2. 画孔的形状（圆/矩形）</li>
+      <li>3. 点击Pocket按钮</li>
+      <li>4. 设置深度→确认</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">🔑</div>
+    <h1>实践作业1：钥匙扣</h1>
+    <p>设计要求：个性化·完全约束·含穿绳孔</p>
+    <p class="small">STEAM融合点：T技术（FreeCAD建模）+ A艺术（个性化造型）</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>📐 参数</h3><p style="text-align:left;font-size:18px;">主体45×20×3mm 挂环R7/R3.5</p></div>
+      <div class="ppt-card"><h3>📝 评分</h3><p style="text-align:left;font-size:18px;">完成度40% + 技术性40% + 规范性20%</p></div>
+    </div>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页 | 共12页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教案6 · 制作台灯模型或原型 — AI赋能技术与工程教学</title>
+<style>
+:root {
+  --primary: #1a56c4;
+  --accent: #e65100;
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #333;
+  --text-light: #666;
+  --border: #ddd;
+  --ai-bg: #e3f2fd;
+  --ai-color: #1565c0;
+  --model-bg: #fff3e0;
+  --model-color: #e65100;
+  --timeline-line: #1a56c4;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "PingFang SC","Microsoft YaHei",sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.8;
+}
+.container { max-width: 960px; margin: 0 auto; }
+.header-block {
+  background: linear-gradient(135deg, var(--primary), #2d6fd6);
+  color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-block h1 { margin: 0 0 8px 0; font-size: 26px; border: none; }
+.header-block .subtitle { opacity: 0.9; font-size: 14px; }
+.header-block .meta-tags { margin-top: 12px; }
+.header-block .meta-tags span {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-right: 8px;
+}
+h2 {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 6px;
+  margin-top: 35px;
+  font-size: 20px;
+}
+h3 { color: #444; font-size: 16px; margin-top: 20px; }
+h4 { color: var(--primary); font-size: 15px; }
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--primary);
+}
+.card.accent { border-left-color: var(--accent); }
+.card.ai-card { border-left-color: var(--ai-color); }
+.card.model-card { border-left-color: var(--model-color); }
+p { margin: 8px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px 4px 2px 0;
+  font-weight: 500;
+}
+.tag-ai { background: var(--ai-bg); color: var(--ai-color); }
+.tag-model { background: var(--model-bg); color: var(--model-color); }
+.tag-tool { background: #e8f5e9; color: #2e7d32; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+th { background: var(--primary); color: #fff; }
+tr:nth-child(even) { background: #f9f9f9; }
+.timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--timeline-line);
+  border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 25px; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+.tl-item.accent-dot::before { border-color: var(--accent); }
+.tl-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.tl-time {
+  background: var(--primary);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tl-title { font-weight: 600; font-size: 16px; color: var(--primary); }
+.tl-body {
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.tl-body p { margin: 6px 0; }
+.ai-block {
+  background: var(--ai-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--ai-color);
+}
+.ai-block .ai-label {
+  color: var(--ai-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.model-block {
+  background: var(--model-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--model-color);
+}
+.model-block .model-label {
+  color: var(--model-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.blackboard {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  font-family: "PingFang SC","Microsoft YaHei",monospace;
+  line-height: 2;
+}
+.blackboard .bb-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #7f8c8d;
+  padding-bottom: 8px;
+}
+.prompt-box {
+  background: #f8f9fa;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.prompt-box strong { color: var(--primary); }
+.footer-note {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 13px;
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header-block">
+  <h1>教案6 · 第六章第4节 制作台灯模型或原型</h1>
+  <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》| AI赋能技术与工程教学</div>
+  <div class="meta-tags">
+    <span>1课时 · 45分钟</span>
+    <span>原创工具：原型迭代四步法</span>
+    <span>AI融合范式：OBE-GAI虚实双线</span>
+    <span>FreeCAD模型：台灯装配体</span>
+  </div>
+</div>
+
+<h2>一、教材分析</h2>
+<div class="card">
+<p>本节"制作台灯模型或原型"是苏教版《技术与设计1》第六章"模型或原型的制作"的核心实践节，标志着学生从"纸上设计"进入"实体物化"阶段。前序章节中，学生已完成方案的构思、计算机辅助设计等环节，掌握了从发现问题到CAD建模的完整设计链路；本节则要求学生将设计图样转化为可触摸、可测试的实物原型，是设计思维落地为工程产品的关键一步。</p>
+<p>核心概念围绕"材料""工艺""装配""测试"四要素展开，它们构成原型制作的完整闭环：材料决定物理性能，工艺决定加工方式，装配决定结构关系，测试验证设计合理性。本节承上启下——向上承接第五章的CAD图样，将数字模型变为实体；向下连接第七章的设计评价与优化，原型测试中发现的问题正是优化方案的直接依据。台灯作为经典教学项目，兼具结构简单、功能明确、可迭代空间大的特点，是承载原型迭代四步法的理想载体。</p>
+</div>
+
+<h2>二、学情分析</h2>
+<div class="card">
+<p>高一学生大多缺乏手工制作经验，对材料特性（如亚克力易碎、PVC管可弯、木材可刨）和连接工艺（如胶粘、螺丝、榫卯）认知模糊，选材和工艺决策容易凭直觉而非工程依据。学生在制作中常遇到"图纸上能画出来但做不出来"的困境，对"设计可行性"缺乏体感。此外，当原型出现问题时（如灯罩歪斜、底座不稳），学生往往不知如何排查，容易直接放弃或盲目重做。教学中需引入"故障诊断"的方法支架，帮助学生建立"现象→原因→对策"的工程问题解决逻辑。</p>
+</div>
+
+<h2>三、教学目标（五维核心素养）</h2>
+<div class="card">
+<table>
+<tr><th>素养维度</th><th>具体目标</th></tr>
+<tr><td>技术意识</td><td>认识模型与原型在设计流程中的验证价值，理解"原型是设计的试金石"，形成"先验证再定案"的工程意识。</td></tr>
+<tr><td>工程思维</td><td>掌握原型迭代四步法（材料规划→工艺选择→制作组装→测试改进），能用系统化思维分析原型故障的因果关系，形成"现象→原因→对策"的排查逻辑。</td></tr>
+<tr><td>创新设计</td><td>在原型测试发现问题后，能提出至少一种改进方案，并在改进中体现创新性（如改变底座配重方式、优化灯罩散热结构）。</td></tr>
+<tr><td>图样表达</td><td>能根据CAD图样选择对应材料和工艺，将二维图样的尺寸要求转化为三维实体的加工依据，理解图样与实物的对应关系。</td></tr>
+<tr><td>物化能力</td><td>能安全使用基本手工工具完成台灯原型的切割、连接、组装，至少完成一轮原型制作与测试改进，获得"从图样到实物"的完整物化体验。</td></tr>
+</table>
+</div>
+
+<h2>四、教学重难点</h2>
+<div class="card">
+<p><strong>教学重点：</strong>运用原型迭代四步法完成台灯原型的制作与首轮测试，经历"制作→测试→发现→改进"的完整迭代循环。</p>
+<p><strong>教学难点：</strong>原型故障的工程化诊断——学生需准确描述问题现象，结合结构原理分析可能原因，并从AI建议中筛选可行的改进方案，做出有依据的工程决策。</p>
+</div>
+
+<h2>五、教学策略与方法</h2>
+<div class="card">
+<p><strong>策略框架：</strong>采用OBE-GAI范式中的"虚实双线"策略——AI虚拟分析预判问题（虚线）与实物制作测试验证（实线）交织推进。AI作为"故障诊断顾问"在测试改进环节介入。</p>
+<p><strong>核心方法：</strong></p>
+<ul>
+<li><span class="tag tag-tool">原创工具</span> <strong>原型迭代四步法</strong>：材料规划（选材与备料）→工艺选择（加工与连接方式）→制作组装（按图施工）→测试改进（功能验证与迭代优化）。</li>
+<li><strong>虚实双线</strong>：AI辅助工艺选择与故障预判（虚）→实物制作与测试（实）→AI辅助故障诊断（虚实交汇）→实物改进（实）。</li>
+<li><strong>分层任务</strong>：基础层完成标准台灯原型制作与测试；提升层针对测试问题做一轮改进；拓展层探索材料替代或结构创新方案。</li>
+<li><strong>故障诊断支架</strong>：提供"问题现象描述模板"，引导学生规范地向AI描述故障，获取有针对性的诊断建议。</li>
+</ul>
+</div>
+
+<h2>六、教学过程</h2>
+<div class="timeline">
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">5分钟</span>
+<span class="tl-title">环节一：情境导入——教室阅读角需要一盏灯</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>展示教室阅读角照片：角落书架上有一摞书，但光线昏暗，同学阅读时需凑近窗户。抛出任务："教室阅读角需要一盏台灯，要求底座稳固、灯罩不烫手、光线柔和。我们上节课已经用CAD画了台灯设计图，今天就来把它做出来！"</p>
+<p><strong>学生活动：</strong>回顾上节课的台灯CAD设计图，思考"从图到实物需要哪些准备"。</p>
+<p><strong>过渡：</strong>教师展示一盏未完成或有缺陷的台灯原型（底座过轻导致倾倒），追问——"这盏灯做得出来，但能用吗？问题出在哪里？"引出"原型不仅要做得出来，还要测得了、改得好"的核心观念。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节二：概念建构——原型迭代四步法</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>讲解原型与模型的区别（模型侧重外观或结构展示，原型侧重功能验证），引出本课原创工具。</p>
+<h4>原型迭代四步法</h4>
+<ol>
+<li><strong>材料规划</strong>：根据台灯各部件的功能需求选择材料。底座需承重防倾（可选实木板、铁块、亚克力厚板）；灯杆需支撑可调（可选PVC管、金属软管、木条）；灯罩需遮光耐温（可选厚纸板、PVC片、铝箔纸）。列出材料清单与替代方案。</li>
+<li><strong>工艺选择</strong>：根据材料确定加工与连接方式。切割工艺（锯割、刀裁、激光切割）；连接工艺（螺丝、胶粘、卡扣、热熔）。考虑工艺可行性与课堂安全。</li>
+<li><strong>制作组装</strong>：按设计图样和工艺方案加工部件，逐件组装。注意尺寸精度与连接牢固度。</li>
+<li><strong>测试改进</strong>：对原型进行功能测试——稳定性测试（轻推是否倾倒）、温度测试（灯罩是否烫手）、照明测试（光线是否柔和均匀）。记录问题，分析原因，实施改进。</li>
+</ol>
+
+<div class="model-block">
+<div class="model-label">FreeCAD模型引用点</div>
+<p>教师展示<strong>台灯原型装配体模型</strong>。该模型由底座、灯杆、灯罩三个零件组成，通过装配约束（底座与灯杆的同轴约束、灯杆与灯罩的面对齐约束）展示台灯的结构关系。教师切换装配体的爆炸视图，让学生直观看到三个部件如何组合——"先理解结构，再动手制作"。同时展示各零件的尺寸标注，作为学生备料和加工的依据。</p>
+
+<div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+<p style="margin:0 0 6px 0;"><strong>渲染图：</strong>台灯模型 (DeskLamp)</p>
+<img src="../FreeCAD配套模型/DeskLamp_render.png" alt="台灯模型 (DeskLamp)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+<p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型包含底座、灯杆、灯罩、灯泡和开关旋钮五个部件，完整呈现台灯的结构分解与装配关系。教师可通过爆炸视图帮助学生理解装配顺序，为实物制作提供三维参照。</p>
+</div>
+</div>
+
+<p><strong>学生活动：</strong>对照台灯CAD模型和材料样品台（教师准备的多种材料小样），在任务单上完成材料规划表和工艺选择表的填写。</p>
+</div>
+</div>
+
+<div class="tl-item accent-dot">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节三：深度探究——制作原型与AI辅助故障诊断</span>
+<span class="tag tag-ai">AI应用环节</span>
+</div>
+<div class="tl-body">
+<p><strong>学生活动（制作阶段，前8分钟）：</strong>学生分组按材料规划和工艺方案制作台灯原型。教师提供预制部件半成品（已切割的底板、灯杆、灯罩毛坯）以节省时间，学生聚焦组装与调试。重点完成底座与灯杆的连接、灯杆与灯罩的固定。</p>
+<p><strong>学生活动（测试阶段，后7分钟）：</strong>原型完成后，学生进行三项功能测试：</p>
+<ul>
+<li><strong>稳定性测试</strong>：将台灯放在桌面，用手轻推底座边缘，观察是否倾倒。</li>
+<li><strong>温度测试</strong>：点亮灯泡（教师提供低功率LED灯泡），3分钟后用手背触碰灯罩，感受温度。</li>
+<li><strong>照明测试</strong>：在阅读角位置放置一本书，观察照明效果是否均匀、是否刺眼。</li>
+</ul>
+<p>测试中，多数小组会发现问题——底座不稳、灯罩过热或光线不均。此时引入AI故障诊断。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 故障诊断顾问</div>
+<p>学生用"问题现象描述模板"向AI描述测试中发现的问题，获取诊断建议：</p>
+<div class="prompt-box"><strong>问题描述模板：</strong>"我制作的台灯原型在测试中发现<strong>【问题描述：如底座放置后向灯罩方向倾斜倾倒】</strong>。台灯结构是<strong>【结构描述：如圆形木质底座直径80mm厚15mm，PVC灯杆高250mm，纸板灯罩直径120mm】</strong>。请分析可能的原因，并给出改进建议。"</div>
+<p><strong>典型交互示例：</strong></p>
+<div class="prompt-box">学生："我的台灯底座放桌上总是往后倒，感觉头重脚轻。"<br>AI："可能原因：①底座重量不足，重心偏高；②灯杆过长导致力矩过大；③底座面积偏小。建议：①底座底部增加配重（如粘贴铁片或螺母）；②缩短灯杆或改用更粗的灯杆降低重心；③增大底座直径或改用更宽的底座形状。"<br>学生判断：原因①和③合理，原因②与我的设计意图冲突（我需要灯杆够高才能照亮桌面）。采纳建议①——在底座底部凹槽中嵌入两枚螺母配重。</div>
+</div>
+
+<p><strong>学生活动（诊断阶段）：</strong>学生记录AI给出的可能原因和改进建议，逐条判断可行性，选择1-2项实施改进。改进后重新测试，记录迭代效果。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 批判性使用要求</div>
+<p>学生须在任务单上填写：<strong>①</strong> 问题现象（客观描述，不带主观判断）；<strong>②</strong> AI给出的可能原因（逐条列出）；<strong>③</strong> 我的判断与采纳方案（含否决理由）；<strong>④</strong> 改进后测试结果。此项记录纳入过程性评价，重点考查学生的工程决策能力而非AI回答质量。</p>
+</div>
+
+<p><strong>教师巡视指导：</strong>重点关注两类学生——一类是"全盘照搬AI建议不做判断"的，教师追问"你觉得这条建议在你的材料条件下可行吗"；另一类是"拒绝AI建议自己硬试"的，教师引导"AI的建议可以参考，关键是你要知道为什么采纳或否决"。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">8分钟</span>
+<span class="tl-title">环节四：迁移应用——迭代成果展示与对比</span>
+</div>
+<div class="tl-body">
+<p><strong>学生活动：</strong>各组展示改进前后的台灯原型对比，用30秒说明"发现了什么问题、AI建议了什么、我做了什么改进、效果如何"。</p>
+<p><strong>交叉互评：</strong>每组对相邻组的原型进行"故障挑刺"——尝试找出对方原型仍存在的问题，并提出改进思路。此环节模拟真实工程中的设计评审。</p>
+<p><strong>教师活动：</strong>引导归纳常见原型问题类型：结构稳定性问题（重心、力矩）、材料适配问题（强度、耐温）、工艺精度问题（连接松动、尺寸偏差）。帮助学生建立原型问题分类框架。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">2分钟</span>
+<span class="tl-title">环节五：总结反思</span>
+</div>
+<div class="tl-body">
+<p><strong>师生共结：</strong>回顾原型迭代四步法，强调"原型不是终点，测试改进才是"——好的原型一定经过至少一轮迭代。AI作为故障诊断顾问提供了可能原因和方向，但最终改进决策和实施由学生完成，"AI给方向，学生做决策"。</p>
+<p><strong>课后任务：</strong>整理台灯原型和AI诊断记录单，下节课将用于设计评价与优化环节。思考"你的原型还有哪些可以优化的地方"。</p>
+</div>
+</div>
+
+</div>
+
+<h2>七、板书设计</h2>
+<div class="blackboard">
+<div class="bb-title">制作台灯模型或原型 — 原型迭代四步法</div>
+<p>一、原型 vs 模型：功能验证 > 外观展示</p>
+<p>二、原型迭代四步法</p>
+<p>　　① 材料规划：选材 + 备料清单</p>
+<p>　　② 工艺选择：切割 + 连接方式</p>
+<p>　　③ 制作组装：按图施工 + 精度控制</p>
+<p>　　④ 测试改进：稳定性 / 温度 / 照明 → 迭代</p>
+<p>三、故障诊断：现象 → 原因 → 对策</p>
+<p>四、AI = 故障诊断顾问（方向 > 决策）</p>
+</div>
+
+<h2>八、教学反思预设</h2>
+<div class="card">
+<p><strong>优势预设：</strong>原型迭代四步法将松散的制作过程结构化为四步，学生不会陷入"埋头做不思考"的状态。虚实双线设计使AI在测试改进环节自然介入——学生遇到真实问题时主动求助AI，AI的使用动机内生于项目需要而非外部强制。故障诊断模板规范了学生的问题描述方式，培养了工程化表达习惯。</p>
+<p><strong>风险预设：</strong>①课堂时间极为紧张，15分钟内完成制作+测试+AI诊断+改进有难度，需提前准备半成品部件确保制作环节不超时；②学生制作水平差异大，部分小组可能原型都做不完就到测试环节，需准备"教师预制原型"供这些小组直接用于测试和AI诊断；③AI给出的改进建议可能涉及课堂无法实施的操作（如"重新切割底座"），教师需引导学生聚焦"课堂可行的改进"（如配重、调整灯罩开孔）。</p>
+<p><strong>改进方向：</strong>下次可将本节扩展为2课时，第一课时聚焦制作与测试，第二课时聚焦AI诊断与深度改进，让学生有充足时间经历完整的迭代循环。</p>
+</div>
+
+<h2>九、AI应用说明</h2>
+<div class="card ai-card">
+<p><span class="tag tag-ai">AI融合范式</span> 本教案采用OBE-GAI范式的"虚实双线"策略，AI定位为"故障诊断顾问"。</p>
+<h4>虚实双线设计说明</h4>
+<table>
+<tr><th>线索</th><th>环节</th><th>内容</th><th>AI角色</th></tr>
+<tr><td>虚线</td><td>环节二</td><td>AI辅助工艺可行性预判</td><td>工艺顾问</td></tr>
+<tr><td>实线</td><td>环节三前半</td><td>实物制作与功能测试</td><td>（不介入）</td></tr>
+<tr><td>虚实交汇</td><td>环节三后半</td><td>AI故障诊断 + 学生实物改进</td><td>故障诊断顾问</td></tr>
+<tr><td>实线</td><td>环节四</td><td>迭代原型展示与互评</td><td>（不介入）</td></tr>
+</table>
+<h4>AI介入时机与边界</h4>
+<p>AI仅在"测试发现问题后"介入，而非制作前就让学生问AI"怎么做好"。这一时序设计确保学生先经历真实的制作与测试体验，再借助AI解决自己亲手发现的问题——问题来源于实践，AI建议回归实践验证，形成闭环。</p>
+<h4>故障诊断模板的设计依据</h4>
+<p>模板要求学生先客观描述"问题现象"和"台灯结构参数"，再请AI分析原因。这种"先数据后诊断"的方式模拟了真实工程师的故障排查流程，避免学生用模糊语言（如"不好用""有问题"）向AI提问而得到泛泛回答。结构化输入才能获得结构化诊断。</p>
+<h4>批判性使用要求</h4>
+<p>学生必须记录AI建议的"否决理由"——即使全部采纳也要说明为什么每条都可行。教师重点关注"部分采纳"的案例，在展示环节邀请学生分享"我为什么否决了AI的某条建议"，强化"AI是顾问、学生是决策者"的核心定位。</p>
+</div>
+
+<div class="card model-card">
+<p><span class="tag tag-model">FreeCAD模型引用</span> 本教案引用<strong>台灯原型装配体模型</strong>（底座+灯杆+灯罩装配体），展示台灯三部件的结构关系与装配约束。教师通过爆炸视图帮助学生理解"整体由部件组装"的装配逻辑，为实物制作提供结构参照。模型可作为学生备料和尺寸校验的可视化依据。</p>
+
+<div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+<p style="margin:0 0 6px 0;"><strong>渲染图：</strong>台灯模型 (DeskLamp)</p>
+<img src="../FreeCAD配套模型/DeskLamp_render.png" alt="台灯模型 (DeskLamp)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+<p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型包含底座、灯杆、灯罩、灯泡和开关旋钮五个部件，完整呈现台灯的结构分解与装配关系。教师可通过爆炸视图帮助学生理解装配顺序，为实物制作提供三维参照。</p>
+</div>
+</div>
+
+<div class="footer-note">
+苏教版2019高中通用技术必修一《技术与设计1》· 第六章第4节 制作台灯模型或原型 · AI赋能教学设计
+</div>
+
+</div>
+</body>
+</html>

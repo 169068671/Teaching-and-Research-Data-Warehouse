@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>说课稿 · 流程单元 造景流程设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 2.0;
+            padding: 20px 16px;
+        }
+        .container { max-width: 680px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 30px 20px 24px;
+            border-bottom: 3px solid #1B5E20;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            color: #1B5E20;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .mnemonic {
+            background: #e8f5e9;
+            border: 2px solid #1B5E20;
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .mnemonic .label {
+            color: #1B5E20;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .mnemonic .text {
+            color: #1B5E20;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #1B5E20;
+            font-size: 19px;
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 5px solid #1B5E20;
+        }
+        .section p {
+            margin-bottom: 14px;
+            text-indent: 2em;
+            font-size: 16px;
+        }
+        .section strong {
+            color: #1B5E20;
+        }
+        .process-step {
+            background: #f9fbf9;
+            border-left: 4px solid #4CAF50;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+        .process-step .step-title {
+            color: #2E7D32;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            text-indent: 2em;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .process-step p:last-child { margin-bottom: 0; }
+        .blackboard {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 22px 24px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin-top: 10px;
+        }
+        .blackboard .bk-center {
+            text-align: center;
+            font-size: 18px;
+            color: #81C784;
+            margin-bottom: 10px;
+        }
+        .closing {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>造景流程设计</h1>
+        <div class="subtitle">生态鱼缸的设计与制作 · 流程单元（4课时）· 说课稿</div>
+    </div>
+
+    <div class="mnemonic">
+        <div class="label">记忆口诀</div>
+        <div class="text">时序有道</div>
+    </div>
+
+    <div class="section">
+        <h2>一、说教材</h2>
+        <p>各位评委好，今天我说课的题目是《造景流程设计》，这是"生态鱼缸的设计与制作"项目的第二单元。记忆口诀——<strong>"时序有道"</strong>。</p>
+        <p>本单元隶属必修二"技术与设计2"第二单元，核心概念是"流程"。鱼缸造景不是随便摆几块石头，而是一套有时序的工序：清洗缸体、铺设底砂、种植水草、注水调水。顺序错了，水草浮起来、底砂搅浑、水质崩盘。流程单元在项目中扮演<strong>"经络"</strong>角色——结构是骨骼已经搭好，流程就是把经络走通，让鱼缸从空壳变成有生命的生态。承接结构单元的空间约束，为系统单元的管路安装创造条件。</p>
+    </div>
+
+    <div class="section">
+        <h2>二、说学情</h2>
+        <p>学生在结构单元已完成缸体制作，对鱼缸有了物理感知。生活中都见过鱼缸，但"造景为什么要按顺序"很少想过。部分学生有养鱼经验，但多是凭感觉操作，缺乏流程意识。他们能画简单流程图，但对时序优化的概念是空白的。</p>
+    </div>
+
+    <div class="section">
+        <h2>三、说目标</h2>
+        <p>三条。一是理解流程的时序与环节概念，能分析造景工序的逻辑关系。二是能设计两种以上造景流程方案，运用工具进行时序优化。三是能用FreeCAD可视化装配时序，在实物造景中体现流程优化成果。</p>
+    </div>
+
+    <div class="section">
+        <h2>四、说重难点</h2>
+        <p>重点是流程环节识别和时序关系分析。难点是多方案时序优化的量化决策。突破策略是<strong>"流程时序优化器"</strong>这个原创工具，把模糊的"先做什么后做什么"变成可量化的评分。</p>
+    </div>
+
+    <div class="section">
+        <h2>五、说教法</h2>
+        <p>同样采用"大概念贯通式项目学习法"，以"为鱼缸设计最优造景流程"驱动。四种方法：情境对比法引冲突、流程图绘制法建框架、FreeCAD装配时序可视化法助理解、流程时序优化器做量化决策。这个原创工具从效率、质量、安全、可逆性、成本五个维度评分，让学生明白流程优化不是拍脑袋，是算出来的。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、说过程</h2>
+        <p>核心环节，4课时四步走。</p>
+
+        <div class="process-step">
+            <div class="step-title">课时一 · 情境导入与流程认知</div>
+            <p>我给两组对比：一组先放水草后注水，水草漂浮、砂石搅浑；另一组按正确顺序操作，水清景美。学生一看就懂——时序错了，全盘皆输。接着讲流程三要素：环节、时序、流程图。学生绘制基础造景流程图。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时二 · 方案设计与装配可视化</div>
+            <p>驱动任务：设计两种造景流程方案。一种是效率优先型，一种是质量优先型。比如效率型可以先注水到半缸再种草，质量型则先种草后缓慢注水。用FreeCAD打开EcoFishTank模型，按部件逐个装配，可视化"先底砂、后水草、再注水"的时序逻辑，让抽象的流程变直观。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时三 · 时序优化与方案定稿</div>
+            <p>这是本单元的精华。各小组用"流程时序优化器"对两个方案打分：效率维度看总耗时，质量维度看成景效果，安全维度看是否损坏水草，可逆性维度看出错能否补救，成本维度看耗材消耗。加权计算综合得分。同时用AI做时序分析参考，但提醒学生交叉验证。最终选出最优方案定稿。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时四 · 实物造景与对比反思</div>
+            <p>小组按定稿流程实操：清洗缸体、铺设底砂、种植水草、缓慢注水。记录实际耗时和遇到的问题，与设计流程对比。最后回顾：结构是骨骼、流程是经络，经络走通了，下一步系统单元就是把血脉连起来。</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>七、说板书</h2>
+        <p>板书走"流水线式"：从左到右一条主线，清洗→铺砂→种草→注水，每个环节下方标注关键参数。上方写"流程=经络"，下方贯通链。</p>
+        <div class="blackboard">
+            <div class="bk-center">流程 = 经络</div>
+            　清洗缸体 → 铺设底砂 → 种植水草 → 注水调水<br>
+            　　除渍　　　厚度5cm　　间距布局　　缓慢注入<br>
+            ────────────────────<br>
+            　贯通链：结构→流程→系统→控制
+        </div>
+    </div>
+
+    <div class="closing">
+        以上是我的说课，请评委指正。
+    </div>
+
+</div>
+</body>
+</html>

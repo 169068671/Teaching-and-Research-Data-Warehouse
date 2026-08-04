@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四章第1节 设计中的人机关系 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第四章第1节 设计中的人机关系</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节从『人—机—环境』系统视角审视设计。教材阐明人机关系是<strong>人在使用物品时与物品之间形成的相互关系</strong>，不仅指人与机器，也包括人与座椅、课桌、工具等所有人造物。教材提出人机关系应实现<strong>高效、健康、舒适、安全</strong>四大目标，并通过案例（如座椅设计、楼梯扶手）分析如何从人体尺寸、动作方式、信息交互等角度优化人机关系，为方案构思提供人本设计准则。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生天天与课桌椅、书包、文具打交道，对人机关系有切身感受，但缺乏『人—机—环境』系统视角，常将『好用』等同于『舒适』，忽视健康与安全。对人体尺寸数据缺乏应用意识，难以将抽象目标转化为可测量的设计参数。教学需借助人机测量尺与校园实物，让目标可量化、可改进。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能识别生活中的人机关系，理解人—机—环境系统视角。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能用高效、健康、舒适、安全四目标系统分析物品的人机表现。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能基于人体尺寸与动作方式提出人机优化方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用测量记录图与改进草图呈现人机分析与优化思路。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能动手测量校园物品的人机参数，制作简易优化原型。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>人机关系的概念与人—机—环境系统</li>
+        <li>高效、健康、舒适、安全四大目标</li>
+        <li>从人体尺寸与动作方式优化人机关系</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>将抽象的人机目标转化为可测量的设计参数</li>
+        <li>区分并兼顾四大目标之间的平衡（如高效与舒适的权衡）</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>校园实物测量</strong>策略，让抽象人机目标落地为可测数据</li>
+        <li>运用<strong>四目标雷达</strong>可视化，呈现各目标的强弱与权衡</li>
+        <li>融入<strong>FreeCAD人体建模</strong>，让学生在三维中体察人机关系</li>
+        <li>组织<strong>角色体验</strong>（如不同身高学生），凸显个体差异与健康目标</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：人机关系测量尺</div>
+        <p>一套含软尺、角度量角器、高度标尺的便携测量工具，配套『四目标记录卡』。学生测量校园物品（课桌椅高度差、书包肩带、楼梯踏步）的人机参数，并按<strong>高效/健康/舒适/安全</strong>四目标打分，附实测数据为据。卡片背面印有中学生人体尺寸参考值，便于对照判断是否合宜。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>一节课坐下来的腰酸背痛</h4>
+            <p><strong>教师活动</strong>：邀请两位身高差异明显的同学坐同一套课桌椅，谈感受。提问：「同样一套桌椅，为何感受不同？」引出人机关系。</p><p><strong>学生活动</strong>：从自身久坐不适出发，初步意识到『人—机』匹配的重要。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>人—机—环境：四个目标的尺子</h4>
+            <p><strong>教师活动</strong>：阐明人机关系概念与人—机—环境系统，提出四大目标：<strong>高效</strong>（操作省时省力）、<strong>健康</strong>（长期使用无损身体）、<strong>舒适</strong>（减少疲劳）、<strong>安全</strong>（防范伤害）。以座椅、楼梯扶手为例分析人体尺寸与动作方式的影响。</p><p><strong>学生活动</strong>：领取人机测量尺，测量本班课桌椅参数，按四目标打分并附数据。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：人体尺寸数据参考</div>
+                <p>学生测量后需对照标准判断合宜性，教师调用AI检索『中学生人体尺寸百分位参考值』作为<strong>数据参考</strong>（如坐高、肘高的P5—P95区间）。学生据此判断本班课桌椅对多数同学是否合宜，<strong>自主得出</strong>『健康』维度的结论，AI仅提供参照标准，不替代测量与判断。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>把课桌椅「立」到三维里看</h4>
+            <p><strong>教师活动</strong>：组织用FreeCAD建立课桌椅与人体的简易三维模型，从不同身高视角查看『视线—桌面』『肘部—桌高』的匹配，直观发现人机问题，并构思优化方案。</p><p><strong>学生活动</strong>：小组在三维模型中调整桌面高度、椅背角度，对照四目标权衡优化，绘制改进草图。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD人机三维建模</div>
+                <p>在FreeCAD中建立课桌椅与简易人体模型的装配体，通过调整桌面高度、椅面倾角、靠背曲线等参数，从正视图与侧视图观察『眼—桌面距离』『大腿—椅面夹角』『肘—桌高差』，直观体察人机关系，为优化方案提供三维依据。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>给校园一样物品开「人机处方」</h4>
+            <p><strong>教师活动</strong>：布置迁移——选取书包肩带、实验室操作台等任一校园物品，用四目标与实测数据开一份『人机处方』，提出一条优化建议。</p><p><strong>学生活动</strong>：独立完成人机处方卡，同桌互评目标与数据的对应性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>设计，终究是为人</h4>
+            <p><strong>教师活动</strong>：总结——人机关系让设计回归『人』，高效、健康、舒适、安全是衡量人本设计的四把尺子。</p><p><strong>学生活动</strong>：用一句话写出人机关系给自己最大的启发。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第四章第1节 设计中的人机关系
+
+系统：人 — 机 — 环境
+
+四目标：
+  高效 ─ 省时省力
+  健康 ─ 长期无损
+  舒适 ─ 减少疲劳
+  安全 ─ 防范伤害
+
+依据：人体尺寸 + 动作方式
+
+工具：人机关系测量尺 + 四目标记录卡
+FreeCAD：课桌椅人体三维建模
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

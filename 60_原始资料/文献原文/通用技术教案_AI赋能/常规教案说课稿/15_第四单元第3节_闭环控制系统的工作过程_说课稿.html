@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闭环控制系统的工作过程 — 说课稿</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #ffffff; color: #333; line-height: 2.1; padding: 25px 18px; }
+.container { max-width: 720px; margin: 0 auto; }
+.title-box { text-align: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 3px solid #1a56c4; }
+.title-box h1 { color: #1a56c4; font-size: 23px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #1a56c4; color: #fff; padding: 8px 22px; border-radius: 22px; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+.mnemonic .label { font-size: 12px; font-weight: normal; opacity: 0.85; margin-right: 6px; }
+.section { margin-bottom: 20px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 5px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 10px; text-align: justify; }
+.ending { text-align: center; color: #1a56c4; font-weight: bold; font-size: 15px; margin-top: 25px; padding-top: 18px; border-top: 1px dashed #1a56c4; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title-box">
+    <h1>闭环控制系统的工作过程 · 说课稿</h1>
+    <div class="mnemonic"><span class="label">记忆口诀</span>反馈闭环，自我调节</div>
+</div>
+
+<div class="section">
+<h2>一说教材</h2>
+<p>各位评委好，今天我说课的题目是「闭环控制系统的工作过程」。本节是苏教版必修二第四单元第3节，控制单元的综合应用课，也是本册收束内容。教材讲在开环基础上增加检测装置和反馈回路，形成完整信息回路，突出反馈环节的核心作用，强调闭环通过反馈实现「自我调节」，精度和稳定性优于开环。</p>
+</div>
+
+<div class="section">
+<h2>二说学情</h2>
+<p>学生已学开环控制系统，能画开环方框图，理解「没有反馈」。但对闭环中「反馈」的作用机理缺深入理解，容易把反馈简单理解为「返回信息」，忽视其比较与调节功能。对闭环在扰动下的稳定性分析缺直观体验，难理解反馈如何自我调节。需要借助跨学科类比和仿真模型建立完整认识。</p>
+</div>
+
+<div class="section">
+<h2>三说目标</h2>
+<p>五维目标：技术意识上形成关注反馈与调节的意识；工程思维上掌握闭环基本结构与工作过程，能用方框图表达反馈回路；创新设计上能针对精确控制场景提闭环方案；图样表达上能规范绘制闭环方框图；物化能力上能通过仿真模型体验搭建调节过程。</p>
+</div>
+
+<div class="section">
+<h2>四说重难点</h2>
+<p>重点是闭环控制系统基本结构与反馈回路、闭环与开环的本质区别、工作过程分析。难点是反馈环节的比较与调节功能的理解，以及闭环在扰动下稳定性的分析。</p>
+</div>
+
+<div class="section">
+<h2>五说教法</h2>
+<p>用类比切入、仿真辅助、对比深化、实践分析。原创工具是「跨学科类比法」：找原型—析回路—画框图—比异同。借助生物、物理等跨学科现象帮学生理解反馈原理，配「类比对照表」双栏呈现类比对象与控制系统的对应要素。</p>
+</div>
+
+<div class="section">
+<h2>六说过程</h2>
+<p>环节一情境导入，播教室空调从开机到恒温的视频，展示温度曲线：从高温逐渐降到设定值后稳定，有人开门时波动但很快恢复。问「空调怎么知道什么时候该停、什么时候继续制冷？它和自动门有什么不同？」引导学生发现空调能根据温度反馈自我调节，引出闭环核心——反馈。</p>
+<p>环节二结构建构，讲闭环在开环基础上增加检测装置和反馈回路，形成「输入量→控制器→执行器→被控对象→输出量→检测装置→反馈→比较→控制器」的完整回路。以人体体温调节做跨学科类比：体温设定值是输入量，大脑体温中枢是控制器，汗腺血管是执行器，身体是被控对象，体温是输出量，皮肤温度感受器是检测装置。强调反馈不是简单返回信息，而是「检测—比较—调节」的闭环。这时我用FreeCAD搭建空调恒温闭环仿真模型，三维方框图增加蓝色方块表示温度传感器，弯曲箭头从输出连回控制器表示反馈，运行仿真展示温度从高温降到设定值并稳定，模拟「开门扰动」展示温度波动后传感器检测偏差、反馈触发调节、温度恢复的过程。环节三方法学习，介绍跨学科类比法，以「骑自行车保持平衡」示范：找原型（骑车平衡），析回路（眼睛感知倾斜→大脑判断→调整重心车把），画框图，比异同（人脑控制与机器控制的异同）。环节四实践应用，学生分组用类比法分析电热水器恒温系统，类比人体出汗散热，绘制完整闭环方框图，请AI辅助检验反馈回路是否完整闭合、检测装置和比较环节是否标注正确，但分析和方框图由学生自主完成。环节五总结，强调反馈让控制更智能，回顾本册「结构→流程→系统→控制」的递进逻辑。</p>
+</div>
+
+<div class="section">
+<h2>七说板书</h2>
+<p>板书三块：一、基本结构，信息闭环流动，输入量→控制器→执行器→被控对象→输出量，检测装置反馈形成回路，核心特征是有反馈回路能自我调节；二、跨学科类比法，找原型、析回路、画框图、比异同；三、开环对闭环，无反馈对有反馈、精度受限对精度高、无法修正对自我调节。</p>
+</div>
+
+<div class="ending">以上就是我的说课，恳请评委指正。</div>
+</div>
+</body>
+</html>

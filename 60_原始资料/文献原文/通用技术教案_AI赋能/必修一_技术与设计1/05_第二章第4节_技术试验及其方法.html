@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章第4节 技术试验及其方法 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第二章第4节 技术试验及其方法</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节聚焦技术试验这一保障设计质量的关键环节。教材阐明技术试验是<strong>在技术活动中为了某种目的所进行的尝试、检验、优化等探索性活动</strong>，按目的分为性能试验、预测试验、优化试验、信息试验等；按方法包括<strong>优选试验法、模拟试验法、虚拟试验法、强化试验法、移植试验法</strong>等。教材强调技术试验需严谨设计、规范记录、客观分析，并撰写试验报告。本节是连接设计过程与设计原则的重要纽带，也是工程思维落地的核心场域。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在物理课有实验经验，但易将『科学实验』与『技术试验』混淆——前者重在发现规律，后者重在检验优化产品。学生对虚拟试验、强化试验等方法较陌生，缺乏规范撰写试验报告的训练。教学需借助虚实对照与真实校园试验任务，让学生在动手与模拟中掌握试验方法。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能区分技术试验与科学实验，理解技术试验的目的与意义。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能根据目的选择合适的试验方法，设计规范可行的试验方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能用虚拟试验与实物试验相结合的方式优化设计。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能规范绘制试验方案图与数据记录表，撰写试验报告。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能动手搭建简易实物试验装置，安全完成测试与数据采集。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>技术试验的目的、分类与意义</li>
+        <li>五种主要试验方法（优选、模拟、虚拟、强化、移植）的适用情境</li>
+        <li>技术试验报告的规范撰写</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>根据试验目的合理选择方法并设计规范方案</li>
+        <li>理解虚拟试验法及其与实物试验的互补关系</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>虚实对照</strong>策略，以虚拟试验与实物试验并行使学生直观对比</li>
+        <li>运用<strong>校园桥梁承重</strong>真实任务驱动，贯穿方法选择与报告撰写</li>
+        <li>融入<strong>FreeCAD有限元模拟</strong>，让学生体验虚拟应力分析</li>
+        <li>组织<strong>报告互评</strong>，在规范表述中强化严谨工程态度</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：虚实对照试验台</div>
+        <p>一套双轨试验记录台：左侧『实物试验轨』记录实物桥梁承重测试的载荷、变形、破坏点；右侧『虚拟试验轨』记录FreeCAD有限元分析的应力云图、最大应力位置、位移值。学生在两轨间对照，发现实物与虚拟的差异及互补，理解虚拟试验法如何预判风险、降低试错成本。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>纸桥塌了：先试还是先造</h4>
+            <p><strong>教师活动</strong>：展示一段校园科技节纸桥承重比赛视频，纸桥在加载中突然坍塌。提问：「如果事先能『预演』这次加载，结果会不同吗？」引出技术试验的必要。</p><p><strong>学生活动</strong>：讨论『先试后造』的价值，区分技术与科学探索的不同取向。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>试验有几种「打法」</h4>
+            <p><strong>教师活动</strong>：明晰技术试验的定义与分类。讲解五种方法：<strong>优选试验法</strong>（多方案择优，如农业育种）、<strong>模拟试验法</strong>（缩比/相似模拟，如风洞）、<strong>虚拟试验法</strong>（计算机仿真，如有限元分析）、<strong>强化试验法</strong>（超常条件加速老化，如轮胎耐久）、<strong>移植试验法</strong>（跨领域借用，如医学影像转工业检测）。举例说明各自适用情境。</p><p><strong>学生活动</strong>：将五种方法与校园案例匹配，填写方法—情境对照表。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>纸桥的双重体检：虚拟+实物</h4>
+            <p><strong>教师活动</strong>：组织桥梁承重微项目。引导各组先在FreeCAD中对纸桥模型做<strong>虚拟试验</strong>（有限元应力分析），预判最大应力位置；再用实物加载测试验证，将结果填入虚实对照试验台。</p><p><strong>学生活动</strong>：动手完成虚拟应力分析与实物承重测试，对照两轨数据，撰写试验报告。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD有限元应力分析</div>
+                <p>使用FreeCAD的FEM（CalculiX）工作台，对纸桥三维模型施加集中载荷，进行线性静力学分析。学生观察<strong>应力云图</strong>识别最大应力集中区，查看<strong>位移分布</strong>预判变形趋势，将分析结果与实物破坏点对照，体悟虚拟试验法如何以低成本预判风险。</p>
+            </div>
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：试验数据分析辅助</div>
+                <p>学生采集到实物与虚拟两套数据后，将数据输入AI进行<strong>数据分析辅助</strong>：请AI协助识别应力集中区域与实物破坏点的吻合度、提示可能被忽略的影响因素（如纸材含水率）。学生据此<strong>完善分析</strong>，但结论与归因由学生基于物理与工程知识自行裁定，AI仅提供数据梳理与提示。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>为校园物品挑一种试验方法</h4>
+            <p><strong>教师活动</strong>：布置迁移——为校园饮水机滤芯寿命、社团3D打印件强度等任选一项，选择合适试验方法并简述方案。</p><p><strong>学生活动</strong>：独立完成方法选择与方案要点，同桌互评方法适配性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>试验，让设计经得起检验</h4>
+            <p><strong>教师活动</strong>：总结——技术试验是设计质量的守门人，方法得当、报告规范、虚实互补，方能让设计经得起真实检验。</p><p><strong>学生活动</strong>：回顾本节方法，用一句话写出虚拟与实物试验的关系。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第二章第4节 技术试验及其方法
+
+一、是什么
+  技术试验 ─ 检验·优化产品的探索活动
+  （区别科学实验：发现规律 vs 检验优化）
+
+二、方法五式
+  优选  模拟  虚拟  强化  移植
+
+三、报告：目的—方案—数据—分析—结论
+
+工具：虚实对照试验台
+FreeCAD：FEM应力云图分析
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

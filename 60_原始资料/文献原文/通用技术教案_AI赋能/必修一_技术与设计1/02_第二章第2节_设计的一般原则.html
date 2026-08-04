@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章第2节 设计的一般原则 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px 30px;
+            border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin: 15px 0;
+            white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+        .balance-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .balance-table th { background: #e65100; color: #fff; padding: 10px; text-align: center; }
+        .balance-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .balance-table .vs { color: #e65100; font-weight: bold; font-size: 16px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>第二章第2节 设计的一般原则</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+
+<div class="content">
+
+<!-- 教材分析 -->
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是第二章"设计的基本知识"的核心内容，承接第一章对"技术及其性质"的认知，开启"如何做好设计"的方法论探讨。如果说第一章回答了"技术是什么"，那么本节回答的是"好的设计遵循什么标准"。设计的一般原则是从大量设计实践中提炼出的规律性认识，是学生后续进行方案构思、评价优化的判断依据。</p>
+    <p>教材系统呈现了七项设计原则：科学性、实用性、创新性、安全性、经济性、美观性、可持续性。这七项原则并非简单并列，而是构成一个相互关联、相互制约的系统——科学性是基础，实用性是根本目的，创新性是灵魂，安全性和经济性是约束条件，美观性是品质提升，可持续性是时代要求。理解原则之间的矛盾与权衡，比记忆原则本身更重要。本节内容为第三章"发现与明确问题"中的需求分析和第四章"方案的构思"中的方案评价提供了评价标尺，是贯穿设计全过程的"价值罗盘"。</p>
+</div>
+
+<!-- 学情分析 -->
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在生活中已接触大量产品，对"好用不好用""好看不好看"有朴素判断，但缺乏系统的评价框架。多数学生能说出"要实用""要便宜"等零散要求，却难以意识到这些要求之间可能存在矛盾，更缺乏权衡取舍的方法论。</p>
+    <p>认知特点方面，学生对纯原则罗列容易感到枯燥，但对"设计一个属于自己的东西"有强烈兴趣。可能的困难在于：理解原则之间的矛盾关系（如美观与经济、创新与安全），以及在不同情境下如何做出合理的优先级判断。生活经验方面，学生日常使用钥匙扣、文具等小型物品，对产品设计有切身体验，但对"设计原则如何在制造中落地"缺乏直观认知。</p>
+</div>
+
+<!-- 教学目标 -->
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">理解设计原则是技术活动必须遵循的基本规范，形成"设计有标准、评价有依据"的技术意识；能结合钥匙扣设计实例，体会原则对设计质量的指导价值。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">运用"七维权衡法"系统分析设计原则之间的矛盾与协调关系，建立"没有绝对最优、只有情境最优"的工程权衡思维，培养多约束条件下的决策能力。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">在钥匙扣设计中主动运用创新性原则，尝试在功能、造型、材料等方面提出个性方案；能在权衡中寻找创新的平衡点，而非一味追求新奇。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能绘制钥匙扣的设计草图，标注关键尺寸和材料信息；能运用"七维权衡表"以结构化方式呈现分析过程和决策依据。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过观察FreeCAD钥匙扣模型，理解从草图约束到三维拉伸的建模过程，建立"设计原则如何在三维模型中体现"的物化认知，为后续动手制作奠定基础。</div>
+        </div>
+    </div>
+</div>
+
+<!-- 教学重难点 -->
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>七项设计原则的含义及其在设计实践中的体现</li>
+        <li>运用"七维权衡法"分析设计原则的矛盾与协调</li>
+        <li>在钥匙扣设计中综合应用设计原则</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>理解原则之间的矛盾关系，在不同情境下做出合理的优先级取舍</li>
+        <li>区分"原则的绝对性"与"权衡的相对性"——安全等原则具有底线性质，不可随意妥协</li>
+    </ul>
+</div>
+
+<!-- 教学策略与方法 -->
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li><strong>情境教学法：</strong>以"设计班级文化纪念品——个性化钥匙扣"为真实任务情境，让原则学习有附着点。</li>
+        <li><strong>任务驱动法：</strong>以"完成一份钥匙扣设计的七维权衡报告"为核心任务，驱动原则理解与应用。</li>
+        <li><strong>合作探究法：</strong>小组分工分析不同原则，再集体讨论权衡方案，在协作中碰撞出权衡智慧。</li>
+        <li><strong>对比辨析法：</strong>对比不同设计方案在七维上的表现差异，在对比中深化对原则权衡的理解。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：原则天平·七维权衡法</div>
+        <p><strong>设计理念：</strong>传统教学往往逐一介绍七项原则，学生记住的是"有哪些原则"而非"如何用原则"。本工具将七项原则构建为一个"天平系统"，核心是让学生体验原则之间的张力与权衡过程，而非简单罗列。</p>
+        <p><strong>七维说明：</strong></p>
+        <table class="balance-table">
+            <tr><th>维度</th><th>核心追问</th><th>权衡对象</th></tr>
+            <tr><td>科学性</td><td>符合科学原理吗？</td><td>与创新的张力</td></tr>
+            <tr><td>实用性</td><td>真的解决了需求吗？</td><td>与美观的张力</td></tr>
+            <tr><td>创新性</td><td>与现有方案有何不同？</td><td>与安全的张力</td></tr>
+            <tr><td>安全性</td><td>使用中有风险吗？</td><td>底线原则，不可妥协</td></tr>
+            <tr><td>经济性</td><td>成本可控吗？</td><td>与美观的张力</td></tr>
+            <tr><td>美观性</td><td>视觉体验好吗？</td><td>与经济的张力</td></tr>
+            <tr><td>可持续性</td><td>对环境友好吗？</td><td>与经济的张力</td></tr>
+        </table>
+        <p><strong>使用方式：</strong>学生在钥匙扣设计过程中，填写"七维权衡表"——为每个维度打分（1-5分），标注哪些维度之间存在矛盾，说明自己的取舍理由和优先级排序。</p>
+    </div>
+</div>
+
+<!-- 教学过程 -->
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <!-- 环节一 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>班级文化纪念品的设计挑战</h4>
+            <p><strong>教师活动：</strong>教师展示几款市面上常见的钥匙扣——有金属激光雕刻的、有亚克力注塑的、有3D打印的、也有手工编织的。教师提问："学校下周举办校园文化节，我们班要设计一款代表班级文化的个性化钥匙扣作为纪念品，赠送给来访的兄弟学校师生。如果由你来设计，你会考虑哪些方面？"</p>
+
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD模型引用点</div>
+                <p><strong>模型名称：</strong>个性化钥匙扣三维模型（班级徽标造型）</p>
+                <p><strong>引用方式：</strong>教师在大屏幕上展示用FreeCAD建模的钥匙扣模型——先用草图工作台绘制钥匙扣的外轮廓（含挂环和主体形状），添加几何约束（相切、等径、对称），再通过拉伸工具生成3毫米厚实体，最后在主体面上用文本工具浮雕班级名称。展示建模过程的录屏，让学生看到"草图约束→拉伸成型→细节浮雕"的完整流程。</p>
+                <p><strong>教学意图：</strong>钥匙扣是学生最熟悉的日常物品之一，FreeCAD建模过程的展示让学生直观理解"设计原则如何在三维模型中落地"——草图的几何约束体现科学性，挂环的尺寸体现实用性，浮雕造型体现美观性，3毫米的厚度体现经济性（省材料）。一个模型串联起多个原则，为后续分析提供共同案例。</p>
+            </div>
+
+            <p><strong>学生活动：</strong>观察实物钥匙扣和FreeCAD模型，在"设计要素头脑风暴单"上快速列出自己会考虑的设计要素（如形状、材料、颜色、价格、安全等）。</p>
+            <p><strong>设计意图：</strong>用贴近学生生活的真实任务激活已有经验，让学生在"想做什么"的自发思考中自然触及设计原则，为原则的系统学习搭建认知桥梁。</p>
+        </div>
+
+        <!-- 环节二 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>七项原则的内涵与七维权衡法的建立</h4>
+            <p><strong>教师活动（6分钟）：</strong>教师以钥匙扣为贯穿案例，逐一阐释七项设计原则——</p>
+            <ul>
+                <li><strong>科学性：</strong>钥匙扣挂环的力学设计——孔径太小钥匙穿不进，太薄受力易断，须符合材料力学原理</li>
+                <li><strong>实用性：</strong>钥匙扣首要功能是挂钥匙，再好看不能挂也是失败的</li>
+                <li><strong>创新性：</strong>能否融入班级文化元素，做出市面上没有的个性造型</li>
+                <li><strong>安全性：</strong>边缘不能尖锐划手，材料不能有毒，挂环不能轻易松脱</li>
+                <li><strong>经济性：</strong>全班50人赠送，成本须控制在合理范围</li>
+                <li><strong>美观性：</strong>造型、配色、质感要能代表班级形象</li>
+                <li><strong>可持续性：</strong>材料能否可回收，制作过程是否环保</li>
+            </ul>
+
+            <p><strong>教师活动（4分钟）：</strong>引入"七维权衡法"，指出关键认知："这七项原则在实际设计中往往不能同时满足，它们之间存在矛盾。好的设计不是追求所有原则的满分，而是在矛盾中找到最优平衡。"教师以"美观vs经济"为例演示权衡过程——如果用金属雕刻固然美观但成本太高（每人30元），改用3D打印PLA材料兼顾美观和经济（每人5元），但耐久性下降，需要进一步权衡。</p>
+
+            <p><strong>学生活动（5分钟）：</strong>小组合作，针对钥匙扣设计任务，填写"七维权衡表"初稿。每组先为七项原则初步打分（1-5分，表示期望达到的程度），然后标注至少两组存在矛盾的原则对，写下初步的权衡思路。</p>
+
+            <p><strong>设计意图：</strong>从"知道有哪些原则"到"理解原则之间的矛盾"，是本环节的核心认知跃迁。七维权衡法将抽象的"权衡"概念转化为可操作的分析工具，让学生在填写过程中体验工程决策的真实复杂性。</p>
+        </div>
+
+        <!-- 环节三 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>核心探究：当原则发生冲突时如何取舍？</h4>
+            <p><strong>教师活动（2分钟）：</strong>教师提出核心探究问题："假设你们的钥匙扣设计方案遇到了以下矛盾——为了体现班级文化的独特性，你们设计了一个非常创新的镂空立体造型（创新性高），但这种造型用3D打印成本要15元/个（经济性差），而且镂空边缘较薄容易断裂（安全性差）。你们怎么取舍？"</p>
+
+            <p><strong>学生活动（4分钟）：</strong>小组讨论，运用七维权衡法分析这一矛盾情境，提出至少两种解决方案并说明取舍理由。例如：方案A坚持创新造型但改用更便宜的材料降低成本；方案B简化造型保留部分创新元素兼顾经济和安全。</p>
+
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节（一）：原则矛盾的识别与案例参照</div>
+                <p><strong>应用场景：</strong>学生在权衡过程中，往往只看到自己能想到的矛盾，而忽略了其他潜在冲突。同时，学生缺乏同类产品设计的参照经验，难以判断自己的权衡方案是否合理。</p>
+                <p><strong>AI介入方式：</strong>AI在此处扮演"设计顾问"角色，帮助学生拓宽视野但不替学生决策。具体流程——</p>
+                <ul>
+                    <li><strong>步骤1（学生先思考）：</strong>小组先独立完成至少两组矛盾分析和两种解决方案</li>
+                    <li><strong>步骤2（与AI对话）：</strong>学生将自己的钥匙扣设计方案和权衡思路提交给AI，请求两类帮助——
+                        <ul>
+                            <li><strong>请求A：</strong>"请帮我检查这个设计方案中，七项设计原则之间还有哪些我可能忽略的矛盾"</li>
+                            <li><strong>请求B：</strong>"请检索类似的小型纪念品设计案例，说明它们是如何处理美观与经济之间的矛盾的"</li>
+                        </ul>
+                    </li>
+                    <li><strong>步骤3（学生判断）：</strong>学生根据AI提供的矛盾清单和案例，判断哪些矛盾确实需要重视、哪些案例思路可以借鉴，据此调整自己的权衡方案</li>
+                    <li><strong>步骤4（记录过程）：</strong>在"AI交互记录单"上记录：我原本考虑的矛盾→AI补充的矛盾→我采纳了哪些、否决了哪些、理由是什么</li>
+                </ul>
+                <p><strong>分层提示词设计：</strong></p>
+                <ul>
+                    <li><strong>基础组：</strong>"我的钥匙扣设计是[描述方案]，请帮我看看有哪些设计原则可能存在矛盾"</li>
+                    <li><strong>提升组：</strong>"我的钥匙扣设计是[描述方案]，我在[原则A]和[原则B]之间有矛盾，请检索类似的纪念品设计案例，看看别人怎么处理的"</li>
+                    <li><strong>高阶组：</strong>"我的钥匙扣设计是[描述方案]，我的权衡方案是[描述方案]，请评估这个权衡是否合理，并提出优化建议，我会判断是否采纳"</li>
+                </ul>
+                <p><strong>关键约束：</strong>AI只负责"指出矛盾"和"提供参照"，最终的取舍决策完全由学生做出。学生必须明确说明"AI建议了什么，我为什么采纳/否决"。这确保AI是"参谋"而非"决策者"。</p>
+            </div>
+
+            <p><strong>学生活动（5分钟）：</strong>各小组根据AI辅助后的完善方案，修改七维权衡表，确定最终的设计方向和原则优先级。教师巡回，重点关注学生是否将安全性作为不可妥协的底线原则。</p>
+
+            <p><strong>教师活动（4分钟）：</strong>选取2-3个小组分享权衡方案，教师引导全班讨论："安全性能不能为了创新而妥协？经济性和可持续性在什么情况下可以统一？"通过追问深化学生对"原则底线"与"权衡弹性"的理解。</p>
+
+            <p><strong>设计意图：</strong>这是本课的思维核心。学生不是在"背诵原则"，而是在"用原则做决策"。AI帮助学生发现自己思维的盲区（遗漏的矛盾），并提供行业参照（类似案例），但权衡的天平始终掌握在学生手中。这正是项目化学习+AI赋能范式中"AI给分析、学生做决策"的典型体现。</p>
+        </div>
+
+        <!-- 环节四 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>设计实践：画出你的钥匙扣方案</h4>
+            <p><strong>教师活动：</strong>教师发布设计任务："基于你们的七维权衡结论，每人画出一个钥匙扣设计方案草图，标注以下信息：外形及尺寸、材料选择、色彩方案、预估成本。在草图旁附上你的'原则优先级排序'——哪三个原则是你最看重的，为什么。"</p>
+            <p><strong>学生活动：</strong>学生独立完成钥匙扣设计草图（6分钟），要求体现对七项原则的综合考量。教师巡回，针对个别学生的草图给出即时反馈。</p>
+
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节（二）：方案的多原则评价（可选扩展）</div>
+                <p><strong>应用场景：</strong>对于完成较快的学生，可进入AI辅助的方案自评环节。</p>
+                <p><strong>AI介入方式：</strong>学生将自己草图的文字描述提交给AI，请AI从七项原则角度给出评价和建议——"请以设计评审的身份，从科学性、实用性、创新性、安全性、经济性、美观性、可持续性七个角度评价我的方案，指出优势和不足"。学生须判断AI评价中哪些是中肯的、哪些是不适用于本情境的，并在草图上标注修正。</p>
+                <p><strong>关键约束：</strong>AI评价仅供参考，学生可接受也可拒绝AI的建议，但须说明理由。这培养学生"不盲信AI评价、保持独立判断"的素养。</p>
+            </div>
+
+            <p><strong>设计意图：</strong>从"分析权衡"到"动手设计"，实现原则知识向设计实践的迁移。草图绘制和原则标注让学生将抽象原则具象化为设计决策，巩固权衡思维。</p>
+        </div>
+
+        <!-- 环节五 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>原则是罗盘，权衡是智慧</h4>
+            <p><strong>教师活动：</strong>教师总结："今天我们学习了设计的七项一般原则，但比记住原则更重要的是学会权衡。好的设计没有标准答案，只有在特定情境下的最优平衡。记住一句话：原则是罗盘，告诉你方向；权衡是智慧，帮你走对路。安全是底线，永远不能为了其他原则而牺牲。"</p>
+            <p><strong>课后任务：</strong>每位学生根据课堂讨论和AI辅助的反馈，完善钥匙扣设计草图和七维权衡表，下节课进行小组互评，评选"最佳平衡方案"。</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 板书设计 -->
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第二章第2节 设计的一般原则
+
+一、七项设计原则
+  科学性 ←→ 创新性
+  实用性 ←→ 美观性
+  经济性 ←→ 美观性 / 可持续性
+  安全性（底线·不可妥协）
+
+二、七维权衡法
+  ┌─ 打分：每项原则 1-5 分
+  ├─ 标矛盾：哪几对原则冲突
+  ├─ 排优先：情境下的优先级
+  └─ 写理由：为什么这样取舍
+
+三、核心认知
+  "原则是罗盘，权衡是智慧"
+  "没有绝对最优，只有情境最优"
+    </div>
+</div>
+
+<!-- 教学反思预设 -->
+<div class="section-card">
+    <h2><span class="icon">八</span>教学反思预设</h2>
+    <div class="reflect-box">
+        <p><strong>预设问题1：</strong>七项原则一次性呈现信息量较大，部分学生可能混淆原则间的区别。<strong>应对策略：</strong>通过钥匙扣案例将七项原则锚定在同一个具体情境中，让学生在"同一件事"上理解不同原则的切入角度，降低认知负荷。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>预设问题2：</strong>AI辅助环节中，学生可能直接采纳AI的权衡方案而不独立思考。<strong>应对策略：</strong>强制要求"先独立后求助"——学生必须先完成自己的权衡分析，再与AI对话。AI交互记录单上须明确标注"AI建议"和"我的判断"两栏，教师抽查。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>预设问题3：</strong>部分学生可能将安全性也当作可权衡的原则。<strong>应对策略：</strong>教师在环节三的讨论中须明确强调安全性的"底线"地位——安全是不可妥协的红线，不是可以和其他原则做交易的因素。可通过"钥匙扣断裂划伤手指"等真实案例强化这一认知。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>亮点预设：</strong>"原则天平·七维权衡法"将静态的原则知识转化为动态的决策工具，有效突破了"原则矛盾与权衡"这一教学难点。钥匙扣设计任务贴近学生生活，任务驱动下的原则学习避免了枯燥的理论灌输。</p>
+    </div>
+</div>
+
+<!-- AI应用说明 -->
+<div class="section-card">
+    <h2><span class="icon">九</span>AI应用说明</h2>
+    <p>本课AI应用遵循<strong>项目化学习+AI赋能范式</strong>，以"设计班级文化纪念品"为项目主线，AI在全链条中扮演"设计顾问"角色。具体体现如下：</p>
+    <h3>1. 全链条融入</h3>
+    <p>AI不是在某个孤立环节被"插入"，而是贯穿设计项目的关键节点：方案构思时用AI检索类似案例→权衡分析时用AI发现遗漏矛盾→方案评价时用AI提供多维评审。每个环节AI的角色不同，但核心定位一致——辅助而非替代。</p>
+    <h3>2. AI列矛盾，学生做取舍</h3>
+    <p>本课AI应用的核心策略是"AI负责发现问题，学生负责解决问题"。AI帮学生列出原则之间的矛盾点（如美观vs经济），但如何取舍、优先级如何排序，完全由学生基于自己的设计目标和情境约束来决定。这避免了AI替代学生思考的风险，确保学生在权衡决策中锻炼工程思维。</p>
+    <h3>3. 分层提示词保障因材施教</h3>
+    <p>三档提示词对应三个能力层次：基础组用简单提示获取信息参照，提升组用对比提示学习案例思路，高阶组用优化提示获得迭代建议。学生根据自己的水平选择对应层次，教师可适当引导调整。</p>
+    <h3>4. 批判性使用机制</h3>
+    <p>学生必须记录AI的每个建议及自己的采纳/否决判断，确保AI的使用处于学生的批判性审视之下。特别是在方案评价环节，学生可以拒绝AI的评价意见，只要能说明理由——这培养了学生"不盲信AI、保持独立专业判断"的核心素养，体现了OBE-GAI模式中"批判性使用AI"的要求。</p>
+</div>
+
+</div>
+<div class="footer">苏教版2019高中通用技术必修一《技术与设计1》教学设计 · AI赋能教学系列</div>
+</div>
+</body>
+</html>

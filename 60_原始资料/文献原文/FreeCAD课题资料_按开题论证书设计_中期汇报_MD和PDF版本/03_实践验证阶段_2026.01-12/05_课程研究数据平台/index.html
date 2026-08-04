@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeCAD课程研究数据平台</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">FreeCAD课程研究数据平台</div>
+    <div class="project">课题 2024B-178</div>
+  </header>
+  <div class="shell">
+    <nav class="sidebar" aria-label="主导航">
+      <button class="nav active" data-view="overview">概览</button>
+      <button class="nav" data-view="entry">数据录入</button>
+      <button class="nav" data-view="students">学生档案</button>
+      <button class="nav" data-view="report">分析报告</button>
+      <button class="nav" data-view="materials">材料检查</button>
+      <button class="nav" data-view="export">数据导出</button>
+      <div class="side-note">所有姓名均使用匿名编号。导入真实数据后，系统会保留数据来源标记。</div>
+    </nav>
+    <main>
+      <section id="overview" class="view active">
+        <div class="page-head">
+          <div><h1>课程测评概览</h1><p>计算思维、工程实践与学习兴趣的前后测比较</p></div>
+          <span id="modeBadge" class="mode"></span>
+        </div>
+        <div class="metrics" id="metrics"></div>
+        <div class="dashboard-grid">
+          <section class="panel chart-panel"><h2>六维前测与后测均值</h2><div id="chart"></div></section>
+          <aside class="panel findings"><h2>自动研究发现</h2><div id="findings"></div></aside>
+        </div>
+        <section class="panel"><div class="panel-head"><h2>学生成绩概览</h2><button id="newDemo" class="secondary">重新生成</button></div><div id="overviewTable" class="table-wrap"></div></section>
+      </section>
+
+      <section id="entry" class="view">
+        <div class="page-head"><div><h1>数据录入</h1><p>录入单个匿名学生的前测、后测与作品评价</p></div></div>
+        <form id="entryForm" class="entry-form panel">
+          <label>匿名编号<input name="id" placeholder="例如：学员A31" required /></label>
+          <label>前测总分<input name="pre" type="number" min="0" max="100" required /></label>
+          <label>后测总分<input name="post" type="number" min="0" max="100" required /></label>
+          <label>空间想象<input name="space" type="number" min="0" max="100" required /></label>
+          <label>问题分解<input name="decompose" type="number" min="0" max="100" required /></label>
+          <label>参数建模<input name="parametric" type="number" min="0" max="100" required /></label>
+          <label>调试迭代<input name="debug" type="number" min="0" max="100" required /></label>
+          <label>工程实践<input name="engineering" type="number" min="0" max="100" required /></label>
+          <label>学习兴趣<input name="interest" type="number" min="0" max="100" required /></label>
+          <label>作品评分<input name="project" type="number" min="0" max="100" required /></label>
+          <div class="form-actions"><button type="submit">保存记录</button><button type="reset" class="secondary">清空</button></div>
+        </form>
+      </section>
+
+      <section id="students" class="view">
+        <div class="page-head"><div><h1>学生档案</h1><p>匿名编号与分项成绩，可按提升值排序</p></div><input id="search" class="search" placeholder="搜索匿名编号" /></div>
+        <section class="panel"><div id="studentTable" class="table-wrap"></div></section>
+      </section>
+
+      <section id="report" class="view">
+        <div class="page-head"><div><h1>分析报告</h1><p>自动汇总课程效果、维度变化与研究限制</p></div><button id="printReport">打印／保存PDF</button></div>
+        <article id="reportBody" class="report-paper"></article>
+      </section>
+
+      <section id="materials" class="view">
+        <div class="page-head"><div><h1>中期材料检查</h1><p>逐项核对原始证据、手写记录、课堂成果与数据文件</p></div><button id="printMaterials">打印检查表</button></div>
+        <section class="panel"><div class="panel-head"><h2>完成进度</h2><strong id="materialProgress">0 / 0</strong></div><div id="materialChecklist" class="material-checklist"></div></section>
+        <section class="panel"><h2>核对原则</h2><p class="muted">涉及日期、人员、人数、得分和活动经过的内容，应与原始文件、照片或签名记录相互对应。只用于测试平台，不进入正式研究结论。</p></section>
+      </section>
+
+      <section id="export" class="view">
+        <div class="page-head"><div><h1>数据导入与导出</h1><p>CSV文件第一行为字段名，导入后自动切换为正式数据状态</p></div></div>
+        <div class="export-actions panel">
+          <label class="file-button">导入真实CSV<input id="csvInput" type="file" accept=".csv" /></label>
+          <a class="file-button secondary-link" href="真实测评数据_60人.csv" download>下载60人汇总CSV</a>
+          <a class="file-button secondary-link" href="真实测评数据_选修一班_30人.csv" download>下载选修一班30人CSV</a>
+          <a class="file-button secondary-link" href="真实测评数据_选修二班_30人.csv" download>下载选修二班30人CSV</a>
+          <button id="exportCsv">导出当前CSV</button>
+          <button id="exportJson" class="secondary">导出备份JSON</button>
+          <button id="resetData" class="danger">恢复</button>
+        </div>
+        <section class="panel"><h2>CSV字段</h2><code>id,pre,post,space,decompose,parametric,debug,engineering,interest,project</code><p class="muted">建议只使用匿名编号。真实数据导入前请删除姓名、手机号等身份信息。</p></section>
+      </section>
+    </main>
+  </div>
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

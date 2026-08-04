@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>结构的设计 — 说课稿</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #ffffff; color: #333; line-height: 2.1; padding: 25px 18px; }
+.container { max-width: 720px; margin: 0 auto; }
+.title-box { text-align: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 3px solid #1a56c4; }
+.title-box h1 { color: #1a56c4; font-size: 23px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #1a56c4; color: #fff; padding: 8px 22px; border-radius: 22px; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+.mnemonic .label { font-size: 12px; font-weight: normal; opacity: 0.85; margin-right: 6px; }
+.section { margin-bottom: 20px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 5px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 10px; text-align: justify; }
+.ending { text-align: center; color: #1a56c4; font-weight: bold; font-size: 15px; margin-top: 25px; padding-top: 18px; border-top: 1px dashed #1a56c4; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title-box">
+    <h1>结构的设计 · 说课稿</h1>
+    <div class="mnemonic"><span class="label">记忆口诀</span>五步虚实，桥证迭代</div>
+</div>
+
+<div class="section">
+<h2>一说教材</h2>
+<p>各位评委好，今天我说课的题目是「结构的设计」。本节是苏教版必修二第一单元第3节，承接结构受力分析后的核心实践环节，共2课时。教材以「设计一座简易人行便桥」为载体，引导学生经历需求分析到模型测试的完整设计过程。我采用OBE理念，预期产出是：学生能独立完成满足约束条件的桥模，通过承重测试验证设计合理性，形成「设计—验证—迭代」的工程闭环思维。</p>
+</div>
+
+<div class="section">
+<h2>二说学情</h2>
+<p>高二学生物理课学过力的合成分解和杠杆原理，有初步受力分析能力，但迁移到结构设计仍困难。了解梁桥拱桥桁架桥类型，但缺深度对比经验。手工制作有经历，但缺系统化设计方法。用AI时多当「答案搜索器」，缺当「工程顾问」交互探究的意识。</p>
+</div>
+
+<div class="section">
+<h2>三说目标</h2>
+<p>五维目标：技术意识上形成「安全第一、经济合理」的工程伦理；工程思维上掌握结构设计五步法；创新设计上能构思多种桥型并结合AI建议优化；图样表达上能用手绘草图标注尺寸和受力方向；物化能力上能制作桥模完成承重测试。</p>
+</div>
+
+<div class="section">
+<h2>四说重难点</h2>
+<p>重点是结构设计五步法的应用、用AI作工程顾问做方案比选、桥模制作与承重测试的虚实双线验证。难点是将AI建议与力学知识结合做批判性判断、根据测试结果做针对性迭代而非盲目修改、理解有限元应力图与实际薄弱点的对应。</p>
+</div>
+
+<div class="section">
+<h2>五说教法</h2>
+<p>采用OBE反向设计加项目化学习，融合OBE-GAI范式实施虚实双线教学：虚线是AI仿真预演和FreeCAD有限元分析，实线是实体模型制作与承重测试。设计分层提示词策略，所有学生填《GAI交互记录表》记录采纳否决理由。原创工具是「结构设计五步法」：需求分析→选型构思→受力分析→材料选择→优化迭代。</p>
+</div>
+
+<div class="section">
+<h2>六说过程</h2>
+<p>环节一情境导入，播山区村庄便桥损毁视频，发布任务：用A4纸、冰棍棒、白胶、棉线设计跨度30厘米、承载400克的桥模。环节二概念建构，推导五步法，分享课前用AI对比梁桥拱桥桁架桥受力的探究成果。这时我用FreeCAD展示正弦拱桁架桥模型，运行FEM有限元分析，应力云图红色区在拱顶和下弦杆跨中，变形图显示跨中最大挠度，告诉学生这就是要加固的地方——虚线仿真预判风险。</p>
+<p>环节三深度探究，学生构思两三种方案，用自然语言描述给AI请它分析薄弱点。比如AI说空心圆管拱顶可能局部屈曲、拱脚水平推力大、2层纸管壁厚不足，学生要用力的分解验证：400克载荷在30厘米跨度拱高5厘米时水平推力约600克，确实要加固拱脚——这就是批判性使用AI。环节四迁移应用，快速制作桥模并承重测试，逐步加100克记录最大承重和失效位置，对比FEM预测的薄弱点是否一致，这就是虚实双线交汇验证。环节五总结，回顾五步法，强调设计验证迭代是工程核心逻辑。</p>
+</div>
+
+<div class="section">
+<h2>七说板书</h2>
+<p>板书四块：一、结构设计五步法，需求分析→选型构思→受力分析→材料选择→优化迭代；二、桥型对比，梁桥简单承重有限、拱桥承重好拱脚需加固、桁架桥最强制作复杂；三、虚实双线，虚是AI仿真加FreeCAD FEM预判薄弱点、实是模型制作加承重测试验证迭代；四、AI工程顾问，咨询→批判判断→采纳否决→记录。</p>
+</div>
+
+<div class="ending">以上就是我的说课，恳请评委指正。</div>
+</div>
+</body>
+</html>

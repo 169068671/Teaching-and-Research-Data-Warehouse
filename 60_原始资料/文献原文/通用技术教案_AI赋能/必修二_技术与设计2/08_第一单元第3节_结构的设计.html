@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教案8：第一单元第3节 结构的设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d7df0);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.15);
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 14px; opacity: 0.9; }
+        .header .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .header .meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .section {
+            border-left: 4px solid #1a56c4;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            background: #fafcff;
+            border-radius: 0 8px 8px 0;
+        }
+        .section h2 {
+            color: #1a56c4;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #e65100;
+            border-radius: 3px;
+        }
+        .section h3 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin: 15px 0 8px 0;
+        }
+        .section p { margin-bottom: 10px; font-size: 14px; text-align: justify; }
+        .section ul, .section ol { margin-left: 25px; margin-bottom: 10px; font-size: 14px; }
+        .section li { margin-bottom: 6px; }
+        .tag-ai {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-freecad {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-paradigm {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-top: 15px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a56c4;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid #1a56c4;
+            border-radius: 50%;
+        }
+        .timeline-item .time-label {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p, .timeline-item ul, .timeline-item ol {
+            font-size: 14px;
+        }
+        .ai-block {
+            background: #e8f0fe;
+            border: 1px solid #1a56c4;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 1px solid #e65100;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .prompt-box {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .prompt-box .label { color: #e65100; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        th {
+            background: #1a56c4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .obj-card {
+            background: #fff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .obj-card .icon {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+        .obj-card h4 {
+            color: #1a56c4;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .obj-card p { font-size: 12px; text-align: center; }
+        .blackboard {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 13px;
+            line-height: 2;
+            white-space: pre-line;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #43a047;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .tool-box h4 {
+            color: #2e7d32;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .reflection-list li { margin-bottom: 8px; }
+        .highlight {
+            background: #fff59d;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+        .obe-tag {
+            background: #7b1fa2;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>第一单元第3节 结构的设计</h1>
+        <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》| 教学设计教案</div>
+        <div class="meta">
+            <span>课时：2课时（90分钟）</span>
+            <span>课型：项目化实践课</span>
+            <span>OBE-GAI范式核心案例</span>
+            <span>虚实双线教学</span>
+        </div>
+    </div>
+    <div class="content">
+
+        <!-- 一、教材分析 -->
+        <div class="section">
+            <h2>一、教材分析</h2>
+            <p>本节为苏教版《技术与设计2》第一单元"结构及其设计"的第3节，是承接结构受力分析后的核心实践环节。教材以"设计一座简易人行便桥"为载体，引导学生经历从需求分析、方案构思、受力分析、材料选择到模型制作与测试的完整结构设计过程。本节在单元中起承上启下作用——既是对前两节结构类型与受力知识的综合应用，也为后续"结构的欣赏与评价"提供实践基础。</p>
+            <p>教材强调"做中学"理念，要求学生在真实情境中运用工程思维解决结构设计问题。结合OBE（成果导向教育）理念，本节课的预期学习产出定义为：<strong>学生能独立完成一座满足约束条件的人行便桥结构设计方案，并通过对实体模型的承重测试验证设计合理性，形成"设计—验证—迭代"的工程闭环思维。</strong>这一产出目标贯穿教学全过程，所有活动均围绕该产出进行反向设计。</p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section">
+            <h2>二、学情分析</h2>
+            <p>高二学生已在物理课程中学习了力的合成与分解、杠杆原理等力学基础知识，具备初步的受力分析能力，但将物理知识迁移到结构设计中仍存在困难。学生已了解梁桥、拱桥、桁架桥的基本类型，但对不同桥型的受力特点缺乏深度对比经验。在实践层面，学生有过简单的手工制作经历，但缺乏系统化的结构设计方法指导。此外，学生对生成式AI（GAI）工具有一定使用经验，但多数将其作为"答案搜索器"，缺乏将其作为"工程顾问"进行交互式探究的意识与能力。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="icon">🔍</div>
+                    <h4>技术意识</h4>
+                    <p>理解结构设计在工程实践中的价值，形成"安全第一、经济合理"的工程伦理意识</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">⚙️</div>
+                    <h4>工程思维</h4>
+                    <p>掌握"结构设计五步法"，能运用系统化思维完成需求分析至迭代优化的全过程</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">💡</div>
+                    <h4>创新设计</h4>
+                    <p>能构思2-3种桥型方案，结合AI建议进行创新性优化，形成独特设计方案</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">📐</div>
+                    <h4>图样表达</h4>
+                    <p>能用手绘草图表达桥型结构方案，标注关键尺寸和受力方向</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">🔨</div>
+                    <h4>物化能力</h4>
+                    <p>能用A4纸/冰棍棒/白胶/棉线等材料制作桥模，完成承重测试并记录数据</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section">
+            <h2>四、教学重难点</h2>
+            <h3>教学重点</h3>
+            <ul>
+                <li>结构设计五步法的理解与应用（需求分析→选型构思→受力分析→材料选择→优化迭代）</li>
+                <li>运用AI作为"工程顾问"进行方案可行性分析与比选</li>
+                <li>桥模的制作与承重测试，实现"虚实双线"验证</li>
+            </ul>
+            <h3>教学难点</h3>
+            <ul>
+                <li>将AI的建议与物理力学知识结合，批判性地判断AI结论的合理性</li>
+                <li>根据测试结果进行有针对性的结构迭代优化，而非盲目修改</li>
+                <li>理解有限元分析（FEM）应力分布图与实际结构薄弱点的对应关系</li>
+            </ul>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section">
+            <h2>五、教学策略与方法</h2>
+            <p><span class="obe-tag">OBE反向设计</span> 本课以"产出一座满足约束条件的桥模及完整设计文档"为终点，倒推教学活动序列。采用项目化学习（PBL）为主线，融合OBE-GAI范式实施虚实双线教学：<strong>虚线</strong>为AI仿真预演与FreeCAD FEM有限元分析，<strong>实线</strong>为实体模型制作与承重测试。</p>
+            <p><span class="tag-paradigm">分层提示词策略</span> 针对不同能力水平学生设计分层AI提示词：</p>
+            <ul>
+                <li><strong>基础组：</strong>使用结构化提示词模板，引导AI分析单一桥型的受力特点</li>
+                <li><strong>提升组：</strong>要求AI多维度对比2-3种桥型方案，给出改进建议</li>
+                <li><strong>高阶组：</strong>自主设计提示词，要求AI进行有限元分析模拟和参数优化建议</li>
+            </ul>
+            <p>所有学生须填写《GAI交互记录表》，记录AI建议内容及采纳/否决理由，培养批判性使用意识。</p>
+            <div class="tool-box">
+                <h4>🔧 原创教学工具：结构设计五步法</h4>
+                <p><strong>需求分析</strong>（明确跨度、载荷、材料限制）→ <strong>选型构思</strong>（2-3种候选桥型）→ <strong>受力分析</strong>（压力线、拉压杆判断）→ <strong>材料选择</strong>（强度与经济性平衡）→ <strong>优化迭代</strong>（测试反馈驱动改进）</p>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section">
+            <h2>六、教学过程</h2>
+            <div class="timeline">
+
+                <!-- 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-label">5分钟</span>
+                    <h4>环节一：情境导入——村庄便桥重建任务</h4>
+                    <p><strong>情境创设：</strong>教师播放一段30秒短视频：某山区村庄因暴雨导致旧木桥损毁，村民出行困难，急需新建一座人行便桥。桥的跨度需≥30cm（缩比模型），只能使用A4纸、冰棍棒、白胶、棉线等简易材料，要求承载≥400g重物。</p>
+                    <p><strong>任务发布：</strong>教师宣布本节课的核心任务——"作为小小结构工程师，为该村庄设计并制作一座满足约束条件的人行便桥模型"。引导学生明确设计的三大约束：跨度约束（≥30cm）、材料约束（限用规定材料）、载荷约束（≥400g）。</p>
+                    <p><strong>OBE产出锚定：</strong>教师展示预期学习产出——每位同学须提交：①桥梁设计方案表（含AI交互摘要）；②手绘结构草图；③实体桥模（通过承重测试）；④迭代优化记录。让学生明确"学完这节课我能做出什么"。</p>
+                </div>
+
+                <!-- 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节二：概念建构——结构设计五步法与桥型受力对比</h4>
+                    <p><strong>Step 1：五步法引入（5分钟）</strong></p>
+                    <p>教师以"建一座桥需要想清楚哪些问题"为引，引导学生自然推导出结构设计五步法的逻辑序列。通过板书呈现五步流程图，并举例说明每一步的关键问题：</p>
+                    <ul>
+                        <li>需求分析：桥要多长？承多重？用什么材料？</li>
+                        <li>选型构思：梁桥、拱桥还是桁架桥？各有什么优劣？</li>
+                        <li>受力分析：力是怎么传递的？哪里受拉、哪里受压？</li>
+                        <li>材料选择：哪种材料适合受拉？哪种适合受压？</li>
+                        <li>优化迭代：测试结果如何指导下一步改进？</li>
+                    </ul>
+
+                    <p><strong>Step 2：课前AI探究成果分享（5分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 课前探究任务回顾</div>
+                        <p>课前布置任务：学生使用AI工具对比梁桥、拱桥、桁架桥的受力特点，填入《桥型受力对比探究单》。课上请2-3位学生分享AI给出的对比结果，并说明自己认为哪些结论可信、哪些需要质疑。</p>
+                        <p><strong>典型学生分享：</strong>"AI说拱桥主要通过拱形将竖向荷载转化为轴向压力，适合抗压材料；桁架桥通过三角形单元分散受力，整体刚度好但节点复杂。我觉得拱桥的结论跟物理课学的力的分解一致，可信度较高。但AI说'桁架桥制作难度是拱桥的2倍'这个量化结论我不太认可，因为制作难度还取决于具体工艺。"</p>
+                    </div>
+
+                    <p><strong>Step 3：FreeCAD有限元分析展示（5分钟）</strong></p>
+                    <div class="freecad-block">
+                        <div class="fc-title">FreeCAD模型引用 | 正弦拱桁架桥FEM分析</div>
+                        <p>教师展示课前用FreeCAD建立的正弦拱桁架桥三维模型，并运行FEM有限元分析模块，展示应力分布云图和变形图。</p>
+                        <ul>
+                            <li><strong>应力云图解读：</strong>红色区域（高应力）集中在拱顶和桁架下弦杆跨中节点，蓝色区域（低应力）出现在拱脚附近</li>
+                            <li><strong>变形图解读：</strong>跨中最大挠度约2.3mm，发生在集中载荷作用点</li>
+                            <li><strong>虚实对照引导：</strong>"同学们看，有限元分析告诉我们结构最薄弱的位置在哪里——这些就是我们实体模型制作时需要特别加固的地方。这就是'虚线'仿真预演的价值：在动手之前先预判风险。"</li>
+                        </ul>
+                        <div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+                            <p style="margin:0 0 6px 0;"><strong>渲染图：</strong>Warren桁架桥 (TrussBridge)</p>
+                            <img src="../FreeCAD配套模型/TrussBridge_render.png" alt="Warren桁架桥 (TrussBridge)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+                            <p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型含52个部件，展示Warren型桁架桥的完整结构——上下弦杆、斜杆、端柱、横梁和桥面板。学生可观察桁架受力传递路径，分析各杆件受拉/受压状态，为纸桥承重比赛提供结构参考。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节三：深度探究——AI辅助方案构思与比选</h4>
+                    <p><strong>Step 1：个人方案构思（5分钟）</strong></p>
+                    <p>学生根据需求分析结果，快速构思2-3种桥型方案，用手绘草图表达。教师巡视指导，确保每个方案标注了桥型、跨度、关键尺寸和预计承重。</p>
+
+                    <p><strong>Step 2：AI工程顾问咨询（7分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 方案可行性咨询</div>
+                        <p>学生将自己构思的方案用自然语言描述给AI，请求AI作为"工程顾问"分析可行性和薄弱点。教师提供分层提示词模板：</p>
+                        <div class="prompt-box">
+<span class="label">【提升组提示词模板】</span>
+我计划用2层A4纸卷成空心圆管做拱桥主梁，跨度30cm，
+预计承重400g，请分析可能的薄弱点，并给3条具体改进建议，
+适合高中生操作。
+                        </div>
+                        <p><strong>AI典型回复（示例）：</strong></p>
+                        <ul>
+                            <li>薄弱点1：空心圆管拱顶处可能因局部屈曲失稳，建议在拱顶增加横向支撑</li>
+                            <li>薄弱点2：拱脚处水平推力较大，A4纸管可能滑移，建议用冰棍棒做拱脚基座并固定</li>
+                            <li>薄弱点3：2层纸管壁厚不足，建议增加到3-4层或填充棉线增强抗剪</li>
+                        </ul>
+                        <p><strong>批判性判断环节：</strong>学生需结合物理知识判断AI建议是否合理。例如，针对"拱脚水平推力"问题，学生用力的分解验证：400g载荷在30cm跨度拱桥上产生的水平推力约为F=P×L/(4h)，若拱高5cm则水平推力约600g——确实需要加固拱脚。学生将分析结论记入《桥梁设计方案表》。</p>
+                    </div>
+
+                    <p><strong>Step 3：方案比选决策（3分钟）</strong></p>
+                    <p>学生要求AI按"强度、经济性、制作难度"三维度对比候选方案，获得对比表后结合自身判断做出最终选择。教师强调：AI给出的对比是参考，最终决策权在学生手中——这就是"工程顾问"而非"答案生成器"的定位。</p>
+                    <table>
+                        <tr><th>候选方案</th><th>强度评分</th><th>经济性评分</th><th>制作难度</th><th>综合评价</th></tr>
+                        <tr><td>方案A：梁桥（纸管叠合）</td><td>6/10</td><td>9/10</td><td>低</td><td>简单但承重有限</td></tr>
+                        <tr><td>方案B：拱桥（纸管拱+冰棍棒基座）</td><td>8/10</td><td>7/10</td><td>中</td><td>承重好，推荐</td></tr>
+                        <tr><td>方案C：桁架桥（冰棍棒三角桁架）</td><td>9/10</td><td>5/10</td><td>高</td><td>最强但耗时长</td></tr>
+                    </table>
+                    <p>学生将最终选定的方案及理由填入《桥梁设计方案表》，其中包含<strong>GAI交互摘要</strong>（AI提供了哪些建议）和<strong>采纳说明</strong>（采纳了哪些建议、否决了哪些、原因是什么）。</p>
+                </div>
+
+                <!-- 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-label">8分钟</span>
+                    <h4>环节四：迁移应用——模型制作与承重测试（虚实双线验证）</h4>
+                    <p><strong>Step 1：模型快速制作（5分钟）</strong></p>
+                    <p>学生根据选定方案快速制作桥模（本环节在课前预习基础上进行组装与加固，课堂聚焦关键工艺）。教师提醒关注AI指出的薄弱点位置进行针对性加固。</p>
+
+                    <p><strong>Step 2：承重测试与数据记录（3分钟）</strong></p>
+                    <p>各组将桥模放置在测试台上，逐步增加载荷（每次100g），记录桥模失效前的最大承重值和失效位置。教师引导学生观察失效位置是否与FreeCAD FEM分析预测的薄弱点一致——这就是"虚实双线"交汇验证的关键时刻。</p>
+                    <div class="freecad-block">
+                        <div class="fc-title">虚实双线验证 | FEM预测 vs 实测结果对照</div>
+                        <p>学生填写对照表：FEM预测的应力集中位置 → 实际失效位置 → 一致性分析。若不一致，引导学生思考原因（材料差异、制作工艺偏差、边界条件简化等），深化对仿真与实际差异的理解。</p>
+                    </div>
+                    <p><strong>课后延伸：</strong>布置课后任务——用AI查询"有限元分析在桥梁优化中的应用"，了解FEM在真实工程中的应用场景，将课堂的缩比模型体验与真实工程实践建立连接。</p>
+                </div>
+
+                <!-- 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-label">2分钟</span>
+                    <h4>环节五：总结反思——五步法回顾与工程思维升华</h4>
+                    <p>教师带领学生回顾结构设计五步法，强调"设计—验证—迭代"是工程实践的核心逻辑。提问引导反思："如果再做一次，你会怎样改进你的桥？""AI的建议哪些最有用？哪些你不同意？为什么？"</p>
+                    <p>最后点明本课OBE产出目标的达成情况，并预告下节课"结构的欣赏与评价"将进入更宏观的结构审美与文化视角。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 七、板书设计 -->
+        <div class="section">
+            <h2>七、板书设计</h2>
+            <div class="blackboard">结构的设计
+
+一、结构设计五步法
+  需求分析 → 选型构思 → 受力分析 → 材料选择 → 优化迭代
+
+二、桥型对比
+  梁桥：简单 | 承重有限
+  拱桥：承重好 | 拱脚需加固    ← FEM应力云图
+  桁架桥：最强 | 制作复杂
+
+三、虚实双线
+  虚：AI仿真 + FreeCAD FEM → 预判薄弱点
+  实：模型制作 + 承重测试 → 验证迭代
+
+四、AI工程顾问
+  咨询 → 批判判断 → 采纳/否决 → 记录</div>
+        </div>
+
+        <!-- 八、教学反思预设 -->
+        <div class="section">
+            <h2>八、教学反思预设</h2>
+            <ul class="reflection-list">
+                <li><strong>OBE产出达成度：</strong>预期约80%学生能完成满足约束条件的桥模，15%学生能进行有针对性的迭代优化。若承重测试通过率低于60%，需反思需求约束是否设置过高或材料供给是否充足。</li>
+                <li><strong>AI批判性使用效果：</strong>需关注学生是否真正进行了批判性判断，而非全盘接受AI建议。可通过检查《GAI交互记录表》中"否决理由"栏的填写质量来评估。预期部分学生可能出现"AI说什么就改什么"的现象，需在下节课强化批判意识。</li>
+                <li><strong>虚实双线衔接：</strong>FreeCAD FEM分析展示是本课亮点，但可能因学生力学基础不足而难以深入理解应力云图。需控制讲解深度，聚焦"红色=薄弱点"这一核心信息，避免陷入有限元理论细节。</li>
+                <li><strong>分层教学实施：</strong>分层提示词策略在2课时中可能时间紧张，可考虑将基础组任务简化为"单一桥型受力分析"，将高阶组的有限元模拟作为课后拓展。</li>
+                <li><strong>时间分配风险：</strong>模型制作与测试环节可能超时，建议提前布置部分制作任务到课前完成，课堂聚焦组装、加固与测试。</li>
+            </ul>
+        </div>
+
+        <!-- 九、AI应用说明 -->
+        <div class="section">
+            <h2>九、AI应用说明</h2>
+            <h3>范式定位：OBE-GAI模式（核心案例）</h3>
+            <p>本教案是OBE-GAI范式的核心实践案例，AI在整个教学过程中始终扮演<strong>"工程顾问"</strong>角色，而非"答案生成器"。具体体现在：</p>
+            <table>
+                <tr><th>环节</th><th>AI应用方式</th><th>顾问定位体现</th><th>学生批判性任务</th></tr>
+                <tr><td>课前</td><td>AI对比三种桥型受力特点</td><td>提供专业知识参考</td><td>判断AI结论与物理知识是否一致</td></tr>
+                <tr><td>课中（构思）</td><td>AI分析方案薄弱点并给改进建议</td><td>提供工程经验咨询</td><td>用力学知识验证AI建议合理性</td></tr>
+                <tr><td>课中（比选）</td><td>AI多维度对比候选方案</td><td>提供决策辅助信息</td><td>结合实际条件做出最终决策</td></tr>
+                <tr><td>课后</td><td>AI查询FEM在桥梁优化中的应用</td><td>拓展工程视野</td><td>整理FEM应用场景报告</td></tr>
+            </table>
+            <h3>分层提示词设计</h3>
+            <div class="prompt-box">
+<span class="label">【基础组】</span>请对比梁桥和拱桥的受力特点，分别说明它们适合什么场景。
+<span class="label">【提升组】</span>我计划用2层A4纸卷成空心圆管做拱桥主梁，跨度30cm，预计承重400g，
+请分析可能的薄弱点，并给3条具体改进建议，适合高中生操作。
+<span class="label">【高阶组】</span>请模拟一个跨度30cm的拱桥在400g集中载荷下的有限元分析，
+给出应力集中位置和最大挠度估计值，并分析拱高对承载力的影响规律。
+            </div>
+            <h3>GAI交互记录表（桥梁设计方案表核心字段）</h3>
+            <table>
+                <tr><th>字段</th><th>说明</th></tr>
+                <tr><td>方案描述</td><td>学生用文字描述构思的桥型方案</td></tr>
+                <tr><td>GAI交互摘要</td><td>记录向AI提出的问题及AI的主要建议</td></tr>
+                <tr><td>采纳建议</td><td>列出采纳的AI建议及采纳理由</td></tr>
+                <tr><td>否决建议</td><td>列出否决的AI建议及否决理由（批判性核心）</td></tr>
+                <tr><td>最终方案</td><td>经批判判断后的确定方案</td></tr>
+                <tr><td>测试结果</td><td>承重测试数据与失效位置记录</td></tr>
+                <tr><td>迭代记录</td><td>基于测试结果的优化改进方案</td></tr>
+            </table>
+            <h3>FreeCAD模型引用说明</h3>
+            <div class="freecad-block">
+                <div class="fc-title">虚实双线之"虚"——FreeCAD FEM有限元分析</div>
+                <p>本课引用<strong>正弦拱桁架桥FreeCAD模型</strong>，通过FEM模块计算应力分布和变形量，为实体模型制作提供仿真预演。具体应用：</p>
+                <ul>
+                    <li><strong>模型展示：</strong>正弦拱桁架桥三维结构，包含拱梁、桁架杆件、桥面系</li>
+                    <li><strong>应力分析：</strong>施加载荷后展示应力云图，红色=高应力区（薄弱点）</li>
+                    <li><strong>变形分析：</strong>展示结构变形图，标注最大挠度位置</li>
+                    <li><strong>虚实对照：</strong>将FEM预测的薄弱点与实体模型实际失效位置进行对比验证</li>
+                </ul>
+                <div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+                    <p style="margin:0 0 6px 0;"><strong>渲染图：</strong>Warren桁架桥 (TrussBridge)</p>
+                    <img src="../FreeCAD配套模型/TrussBridge_render.png" alt="Warren桁架桥 (TrussBridge)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+                    <p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型含52个部件，展示Warren型桁架桥的完整结构——上下弦杆、斜杆、端柱、横梁和桥面板。学生可观察桁架受力传递路径，分析各杆件受拉/受压状态，为纸桥承重比赛提供结构参考。</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

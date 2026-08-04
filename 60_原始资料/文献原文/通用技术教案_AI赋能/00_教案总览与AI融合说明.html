@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>通用技术教案总览 - AI赋能技术与工程教学</title>
+<style>
+:root {
+  --primary: #1a56c4;
+  --accent: #e65100;
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #333;
+  --border: #ddd;
+}
+body { font-family: "PingFang SC","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.7; }
+.container { max-width: 1000px; margin: 0 auto; }
+h1 { color: var(--primary); border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+h2 { color: var(--primary); margin-top: 30px; }
+h3 { color: #444; }
+.card { background: var(--card-bg); border-radius: 8px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid var(--primary); }
+.accent-card { border-left-color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+th { background: var(--primary); color: white; }
+tr:nth-child(even) { background: #f9f9f9; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin: 2px; }
+.tag-ai { background: #e3f2fd; color: #1565c0; }
+.tag-model { background: #fff3e0; color: #e65100; }
+.tag-obe { background: #e8f5e9; color: #2e7d32; }
+.tag-new { background: #fce4ec; color: #c62828; font-weight: bold; }
+.lesson-link { color: var(--primary); text-decoration: none; }
+.lesson-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>通用技术教案总览 — AI赋能技术与工程教学</h1>
+
+<div class="card accent-card">
+<h2>设计理念</h2>
+<p>本套教案基于苏教版2019高中通用技术（技术与工程）教材，覆盖必修一全7章、必修二全4单元，共35个教案（含24个新增教案）。每个教案自然融入AI应用（参考OBE-GAI范式和项目化学习模式），部分教案配备FreeCAD三维模型作为教学支架。</p>
+<p><strong>AI应用原则：</strong>不做"为AI而AI"的表面嵌入，而是将AI作为<strong>工程顾问</strong>、<strong>分析助手</strong>和<strong>评价伙伴</strong>，在学生需要时自然介入。学生须批判性使用AI，记录交互过程，说明采纳或否决理由。</p>
+<p><strong>模型应用原则：</strong>FreeCAD模型作为可视化教学工具，帮助学生理解抽象概念（如结构受力、系统组成、控制流程），而非展示技术本身。模型仅在相关章节自然融入，不为FreeCAD而FreeCAD。</p>
+<p><strong>6模块21课时体系：</strong>全部教案严格遵循6模块21课时课程结构，无7模块残留。</p>
+</div>
+
+<h2>必修一《技术与设计1》教案清单（21个）</h2>
+<table>
+<tr><th>序号</th><th>章节</th><th>课题</th><th>AI融合点</th><th>FreeCAD</th></tr>
+
+<tr><td>1</td><td>第一章第1节</td><td><a href="必修一_技术与设计1/01_第一章第1节_技术的发展.html" class="lesson-link">技术的发展</a></td><td><span class="tag tag-ai">AI辅助技术发展史梳理</span></td><td><span class="tag tag-model">3D打印启蒙模型</span></td></tr>
+<tr><td>2</td><td>第一章第2节</td><td><a href="必修一_技术与设计1/01_第一章第2节_技术的价值.html" class="lesson-link">技术的价值</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">社会影响数据补充、逻辑检验</span></td><td>—</td></tr>
+<tr><td>3</td><td>第一章第3节</td><td><a href="必修一_技术与设计1/02_第一章第3节_技术的性质.html" class="lesson-link">技术的性质</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">性质辨析逻辑校验</span></td><td>—</td></tr>
+<tr><td>4</td><td>第二章第1节</td><td><a href="必修一_技术与设计1/03_第二章第1节_技术与设计的关系.html" class="lesson-link">技术与设计的关系</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">案例线索补充</span></td><td>—</td></tr>
+<tr><td>5</td><td>第二章第2节</td><td><a href="必修一_技术与设计1/02_第二章第2节_设计的一般原则.html" class="lesson-link">设计的一般原则</a></td><td><span class="tag tag-ai">AI设计原则案例检索</span></td><td><span class="tag tag-model">个性化钥匙扣</span></td></tr>
+<tr><td>6</td><td>第二章第3节</td><td><a href="必修一_技术与设计1/04_第二章第2节_设计的一般过程.html" class="lesson-link">设计的一般过程</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">阶段任务补充</span></td><td>—</td></tr>
+<tr><td>7</td><td>第二章第4节</td><td><a href="必修一_技术与设计1/05_第二章第4节_技术试验及其方法.html" class="lesson-link">技术试验及其方法</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">试验数据分析辅助</span></td><td><span class="tag tag-model">FEM有限元应力分析</span></td></tr>
+<tr><td>8</td><td>第三章第1节</td><td><a href="必修一_技术与设计1/03_第三章第1节_发现问题.html" class="lesson-link">发现问题</a></td><td><span class="tag tag-ai">AI辅助用户需求分析</span></td><td><span class="tag tag-model">需求分析参考模型</span></td></tr>
+<tr><td>9</td><td>第三章第2节</td><td><a href="必修一_技术与设计1/06_第三章第2节_明确问题.html" class="lesson-link">明确问题</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">问题表述逻辑校验</span></td><td>—</td></tr>
+<tr><td>10</td><td>第四章第1节</td><td><a href="必修一_技术与设计1/07_第四章第1节_设计中的人机关系.html" class="lesson-link">设计中的人机关系</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">人体尺寸数据参考</span></td><td><span class="tag tag-model">课桌椅人体三维建模</span></td></tr>
+<tr><td>11</td><td>第四章第2节</td><td><a href="必修一_技术与设计1/08_第四章第2节_方案的构思过程.html" class="lesson-link">方案的构思过程</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">方案变体补充</span></td><td><span class="tag tag-model">方案三维呈现</span></td></tr>
+<tr><td>12</td><td>第五章第1节</td><td><a href="必修一_技术与设计1/05_第五章第1节_设计表现图.html" class="lesson-link">设计表现图</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">文字转图样体验</span></td><td>—</td></tr>
+<tr><td>13</td><td>第五章第2节</td><td><a href="必修一_技术与设计1/05_第五章第2节_常见的设计图样.html" class="lesson-link">常见的设计图样</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">三视图对应关系智能核查</span></td><td><span class="tag tag-model">三视图CAD绘制</span></td></tr>
+<tr><td>14</td><td>第五章第3节</td><td><a href="必修一_技术与设计1/05_第五章第3节_计算机辅助设计.html" class="lesson-link">计算机辅助设计</a></td><td><span class="tag tag-ai">AI+FreeCAD协同建模</span></td><td><span class="tag tag-model">L支架零件 ✓</span></td></tr>
+<tr><td>15</td><td>第六章第1节</td><td><a href="必修一_技术与设计1/06_第六章第1节_模型或原型的特性与作用.html" class="lesson-link">模型或原型的特性与作用</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">模型方案优化建议</span></td><td><span class="tag tag-model">3D模型与实物对比</span></td></tr>
+<tr><td>16</td><td>第六章第2节</td><td><a href="必修一_技术与设计1/06_第六章第2节_材料的性能与规划.html" class="lesson-link">材料的性能与规划</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">选材方案智能对比</span></td><td><span class="tag tag-model">材料属性3D可视化</span></td></tr>
+<tr><td>17</td><td>第六章第3节</td><td><a href="必修一_技术与设计1/06_第六章第3节_工艺的类别与选择.html" class="lesson-link">工艺的类别与选择</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">工艺安全智能提示</span></td><td><span class="tag tag-model">加工工艺3D模拟</span></td></tr>
+<tr><td>18</td><td>第六章第4节</td><td><a href="必修一_技术与设计1/06_第六章第4节_制作台灯模型或原型.html" class="lesson-link">制作台灯模型或原型</a></td><td><span class="tag tag-ai">AI辅助原型迭代</span></td><td><span class="tag tag-model">台灯模型(5部件) ✓</span></td></tr>
+<tr><td>19</td><td>第七章第1节</td><td><a href="必修一_技术与设计1/07_第七章第1节_设计的评价与优化.html" class="lesson-link">设计的评价与优化</a></td><td><span class="tag tag-ai">AI辅助评价量规生成</span></td><td><span class="tag tag-model">模型优化对比</span></td></tr>
+<tr><td>20</td><td>第七章第2节</td><td><a href="必修一_技术与设计1/07_第七章第2节_技术作品说明书及其编写.html" class="lesson-link">技术作品说明书及其编写</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">说明书表达优化</span></td><td>—</td></tr>
+<tr><td>21</td><td>第四章第2节(旧版)</td><td><a href="必修一_技术与设计1/04_第四章第2节_方案的构思及方法.html" class="lesson-link">方案的构思及方法</a></td><td><span class="tag tag-ai">AI方案对比与权衡</span></td><td><span class="tag tag-model">参数化笔筒</span></td></tr>
+</table>
+
+<h2>必修二《技术与设计2》教案清单（14个）</h2>
+<table>
+<tr><th>序号</th><th>单元</th><th>课题</th><th>AI融合点</th><th>FreeCAD</th></tr>
+
+<tr><td>22</td><td>第一单元第1节</td><td><a href="必修二_技术与设计2/01_第一单元第1节_常见结构的认识.html" class="lesson-link">常见结构的认识</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">结构图像智能识别</span></td><td>—</td></tr>
+<tr><td>23</td><td>第一单元第2节</td><td><a href="必修二_技术与设计2/01_第一单元第2节_稳固结构的探析.html" class="lesson-link">稳固结构的探析</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">优化方案多维评估</span></td><td><span class="tag tag-model">结构受力分析FEM</span></td></tr>
+<tr><td>24</td><td>第一单元第3节</td><td><a href="必修二_技术与设计2/08_第一单元第3节_结构功能的实现.html" class="lesson-link">结构功能的实现</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">经典结构案例资料检索</span></td><td><span class="tag tag-model">经典结构3D模型</span></td></tr>
+<tr><td>25</td><td>第一单元第3节(模型版)</td><td><a href="必修二_技术与设计2/08_第一单元第3节_结构的设计.html" class="lesson-link">结构的设计</a></td><td><span class="tag tag-ai">AI工程顾问（OBE范式）</span></td><td><span class="tag tag-model">Warren桁架桥(52部件) ✓</span></td></tr>
+<tr><td>26</td><td>第二单元第1节</td><td><a href="必修二_技术与设计2/09_第二单元第1节_流程的探析.html" class="lesson-link">流程的探析</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">流程案例资料补充</span></td><td>—</td></tr>
+<tr><td>27</td><td>第二单元第2节</td><td><a href="必修二_技术与设计2/09_第二单元第2节_流程的设计.html" class="lesson-link">流程的设计</a></td><td><span class="tag tag-ai">AI流程模拟与优化</span></td><td><span class="tag tag-model">带盖储物盒装配流程</span></td></tr>
+<tr><td>28</td><td>第二单元第3节</td><td><a href="必修二_技术与设计2/10_第二单元第3节_流程的优化.html" class="lesson-link">流程的优化</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">优化方案数据对比</span></td><td><span class="tag tag-model">工艺流程可视化模拟</span></td></tr>
+<tr><td>29</td><td>第三单元第1节</td><td><a href="必修二_技术与设计2/10_第三单元第1节_系统及其特性.html" class="lesson-link">系统及其特性</a></td><td><span class="tag tag-ai">AI系统拆解与决策</span></td><td><span class="tag tag-model">系统组成模型</span></td></tr>
+<tr><td>30</td><td>第三单元第2节</td><td><a href="必修二_技术与设计2/11_第三单元第2节_系统分析的方法.html" class="lesson-link">系统分析的方法</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">系统分析逻辑校验</span></td><td>—</td></tr>
+<tr><td>31</td><td>第三单元第3节</td><td><a href="必修二_技术与设计2/12_第三单元第3节_系统设计的优化.html" class="lesson-link">系统设计的优化</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">优化方案多维评估</span></td><td><span class="tag tag-model">系统参数3D可视化</span></td></tr>
+<tr><td>32</td><td>第四单元第1节</td><td><a href="必修二_技术与设计2/13_第四单元第1节_控制的方式与应用.html" class="lesson-link">控制的方式与应用</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">控制案例分类辅助</span></td><td>—</td></tr>
+<tr><td>33</td><td>第四单元第2节</td><td><a href="必修二_技术与设计2/14_第四单元第2节_开环控制系统的工作过程.html" class="lesson-link">开环控制系统的工作过程</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">方框图逻辑检查</span></td><td><span class="tag tag-model">控制系统框图模型</span></td></tr>
+<tr><td>34</td><td>第四单元第3节</td><td><a href="必修二_技术与设计2/15_第四单元第3节_闭环控制系统的工作过程.html" class="lesson-link">闭环控制系统的工作过程</a> <span class="tag tag-new">新增</span></td><td><span class="tag tag-ai">反馈回路分析辅助</span></td><td><span class="tag tag-model">闭环控制系统仿真模型</span></td></tr>
+<tr><td>35</td><td>第四单元第3节(模型版)</td><td><a href="必修二_技术与设计2/11_第四单元第3节_闭环控制系统.html" class="lesson-link">闭环控制系统</a></td><td><span class="tag tag-ai">AI控制参数预测</span></td><td><span class="tag tag-model">智能温室大棚(55部件) ✓</span></td></tr>
+</table>
+
+<div class="card">
+<h2>AI应用方法论参考</h2>
+<h3>来源一：OBE-GAI范式（参考蒋艳丽论文）</h3>
+<ul>
+<li><strong>定位</strong>：GAI是"工程顾问"，不是答案生成器</li>
+<li><strong>OBE反向设计</strong>：先定义预期学习产出，再倒推教学活动</li>
+<li><strong>分层提示词</strong>：基础组/提升组/高阶组使用不同深度的AI提示词</li>
+<li><strong>批判性使用</strong>：学生须记录AI交互过程，说明采纳或否决理由</li>
+<li><strong>虚实双线</strong>：AI仿真预演 + 实体模型实测</li>
+</ul>
+<h3>来源二：项目化学习+AI赋能（参考智行湿地案例）</h3>
+<ul>
+<li><strong>全链条</strong>：情境导入→系统分析→方案设计→模拟验证→多元评价</li>
+<li><strong>分层任务</strong>：基础层（系统拆解）→提升层（数据决策）→拓展层（深度优化）</li>
+<li><strong>AI辅助决策</strong>：AI给出预测结果，学生做决策判断</li>
+<li><strong>多元评价</strong>：系统思维30%+探究实践30%+协作表达20%+学科素养20%</li>
+</ul>
+</div>
+
+<div class="card accent-card">
+<h2>FreeCAD模型配套说明</h2>
+<p>所有FreeCAD模型通过freecad-macro-bridge技能在FreeCAD中制作，每个模型提供以下文件：</p>
+<ul>
+<li><code>.FCStd</code> — FreeCAD源文件（可编辑，含完整建模历史）</li>
+<li><code>.step</code> — STEP标准格式（可在任何CAD软件中打开）</li>
+<li><code>.png</code> — 轴测渲染图（教案中引用）</li>
+</ul>
+<p><strong>已制作实体模型（4个）：</strong></p>
+<table>
+<tr><th>模型名称</th><th>对应教案</th><th>部件数</th><th>关键特征</th></tr>
+<tr><td>DeskLamp 台灯</td><td>必修一 §6.4</td><td>5</td><td>底座+灯杆+灯罩+灯泡+开关</td></tr>
+<tr><td>TrussBridge 桁架桥</td><td>必修二 §1.3</td><td>52</td><td>Warren桁架+横梁+桥面板</td></tr>
+<tr><td>LBracket L支架</td><td>必修一 §5.3</td><td>5</td><td>8孔+凹槽+圆角（CAD教学）</td></tr>
+<tr><td>Greenhouse 温室大棚</td><td>必修二 §4.3</td><td>55</td><td>人字屋架+门框+传感器+控制箱</td></tr>
+</table>
+<p><strong>教案内嵌FreeCAD演示环节（非实体模型，课堂演示用）：</strong>共14个教案包含FreeCAD演示环节，涵盖FEM应力分析、三视图CAD绘制、3D模型对比、材料属性可视化、工艺模拟、结构模型、系统参数可视化、控制框图等自然融入点。</p>
+<p>模型与课题的FreeCAD课程资源（21课时六模块体系）保持一致，可互为补充。</p>
+<p>查看 <a href="FreeCAD配套模型/模型索引.html" style="color:var(--accent);font-weight:bold;">模型索引页</a> 了解所有模型的详细参数和渲染图。</p>
+
+<h3>不涉及FreeCAD的教案说明（11个）</h3>
+<p>以下11个教案未设置FreeCAD环节，原因是这些章节的核心教学目标是<strong>价值思辨、概念认知、逻辑分析或文档编写</strong>，并无具体的工程产品需要建模或仿真。强行加入CAD演示反而会偏离教学重点，违反"不为FreeCAD而FreeCAD"的原则。</p>
+<table>
+<tr><th>序号</th><th>章节</th><th>课题</th><th>不涉及FreeCAD的原因</th><th>替代教学手段</th></tr>
+<tr><td>1</td><td>必修一 §1.2</td><td>技术的价值</td><td>价值分析课，讨论技术对人、社会、自然的多维影响，无具体产品需要建模</td><td>价值雷达图 + AI辅助信息补充</td></tr>
+<tr><td>2</td><td>必修一 §1.3</td><td>技术的性质</td><td>概念辨析课，分析技术六大性质的内涵，无工程对象</td><td>性质鉴别卡组 + AI逻辑校验</td></tr>
+<tr><td>3</td><td>必修一 §2.1</td><td>技术与设计的关系</td><td>理论关系课，讨论技术与设计的辩证互动，属抽象思辨</td><td>双螺旋图谱 + AI案例补充</td></tr>
+<tr><td>4</td><td>必修一 §2.3</td><td>设计的一般过程</td><td>流程认知课，讲设计六步骤的方法论框架，无具体产品设计</td><td>流程导航卡 + AI阶段任务提示</td></tr>
+<tr><td>5</td><td>必修一 §3.2</td><td>明确问题</td><td>问题界定课，训练需求分析与问题表述能力，以文字逻辑为主</td><td>问题界定漏斗 + AI逻辑校验</td></tr>
+<tr><td>6</td><td>必修一 §5.1</td><td>设计表现图</td><td>草图手绘课，重点训练<strong>手绘</strong>表达能力（非CAD绘图），手绘是CAD的前置基础</td><td>图样思维速记卡 + AI文字转图样体验</td></tr>
+<tr><td>7</td><td>必修一 §7.2</td><td>技术作品说明书及其编写</td><td>文档编写课，训练技术写作规范，无建模需求</td><td>要素检核表 + AI表达优化建议</td></tr>
+<tr><td>8</td><td>必修二 §1.1</td><td>常见结构的认识</td><td>概念识别课，通过观察图片对结构类型进行分类，属认知入门</td><td>结构类型识别卡 + AI图像识别</td></tr>
+<tr><td>9</td><td>必修二 §2.1</td><td>流程的探析</td><td>流程体验课，以身体活动和现场观察感知流程，非仿真场景</td><td>体验对比法 + AI案例补充</td></tr>
+<tr><td>10</td><td>必修二 §3.2</td><td>系统分析的方法</td><td>系统思维课，训练逻辑拆解和因果分析能力，以思维工具为主</td><td>系统解剖四步法 + AI逻辑校验</td></tr>
+<tr><td>11</td><td>必修二 §4.1</td><td>控制的方式与应用</td><td>控制分类课，辨析手动/自动、开环/闭环的概念，属概念入门</td><td>控制三问 + AI分类辅助</td></tr>
+</table>
+<p><strong>设计原则：</strong>FreeCAD仅在与课程内容<strong>天然契合</strong>时才融入——如涉及具体产品建模（CAD、模型制作）、力学分析（结构受力、材料性能）、工艺仿真（加工流程）、系统可视化（参数3D呈现）或控制框图时。对于纯概念、纯思辨、纯文档类的课时，保留其原有的教学手段（思维工具、卡片、体验活动等），不强行嫁接CAD。</p>
+</div>
+
+<div class="card">
+<h2>新增24个教案说明</h2>
+<p>本次新增的24个教案覆盖了此前缺失的章节，包括：</p>
+<ul>
+<li><strong>必修一新增14个：</strong>技术的价值、技术的性质、技术与设计的关系、设计的一般过程、技术试验及其方法、明确问题、设计中的人机关系、方案的构思过程、设计表现图、常见的设计图样、模型或原型的特性与作用、材料的性能与规划、工艺的类别与选择、技术作品说明书及其编写</li>
+<li><strong>必修二新增10个：</strong>常见结构的认识、稳固结构的探析、结构功能的实现、流程的探析、流程的优化、系统分析的方法、系统设计的优化、控制的方式与应用、开环控制系统的工作过程、闭环控制系统的工作过程</li>
+</ul>
+<p>每个教案均包含：教材分析、学情分析、五维核心素养教学目标、教学重难点、教学策略与方法、原创教学工具、五环节教学过程（含自然融入的AI/FreeCAD环节）、板书设计。</p>
+</div>
+
+<div class="card accent-card">
+<h2>2025新课标项目式案例</h2>
+<p>基于<strong>普通高中技术与工程课程标准（2017年版2025年修订）附录2</strong>的两个项目式教学案例，采用螺旋式上升和大概念贯通式设计，包含完整FreeCAD模型和项目式教案。</p>
+<table>
+<tr><th>案例</th><th>课时</th><th>核心概念</th><th>教学策略</th><th>FreeCAD模型</th><th>教案数</th></tr>
+<tr><td><a href="2025新课标案例/新课标案例总览.html" class="lesson-link" style="color:var(--accent);font-weight:bold;">案例1：机动车三角警告牌系列技术试验</a></td><td>5课时</td><td>技术试验、标准认知</td><td>螺旋式上升</td><td><span class="tag tag-model">WarningTriangle(10部件)+FEM</span></td><td>5个</td></tr>
+<tr><td><a href="2025新课标案例/新课标案例总览.html" class="lesson-link" style="color:var(--accent);font-weight:bold;">案例2：生态鱼缸的设计与制作</a></td><td>16-20课时</td><td>结构、流程、系统、控制</td><td>大概念贯通</td><td><span class="tag tag-model">EcoFishTank(29部件)</span></td><td>4个</td></tr>
+</table>
+<p><strong>新增文件合计：</strong>2个FCStd模型 + 2个STEP + 2个渲染PNG + 9个项目式教案HTML + 1个案例总览页 = <strong>16个文件</strong></p>
+<p>查看 <a href="2025新课标案例/新课标案例总览.html" style="color:var(--accent);font-weight:bold;">新课标案例总览页面</a> 了解详细信息。</p>
+</div>
+
+</div>
+</body>
+</html>

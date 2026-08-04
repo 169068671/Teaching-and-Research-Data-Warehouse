@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第7课 · 用代码控制几何体</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块三</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块三 · 第7课</div>
+  <h1>🖊️ 参数化几何体与桌面笔筒</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 技术实践</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>复习第6课：确保能用Python创建变量和print输出</li>
+      <li>在FreeCAD中切换到Part工作台</li>
+      <li>了解Part模块：可以用代码创建3D几何体</li>
+      <li>思考：用代码画一个立方体需要哪些参数？（长、宽、高）</li>
+      <li>尝试在Python控制台输入 import Part 并回车</li>
+    </ul>
+    <div class="preview-warn">⚠️ 本课是编程建模的核心——用代码生成3D模型。不预习将无法理解Part模块。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>掌握Part模块的导入（import Part）</li>
+      <li>能用makeBox()创建立方体</li>
+      <li>能用makeCylinder()创建圆柱</li>
+      <li>能用尺寸变量控制笔筒外径、高度和壁厚</li>
+      <li>掌握cut布尔差，形成有底的笔筒内腔</li>
+      <li>完成实践作业2：桌面笔筒</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> Part.makeBox()</h3>
+    <p>makeBox(长, 宽, 高) 创建立方体。</p>
+    <p>三个参数分别是X、Y、Z方向的尺寸，单位mm。</p>
+    <p>如 Part.makeBox(60, 18, 3) 创建一个60×18×3mm的薄片。</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🥫</span> Part.makeCylinder()</h3>
+    <p>makeCylinder(半径, 高度, 圆心位置) 创建圆柱。</p>
+    <p>如 Part.makeCylinder(15, 40, FreeCAD.Vector(0,0,0)) 创建R15高40的圆柱。</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">👁️</span> Part.show()</h3>
+    <p>Part.show(几何体) 把几何体显示在3D视图中。</p>
+    <p>创建几何体后必须show才能看到。</p>
+  </div>
+    <div class="code-block">
+      <pre># 实践作业2：参数化桌面笔筒
+import FreeCAD
+import Part
+
+outer_R = 28
+wall_T = 3
+height = 80
+bottom_T = 3
+outer = Part.makeCylinder(outer_R, height)
+inner = Part.makeCylinder(outer_R-wall_T, height-bottom_T,
+                          FreeCAD.Vector(0, 0, bottom_T))
+pen_holder = outer.cut(inner)
+Part.show(pen_holder)</pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <ol class="code-steps">
+        <li><code>outer_R</code>、<code>wall_T</code>、<code>height</code>、<code>bottom_T</code>集中保存外半径、壁厚、总高和底厚；修改变量即可整体改尺寸。</li>
+        <li><code>outer</code>是半径28mm、高80mm的完整外圆柱。</li>
+        <li><code>inner</code>半径为<code>outer_R-wall_T = 25mm</code>，高度为<code>height-bottom_T = 77mm</code>。</li>
+        <li><code>FreeCAD.Vector(0,0,bottom_T)</code>把内圆柱向上移动3mm，让底部保留3mm实体。</li>
+        <li><code>outer.cut(inner)</code>用布尔差从外圆柱中减去内圆柱，得到开口向上的笔筒；<code>Part.show()</code>负责显示。</li>
+      </ol>
+      <div class="code-result"><strong>运行结果：</strong>生成外径56mm、高80mm、侧壁3mm、底厚3mm的中空圆柱基础版。实践作业2再把圆形截面升级为十二边形，并用上下轮廓放样形成轻微外扩。</div>
+      <div class="code-warning"><strong>易错点：</strong><code>wall_T</code>必须小于<code>outer_R</code>，<code>bottom_T</code>必须小于<code>height</code>；若内圆柱没有上移，底部会被完全挖穿。</div>
+    </div>
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty easy">easy</span></h3>
+    <p>1. 完成实践作业2：参数化桌面笔筒</p>
+    <p>2. 修改外径、高度和壁厚，确认模型能随参数更新</p>
+    <p>3. 保存为：学号-姓名-桌面笔筒.FCStd</p>
+    <p>4. 预习第8课：了解for循环和def函数的概念</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="lesson06.html" class="prev">← 上一课</a>
+    <a href="lesson08.html" class="next">下一课 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

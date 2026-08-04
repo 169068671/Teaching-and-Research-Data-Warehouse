@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块四 · 结构设计与原生装配</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+  <div class="slide bg-gradient active">
+    <div class="icon-large">⚙️</div>
+    <h1>模块四</h1>
+    <h2>结构设计、装配间隙与运动验证</h2>
+    <p class="small" style="margin-top:24px;">4课时 · 第10-13课 · 技术实践</p>
+  </div>
+
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习！</h1>
+    <div class="preview-box">
+      <h3>📖 课前预习</h3>
+      <ul>
+        <li>复习for循环和def函数</li>
+        <li>了解『参数化』：变量控制尺寸</li>
+        <li>了解布尔运算：fuse合并/cut挖空</li>
+        <li>构思手机支架和带盖储物盒设计</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide bg-dark code-slide">
+    <div class="icon-large">📐</div>
+    <h1>参数化设计</h1>
+    <p>所有尺寸用变量，改变量就改模型</p>
+    <div class="code-block">
+      <pre>box_L = 60          # 盒体长度
+wall_T = 2.5        # 盒体壁厚
+groove_W = 3.2      # 盒盖环形槽宽
+clearance = 0.35    # 单侧装配间隙</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>作用</strong>把关键尺寸集中为变量，后续几何只引用变量，修改参数即可更新模型。</div>
+      <div class="summary-item"><strong>单位</strong>长度统一使用mm；clearance=0.35表示单侧间隙。</div>
+      <div class="summary-item"><strong>易错点</strong>变量名要前后一致；槽宽必须由壁厚和两侧间隙联动计算。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient code-slide">
+    <div class="icon-large">➕</div>
+    <h1>fuse布尔并</h1>
+    <p>合并两个几何体</p>
+    <div class="code-block">
+      <pre>import FreeCAD
+import Part
+box = Part.makeBox(45, 20, 3)
+ring = Part.makeCylinder(7, 3, FreeCAD.Vector(45, 10, 0))
+body = box.fuse(ring)  # 合并
+Part.show(body)</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>逐行作用</strong>创建矩形主体和圆柱挂环，Vector把圆柱移到主体端部，fuse执行布尔并。</div>
+      <div class="summary-item"><strong>运行结果</strong>两个相交几何体合成body；Part.show()将结果显示到3D视图。</div>
+      <div class="summary-item"><strong>易错点</strong>几何体必须接触或重叠；若分离，结果可能包含多个Solid。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient code-slide">
+    <div class="icon-large">➖</div>
+    <h1>cut布尔差</h1>
+    <p>从一个几何体减去另一个</p>
+    <div class="code-block">
+      <pre>import FreeCAD
+import Part
+outer = Part.makeBox(60, 40, 35)
+inner = Part.makeBox(55, 35, 33,
+                     FreeCAD.Vector(2.5,2.5,2.5))
+box_body = outer.cut(inner)  # 形成有底盒体
+Part.show(box_body)</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>逐行作用</strong>先建外盒，再把内盒向XYZ各偏移2.5mm，outer.cut(inner)挖出内腔。</div>
+      <div class="summary-item"><strong>运行结果</strong>四周壁厚2.5mm、底厚2.5mm；内盒顶面高于外盒，顶部保持开口。</div>
+      <div class="summary-item"><strong>易错点</strong>内盒必须与外盒相交且不能过大；偏移为0会把侧壁或底部挖穿。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-dark code-slide">
+    <div class="icon-large">🧩</div>
+    <h1>多实体与装配间隙</h1>
+    <p>盒体、盒盖保持独立，盒沿进入环形槽</p>
+    <div class="code-block">
+      <pre>groove_W = wall_T + 2 * clearance
+# 2.5 + 2×0.35 = 3.2mm
+# 两侧各留0.35mm，避免零间隙干涉</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>公式</strong>槽宽=插入边厚度+左间隙+右间隙=2.5+0.35×2=3.2mm。</div>
+      <div class="summary-item"><strong>设计含义</strong>槽宽控制配合松紧；槽深控制插入深度，两者不可混用。</div>
+      <div class="summary-item"><strong>易错点</strong>0.35是单侧间隙，不是总间隙；打印前要用间隙测试块校准。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">📦</div>
+    <h1>FreeCAD原生Assembly装配</h1>
+    <p>盒体接地 · 盒盖固定关节 · 干涉体积为0</p>
+    <img src="assets/images/05_带盖储物盒_装配动画.gif" alt="带盖储物盒装配动画">
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">📦</div>
+    <h1>实践作业5：带盖储物盒</h1>
+    <p>盒体+盒盖·环形槽·原生装配</p>
+    <p class="small">STEAM融合点：T技术 + E工程 + M数学（装配、槽宽与间隙）</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>📐 参数</h3><p style="text-align:left;font-size:18px;">盒60×40×35 槽宽3.2 间隙0.35</p></div>
+      <div class="ppt-card"><h3>🔧 技术</h3><p style="text-align:left;font-size:18px;">抽壳+多实体+Assembly固定关节</p></div>
+      <div class="ppt-card"><h3>📝 评分</h3><p style="text-align:left;font-size:18px;">完成度40+技术40+规范20</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">📱</div>
+    <h1>实践作业4：手机支架</h1>
+    <p>能放手机·充电线开口·圆角</p>
+    <p class="small">STEAM融合点：T技术 + E工程 + M数学（结构需求与25°倾角）</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>📐 参数</h3><p style="text-align:left;font-size:18px;">底座80×50×10 背板高55 后倾25°</p></div>
+      <div class="ppt-card"><h3>🔧 技术</h3><p style="text-align:left;font-size:18px;">一体结构+后倾背板+充电槽+稳定性</p></div>
+      <div class="ppt-card"><h3>📝 评分</h3><p style="text-align:left;font-size:18px;">完成度40+技术40+规范20</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">📦</div>
+    <h1>带盖储物盒</h1>
+    <img src="assets/images/05_带盖储物盒_装配动画.gif" alt="带盖储物盒原生装配">
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">📱</div>
+    <h1>手机支架</h1>
+    <img src="assets/images/03_手机支架.png" alt="作品">
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">🎞️</div>
+    <h1>第13课：装配运动验证</h1>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>对象树</h3><p style="text-align:left;font-size:18px;">AssemblyObject<br>Grounded + Fixed Joint</p></div>
+      <div class="ppt-card"><h3>槽口</h3><p style="text-align:left;font-size:18px;">槽宽3.2mm<br>单边间隙0.35mm</p></div>
+      <div class="ppt-card"><h3>证据</h3><p style="text-align:left;font-size:18px;">干涉体积0<br>开合动画+对象树截图</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">🎯</div>
+    <h1>本模块总结</h1>
+    <ul>
+      <li>参数化设计 = 变量控制尺寸</li>
+      <li>布尔运算 = fuse合并/cut挖空</li>
+      <li>多实体设计 = 盒体与盒盖保持独立</li>
+      <li>原生装配 = 接地+固定关节+间隙检查</li>
+      <li>完成手机支架+带盖储物盒2件作品</li>
+      <li>👉 下一步：桥梁跨学科项目、FEM与打印验证</li>
+    </ul>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页 | 共13页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

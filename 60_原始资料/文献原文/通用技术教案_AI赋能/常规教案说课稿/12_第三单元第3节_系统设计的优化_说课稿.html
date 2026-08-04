@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系统设计的优化 — 说课稿</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #ffffff; color: #333; line-height: 2.1; padding: 25px 18px; }
+.container { max-width: 720px; margin: 0 auto; }
+.title-box { text-align: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 3px solid #1a56c4; }
+.title-box h1 { color: #1a56c4; font-size: 23px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #1a56c4; color: #fff; padding: 8px 22px; border-radius: 22px; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+.mnemonic .label { font-size: 12px; font-weight: normal; opacity: 0.85; margin-right: 6px; }
+.section { margin-bottom: 20px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 5px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 10px; text-align: justify; }
+.ending { text-align: center; color: #1a56c4; font-weight: bold; font-size: 15px; margin-top: 25px; padding-top: 18px; border-top: 1px dashed #1a56c4; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title-box">
+    <h1>系统设计的优化 · 说课稿</h1>
+    <div class="mnemonic"><span class="label">记忆口诀</span>整体最优，非局部和</div>
+</div>
+
+<div class="section">
+<h2>一说教材</h2>
+<p>各位评委好，今天我说课的题目是「系统设计的优化」。本节是苏教版必修二第三单元第3节，系统单元的综合提升课。教材讲在系统目标指引下，综合协调各子系统实现整体最优。强调优化是系统层面的，要处理好局部与整体、短期与长期、效益与成本三对关系，培养在多重约束下寻求整体最优的工程思维。</p>
+</div>
+
+<div class="section">
+<h2>二说学情</h2>
+<p>学生已学系统分析方法，能结构化分析系统。但优化时容易陷入「局部最优」思维，只盯单一子系统改进而忽视整体协调。对约束条件和目标函数缺量化意识，难在多目标间权衡决策。需要借助参数可视化工具建立整体最优思维。</p>
+</div>
+
+<div class="section">
+<h2>三说目标</h2>
+<p>五维目标：技术意识上形成追求整体最优的价值观；工程思维上学会多目标权衡与优化决策；创新设计上能提整体协调的优化方案；图样表达上能用优化图和参数对比图表达方案；物化能力上能通过参数调整模拟验证迭代。</p>
+</div>
+
+<div class="section">
+<h2>四说重难点</h2>
+<p>重点是系统优化意义与整体最优思想、约束条件与目标权衡、优化步骤方法。难点是局部最优与整体最优的辩证关系及权衡决策，以及多目标优化中约束条件识别与方案选择。</p>
+</div>
+
+<div class="section">
+<h2>五说教法</h2>
+<p>用问题驱动、可视化辅助、方法支撑、迭代验证。原创工具是「系统优化四步法」：明目标—识约束—调参数—验整体。配「优化决策矩阵」记录各方案在不同目标上的评分，帮学生在权衡中做整体最优决策。</p>
+</div>
+
+<div class="section">
+<h2>六说过程</h2>
+<p>环节一情境导入，展示教室照明实测数据：靠窗刺眼、角落昏暗。问「只换角落灯泡更亮能解决吗？会带来什么新问题？」引导学生认识局部改进可能引起新的系统失衡。</p>
+<p>环节二原理探究，讲整体最优不等于局部最优之和。以交通疏导为例，每条路都绿灯最长反而整体拥堵。介绍三对关系：局部整体、短期长期、效益成本。环节三方法学习，介绍系统优化四步法，以教室照明示范：目标是照度均匀且节能，约束是灯具数量固定布线已定预算有限，调参数包括调角度换灯罩分区控制，验整体通过照度模拟看均匀度和能耗。这里我用FreeCAD加载教室三维模型，参数化调整灯具位置角度功率，实时渲染照度分布热力图，蓝色不足红色过高绿色适宜，让学生直观看从「不均匀」到「均匀」的优化过程。环节四方案设计，学生分组用四步法优化教室照明，填优化决策矩阵，提两种方案评分择优，再请AI辅助计算预期照度均匀度、能耗变化和成本估算，帮学生快速获量化预测，但约束识别和最终权衡仍由学生讨论完成。环节五总结，强调工程优化是「在约束中寻找最优」，没有完美方案只有权衡后的最优选择。</p>
+</div>
+
+<div class="section">
+<h2>七说板书</h2>
+<p>板书四块：一、核心理念，整体最优不等于局部最优之和；二、三对关系，局部整体、短期长期、效益成本；三、系统优化四步法，明目标、识约束、调参数、验整体；四、优化决策矩阵，方案乘目标→评分→择优。</p>
+</div>
+
+<div class="ending">以上就是我的说课，恳请评委指正。</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三章第1节 发现问题 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .prism-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .prism-table th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .prism-table td { border: 1px solid #ddd; padding: 10px 12px; }
+        .prism-table tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px 30px;
+            border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin: 15px 0;
+            white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>第三章第1节 发现问题</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+
+<div class="content">
+
+<!-- 教材分析 -->
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是第三章"发现与明确问题"的起始内容，标志着通用技术课程从"认识技术"转向"实践设计"的关键转折。设计始于问题，没有真正的问题发现，后续的方案构思、图样表达、制作物化都将成为无源之水。本节在教材中承担着"打通设计起点"的功能——帮助学生理解"问题从何而来""如何辨别真问题"，为整个设计实践流程奠定基础。</p>
+    <p>核心概念包括：问题的来源（人类需求、技术发展、社会变化）、发现问题的方法（观察法、访谈法、体验法、文献法等）、问题的类型与价值判断（技术问题与非技术问题、主要问题与次要问题、真实问题与伪问题）。这些概念之间的逻辑关系是："问题来源"解释"去哪里找问题"，"发现方法"解决"怎么找"，"价值判断"回答"找到的问题值不值得解决"。本节与第二章的设计原则形成呼应——好的设计原则要解决的是"真问题"；与第四章"方案的构思"形成衔接——只有明确了真实问题，方案构思才有靶向。本节是设计思维的起点，也是培养学生"问题意识"的关键节点。</p>
+</div>
+
+<!-- 学情分析 -->
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在日常生活中经常遇到各种"不方便"，但很少将这些"不方便"上升为"可以设计解决的问题"。多数学生能说出"这个东西不好用"，却难以分析"为什么不好用""不好用的根源是什么""这是不是一个可以通过技术设计解决的问题"。</p>
+    <p>认知特点方面，学生习惯于被动接受任务，缺乏主动发现问题的意识和方法。可能的困难在于：区分"抱怨"与"问题"——并非所有不满都构成技术问题；以及从杂乱的用户反馈中提炼出核心需求。生活经验方面，学生每天在校园中学习生活，对教室、宿舍、食堂、操场等场景中的不便有切身体验，这些鲜活素材是发现问题的天然资源。</p>
+</div>
+
+<!-- 教学目标 -->
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">理解问题是技术设计的起点，形成"留意生活、主动发现问题"的技术意识；能认识到不是所有不满都是技术问题，建立"问题甄别"的初步意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">运用"问题挖掘三棱镜"从观察、访谈、体验三个角度系统发现真实问题；能对收集到的问题信息进行分类、筛选和价值判断，培养需求分析的逻辑思维能力。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能从司空见惯的校园生活场景中发现被忽视的设计缺陷，培养敏锐的问题嗅觉和创新发现的意识；能提出有改进价值的问题假设。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用"问题卡片"结构化呈现发现的问题，包含问题描述、场景、影响人群、可能原因等要素；能绘制简单的场景示意图辅助说明问题。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过观察有设计缺陷的FreeCAD手机支架模型，直观感知"设计缺陷如何导致使用问题"，建立"从实物缺陷反推设计问题"的物化分析能力。</div>
+        </div>
+    </div>
+</div>
+
+<!-- 教学重难点 -->
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>发现问题的三种主要方法：观察法、访谈法、体验法</li>
+        <li>运用"问题挖掘三棱镜"从多角度发现真实问题</li>
+        <li>对发现的问题进行价值判断，区分技术问题与非技术问题</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>从杂乱的用户反馈信息中提炼核心需求，识别真正的技术问题</li>
+        <li>区分"表象问题"与"根源问题"——学生容易停留在表面抱怨，难以深入到设计层面的根本原因</li>
+    </ul>
+</div>
+
+<!-- 教学策略与方法 -->
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li><strong>情境教学法：</strong>以"校园生活中的不便"为真实情境，让学生在自己最熟悉的环境中发现问题。</li>
+        <li><strong>任务驱动法：</strong>以"提交一份校园问题发现报告"为核心任务，驱动学生主动调研。</li>
+        <li><strong>合作探究法：</strong>小组分工，分别用观察法、访谈法、体验法收集信息，再汇总分析。</li>
+        <li><strong>对比辨析法：</strong>对比"真问题"与"伪问题"、"技术问题"与"非技术问题"，在辨析中建立判断标准。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：问题挖掘三棱镜</div>
+        <p><strong>设计理念：</strong>发现问题不是"想到什么算什么"的随机活动，而应从多个角度系统挖掘。本工具将三种发现方法构建为"三棱镜"的三个面——同一个问题从不同面看，会呈现不同的信息，三个面叠加才能形成立体完整的问题认知。</p>
+        <p><strong>三面说明：</strong></p>
+        <table class="prism-table">
+            <tr><th>棱镜面</th><th>方法</th><th>核心动作</th><th>关注焦点</th></tr>
+            <tr><td>第一面</td><td>观察法</td><td>用眼看、用记录</td><td>客观现象：谁在用什么？怎么用的？出现了什么状况？</td></tr>
+            <tr><td>第二面</td><td>访谈法</td><td>用耳听、用嘴问</td><td>主观感受：使用者觉得哪里不方便？最想改变什么？</td></tr>
+            <tr><td>第三面</td><td>体验法</td><td>用手做、用心感</td><td>亲身体验：亲自使用后，哪里别扭？哪里有摩擦感？</td></tr>
+        </table>
+        <p><strong>使用方式：</strong>学生小组针对同一个校园场景（如教室储物、食堂排队、宿舍收纳），分别用三个面收集信息，然后将三面信息叠加，判断哪些是"三个面都指向的真实问题"。只有同时被观察、访谈、体验三面确认的问题，才进入"候选技术问题"清单。</p>
+    </div>
+</div>
+
+<!-- 教学过程 -->
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <!-- 环节一 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>一个"不好用"的手机支架</h4>
+            <p><strong>教师活动：</strong>教师拿出一个手机支架实物（或展示模型），邀请一位同学上来试用——把手机放上去看视频。学生很快发现：手机放上去会滑下来，支架角度太直看视频要低头，横屏时支架挡住了扬声器。教师提问："这个手机支架明明是专门设计来放手机的，为什么这么不好用？问题出在哪里？是设计的问题，还是使用的问题？"</p>
+
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD模型引用点</div>
+                <p><strong>模型名称：</strong>有设计缺陷的手机支架模型</p>
+                <p><strong>引用方式：</strong>教师展示一个用FreeCAD建模的手机支架模型——底座平板、支撑背板角度固定为80度（过于直立）、支撑面光滑无防滑槽、底部无配重。在大屏幕上旋转展示模型的三维结构，并用标注功能指出三处设计缺陷：①背板角度不合理（应为60度左右更适合观看）；②支撑面缺少防滑纹理（导致手机滑落）；③底座过轻过窄（重心不稳容易翻倒）。</p>
+                <p><strong>教学意图：</strong>用一个"明确有缺陷"的实物模型引发学生的"问题感"。学生通过试用和观察，直观体验"设计缺陷导致使用不便"的因果链条。这个模型不是让学生去"修好它"，而是让学生学会"发现它的问题"——这正是本课的核心能力。从具体的模型缺陷出发，引导学生思考：生活中还有多少类似的"不好用"被我们习以为常地忽略了？</p>
+            </div>
+
+            <p><strong>学生活动：</strong>一位同学上台试用手机支架，其他同学观察试用过程。全体学生在"问题观察记录单"上写下自己发现的问题点。</p>
+            <p><strong>设计意图：</strong>用可触可试的实物创设"问题体验"，让学生在"不好用"的真实感受中萌发问题意识。从"发现问题"的角度切入，而非"解决问题"，聚焦本课能力目标。</p>
+        </div>
+
+        <!-- 环节二 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>问题从何而来？三棱镜怎么用？</h4>
+            <p><strong>教师活动（5分钟）：</strong>教师阐释"问题"在技术设计中的地位——"设计不是从'我要做一个什么东西'开始的，而是从'有什么问题需要解决'开始的。"接着讲解问题的三个来源：人类需求的变化（如远程办公催生视频会议设备需求）、技术发展带来的新可能（如AI技术带来智能助教需求）、社会环境的变化（如老龄化社会催生适老化产品设计）。</p>
+
+            <p><strong>教师活动（4分钟）：</strong>引入"问题挖掘三棱镜"工具，以手机支架为例示范三面用法——</p>
+            <ul>
+                <li><strong>观察面：</strong>教师播放课前录制的不同同学使用手机支架的视频，让学生观察"手机怎么滑落的""什么角度时最不稳"等客观现象</li>
+                <li><strong>访谈面：</strong>教师朗读两段课前对同学的简短访谈记录——"我觉得支架太矮了，要一直低头看""我躺着用的时候完全没法用"</li>
+                <li><strong>体验面：</strong>教师请全班每人用手边的书本模拟手机支架，亲自体验5秒钟，感受角度、稳定性、防滑等使用体验</li>
+            </ul>
+            <p>教师强调："三个面收集到的信息会重叠也会互补。重叠的部分往往是核心问题，互补的部分可能揭示我们没想到的需求。三面叠加，才能拼出完整的问题图景。"</p>
+
+            <p><strong>学生活动（6分钟）：</strong>小组合作，选择一个校园生活场景（教室储物空间不足、食堂餐具回收不便、宿舍书桌收纳混乱等），运用三棱镜三面法收集信息。每组成员分工——一人负责观察、一人负责访谈（采访同桌或邻组同学）、一人负责体验（亲自操作或模拟使用），每人限时2分钟收集信息后汇总。</p>
+
+            <p><strong>设计意图：</strong>三棱镜工具的"示范—模仿—独立应用"路径，帮助学生在短时间内体验三种发现方法的差异和互补性。校园场景的选择让学生在最熟悉的环境中发现最真实的问题，降低发现门槛。</p>
+        </div>
+
+        <!-- 环节三 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>核心探究：哪些才是真正的"技术问题"？</h4>
+            <p><strong>教师活动（2分钟）：</strong>教师指出关键认知："你们刚才用三棱镜收集了很多信息，但这些信息里既有真问题也有伪问题，既有技术问题也有非技术问题。比如'食堂饭菜不好吃'是一个问题，但它不是技术设计能解决的问题。接下来，我们要学会从杂乱信息中提炼出真正的技术问题。"</p>
+
+            <p><strong>学生活动（4分钟）：</strong>各小组将三棱镜收集到的所有信息写在便利贴上，一张一条，贴在小组白板上。信息可能包括："书包放不进抽屉""书立总是倒""笔筒太浅笔掉出来""桌子太小放不下书和电脑"等。</p>
+
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节（一）：用户反馈信息的归类与关键词提取</div>
+                <p><strong>应用场景：</strong>学生收集到的用户反馈信息往往杂乱无章——有的是具体抱怨，有的是模糊感受，有的甚至是相互矛盾的。学生面对几十条便利贴信息，难以快速理清分类和提炼关键需求。</p>
+                <p><strong>AI介入方式：</strong>AI在此处扮演"数据分析助手"角色，帮学生整理信息但不替学生判断。具体流程——</p>
+                <ul>
+                    <li><strong>步骤1（学生先收集）：</strong>小组先将所有便利贴信息整理成文本，输入给AI</li>
+                    <li><strong>步骤2（与AI对话）：</strong>学生请求两类帮助——
+                        <ul>
+                            <li><strong>请求A：</strong>"以下是我们收集到的校园生活问题反馈，请帮我按问题类型进行分类（如收纳类、舒适度类、效率类等），并提取每类的关键词"</li>
+                            <li><strong>请求B：</strong>"请帮我将这些反馈信息按'可以通过技术设计解决'和'非技术问题'两类初步区分，并说明分类依据"</li>
+                        </ul>
+                    </li>
+                    <li><strong>步骤3（学生判断）：</strong>这是最关键的一步。学生拿到AI的分类结果后，必须逐条判断——AI的分类对不对？AI认为的"技术问题"我同意吗？AI认为的"非技术问题"真的不能用技术解决吗？学生须在每条信息旁标注自己的判断（同意AI/不同意AI/需要讨论）</li>
+                    <li><strong>步骤4（记录过程）：</strong>在"AI交互记录单"上记录：我们收集了多少条信息→AI分了几类→我们采纳了哪些分类、否决了哪些、为什么</li>
+                </ul>
+                <p><strong>分层提示词设计：</strong></p>
+                <ul>
+                    <li><strong>基础组：</strong>"以下是我们收集的问题反馈，请帮我分类并提取关键词"</li>
+                    <li><strong>提升组：</strong>"以下是我们收集的问题反馈，请按'技术问题'和'非技术问题'分类，并说明每条的分类依据"</li>
+                    <li><strong>高阶组：</strong>"以下是我们收集的问题反馈，请进行分类并提取核心需求，然后判断哪些需求之间存在关联或矛盾，我会验证你的分析"</li>
+                </ul>
+                <p><strong>关键约束：</strong>AI只做"归类"和"提取"的信息整理工作，"哪些是真正的技术问题"这一核心判断必须由学生自己完成。学生可以对AI的分类提出异议——这正是批判性使用AI的体现。例如，AI可能把"教室太吵影响学习"归为非技术问题，但学生可以反驳"隔音材料设计就是技术方案"，这种"学生对AI说不对"的时刻恰恰是批判性思维的高光时刻。</p>
+            </div>
+
+            <p><strong>学生活动（5分钟）：</strong>各小组根据AI辅助分类后的信息，讨论筛选出2-3个"真正的技术问题"，填写"问题卡片"——每张卡片包含：问题描述、发现场景、影响人群、可能原因、是否可通过技术设计解决。教师巡回，引导学生区分"表象问题"和"根源问题"（如"书包放不进抽屉"是表象，根源可能是"抽屉尺寸设计不合理"或"书包体积过大"）。</p>
+
+            <p><strong>教师活动（4分钟）：</strong>选取2-3个小组分享他们的"技术问题"筛选结果，教师引导全班辨析："这个问题真的是技术问题吗？有没有更根本的原因？如果解决了这个问题，使用者的体验会改善吗？"通过追问帮助学生深化对"真问题"的理解。</p>
+
+            <p><strong>设计意图：</strong>这是本课的思维核心。学生不是在"收集问题"，而是在"甄别问题"——从海量信息中提炼出有价值的技术问题。AI帮学生处理了信息归类这一繁琐工作，让学生有更多精力集中在"价值判断"这一高阶思维上。学生对AI分类的批判性审视，正是"工程顾问"模式下人机协作的典型场景。</p>
+        </div>
+
+        <!-- 环节四 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>从问题到需求：明确设计方向</h4>
+            <p><strong>教师活动：</strong>教师提出迁移任务："你们已经筛选出了真正的技术问题。现在，请将每个技术问题转化为一句'设计需求陈述'——格式为'我需要设计一个___，来解决___的问题，使___（目标人群）能够___（改善效果）。'"教师示范："我需要设计一个可调节角度的桌面手机支架，来解决固定角度导致观看不适的问题，使学生在桌面上看视频时能够保持舒适的视角。"</p>
+            <p><strong>学生活动：</strong>各小组将筛选出的技术问题转化为设计需求陈述（6分钟），每组完成至少2条。教师巡回，检查需求陈述是否包含了"设计对象+问题+人群+效果"四要素。</p>
+            <p><strong>设计意图：</strong>从"发现问题"到"明确需求"是设计的逻辑桥梁。需求陈述的规范化训练帮助学生将模糊的问题感受转化为清晰的设计靶标，为后续第四章的方案构思做好铺垫。</p>
+        </div>
+
+        <!-- 环节五 -->
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>问题是设计的种子</h4>
+            <p><strong>教师活动：</strong>教师总结："今天我们学习了如何发现问题——用三棱镜的三个面（观察、访谈、体验）系统收集信息，再从杂乱信息中甄别出真正的技术问题。记住：不是所有的不满都是问题，不是所有的问题都是技术问题，不是所有的技术问题都值得解决。问题是设计的种子，但只有优质的种子才能长出好的设计。"</p>
+            <p><strong>课后任务：</strong>每位学生选择一个自己生活中的"不方便"，独立运用三棱镜法收集信息，完成一张"问题卡片"和一条"设计需求陈述"，下次课分享。要求附上"AI辅助分析记录"和"我的独立判断"两部分。</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 板书设计 -->
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第三章第1节 发现问题
+
+一、问题是设计的起点
+  需求变化 → 技术发展 → 社会变化
+
+二、问题挖掘三棱镜
+  ┌─ 观察面：客观现象（用眼看）
+  ├─ 访谈面：主观感受（用耳听）
+  └─ 体验面：亲身感知（用手感）
+  → 三面叠加 = 完整问题图景
+
+三、问题甄别
+  真问题 vs 伪问题
+  技术问题 vs 非技术问题
+  表象问题 → 根源问题
+
+四、从问题到需求
+  "我需要设计___，解决___的问题，
+   使___能够___"
+
+【核心认知】问题是设计的种子，甄别比收集更重要
+    </div>
+</div>
+
+<!-- 教学反思预设 -->
+<div class="section-card">
+    <h2><span class="icon">八</span>教学反思预设</h2>
+    <div class="reflect-box">
+        <p><strong>预设问题1：</strong>三棱镜法在6分钟内完成三面信息收集可能时间紧张。<strong>应对策略：</strong>可允许小组聚焦其中两个面深入收集，第三个面简化处理。关键是让学生体验"多角度收集"的方法论，而非追求信息的完整性。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>预设问题2：</strong>AI辅助分类环节中，学生可能直接接受AI的分类结果而不加判断。<strong>应对策略：</strong>教师须在环节三明确要求"逐条标注自己的判断"，并在分享环节随机抽查某条信息的"学生判断vs AI判断"对比，对敢于否定AI的小组给予表扬。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>预设问题3：</strong>学生可能将"技术问题"理解得过于狭窄，只关注电子技术而忽略结构设计、材料选择等方面。<strong>应对策略：</strong>教师在辨析环节须拓展"技术问题"的内涵——任何通过设计手段（包括结构、材料、工艺、交互等）可改善的问题都属于技术问题的范畴。</p>
+    </div>
+    <div class="reflect-box">
+        <p><strong>亮点预设：</strong>"问题挖掘三棱镜"将零散的发现方法整合为有结构的工具，"三面叠加"的机制有效保证了问题发现的全面性。AI在此处处理的是"信息归类"这一低阶但耗时的任务，将学生的认知精力释放到"价值判断"这一高阶思维上，是人机分工的合理设计。</p>
+    </div>
+</div>
+
+<!-- AI应用说明 -->
+<div class="section-card">
+    <h2><span class="icon">九</span>AI应用说明</h2>
+    <p>本课AI应用遵循<strong>OBE-GAI模式</strong>，核心定位是"AI做信息整理，学生做价值判断"。具体体现如下：</p>
+    <h3>1. AI不发现问题，AI整理问题</h3>
+    <p>本课最核心的设计原则是"AI不能替学生发现问题"。问题的发现必须由学生通过观察、访谈、体验亲力亲为——这是培养问题意识不可替代的过程。AI的介入点在"信息收集之后"——当学生面对几十条杂乱反馈时，AI帮学生做归类和关键词提取这种信息处理工作，但"哪些是真正的技术问题"这一核心判断完全由学生完成。</p>
+    <h3>2. 人机分工的合理边界</h3>
+    <p>AI擅长的是：大量文本的快速分类、关键词提取、信息结构化整理。学生擅长的是：结合情境的价值判断、对模糊信息的语义理解、对"能否通过技术解决"的专业判断。本课的设计让人机和AI各做擅长的事——AI处理信息，学生处理意义。</p>
+    <h3>3. 批判性使用的核心场景</h3>
+    <p>本课设计了"学生对AI说不"的关键场景：AI将某条反馈归为"非技术问题"，学生可以反驳"我认为这个可以通过技术设计解决"。这种"学生质疑AI分类"的时刻，是批判性使用AI最有价值的教学场景。教师应鼓励学生不要盲目接受AI的分类结果，而要用自己的专业判断去审视和修正。</p>
+    <h3>4. 分层提示词的差异化支持</h3>
+    <p>三档提示词对应不同层次的需求：基础组让AI做简单分类，提升组让AI做技术/非技术的初步区分，高阶组让AI分析需求间的关联与矛盾。所有层次的共同约束是——学生必须对AI结果进行独立判断和记录，确保AI始终处于"被审视"而非"被服从"的地位。</p>
+    <h3>5. 虚实双线</h3>
+    <p><strong>虚线（AI分析）：</strong>AI对用户反馈信息进行分类、关键词提取、关联分析。<strong>实线（实践操作）：</strong>学生亲手收集便利贴信息、试用手机支架模型、填写问题卡片、进行小组辩论。信息的"收集"和"判断"两端由学生完成，AI只在中间的"整理"环节介入，形成完整的人机协作链条。</p>
+</div>
+
+</div>
+<div class="footer">苏教版2019高中通用技术必修一《技术与设计1》教学设计 · AI赋能教学系列</div>
+</div>
+</body>
+</html>

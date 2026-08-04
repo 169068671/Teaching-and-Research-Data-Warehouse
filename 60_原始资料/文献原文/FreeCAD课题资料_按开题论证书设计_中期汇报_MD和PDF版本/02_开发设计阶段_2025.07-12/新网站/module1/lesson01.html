@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1课 · 3D打印与STEAM启蒙</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块一</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+
+<!-- 课时标题 -->
+<section class="lesson-header">
+  <div class="lesson-num">模块一 · 第1课</div>
+  <h1>🌐 3D打印与STEAM启蒙</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 基础启蒙</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 课前预习 -->
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>搜索"3D打印"词条，了解3D打印的基本概念</li>
+      <li>观看1个3D打印工作视频（B站搜索"FDM 3D打印过程"）</li>
+      <li>思考：3D打印能做什么？你在生活中见过哪些3D打印产品？</li>
+      <li>了解"STEAM"是哪五个学科的缩写（Science, Technology, Engineering, Arts, Mathematics）</li>
+      <li>准备一个笔记本，记录预习中不懂的问题，带到课堂</li>
+    </ul>
+    <div class="preview-warn">⚠️ 不预习的后果：本课时45分钟要讲完原理+类型+应用+STEAM理念，不预习将完全听不懂。预习只需15-20分钟。</div>
+  </div>
+
+  <!-- 教学目标 -->
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>了解3D打印技术的基本原理（FDM熔融沉积）</li>
+      <li>了解3D打印的主要类型（FDM、SLA、SLS）</li>
+      <li>了解3D打印的应用场景（医疗、建筑、教育、制造）</li>
+      <li>理解STEAM理念的跨学科融合思想</li>
+      <li>建立"编程思维"的初步认知——用代码驱动实体创造</li>
+    </ul>
+  </div>
+
+  <!-- 知识点1 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔬</span> 3D打印原理</h3>
+    <p>3D打印（3D Printing）又称增材制造（Additive Manufacturing），是通过<strong>逐层堆积材料</strong>的方式，将数字模型转化为三维实体的技术。</p>
+    <p>类比理解：传统加工是"切豆腐"（减材制造，从大块材料上切掉多余部分），3D打印是"堆乐高"（增材制造，一层一层往上堆）。</p>
+    <p><strong>FDM原理：</strong>将塑料丝（PLA/ABS）加热熔化，像挤牙膏一样从喷嘴挤出，一层一层堆叠成型。</p>
+  </div>
+
+  <!-- 知识点2 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> 3D打印类型</h3>
+    <p><strong>FDM（熔融沉积）</strong>：最常见，塑料丝加热挤出，便宜易用，本课程使用此类型。</p>
+    <p><strong>SLA（光固化）</strong>：紫外线激光固化液态树脂，精度高，用于珠宝、牙模。</p>
+    <p><strong>SLS（选择性激光烧结）</strong>：激光烧结粉末（尼龙/金属），强度高，用于工业。</p>
+  </div>
+
+  <!-- 知识点3 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🚀</span> 3D打印应用场景</h3>
+    <p>🏥 <strong>医疗</strong>：定制假肢、牙齿矫治器、手术导板</p>
+    <p>🏗️ <strong>建筑</strong>：打印房屋、建筑模型</p>
+    <p>🏭 <strong>制造</strong>：快速原型、小批量生产、定制零件</p>
+    <p>🎨 <strong>艺术</strong>：雕塑、珠宝、文创产品</p>
+    <p>📚 <strong>教育</strong>：STEAM教学模型、实验器材（就是我们在做的事！）</p>
+  </div>
+
+  <!-- 知识点4 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🧩</span> STEAM理念</h3>
+    <p>STEAM = <strong>S</strong>cience（科学）+ <strong>T</strong>echnology（技术）+ <strong>E</strong>ngineering（工程）+ <strong>A</strong>rts（艺术）+ <strong>M</strong>athematics（数学）</p>
+    <p>STEAM不是五门学科的简单拼凑，而是通过<strong>真实项目</strong>让知识在解决问题中实现跨界融合。</p>
+    <p>本课程中的STEAM融合：</p>
+    <p>🔹 科学：3D打印材料特性、结构力学</p>
+    <p>🔹 技术：Python编程、FreeCAD操作</p>
+    <p>🔹 工程：设计→建模→切片→打印→迭代</p>
+    <p>🔹 艺术：产品造型、美学设计</p>
+    <p>🔹 数学：几何计算、参数化建模、三角函数</p>
+  </div>
+
+  <!-- 知识点5 -->
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">💻</span> 编程思维启蒙</h3>
+    <p>传统CAD建模：用鼠标拖拽画图 → "数字工匠"</p>
+    <p>编程建模：用代码控制模型 → "算法思维"</p>
+    <p>本课程的核心创新：<strong>用代码驱动实体创造</strong></p>
+    <div class="code-block">
+      <pre>
+# 用三步代码创建一个立方体并读取体积
+import Part
+box = Part.makeBox(25, 25, 25)
+print("立方体创建成功！体积 =", box.Volume, "mm³")
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <div class="code-guide-grid">
+        <div class="code-guide-item"><strong>整体作用</strong>调用FreeCAD的Part模块，在内存中生成一个25mm见方的立方体，并在控制台输出体积。</div>
+        <div class="code-guide-item"><strong>第1步：导入工具</strong><code>import Part</code>载入基础几何建模模块，后续才能使用<code>makeBox()</code>。</div>
+        <div class="code-guide-item"><strong>第2步：创建模型</strong><code>makeBox(25, 25, 25)</code>的三个参数依次是X方向长度、Y方向宽度、Z方向高度，单位均为mm。</div>
+        <div class="code-guide-item"><strong>第3步：读取属性</strong><code>box.Volume</code>读取模型体积；<code>print()</code>只负责把文字和数值显示在控制台。</div>
+      </div>
+      <div class="code-result"><strong>运行结果：</strong>控制台输出“立方体创建成功！体积 = 15625.0 mm³”。本段没有调用<code>Part.show(box)</code>，因此模型不会自动显示在3D视图中。</div>
+      <div class="code-warning"><strong>易错点：</strong>FreeCAD Python区分大小写，必须写<code>Part</code>、<code>Volume</code>；三个尺寸都应为正数。</div>
+    </div>
+    <p>这段代码将在模块三详细学习。现在先建立认识：<strong>代码既能生成3D模型，也能读取模型的尺寸与体积属性</strong>。</p>
+  </div>
+
+  <!-- 作品展示 -->
+  <h2 class="section-title fade-in">3D打印能做什么</h2>
+  <p class="section-subtitle fade-in">本课程的作品样件</p>
+  <div class="workshow">
+    <div class="work-card fade-in">
+      <img src="../assets/images/06_模块一_3D打印启蒙演示.png" alt="基础几何体">
+      <div class="info">
+        <h4>立方体+圆柱+球体</h4>
+        <p>3D打印基础形状</p>
+      </div>
+    </div>
+    <div class="work-card fade-in">
+      <img src="../assets/images/01_钥匙扣.png" alt="钥匙扣">
+      <div class="info">
+        <h4>🔑 钥匙扣</h4>
+        <p>你将学会做的第一个作品</p>
+      </div>
+    </div>
+    <div class="work-card fade-in">
+      <img src="../assets/images/07_模块五_正弦拱桁架桥_有限元分析.png" alt="正弦拱桁架桥">
+      <div class="info">
+        <h4>🌉 正弦拱桁架桥</h4>
+        <p>用数学函数建模并完成有限元分析</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 课后任务 -->
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty easy">简单</span></h3>
+    <p>1. 在笔记本上写下3D打印的三种类型（FDM、SLA、SLS）及各自特点</p>
+    <p>2. 找一个你生活中感兴趣的物品，思考：如果用3D打印做，需要考虑什么？</p>
+    <p>3. <strong>预习第2课</strong>：安装FreeCAD软件（老师会提供安装包），打开后浏览界面，找到"Part"工作台</p>
+  </div>
+
+  <!-- 课时导航 -->
+  <div class="lesson-nav">
+    <a href="index.html" class="prev">← 模块一目录</a>
+    <a href="lesson02.html" class="next">第2课：FreeCAD初体验 →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

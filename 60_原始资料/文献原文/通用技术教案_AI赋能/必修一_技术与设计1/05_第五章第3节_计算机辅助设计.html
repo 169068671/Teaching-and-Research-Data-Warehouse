@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教案5 · 计算机辅助设计 — AI赋能技术与工程教学</title>
+<style>
+:root {
+  --primary: #1a56c4;
+  --accent: #e65100;
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #333;
+  --text-light: #666;
+  --border: #ddd;
+  --ai-bg: #e3f2fd;
+  --ai-color: #1565c0;
+  --model-bg: #fff3e0;
+  --model-color: #e65100;
+  --timeline-line: #1a56c4;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "PingFang SC","Microsoft YaHei",sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.8;
+}
+.container { max-width: 960px; margin: 0 auto; }
+.header-block {
+  background: linear-gradient(135deg, var(--primary), #2d6fd6);
+  color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-block h1 { margin: 0 0 8px 0; font-size: 26px; border: none; }
+.header-block .subtitle { opacity: 0.9; font-size: 14px; }
+.header-block .meta-tags { margin-top: 12px; }
+.header-block .meta-tags span {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-right: 8px;
+}
+h2 {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 6px;
+  margin-top: 35px;
+  font-size: 20px;
+}
+h3 { color: #444; font-size: 16px; margin-top: 20px; }
+h4 { color: var(--primary); font-size: 15px; }
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--primary);
+}
+.card.accent { border-left-color: var(--accent); }
+.card.ai-card { border-left-color: var(--ai-color); }
+.card.model-card { border-left-color: var(--model-color); }
+p { margin: 8px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px 4px 2px 0;
+  font-weight: 500;
+}
+.tag-ai { background: var(--ai-bg); color: var(--ai-color); }
+.tag-model { background: var(--model-bg); color: var(--model-color); }
+.tag-tool { background: #e8f5e9; color: #2e7d32; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+th { background: var(--primary); color: #fff; }
+tr:nth-child(even) { background: #f9f9f9; }
+/* 时间线 */
+.timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--timeline-line);
+  border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 25px; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+.tl-item.accent-dot::before { border-color: var(--accent); }
+.tl-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.tl-time {
+  background: var(--primary);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tl-title { font-weight: 600; font-size: 16px; color: var(--primary); }
+.tl-body {
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.tl-body p { margin: 6px 0; }
+/* AI环节标记 */
+.ai-block {
+  background: var(--ai-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--ai-color);
+}
+.ai-block .ai-label {
+  color: var(--ai-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+/* 模型引用 */
+.model-block {
+  background: var(--model-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--model-color);
+}
+.model-block .model-label {
+  color: var(--model-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+/* 板书设计 */
+.blackboard {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  font-family: "PingFang SC","Microsoft YaHei",monospace;
+  line-height: 2;
+}
+.blackboard .bb-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #7f8c8d;
+  padding-bottom: 8px;
+}
+.prompt-box {
+  background: #f8f9fa;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.prompt-box strong { color: var(--primary); }
+.footer-note {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 13px;
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header-block">
+  <h1>教案5 · 第五章第3节 计算机辅助设计</h1>
+  <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》| AI赋能技术与工程教学</div>
+  <div class="meta-tags">
+    <span>1课时 · 45分钟</span>
+    <span>原创工具：CAD三步建模法</span>
+    <span>AI融合范式：OBE-GAI</span>
+    <span>FreeCAD模型：手机支架</span>
+  </div>
+</div>
+
+<h2>一、教材分析</h2>
+<div class="card">
+<p>本节"计算机辅助设计"位于苏教版《技术与设计1》第五章"方案的构思及其方法"第3节，是学生从"手工构思表达"迈向"数字化精确表达"的关键转折点。教材在此前安排了设计的一般原则、发现与明确问题、方案的构思方法等内容，学生已具备手绘草图和方案构思的基本能力；本节则引入CAD工具，使学生掌握用计算机进行二维草图绘制与三维实体建模的方法，实现设计图样的数字化表达。</p>
+<p>核心概念包括"计算机辅助设计的概念与意义""二维草图约束""三维特征建模"三部分，三者为递进关系：理解CAD价值是动机，草图约束是建模的语言基础，特征建模是设计意图的实现手段。本节承上启下——向上承接第四章方案构思的草图成果，向下连接第六章模型制作的尺寸精度要求，是设计从"想法"到"可制造图样"的核心转化环节。</p>
+</div>
+
+<h2>二、学情分析</h2>
+<div class="card">
+<p>高一学生在信息技术课中接触过基础绘图软件，对"用电脑画图"并不陌生，但对"参数化建模""几何约束"等专业概念缺乏认知，常将CAD简单等同于"画图软件"。学生空间想象能力存在明显分化：约40%的学生能从三视图脑补立体形态，但多数学生需要借助三维模型辅助理解。此外，学生手绘草图的尺寸往往模糊，进入CAD环境后面临"从自由表达到精确约束"的认知跳跃，容易产生畏难情绪。教学中需以具体项目（手机支架）为载体，用"先手绘、后建模"的对比方式降低认知坡度。</p>
+</div>
+
+<h2>三、教学目标（五维核心素养）</h2>
+<div class="card">
+<table>
+<tr><th>素养维度</th><th>具体目标</th></tr>
+<tr><td>技术意识</td><td>认识计算机辅助设计在现代工程设计中的地位与价值，理解CAD相较手工绘图在精度、效率、可修改性上的优势，形成"数字化设计是工程师必备能力"的技术意识。</td></tr>
+<tr><td>工程思维</td><td>掌握"需求分解→草图构建→特征成型"的系统化建模思路（CAD三步建模法），能用工程语言分析建模策略的优劣，理解"参数化"与"约束"对设计可控性的意义。</td></tr>
+<tr><td>创新设计</td><td>能根据手机支架的功能需求提出至少两种造型方案，在CAD环境中尝试不同特征组合方式，体现个性化创新表达。</td></tr>
+<tr><td>图样表达</td><td>能在FreeCAD中完成含草图约束（水平、垂直、相切、等距）的二维轮廓，并通过拉伸、圆角等特征操作生成三维实体，输出规范的技术图样。</td></tr>
+<tr><td>物化能力</td><td>通过手绘草图与CAD建模的对比，体会从"概念表达"到"精确制造"的物化过程，为后续3D打印和模型制作奠定数字基础。</td></tr>
+</table>
+</div>
+
+<h2>四、教学重难点</h2>
+<div class="card">
+<p><strong>教学重点：</strong>掌握CAD三步建模法的完整流程，能在FreeCAD中运用草图约束与拉伸特征完成手机支架建模。</p>
+<p><strong>教学难点：</strong>理解几何约束的参数化本质——即"约束驱动尺寸"而非"尺寸驱动图形"，并能批判性地评估AI给出的建模步骤的合理性。</p>
+</div>
+
+<h2>五、教学策略与方法</h2>
+<div class="card">
+<p><strong>策略框架：</strong>采用OBE-GAI范式，以"手机支架建模"为产出目标反向设计教学链条。AI作为"建模顾问"在关键节点介入，学生始终是建模决策的主体。</p>
+<p><strong>核心方法：</strong></p>
+<ul>
+<li><span class="tag tag-tool">原创工具</span> <strong>CAD三步建模法</strong>：需求分解（拆解功能结构与关键尺寸）→草图构建（绘制带约束的2D轮廓）→特征成型（拉伸/圆角/倒角生成3D实体）。</li>
+<li><strong>虚实双线</strong>：手绘草图（实）→AI分析建模步骤（虚）→FreeCAD建模（实）→对比反思（虚实交融）。</li>
+<li><strong>分层提示词策略</strong>：基础组获取建模步骤清单，提升组获取建模策略对比，高阶组获取参数化优化建议。</li>
+<li><strong>对比教学法</strong>：手绘与CAD建模过程并置呈现，凸显数字化设计的精确性与可复现性。</li>
+</ul>
+</div>
+
+<h2>六、教学过程</h2>
+<div class="timeline">
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">5分钟</span>
+<span class="tl-title">环节一：情境导入——班级手机无处放？</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>展示教室场景照片：课桌上手机平放，查阅资料时需一手扶手机一手操作，极不方便。抛出问题："如果为班级设计一个手机支架，让手机能立着放、角度合适、稳固不倒，你会怎么设计？"</p>
+<p><strong>学生活动：</strong>学生简短讨论，回顾第四章学过的方案构思方法，初步说出支架的基本功能需求（支撑、倾斜、防滑）。</p>
+<p><strong>过渡设问：</strong>教师追问——"我们上节课用手绘草图表达了方案，但如果要把设计交给工厂精确制造，手绘草图够用吗？"引出计算机辅助设计的必要性。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节二：概念建构——CAD三步建模法</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>讲解计算机辅助设计（CAD）的基本概念，强调CAD不是"电子画板"，而是"参数化建模工具"——图形由约束和参数驱动，修改一个尺寸，整个模型自动更新。随后引出本课原创工具。</p>
+<h4>CAD三步建模法</h4>
+<ol>
+<li><strong>需求分解</strong>：将设计对象拆解为功能单元和关键尺寸。以手机支架为例：底板（承重防滑）、背板（支撑倾斜）、卡槽（限位防滑），确定关键尺寸如底板长60mm、宽40mm、背板倾角75°、卡槽深8mm。</li>
+<li><strong>草图构建</strong>：在FreeCAD草图工作台中绘制2D轮廓，添加几何约束（水平、垂直、相切、对称）和尺寸约束（长度、角度、半径），使草图达到"完全约束"状态。</li>
+<li><strong>特征成型</strong>：对草图执行拉伸（Pad）操作生成实体，再通过圆角（Fillet）、倒角（Chamfer）等修饰特征完成最终模型。</li>
+</ol>
+
+<div class="model-block">
+<div class="model-label">FreeCAD模型引用点</div>
+<p>教师展示<strong>手机支架CAD模型</strong>（来源：课题配套FreeCAD课程资源 03_手机支架.FCStd）。该模型完整呈现了草图约束+拉伸+圆角的建模过程：底板与背板的L形截面草图（含角度约束75°、尺寸约束60×40mm），通过拉伸生成实体，边缘施加R3圆角。教师逐步展开模型树，让学生看到"草图→拉伸→圆角"的特征历史，直观理解三步建模法的实际产物。</p>
+
+<div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+<p style="margin:0 0 6px 0;"><strong>渲染图：</strong>L支架零件 (LBracket)</p>
+<img src="../FreeCAD配套模型/LBracket_render.png" alt="L支架零件 (LBracket)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+<p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型展示了CAD三步建模法的完整流程——L形截面草图拉伸→8个安装孔特征→顶部凹槽→内角圆角，学生可在FreeCAD中打开.FCStd文件查看建模历史树，理解参数化设计思想。</p>
+</div>
+</div>
+
+<p><strong>学生活动：</strong>学生在笔记本上画出手机支架的正面草图，标注自己设定的关键尺寸。这是"先手绘"的关键环节——学生带着自己的草图进入下一步。</p>
+</div>
+</div>
+
+<div class="tl-item accent-dot">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节三：深度探究——AI辅助分析建模步骤</span>
+<span class="tag tag-ai">AI应用环节</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>发放AI交互任务单，明确要求："将你手绘的手机支架草图拍照上传，向AI咨询'如何将这个草图转化为FreeCAD建模步骤'，记录AI给出的步骤，逐条判断是否合理，标注采纳或修改理由。"</p>
+<p>强调AI使用规范：AI是"建模顾问"，不是"代劳者"。学生须自行判断每一步的正确性与合理性。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 分层提示词策略</div>
+<p><strong>基础组提示词（获取步骤清单）：</strong></p>
+<div class="prompt-box">"我手绘了一个手机支架草图，底板长60mm宽40mm，背板倾斜75°，卡槽深8mm。请给我用FreeCAD建模的步骤清单。"</div>
+<p><strong>提升组提示词（获取策略对比）：</strong></p>
+<div class="prompt-box">"我手绘了一个手机支架草图（附图）。请对比两种建模策略的优劣：策略A——先画L形整体截面再拉伸；策略B——先分别画底板和背板再组合。哪种更适合参数化修改？"</div>
+<p><strong>高阶组提示词（获取优化建议）：</strong></p>
+<div class="prompt-box">"我手绘了一个手机支架草图（附图），希望做成参数化模型，将来能快速调整尺寸适配不同手机。请建议我在FreeCAD中应如何设置草图约束和参数表，才能实现尺寸联动修改。"</div>
+</div>
+
+<p><strong>学生活动：</strong>学生拍照上传手绘草图，与AI交互获取建模步骤建议。重点完成以下批判性判断：</p>
+<ul>
+<li>AI建议的草图绘制顺序是否合理？（如AI可能建议先画矩形再裁剪，但学生可判断"先画L形闭合轮廓再拉伸"更简洁）</li>
+<li>AI是否遗漏了关键约束？（如AI可能未提及背板角度约束，学生需补充）</li>
+<li>AI建议的拉伸方向是否正确？（手机支架应沿宽度方向拉伸底板，而非沿高度方向）</li>
+</ul>
+<p><strong>教师巡视指导：</strong>重点关注学生是否能识别AI步骤中的错误。典型案例：AI可能建议"先建长方体再挖槽"，教师引导学生思考——这与"先画含槽截面再拉伸"哪种更高效？引导学生体会"建模策略选择"的工程思维。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 交互记录要求</div>
+<p>学生在任务单上填写：<strong>①</strong> AI给出的原始步骤（逐条记录）；<strong>②</strong> 我的判断（合理/需修改/错误）；<strong>③</strong> 采纳方案与理由。此项记录纳入过程性评价。</p>
+</div>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">8分钟</span>
+<span class="tl-title">环节四：迁移应用——FreeCAD实际建模与对比</span>
+</div>
+<div class="tl-body">
+<p><strong>学生活动：</strong>学生根据自己修正后的建模步骤，在FreeCAD中实际操作建模。由于课堂时间有限，此环节聚焦核心操作：绘制L形草图→添加角度约束和尺寸约束→拉伸生成实体→施加圆角。</p>
+<p><strong>对比任务：</strong>建模完成后，学生将手绘草图与CAD模型并置对比，填写对比表：</p>
+<table>
+<tr><th>对比维度</th><th>手绘草图</th><th>CAD模型</th></tr>
+<tr><td>尺寸精度</td><td>近似，依赖目测</td><td>精确，参数驱动</td></tr>
+<tr><td>修改效率</td><td>需重新绘制</td><td>改参数即更新</td></tr>
+<tr><td>三维表达</td><td>需画多视角</td><td>自动生成立体</td></tr>
+<tr><td>制造可行</td><td>难以直接加工</td><td>可导出STL打印</td></tr>
+</table>
+<p><strong>教师活动：</strong>巡回解决操作问题，引导学生在对比中体会"计算机辅助设计不仅是工具升级，更是设计思维从'感性表达'到'理性约束'的跃迁"。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">2分钟</span>
+<span class="tl-title">环节五：总结反思</span>
+</div>
+<div class="tl-body">
+<p><strong>师生共结：</strong>回顾CAD三步建模法（需求分解→草图构建→特征成型），强调"约束是CAD的灵魂"——没有约束的草图只是线条，有约束的草图才是可制造的设计。</p>
+<p><strong>课后任务：</strong>完善手机支架FreeCAD模型文件，下次课将用于3D打印或模型制作环节。同时整理AI交互记录单，思考"AI在哪些方面帮到了你，在哪些方面你需要纠正它"。</p>
+</div>
+</div>
+
+</div>
+
+<h2>七、板书设计</h2>
+<div class="blackboard">
+<div class="bb-title">计算机辅助设计 — CAD三步建模法</div>
+<p>一、CAD = 参数化建模工具（非电子画板）</p>
+<p>　　约束驱动尺寸 → 修改即更新</p>
+<p>二、CAD三步建模法</p>
+<p>　　① 需求分解：功能单元 + 关键尺寸</p>
+<p>　　② 草图构建：几何约束 + 尺寸约束 = 完全约束</p>
+<p>　　③ 特征成型：拉伸 → 圆角/倒角</p>
+<p>三、手绘 vs CAD：精度 · 效率 · 三维 · 制造</p>
+<p>四、AI = 建模顾问（判断>采纳）</p>
+</div>
+
+<h2>八、教学反思预设</h2>
+<div class="card">
+<p><strong>优势预设：</strong>CAD三步建模法将复杂的参数化建模拆解为清晰的三步，降低了学生的认知负荷。"先手绘后建模"的对比设计，能让学生直观感受数字化设计的价值，而非被动接受"应该用CAD"的结论。AI分层提示词策略照顾了不同水平学生的需求，避免了"一刀切"。</p>
+<p><strong>风险预设：</strong>①课堂时间紧张，部分学生可能无法在8分钟内完成完整建模，需准备"半成品模型"供操作慢的学生在草图中修改参数继续；②AI可能给出基于SolidWorks或AutoCAD的步骤，与FreeCAD操作存在差异，教师需提前准备常见差异对照表；③学生可能过度依赖AI步骤而缺乏独立思考，需通过"逐条判断合理性"的记录要求加以约束。</p>
+<p><strong>改进方向：</strong>下次可增加"建模策略辩论"环节，让选择不同建模路径的学生各述理由，深化对"建模策略选择"的工程思维理解。</p>
+</div>
+
+<h2>九、AI应用说明</h2>
+<div class="card ai-card">
+<p><span class="tag tag-ai">AI融合范式</span> 本教案采用OBE-GAI范式，AI定位为"建模顾问"而非"答案生成器"。</p>
+<h4>AI介入节点与设计意图</h4>
+<table>
+<tr><th>节点</th><th>AI角色</th><th>学生行为</th><th>设计意图</th></tr>
+<tr><td>环节三</td><td>建模步骤顾问</td><td>上传手绘草图，获取建模建议</td><td>用AI补足操作经验缺口</td></tr>
+<tr><td>环节三</td><td>策略对比分析者</td><td>判断AI步骤合理性并修正</td><td>培养批判性工程思维</td></tr>
+<tr><td>环节四</td><td>（不介入）</td><td>独立完成FreeCAD建模</td><td>确保学生掌握核心操作</td></tr>
+</table>
+<h4>分层提示词设计依据</h4>
+<p>基础组学生空间想象较弱，需AI提供具象步骤清单降低门槛；提升组已具基本建模认知，引导其关注策略对比以深化理解；高阶组则挑战参数化建模思维，对接3D打印的尺寸可变性需求。三层提示词难度递进，对应"知识获取→分析评价→创新应用"的认知层级。</p>
+<h4>批判性使用要求</h4>
+<p>学生必须填写AI交互记录单，包含AI原始建议、个人判断、采纳理由三栏。教师抽查记录单，重点关注"否决AI建议"的案例，在课堂上分享讨论，强化"AI是顾问、学生是决策者"的定位。</p>
+</div>
+
+<div class="card model-card">
+<p><span class="tag tag-model">FreeCAD模型引用</span> 本教案引用课题配套资源中的<strong>手机支架CAD模型</strong>（03_手机支架.FCStd / .stl / .py / .png），该模型完整展示了草图约束+拉伸+圆角的三步建模流程，作为教学演示和学生参考的支架工具。模型文件存放于课题配套资源“教学模型_FCStd与STL”目录。</p>
+
+<div style="margin:14px 0;padding:12px;background:#f6f8fa;border-radius:8px;border-left:3px solid #4a90d9;">
+<p style="margin:0 0 6px 0;"><strong>渲染图：</strong>L支架零件 (LBracket)</p>
+<img src="../FreeCAD配套模型/LBracket_render.png" alt="L支架零件 (LBracket)渲染图" style="width:100%;max-width:500px;border-radius:8px;margin:12px 0;border:1px solid #ddd;">
+<p style="margin:6px 0 0 0;font-size:0.95em;line-height:1.6;color:#444;">该模型展示了CAD三步建模法的完整流程——L形截面草图拉伸→8个安装孔特征→顶部凹槽→内角圆角，学生可在FreeCAD中打开.FCStd文件查看建模历史树，理解参数化设计思想。</p>
+</div>
+</div>
+
+<div class="footer-note">
+苏教版2019高中通用技术必修一《技术与设计1》· 第五章第3节 计算机辅助设计 · AI赋能教学设计
+</div>
+
+</div>
+</body>
+</html>

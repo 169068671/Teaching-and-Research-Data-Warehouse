@@ -1,0 +1,123 @@
+{
+  "paper_metadata": {
+    "paper_id": "CX2022BRIDGE",
+    "title": "“双新”背景下高中通用技术学生活动设计与实践——以“桥梁结构的优化与改进”为例",
+    "authors": ["陈希", "管文川", "赵杰"],
+    "journal": "上海课程教学研究",
+    "year": 2022,
+    "issue": "待核验",
+    "pages": "62-68",
+    "pdf_pages": 7,
+    "page_mapping": "论文页=PDF页+61",
+    "source_verification": "题名、作者、单位、期刊、页码据原文核验；年份部分核验；期次和稳定标识待核"
+  },
+  "summary": {
+    "reference_count": 3,
+    "entity_count": 3,
+    "citation_event_count": 4,
+    "mapped_reference_count": 3,
+    "unused_reference_count": 0,
+    "orphan_citation_count": 0,
+    "external_fulltext_verified_count": 0,
+    "scope_note": "仅完成引用方论文内部编号、位置、语境和用途映射；未执行被引文献原文核验"
+  },
+  "references": [
+    {
+      "reference_label": "[1]",
+      "entity_id": "E001",
+      "reference_text": "中华人民共和国教育部. 普通高中通用技术课程标准（2017年版2020年修订）[S]. 北京: 人民教育出版社, 2020.",
+      "citation_count": 1,
+      "mapping_status": "已映射",
+      "metadata_verification": "仅据引用方文后条目转录"
+    },
+    {
+      "reference_label": "[2]",
+      "entity_id": "E002",
+      "reference_text": "吕巾娇, 刘美凤, 史力范. 活动理论的发展脉络与应用探析[J]. 现代教育技术, 2007(1):8-14.",
+      "citation_count": 2,
+      "mapping_status": "已映射",
+      "metadata_verification": "仅据引用方文后条目转录"
+    },
+    {
+      "reference_label": "[3]",
+      "entity_id": "E003",
+      "reference_text": "郑太年. 从活动理论看学校学习[J]. 开放教育研究, 2005(1):64-68.",
+      "citation_count": 1,
+      "mapping_status": "已映射",
+      "metadata_verification": "仅据引用方文后条目转录"
+    }
+  ],
+  "entities": [
+    {
+      "entity_id": "E001",
+      "reference_labels": ["[1]"],
+      "canonical_reference": "中华人民共和国教育部. 普通高中通用技术课程标准（2017年版2020年修订）[S]. 北京: 人民教育出版社, 2020.",
+      "dedup_basis": "单一编号且题名唯一",
+      "external_verification": "未执行"
+    },
+    {
+      "entity_id": "E002",
+      "reference_labels": ["[2]"],
+      "canonical_reference": "吕巾娇, 刘美凤, 史力范. 活动理论的发展脉络与应用探析[J]. 现代教育技术, 2007(1):8-14.",
+      "dedup_basis": "单一编号且题名唯一",
+      "external_verification": "未执行"
+    },
+    {
+      "entity_id": "E003",
+      "reference_labels": ["[3]"],
+      "canonical_reference": "郑太年. 从活动理论看学校学习[J]. 开放教育研究, 2005(1):64-68.",
+      "dedup_basis": "单一编号且题名唯一",
+      "external_verification": "未执行"
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "CIT001",
+      "reference_label": "[1]",
+      "entity_id": "E001",
+      "pdf_page": 1,
+      "thesis_page": 62,
+      "section": "一、活动理论视角下的教学设计",
+      "citation_context": "引用课程标准对普通高中通用技术课程性质与育人目标的表述，用于界定课程背景",
+      "citation_mode": "转述/概述",
+      "citation_purpose": "政策或课程标准依据",
+      "mapping_confidence": "高（编号、上下文和文后条目一致）"
+    },
+    {
+      "citation_id": "CIT002",
+      "reference_label": "[2]",
+      "entity_id": "E002",
+      "pdf_page": 1,
+      "thesis_page": 62,
+      "section": "一、活动理论视角下的教学设计",
+      "citation_context": "概述活动理论强调实践活动及其社会历史条件对心理发展的作用",
+      "citation_mode": "转述/概述",
+      "citation_purpose": "理论或教学模型依据",
+      "mapping_confidence": "高（编号、上下文和文后条目一致）"
+    },
+    {
+      "citation_id": "CIT003",
+      "reference_label": "[3]",
+      "entity_id": "E003",
+      "pdf_page": 1,
+      "thesis_page": 62,
+      "section": "一、活动理论视角下的教学设计",
+      "citation_context": "说明活动理论可为学校教学设计与学习创新提供分析视角",
+      "citation_mode": "转述/概述",
+      "citation_purpose": "理论或教学模型依据",
+      "mapping_confidence": "高（编号、上下文和文后条目一致）"
+    },
+    {
+      "citation_id": "CIT004",
+      "reference_label": "[2]",
+      "entity_id": "E002",
+      "pdf_page": 2,
+      "thesis_page": 63,
+      "section": "三、课例设计",
+      "citation_context": "明确以活动理论作为本课学生活动设计的分析框架",
+      "citation_mode": "转述/概述",
+      "citation_purpose": "理论或教学模型依据",
+      "mapping_confidence": "高（编号、上下文和文后条目一致）"
+    }
+  ]
+}

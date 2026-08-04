@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1课时 情境导入与标准认知 — 机动车三角警告牌系列技术试验</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #B71C1C, #D32F2F);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(183,28,28,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #B71C1C;
+            background: #fff5f5;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 { color: #B71C1C; font-size: 20px; margin-bottom: 15px; }
+        .section-card h3 { color: #E65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .section-card strong { color: #B71C1C; }
+
+        /* 教学目标网格 */
+        .goal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #ffcdd2;
+            border-top: 4px solid #B71C1C;
+            padding: 16px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .goal-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #B71C1C;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .goal-item .goal-title::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #E65100;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .goal-item p { font-size: 14px; margin-bottom: 0; }
+
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 10px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #B71C1C, #ffcdd2);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: #fff;
+            border: 1px solid #ffe0e0;
+            border-radius: 8px;
+            padding: 18px 22px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.04);
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -30px;
+            top: 20px;
+            width: 14px;
+            height: 14px;
+            background: #B71C1C;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #B71C1C;
+        }
+        .time-tag {
+            display: inline-block;
+            background: #B71C1C;
+            color: #fff;
+            font-size: 12px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .timeline-item h3 {
+            color: #B71C1C;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+        .activity-block {
+            margin-top: 10px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .teacher-activity {
+            background: #f3e5f5;
+            border-left: 4px solid #8E24AA;
+        }
+        .student-activity {
+            background: #e8f5e9;
+            border-left: 4px solid #2E7D32;
+        }
+        .activity-label {
+            font-weight: bold;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .teacher-activity .activity-label { color: #8E24AA; }
+        .student-activity .activity-label { color: #2E7D32; }
+
+        /* AI应用环节 */
+        .ai-block {
+            background: #e3f2fd;
+            border: 2px solid #1976D2;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 15px 0;
+        }
+        .ai-block .ai-title {
+            color: #1565C0;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .ai-block .ai-title::before {
+            content: "AI";
+            display: inline-block;
+            background: #1976D2;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .ai-block p { font-size: 14px; margin-bottom: 8px; }
+        .ai-block ul { margin-left: 20px; }
+        .ai-block li { font-size: 14px; }
+
+        /* FreeCAD应用环节 */
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #E65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 15px 0;
+        }
+        .freecad-block .fc-title {
+            color: #E65100;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .freecad-block .fc-title::before {
+            content: "FreeCAD";
+            display: inline-block;
+            background: #E65100;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .freecad-block p { font-size: 14px; margin-bottom: 8px; }
+
+        /* 原创工具 */
+        .tool-box {
+            background: #f1f8e9;
+            border: 2px dashed #558B2F;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title {
+            color: #33691E;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .tool-box .tool-title::before {
+            content: "★ 原创工具";
+            display: inline-block;
+            background: #558B2F;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .tool-box p { font-size: 14px; margin-bottom: 6px; }
+
+        /* 板书设计 */
+        .blackboard {
+            background: #1a2332;
+            color: #e8e8e8;
+            border-radius: 10px;
+            padding: 28px 30px;
+            font-family: "STKaiti", "KaiTi", serif;
+            line-height: 2.2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 8px solid #5d4037;
+        }
+        .blackboard .bb-title {
+            text-align: center;
+            font-size: 20px;
+            color: #FFD54F;
+            border-bottom: 2px dashed #555;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .blackboard .bb-content { font-size: 16px; }
+        .blackboard .bb-section { margin-bottom: 12px; }
+        .blackboard .bb-keyword { color: #FF7043; font-weight: bold; }
+        .blackboard .bb-arrow { color: #81C784; }
+
+        /* 表格样式 */
+        .table-style {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .table-style th {
+            background: #B71C1C;
+            color: #fff;
+            padding: 10px 12px;
+            text-align: left;
+            border: 1px solid #a02020;
+        }
+        .table-style td {
+            padding: 9px 12px;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+        }
+        .table-style tr:nth-child(even) td { background: #faf5f5; }
+
+        /* 教学反思 */
+        .reflect-box {
+            background: #fffde7;
+            border: 2px solid #F9A825;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 10px;
+        }
+        .reflect-box p { font-size: 14px; margin-bottom: 10px; }
+        .reflect-box .reflect-title {
+            color: #F57F17;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #E65100;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 10px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>第1课时 情境导入与标准认知</h1>
+            <div class="subtitle">机动车三角警告牌系列技术试验 — 基于螺旋式上升策略的项目式教学</div>
+            <div class="meta">
+                <span>课程模块：必修模块1 技术与工程设计1</span>
+                <span>课时：1/5（45分钟）</span>
+                <span>核心素养：技术意识·工程思维·物化能力</span>
+            </div>
+            <div class="meta">
+                <span>项目来源：普通高中技术与工程课程标准（2017年版2025年修订）附录2案例1</span>
+                <span>教学策略：认识标准（第一螺旋）</span>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- 一、教材分析 -->
+            <div class="section-card">
+                <h2>一、教材分析</h2>
+                <p>本课时为"机动车三角警告牌系列技术试验"项目的起始课，在5课时项目化学习中承担"情境唤醒"与"标准启蒙"的双重任务。作为螺旋式上升策略的第一螺旋——"认识标准"，本课的核心价值在于通过真实交通事故情境的引入，让学生感知三角警告牌这一日常技术制品背后蕴含的安全需求与技术标准体系。</p>
+                <p>本课时以"为什么三角警告牌能救命"为核心驱动问题，从道路安全事故的现实需求出发，引出国家标准GB/T 19115《机动车用三角警告牌》的存在与意义。教学内容涵盖三角警告牌的功能认知、设计要素初探、标准概念引入三大板块。本课时为后续课时的国标研读（第2课时）、尺寸检测（第3课时）、性能测试（第4课时）和方案优化（第5课时）奠定认知基础和情感动机——只有先让学生感受到标准"为什么存在"，才能激发其在后续课程中深入理解标准"如何规定"、如何检验"是否达标"以及怎样"超越标准"的内驱力。</p>
+                <p>本课时定位于项目启动阶段，重在激发技术意识和探究兴趣，而非参数细节的深挖，体现了项目式学习"先感性后理性、先整体后局部"的认知规律。</p>
+            </div>
+
+            <!-- 二、学情分析 -->
+            <div class="section-card">
+                <h2>二、学情分析</h2>
+                <p>授课对象为高一年级学生。学生在初中阶段物理课程中已具备光学反射、力的基本概念等知识基础，日常生活中对三角警告牌有直观认知，但大多停留在"红色三角形"的表面印象层面，缺乏对其技术标准体系的系统性认识。</p>
+                <p>学生的认知特点表现为：对真实情境和视觉冲击力强的素材兴趣浓厚，擅长小组讨论但缺乏从现象到标准的技术思维路径；对"标准"概念理解较为模糊，容易将"标准"简单等同于"规定尺寸"，难以意识到标准是安全需求、工程约束与社会协作的综合产物。此外，学生尚不具备自主检索和解读国家标准文本的能力，需要教师在信息来源甄别、标准文本结构认知方面给予支架式引导。</p>
+            </div>
+
+            <!-- 三、教学目标 -->
+            <div class="section-card">
+                <h2>三、教学目标（五维核心素养）</h2>
+                <div class="goal-grid">
+                    <div class="goal-item">
+                        <div class="goal-title">技术意识</div>
+                        <p>通过交通事故情境分析，感知三角警告牌作为安全技术的价值，形成"技术制品承载社会责任"的技术意识，理解技术标准对保障公共安全的必要性。</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-title">工程思维</div>
+                        <p>初步建立"需求—设计—标准"的工程思维链条，能够从安全需求倒推三角警告牌的设计要素，识别功能与结构之间的逻辑关联。</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-title">创新设计</div>
+                        <p>在观察现有三角警告牌的基础上，初步提出改进设想，培养发现技术问题、提出解决方案的创新意识萌芽。</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-title">图样表达</div>
+                        <p>能够用手绘简图标注三角警告牌的基本结构要素（边长、角度、颜色区域），初步形成技术图样表达的习惯。</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-title">物化能力</div>
+                        <p>通过实物观察和拆解，感知三角警告牌的材料构成与工艺特征，为后续检测试验建立感性认识基础。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 四、教学重难点 -->
+            <div class="section-card">
+                <h2>四、教学重难点</h2>
+                <h3>教学重点</h3>
+                <ul>
+                    <li>理解三角警告牌的安全功能与设计要素之间的因果关系</li>
+                    <li>建立"安全需求→技术标准"的认知路径，初步认识国家标准GB/T 19115</li>
+                    <li>运用"标准透视镜"原创工具，从需求倒推标准</li>
+                </ul>
+                <h3>教学难点</h3>
+                <ul>
+                    <li>突破学生对"标准"的窄化理解——标准不仅是尺寸规定，更是需求、工程与社会协作的综合体现</li>
+                    <li>引导学生从"看到三角警告牌"到"思考为什么这样设计"的思维跃迁</li>
+                    <li>在情境中自然引入AI辅助检索工具，而非将AI作为展示噱头</li>
+                </ul>
+            </div>
+
+            <!-- 五、教学策略与方法 -->
+            <div class="section-card">
+                <h2>五、教学策略与方法</h2>
+                <p>本课时采用<strong>情境驱动—问题支架—工具辅助</strong>的复合教学策略。以真实交通事故视频情境导入，通过递进式问题链引导学生从感性认知走向理性思考。教学方法以情境教学法为主，辅以小组合作探究法、实物观察法和AI辅助检索法。</p>
+
+                <div class="tool-box">
+                    <div class="tool-title">标准透视镜</div>
+                    <p><strong>工具定位：</strong>本课时原创教学工具，用于帮助学生建立"从安全需求倒推技术标准"的思维路径。</p>
+                    <p><strong>工具结构：</strong>"标准透视镜"是一张结构化的思维导图模板，中心为三角警告牌实物图像，向外辐射四条支线：</p>
+                    <ul>
+                        <li><strong>需求层：</strong>谁在什么场景下需要它？（驾驶员、后方来车、夜间/雨雾）</li>
+                        <li><strong>功能层：</strong>它要实现什么功能？（远距离可见、快速辨识、稳定不倒）</li>
+                        <li><strong>设计层：</strong>为实现功能，需要哪些设计要素？（颜色、反光、形状、结构、材料）</li>
+                        <li><strong>标准层：</strong>这些设计要素由谁规定？依据什么？（国家标准GB/T 19115）</li>
+                    </ul>
+                    <p><strong>使用方式：</strong>学生在小组合作中填写"标准透视镜"导学单，教师巡视点拨，最终每组用2分钟分享"倒推"路径。</p>
+                </div>
+
+                <p>AI辅助工具的引入遵循"自然融入"原则：当学生在讨论中提出"三角警告牌在不同国家是否一样""每年有多少交通事故与未放置警告牌有关"等超出课本范围的问题时，教师适时引导使用AI检索工具获取数据，使AI成为学生探究的"信息拓展器"而非教学表演道具。</p>
+            </div>
+
+            <!-- 六、教学过程 -->
+            <div class="section-card">
+                <h2>六、教学过程</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <span class="time-tag">0-7分钟</span>
+                        <h3>环节一：情境导入 — 高速公路上的"生死三角"</h3>
+                        <div class="activity-block teacher-activity">
+                            <span class="activity-label">教师活动</span>
+                            <p>播放一段高速公路车辆故障后未按规定放置三角警告牌导致追尾事故的监控视频（30秒），随后展示事故数据统计图。提问引导："如果你是那位故障车辆驾驶员，在车后方放置三角警告牌时，你希望它具备什么特性？为什么是三角形而不是圆形或方形？"</p>
+                        </div>
+
+                        <div class="ai-block">
+                            <div class="ai-title">AI辅助检索 — 交通事故数据</div>
+                            <p>教师使用AI助手实时检索近五年全国高速公路因未放置或放置不当三角警告牌引发的二次事故数据，生成数据可视化图表投屏展示。同时检索不同国家（德国Autobahn、美国Interstate、日本高速）三角警告牌的使用场景图片，呈现同一安全需求下的国际化共性。</p>
+                            <ul>
+                                <li>检索关键词："三角警告牌 二次事故 统计数据 高速公路"</li>
+                                <li>AI输出：数据图表 + 多国使用场景对比图</li>
+                                <li>教学价值：用真实数据建立"标准保护生命"的情感共鸣</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-block student-activity">
+                            <span class="activity-label">学生活动</span>
+                            <p>观看视频，记录直观感受。在教师提问引导下，初步表达对三角警告牌功能的猜想（"要够远能看见""要醒目""要站得稳"）。小组内快速交流1分钟，每组派代表分享一个关键词。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-tag">7-22分钟</span>
+                        <h3>环节二：概念建构 — "标准透视镜"探究</h3>
+                        <div class="activity-block teacher-activity">
+                            <span class="activity-label">教师活动</span>
+                            <p>发放"标准透视镜"导学单和不同型号三角警告牌实物（每组1个）。讲解工具使用方法："请各组从'需求层'出发，沿着透视镜的四条支线，倒推三角警告牌的设计要素和标准依据。"教师巡视各组，在学生卡壳处给予提示性追问。</p>
+                        </div>
+
+                        <div class="activity-block student-activity">
+                            <span class="activity-label">学生活动</span>
+                            <p>4-5人一组，观察实物三角警告牌，讨论并填写"标准透视镜"导学单：</p>
+                            <ul>
+                                <li><strong>需求层：</strong>驾驶员需要后方来车提前发现故障车辆，夜间雨天也需要可见</li>
+                                <li><strong>功能层：</strong>远距离可见、快速辨识为警告信号、抗风不倒</li>
+                                <li><strong>设计层：</strong>红色+荧光橙、反光膜、等边三角形、可折叠支架、配重底座</li>
+                                <li><strong>标准层：</strong>推测应由国家统一规定，保证不同厂家产品一致性</li>
+                            </ul>
+                            <p>每组完成导学单后，用手绘简图标注三角警告牌的基本结构要素。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-tag">22-35分钟</span>
+                        <h3>环节三：深度探究 — 标准的"出场"</h3>
+                        <div class="activity-block teacher-activity">
+                            <span class="activity-label">教师活动</span>
+                            <p>在各组分享"标准层"推测后，教师正式引出国家标准GB/T 19115《机动车用三角警告牌》。展示标准封面和目录页，讲解标准的基本结构（范围、规范性引用文件、技术要求、试验方法、检验规则）。提问："你们在'设计层'推测的要素，标准中是否真的规定了？规定了哪些？"</p>
+                        </div>
+
+                        <div class="activity-block student-activity">
+                            <span class="activity-label">学生活动</span>
+                            <p>对照"标准透视镜"中设计层的推测，在教师展示的标准目录中寻找对应条目，用记号笔标注。发现标准确实对尺寸、颜色、反光性能、稳定性等均有规定，验证"倒推"路径的合理性。小组讨论："如果没有国家标准，不同厂家各做各的，会出什么问题？"</p>
+                        </div>
+
+                        <div class="ai-block">
+                            <div class="ai-title">AI辅助拓展 — 各国标准对比初探</div>
+                            <p>当学生讨论到"其他国家是否也有类似标准"时，教师引导AI助手快速检索：</p>
+                            <ul>
+                                <li>中国 GB/T 19115 与 欧盟 ECE R27、美国 FMVSS 125 标准的存在</li>
+                                <li>AI简要概述：各国均有强制或推荐性标准，核心要求高度相似</li>
+                                <li>为第2课时跨国标对比埋下伏笔</li>
+                            </ul>
+                            <p>教师强调："今天我们只是认识了标准的存在，下一节课我们将像外科医生一样解剖标准文本，提取每一个可检测的参数。"</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-tag">35-42分钟</span>
+                        <h3>环节四：迁移应用 — "如果你是标准制定者"</h3>
+                        <div class="activity-block teacher-activity">
+                            <span class="activity-label">教师活动</span>
+                            <p>抛出迁移任务："假设你是一位参与制定三角警告牌国家标准的工程师，你最想补充或修改哪一条要求？为什么？"教师提供两个思考方向：自动驾驶时代三角警告牌是否需要变革？新能源车辆故障时的警示需求有何不同？</p>
+                        </div>
+
+                        <div class="activity-block student-activity">
+                            <span class="activity-label">学生活动</span>
+                            <p>独立思考2分钟后，小组内交流各自的"标准修订提案"。部分学生提出"增加LED主动发光""增加智能感应距离报警"等创新设想。各组选取一个最有创意的提案，用一句话向全班宣讲。</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-tag">42-45分钟</span>
+                        <h3>环节五：总结反思 — 螺旋起点</h3>
+                        <div class="activity-block teacher-activity">
+                            <span class="activity-label">教师活动</span>
+                            <p>用一句话总结本课时："三角警告牌不是随意的设计，而是用标准守护生命的工程。"预告下一课时内容："下周我们将打开GB/T 19115的全文，用'标准解剖刀'提取每一个关键参数。"布置课后任务：每人拍摄一张生活中遇到的三角警告牌照片，标注你观察到的设计要素。</p>
+                        </div>
+
+                        <div class="activity-block student-activity">
+                            <span class="activity-label">学生活动</span>
+                            <p>填写"本课收获"一栏（一句话表述）：用关键词记录今天最大的认知转变。整理"标准透视镜"导学单，留存用于后续课时。</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 七、板书设计 -->
+            <div class="section-card">
+                <h2>七、板书设计</h2>
+                <div class="blackboard">
+                    <div class="bb-title">第1课时 情境导入与标准认知</div>
+                    <div class="bb-content">
+                        <div class="bb-section">
+                            <span class="bb-keyword">核心问题：</span>三角警告牌为什么能救命？
+                        </div>
+                        <div class="bb-section">
+                            <span class="bb-keyword">标准透视镜</span>（倒推路径）
+                        </div>
+                        <div style="margin-left: 20px;">
+                            需求层 <span class="bb-arrow">→</span> 谁需要？什么场景？<br>
+                            功能层 <span class="bb-arrow">→</span> 可见·辨识·稳定<br>
+                            设计层 <span class="bb-arrow">→</span> 颜色·反光·形状·结构<br>
+                            标准层 <span class="bb-arrow">→</span> GB/T 19115
+                        </div>
+                        <div class="bb-section">
+                            <span class="bb-keyword">螺旋进程：</span>认识标准（第1站）
+                            <span class="bb-arrow">→</span> 理解标准（第2站）
+                            <span class="bb-arrow">→</span> 应用标准（第3-4站）
+                            <span class="bb-arrow">→</span> 超越标准（第5站）
+                        </div>
+                        <div class="bb-section">
+                            <span class="bb-keyword">课后任务：</span>拍摄三角警告牌照片，标注设计要素
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 八、教学反思预设 -->
+            <div class="section-card">
+                <h2>八、教学反思预设</h2>
+                <div class="reflect-box">
+                    <div class="reflect-title">预设反思一：情境导入的冲击力与适切性</div>
+                    <p>交通事故视频虽能有效激发学生情感共鸣，但需注意选取素材的尺度，避免过于血腥引发不适。预案中已选用监控视角远距画面，聚焦"未放置警告牌→追尾"的因果链而非伤亡细节。实际教学中若发现学生过度关注事故本身而非技术反思，需及时用问题引导收回焦点。</p>
+                </div>
+                <div class="reflect-box">
+                    <div class="reflect-title">预设反思二："标准透视镜"工具的使用深度</div>
+                    <p>"标准透视镜"作为原创工具，其有效性取决于学生能否真正经历"倒推"思维而非简单填表。教师巡视时需关注：是否有小组跳过需求层直接抄实物特征？是否有小组在"标准层"写出超出认知的猜测？需通过追问确保思维路径的真实性。</p>
+                </div>
+                <div class="reflect-box">
+                    <div class="reflect-title">预设反思三：AI辅助的边界把控</div>
+                    <p>本课时AI的作用定位为"信息拓展器"，在学生提出超出课本的问题时自然引入。需警惕将AI检索变为教师单向展示——应让学生参与提问过程，感受AI作为探究工具的价值。同时需对AI输出的数据来源进行简要说明，培养学生的信息素养。</p>
+                </div>
+            </div>
+
+            <!-- 九、项目式学习特色说明 -->
+            <div class="section-card">
+                <h2>九、项目式学习特色说明</h2>
+                <h3>1. 螺旋式上升策略的起点设计</h3>
+                <p>本课时是整个项目"认识标准→理解标准→应用标准→超越标准"四螺旋中的第一螺旋"认识标准"。设计上刻意避免过早进入参数细节，而是通过情境和"标准透视镜"工具建立学生对标准的整体感知和情感连接，为后续螺旋的逐层深入预留认知空间。</p>
+
+                <h3>2. 真实情境驱动的问题链</h3>
+                <p>从"为什么能救命"到"如果由你制定标准"再到"各国是否一样"，问题链贯穿课堂始终，每个问题都锚定在真实情境中，驱动学生主动探究而非被动接受。</p>
+
+                <h3>3. 原创工具的思维可视化</h3>
+                <p>"标准透视镜"将抽象的"需求—标准"关系转化为可视化的思维导图模板，降低了学生建构工程思维的认知负荷，同时为教师提供了观察学生思维过程的窗口。</p>
+
+                <h3>4. AI赋能的自然融入</h3>
+                <p>AI在课堂中扮演"数据拓展"和"跨国比较"的角色，在学生产生信息需求时自然引入，而非作为独立环节展示。这种融入方式既发挥了AI的信息检索优势，又避免了"为AI而AI"的工具化倾向。</p>
+
+                <table class="table-style">
+                    <tr>
+                        <th>螺旋阶段</th>
+                        <th>课时</th>
+                        <th>核心任务</th>
+                        <th>原创工具</th>
+                        <th>AI/FreeCAD融合</th>
+                    </tr>
+                    <tr>
+                        <td><strong>认识标准</strong></td>
+                        <td>第1课时（本课）</td>
+                        <td>情境导入·标准启蒙</td>
+                        <td>标准透视镜</td>
+                        <td>AI检索事故数据+多国场景</td>
+                    </tr>
+                    <tr>
+                        <td>理解标准</td>
+                        <td>第2课时</td>
+                        <td>国标研读·参数提取</td>
+                        <td>标准解剖刀</td>
+                        <td>AI解读国标条文·跨国标对比</td>
+                    </tr>
+                    <tr>
+                        <td>应用标准</td>
+                        <td>第3-4课时</td>
+                        <td>尺寸检测·性能测试</td>
+                        <td>精度量尺台·风洞视辨台</td>
+                        <td>AI分析偏差·FreeCAD建模与FEM</td>
+                    </tr>
+                    <tr>
+                        <td>超越标准</td>
+                        <td>第5课时</td>
+                        <td>数据研判·方案优化</td>
+                        <td>优化决策树</td>
+                        <td>AI方案评估·FreeCAD模型对比</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div class="footer">
+            机动车三角警告牌系列技术试验 · 项目式教学教案 · 第1课时/共5课时<br>
+            基于《普通高中技术与工程课程标准（2017年版2025年修订）》附录2案例1
+        </div>
+    </div>
+</body>
+</html>

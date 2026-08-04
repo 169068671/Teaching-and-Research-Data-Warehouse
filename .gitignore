@@ -3,3 +3,14 @@ __MACOSX/
 .zcode/
 tmp/
 output/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated tool/build directories
+.trae-html-share-packages/
+**/.pptx-build/
+
+# FreeCAD automatic backups
+*.[Ff][Cc][Bb][Aa][Kk]

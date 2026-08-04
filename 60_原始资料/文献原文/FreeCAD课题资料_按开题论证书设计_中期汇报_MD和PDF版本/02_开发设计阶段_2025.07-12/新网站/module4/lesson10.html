@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第10课 · 手机支架需求与参数</title><link rel="stylesheet" href="../css/style.css"></head>
+<body>
+<nav class="navbar"><a href="../index.html" class="logo">🖨️ 代码造物工坊</a><div class="nav-links"><a href="index.html">模块四</a><a href="../index.html#modules">全部课程</a></div></nav>
+<section class="lesson-header"><div class="lesson-num">模块四 · 第10课</div><h1>📐 手机支架需求与参数</h1><div class="meta"><span>⏱️ 45分钟</span><span>🎯 技术实践</span><span>📱 实践作业4</span></div></section>
+<div class="container">
+  <div class="preview-box fade-in"><span class="preview-label">📖 课前预习</span><ul><li>测量手机宽度、厚度和带壳后的尺寸</li><li>观察支架后倾方向</li><li>思考充电口、挡唇和重心的关系</li></ul></div>
+  <div class="objectives fade-in"><h3>🎯 学习任务</h3><ul><li>把用户需求转换为底座、槽宽、挡唇、背板和倾角参数</li><li>判断25°后倾方向是否正确</li><li>画出受力与重心草图</li><li>形成实践作业4参数表</li></ul></div>
+  <div class="knowledge-card fade-in"><h3><span class="emoji">⚖️</span> 稳定性约束</h3><p>手机重心投影必须落在底座范围内；挡唇高度要能阻止滑落；背板向后倾斜而不是向前压手机。</p></div>
+  <div class="code-block">
+    <pre># 手机支架参数表：统一在这里修改尺寸
+phone_W = 76.0       # 带壳手机宽度
+phone_T = 11.0       # 带壳手机厚度
+clearance = 0.6      # 单侧装配间隙
+slot_W = phone_T + 2 * clearance
+tilt_deg = 25.0      # 背板后倾角
+base_L, base_W, base_H = 80.0, 50.0, 10.0
+
+print("手机槽宽 =", slot_W, "mm")
+print("底座尺寸 =", base_L, base_W, base_H, "mm")</pre>
+  </div>
+  <div class="code-guide">
+    <h4>代码解读</h4>
+    <div class="code-guide-grid">
+      <div class="code-guide-item"><strong>需求转参数</strong><code>phone_W</code>、<code>phone_T</code>来自实测，<code>tilt_deg</code>来自观看与稳定性需求，不是随意填写。</div>
+      <div class="code-guide-item"><strong>间隙公式</strong><code>slot_W = phone_T + 2*clearance</code>在手机厚度两侧各增加0.6mm，因此槽宽为12.2mm。</div>
+      <div class="code-guide-item"><strong>成组赋值</strong><code>base_L, base_W, base_H = ...</code>一次给三个变量赋值，顺序必须与长、宽、高一一对应。</div>
+      <div class="code-guide-item"><strong>参数化意义</strong>后续建模只引用这些变量；手机尺寸变化时改参数表，不必逐个寻找并修改几何语句。</div>
+    </div>
+    <div class="code-result"><strong>运行结果：</strong>控制台输出手机槽宽12.2mm和底座80×50×10mm，供下一课建模调用。</div>
+    <div class="code-warning"><strong>易错点：</strong>间隙是“单侧”数值，所以公式要乘2；所有长度统一使用mm，角度变量使用度数并在旋转时明确单位。</div>
+  </div>
+  <div class="task-box fade-in"><h3>📝 课后任务</h3><p>提交手机尺寸表、支架草图和至少5个关键参数，下一课据此建模。</p></div>
+  <div class="lesson-nav"><a href="../module3/lesson09.html" class="prev">← 上一课</a><a href="lesson11.html" class="next">下一课 →</a></div>
+</div>
+<footer class="footer"><p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p></footer><script src="../js/main.js"></script>
+</body></html>

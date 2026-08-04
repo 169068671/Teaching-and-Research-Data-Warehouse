@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一单元第1节 常见结构的认识 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第一单元第1节 常见结构的认识</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计2》第一单元第一节内容，介绍结构的基本概念、类型及受力特点。结构是物体的骨架，承受并传递载荷，按受力特点可分为实体结构、框架结构和壳体结构三种基本类型。教材从自然与人工结构实例入手，讲解结构的受力方式（拉、压、弯曲、扭转等）与基本类型的承载特点，强调结构对事物功能与形态的决定作用。本节是结构与设计单元的起始内容，为后续稳固结构探析与结构设计奠定认识基础，培养学生从结构视角分析事物的工程思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生对建筑桥梁等结构有直观感受，但缺乏对结构类型的系统认识，难以从受力角度区分结构。在校园生活中常见各种结构却未主动分析。教学需借助校园建筑、体育器材等熟悉实例，帮助学生在真实情境中建立结构类型与受力特点的对应关系。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识结构在自然界与工程技术中的普遍性与重要性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握结构的基本类型与受力特点，建立结构分析思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能从结构视角分析事物，为结构创新设计积累认识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用简图表达结构类型与受力方式。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过结构模型搭建初步体会结构受力与承载的关系。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>结构的基本概念与受力方式</li>
+        <li>实体、框架、壳体三种结构类型的特点</li>
+        <li>结构实例的识别与分析</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>从受力角度区分结构类型</li>
+        <li>分析复杂结构中多种类型的组合</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园建筑结构寻宝</strong>活动导入，从身边结构入手</li>
+        <li>实物模型与图片对照，直观呈现结构类型差异</li>
+        <li>运用识别卡工具辅助分类分析</li>
+        <li>小组合作完成结构搭建小挑战</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：结构类型识别卡</div>
+        <p>一套双面卡片，正面印有实体、框架、壳体三种结构类型的定义与受力特点，背面印有对应结构的典型实例图示。学生携带卡片在校园中寻找匹配结构实例，记录于卡片下方，实现结构知识的实地应用与分类巩固。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>校园结构寻宝</h4>
+            <p><strong>教师活动</strong>：播放校园建筑与设施的影像，提问这些建筑为何能稳固站立，引出结构话题。</p><p><strong>学生活动</strong>：观察校园影像，初步感受结构的普遍存在。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（15分钟）</span>
+            <h4>结构三兄弟</h4>
+            <p><strong>教师活动</strong>：讲解结构概念与受力方式，分类介绍实体结构、框架结构、壳体结构的特点与实例。</p><p><strong>学生活动</strong>：在识别卡上记录三类结构特点，标注受力方式。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 实践分析（12分钟）</span>
+            <h4>校园结构大搜索</h4>
+            <p><strong>教师活动</strong>：组织学生运用识别卡在校园或图片中寻找并分类结构实例，如教学楼柱梁、体育馆穹顶、雕塑台座等。</p><p><strong>学生活动</strong>：小组分工搜索结构实例，填写识别卡，分析其结构类型与受力特点。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：结构图像智能识别</div>
+                <p>学生拍摄校园结构照片上传至AI图像识别工具，获取结构类型初步判断，再结合所学知识核实修正，体会AI辅助结构分析的便捷与需审慎对待的特点。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 搭建体验（13分钟）</span>
+            <h4>用吸管搭框架</h4>
+            <p><strong>教师活动</strong>：提供吸管与连接件，指导学生搭建简单框架结构并测试承重。</p><p><strong>学生活动</strong>：小组合作搭建框架，体验结构受力与承载关系。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（2分钟）</span>
+            <h4>万物皆有结构</h4>
+            <p><strong>教师活动</strong>：总结结构类型与受力特点，强调结构分析思维。</p><p><strong>学生活动</strong>：整理识别卡，完成课堂反思。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+常见结构的认识
+一、结构概念：物体的骨架，承受传递载荷
+二、受力方式：拉、压、弯曲、扭转、剪切
+三、结构类型：
+  实体结构（承重墙）
+  框架结构（柱梁、桁架）
+  壳体结构（穹顶、车身）
+四、核心：从受力角度认识结构
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

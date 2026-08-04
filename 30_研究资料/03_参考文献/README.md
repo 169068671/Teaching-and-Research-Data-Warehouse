@@ -11,4 +11,14 @@ tags: [教科研/文献]
 
 统一从 [[参考文献数据整理入口]] 开始，完成收件、查重、元数据核验、主题分类、数据方法提取、AI 摘要核验和引用状态管理。
 
+## 最近登记
+
+- [[普通高中通用技术课程标准_2017年版2020年修订]]
+- [[普通高中技术与工程课程标准日常修订版解读_顾建军管光海]]
+- [[基于真实问题解决的高中技术与工程课程实施]]
+- [[Building Capacity for Teaching Engineering in K-12 Education]]
+- [[Gold Standard PBL_Critique and Revision]]
+- [[On the Structure of Educational Assessments]]
+- [[How People Learn_Expanded Edition]]
+
 ![[../../99_系统/Bases/教科研资料总览.base#参考文献]]

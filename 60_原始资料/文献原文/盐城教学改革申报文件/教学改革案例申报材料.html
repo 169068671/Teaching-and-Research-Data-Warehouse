@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教学改革案例申报材料 · 基于浏览器内Python执行与三维可视化的高中信息技术教学创新</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #dbeafe;
+    --accent: #f59e0b;
+    --accent-light: #fef3c7;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+    --success: #16a34a;
+    --success-light: #dcfce7;
+    --bg: #f8fafc;
+    --bg-card: #ffffff;
+    --text: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --radius: 12px;
+    --max-width: 900px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* 封面 */
+  .cover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: white;
+    padding: 60px 40px;
+    border-radius: var(--radius);
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-lg);
+  }
+  .cover h1 { font-size: 28px; font-weight: 700; margin-bottom: 16px; line-height: 1.4; }
+  .cover .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+  .cover .meta { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: 14px; opacity: 0.85; }
+  .cover .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover .meta-label { font-size: 12px; opacity: 0.7; }
+  .cover .meta-value { font-weight: 500; }
+
+  /* 章节标题 */
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .num {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 28px 0 12px;
+  }
+  p { margin-bottom: 12px; text-align: justify; }
+  strong { font-weight: 600; }
+
+  /* 痛点卡片 */
+  .pain-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--danger);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pain-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .pain-card .pain-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .pain-card .pain-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--danger-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pain-card .pain-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--danger);
+    margin-bottom: 4px;
+  }
+  .pain-card .pain-tag {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--bg);
+    padding: 2px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  /* 对比框 */
+  .contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .contrast-box {
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+  }
+  .contrast-before {
+    background: var(--danger-light);
+    border: 1px solid #fecaca;
+  }
+  .contrast-after {
+    background: var(--success-light);
+    border: 1px solid #bbf7d0;
+  }
+  .contrast-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .contrast-before .contrast-label { color: var(--danger); }
+  .contrast-after .contrast-label { color: var(--success); }
+  .contrast-box ul { list-style: none; padding: 0; }
+  .contrast-box li { padding: 4px 0; padding-left: 20px; position: relative; }
+  .contrast-before li::before { content: "✗"; position: absolute; left: 0; color: var(--danger); font-weight: bold; }
+  .contrast-after li::before { content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: bold; }
+
+  /* 方案卡片 */
+  .solution-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--success);
+  }
+  .solution-card .sol-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .solution-card .sol-icon {
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--success-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .solution-card .sol-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--success);
+  }
+
+  /* 表格 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  /* 高亮提示框 */
+  .callout {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .callout-warning {
+    background: var(--accent-light);
+    border-left-color: var(--accent);
+  }
+
+  /* 数据指标 */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .metric {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .metric .value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric .label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* 页脚 */
+  .footer {
+    text-align: center;
+    padding: 40px 0 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  @media (max-width: 640px) {
+    .contrast { grid-template-columns: 1fr; }
+    .cover { padding: 40px 24px; }
+    .cover h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 封面 -->
+  <div class="cover">
+    <h1>基于浏览器内Python执行与三维可视化的<br>高中信息技术教学创新</h1>
+    <p class="subtitle">教学改革案例申报材料</p>
+    <div class="meta">
+      <div class="meta-item">
+        <span class="meta-label">主申请人</span>
+        <span class="meta-value">吴海燕</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">副申请人</span>
+        <span class="meta-value">王华军</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">申报单位</span>
+        <span class="meta-value">江苏省东台中学</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">关联课题</span>
+        <span class="meta-value">2024B-178</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 一、案例背景 -->
+  <h2><span class="num">1</span>案例背景</h2>
+
+  <p>江苏省高中信息技术课程自新课标实施以来，Python编程成为"数据与计算"模块的核心内容。江苏省学业水平测试已将Python操作题纳入正式考查范围，涵盖变量与数据类型、程序控制结构、数据结构、函数与模块、算法与数据处理等知识点。然而，一线教学实践中，高中Python教学长期受困于<strong>环境配置难、反馈链条长、评价手段少、跨学科融合弱</strong>等结构性问题，学生"听得懂、写不出、调不通"的现象普遍存在。</p>
+
+  <p>本案例依托已立项课题"FreeCAD三维设计与3D打印"（课题编号2024B-178）在参数化编程建模方面的教学积累，自主开发了一套名为<strong>PyCraft</strong>的浏览器内Python编程与三维可视化学习平台。该平台以Pyodide（Python WebAssembly运行时）为引擎，在浏览器中零安装运行Python代码，同时集成Three.js三维实时渲染、智能错误诊断、AI辅导助手、游戏化评价激励和教师题库管理系统，覆盖6个模块17课时，完整对应江苏省高中信息技术Python全部考点。</p>
+
+  <div class="callout">
+    本案例的核心创新在于：将原本依赖桌面IDE和FreeCAD软件的编程教学，迁移到<strong>零安装、即时反馈、三维可视化</strong>的浏览器环境中，同时保留与3D建模工程的跨学科连接，从根本上解决了高中Python教学的七个结构性痛点。
+  </div>
+
+  <!-- 二、痛点问题与解决方案 -->
+  <h2><span class="num">2</span>教学改革解决的痛点问题</h2>
+
+  <p>以下逐一分析本案例针对的七个痛点问题，以及PyCraft平台对应的解决路径。每个痛点均来自一线教学的真实观察，配有改革前后的对比说明。</p>
+
+  <!-- 痛点1 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">🖥️</div>
+      <div>
+        <div class="pain-title">痛点一：环境配置困难，课堂时间大量浪费在装机上</div>
+        <span class="pain-tag">影响范围：全体学生 · 发生频率：每学期开学</span>
+      </div>
+    </div>
+    <p>传统Python教学要求在机房电脑上安装Python解释器和IDE（IDLE、PyCharm或VS Code）。学校机房通常启用硬盘保护卡，学生每次上课需重新配置环境；不同电脑硬件配置参差不齐，安装过程常出现路径冲突、权限不足、版本不匹配等问题。一节45分钟的课，前20分钟可能都耗在"让Python跑起来"上。对于需要FreeCAD软件的参数化建模教学，安装门槛更高——FreeCAD安装包超过500MB，依赖库众多，在机房环境下部署一次需要数小时。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>每节课前20分钟用于安装和配置Python环境</li>
+          <li>硬盘保护卡导致环境无法持久化，重复劳动</li>
+          <li>部分电脑因权限或硬件问题无法安装</li>
+          <li>FreeCAD软件部署需数小时，仅限特定机房</li>
+          <li>学生回家无法复现课堂环境，课后练习断裂</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>打开浏览器即可编写和运行Python，零安装零配置</li>
+          <li>基于Pyodide WebAssembly技术，环境内置于网页</li>
+          <li>任何操作系统的任何浏览器均可使用</li>
+          <li>学生在家用个人电脑或平板即可继续学习</li>
+          <li>教师无需维护机房软件环境，专注于教学本身</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点2 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">👁️</div>
+      <div>
+        <div class="pain-title">痛点二：代码运行结果仅限文本输出，学生难以建立"代码—效果"关联</div>
+        <span class="pain-tag">影响范围：全体学生 · 尤其影响视觉型学习者</span>
+      </div>
+    </div>
+    <p>传统Python教学的核心反馈手段是print()文本输出。学生写了十行代码，看到的只是控制台上几行文字，无法直观感受到"这段代码创造了什么"。尤其在参数化建模、几何体组合等涉及空间想象的课题中，纯文本反馈让高中学生难以将抽象的代码参数与具体的3D形状建立对应关系。课题组在FreeCAD课程的教学实践中已经证实：当学生能用代码控制3D模型的尺寸、颜色和位置并实时看到模型变化时，学习效率和空间思维能力显著提升——但这一优势此前受限于FreeCAD桌面环境，无法推广到日常Python教学。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>代码运行结果仅显示文本，缺乏视觉反馈</li>
+          <li>参数化建模概念只能靠口头描述和板书</li>
+          <li>3D可视化教学需要安装FreeCAD，门槛高</li>
+          <li>学生修改参数后看不到即时效果，理解滞后</li>
+          <li>跨学科（编程+三维设计）融合缺乏平台支撑</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>代码运行结果实时映射为Three.js三维模型</li>
+          <li>参数滑块拖动即可改变3D模型，所见即所得</li>
+          <li>模块六3课时专门训练参数化3D设计能力</li>
+          <li>支持立方体、球体、圆柱、组合体、笔筒等模型</li>
+          <li>编程教学与工程三维设计在浏览器内无缝衔接</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点3 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">🐛</div>
+      <div>
+        <div class="pain-title">痛点三：错误信息全英文且晦涩，学生遇到报错就卡住放弃</div>
+        <span class="pain-tag">影响范围：初学者尤为严重 · 发生频率：每节课高频出现</span>
+      </div>
+    </div>
+    <p>Python的报错信息（SyntaxError、NameError、TypeError、IndentationError等）全部为英文，且往往只指向出错行号而不解释原因。高中学生英语水平有限，看到一大段英文报错后的第一反应不是分析问题，而是举手等老师来帮忙。一个60人的班级里，教师根本来不及逐一解答，大量学生在等待中流失学习时间和信心。更关键的是，学生不知道"为什么错"，下次遇到同类问题仍会犯错。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>报错信息全英文，学生看不懂直接放弃</li>
+          <li>教师逐一答疑，60人班级根本忙不过来</li>
+          <li>同类错误反复出现，学生不记住教训</li>
+          <li>缺乏"预检查"机制，错误到运行时才暴露</li>
+          <li>错误成为一种挫败体验，而非学习机会</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>内置30+常见错误模式中文诊断，自动识别错误类型</li>
+          <li>提供"原因分析+修复建议+示例代码"三段式指导</li>
+          <li>代码运行前自动预检查，提前预警潜在错误</li>
+          <li>每课时预设该课常见错误清单，预防式教学</li>
+          <li>AI助手可针对具体代码给出个性化提示</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点4 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">📊</div>
+      <div>
+        <div class="pain-title">痛点四：教学评价手段单一，缺乏过程性反馈和学习激励</div>
+        <span class="pain-tag">影响范围：全体学生 · 贯穿整个学期</span>
+      </div>
+    </div>
+    <p>传统Python教学的评价主要依赖期末纸笔考试或上机操作测试，属于典型的"结果性评价"。学生在日常学习过程中缺乏即时反馈——代码写对了没有、进步了多少、哪些知识点已掌握、哪些还薄弱——这些信息对学生和教师都是黑箱。更关键的是，高中学生面对抽象的编程内容，极易产生畏难情绪和挫败感，如果学习过程中没有任何正向激励，很难维持持续的学习动力。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>评价以期末考试为主，过程性数据缺失</li>
+          <li>日常练习无即时反馈，学生不知道对错</li>
+          <li>缺乏激励机制，学生动力不足</li>
+          <li>教师无法掌握全班实时学习进度</li>
+          <li>学习数据无法积累，难以做学情分析</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>每次代码运行自动记录，生成学习轨迹</li>
+          <li>15+成就徽章系统（如"首次运行""调试大师""连续7天"）</li>
+          <li>XP积分系统量化学习投入，可视化进步</li>
+          <li>进度页面展示模块完成率和徽章收集情况</li>
+          <li>教师后台实时查看全班学习数据，精准干预</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点5 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">📝</div>
+      <div>
+        <div class="pain-title">痛点五：教师出题、阅卷负担重，难以实现高频形成性评价</div>
+        <span class="pain-tag">影响范围：教师 · 每个教学单元</span>
+      </div>
+    </div>
+    <p>江苏省学业水平测试要求学生掌握选择题、填空题、判断题和编程操作题等多种题型。然而，教师手动编写试卷、组织考试、批改评分的工作量极大，尤其是编程题需要逐人检查代码逻辑和运行结果。这导致形成性评价（课堂练习、单元测验）的频率远低于教学需求——教师"想多考但考不起"，学生"需要练但没题练"。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>手动出题、排版、打印，耗时数小时</li>
+          <li>编程题需逐人检查代码，无法自动批改</li>
+          <li>考试组织成本高，一学期只能安排2-3次</li>
+          <li>成绩统计依赖手工汇总，容易出错</li>
+          <li>无法针对薄弱知识点快速出专项练习</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>内置题库系统，支持选择/填空/判断/编程四种题型</li>
+          <li>课堂练习、单元练习、期中、期末四类考试全覆盖</li>
+          <li>自动批改评分，即时生成成绩报告和错题解析</li>
+          <li>教师一键发布考试，学生浏览器内在线答题</li>
+          <li>成绩数据自动统计，支持按知识点分析薄弱环节</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点6 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">🔗</div>
+      <div>
+        <div class="pain-title">痛点六：编程教学与工程实践脱节，学生不知道"学Python能做什么"</div>
+        <span class="pain-tag">影响范围：全体学生 · 影响学科认同感</span>
+      </div>
+    </div>
+    <p>高中信息技术Python教学往往停留在"语法练习+算法题"的层面，学生学了变量、循环、函数之后，最接近真实应用的案例不过是"猜数字游戏"或"成绩统计"。这种脱离真实工程场景的教学让学生产生"Python就是做题用的"的错觉，无法激发学科认同和职业兴趣。课题组此前在FreeCAD课程中已经验证：当学生用Python代码控制3D打印机的模型参数、看到自己写的代码变成可以触摸的实物时，学习投入度和工程思维显著提升。但FreeCAD环境的高门槛限制了这一经验的推广。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>编程案例停留在"猜数字""九九乘法表"等练习</li>
+          <li>缺乏与工程设计、3D打印的跨学科连接</li>
+          <li>学生无法体会"代码造物"的成就感</li>
+          <li>FreeCAD参数化建模经验无法在Python课中复用</li>
+          <li>计算思维培养缺乏真实工程场景支撑</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>模块六3课时专门训练"Python+三维建模"综合能力</li>
+          <li>参数化设计笔筒、桌子、建筑等真实工程对象</li>
+          <li>代码参数即时映射为3D模型，体验"代码造物"</li>
+          <li>与FreeCAD课程模块三形成"桌面端→浏览器端"延伸</li>
+          <li>计算思维在真实设计任务中得到训练和验证</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 痛点7 -->
+  <div class="pain-card">
+    <div class="pain-header">
+      <div class="pain-icon">👥</div>
+      <div>
+        <div class="pain-title">痛点七：大班额下教师难以实现个性化指导和进度管理</div>
+        <span class="pain-tag">影响范围：教师 · 60人班级</span>
+      </div>
+    </div>
+    <p>课题组实践验证采用60人双班教学规模。在传统模式下，教师难以掌握每个学生的学习进度，更无法做到个性化指导：谁完成了哪些课时、谁在哪个知识点卡住了、谁的代码运行次数最多——这些信息对教师来说完全是黑箱。学生账号管理也是一个痛点：手动创建60个账号、分配密码、跟踪进度，工作量巨大。</p>
+    <div class="contrast">
+      <div class="contrast-box contrast-before">
+        <div class="contrast-label">改革前</div>
+        <ul>
+          <li>60人班级，教师无法逐一跟踪学习进度</li>
+          <li>学生账号手动创建，效率低下</li>
+          <li>无法识别"需要帮助的学生"和"可以加速的学生"</li>
+          <li>课后练习无法监控，学习数据断裂</li>
+          <li>班级间对比和学情分析缺乏数据支撑</li>
+        </ul>
+      </div>
+      <div class="contrast-box contrast-after">
+        <div class="contrast-label">改革后（PyCraft）</div>
+        <ul>
+          <li>教师后台支持Excel/TXT批量导入学生账号，一键建班</li>
+          <li>实时显示每个学生的课时完成数、代码运行次数、积分</li>
+          <li>超级账号（王华军、吴海燕）拥有一切管理权限</li>
+          <li>可导出学生数据CSV，支持跨班对比分析</li>
+          <li>学习数据自动积累，为期末评价提供过程性依据</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、改革方案 -->
+  <h2><span class="num">3</span>改革方案与实施路径</h2>
+
+  <h3>3.1 平台架构</h3>
+  <p>PyCraft平台采用纯前端架构，无需服务器部署，可直接部署在学校网站或通过U盘分发HTML文件离线使用。核心技术栈包括：</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:25%">技术组件</th>
+        <th style="width:20%">技术方案</th>
+        <th>教学作用</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Python运行时</td>
+        <td>Pyodide (WebAssembly)</td>
+        <td>在浏览器中零安装运行完整Python解释器，支持标准库和matplotlib绘图</td>
+      </tr>
+      <tr>
+        <td>三维可视化</td>
+        <td>Three.js</td>
+        <td>将Python代码输出的几何参数实时渲染为可交互3D模型</td>
+      </tr>
+      <tr>
+        <td>错误诊断</td>
+        <td>规则引擎 + 正则匹配</td>
+        <td>识别30+种常见Python错误，提供中文诊断和修复建议</td>
+      </tr>
+      <tr>
+        <td>AI助手</td>
+        <td>内置知识库 + 上下文分析</td>
+        <td>根据当前课时和代码内容提供个性化学习提示</td>
+      </tr>
+      <tr>
+        <td>评价激励</td>
+        <td>LocalStorage状态机</td>
+        <td>记录学习行为，发放积分和徽章，可视化学习轨迹</td>
+      </tr>
+      <tr>
+        <td>教师管理</td>
+        <td>前端管理后台</td>
+        <td>批量导入学生、查看进度、导出数据</td>
+      </tr>
+      <tr>
+        <td>题库考试</td>
+        <td>前端题库引擎</td>
+        <td>四题型四类考试，自动批改，成绩统计</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3.2 课程设计</h3>
+  <p>平台课程覆盖6个模块17课时，完整对应江苏省高中信息技术Python考点体系：</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:8%">模块</th>
+        <th style="width:22%">模块名称</th>
+        <th style="width:10%">课时</th>
+        <th>覆盖考点</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>一</td>
+        <td>Python入门与计算思维</td>
+        <td>2课时</td>
+        <td>变量、数据类型、输入输出、运算符、类型转换</td>
+      </tr>
+      <tr>
+        <td>二</td>
+        <td>程序控制结构</td>
+        <td>3课时</td>
+        <td>if/elif/else分支、for循环、while循环、break/continue</td>
+      </tr>
+      <tr>
+        <td>三</td>
+        <td>数据结构</td>
+        <td>3课时</td>
+        <td>列表、列表推导式、字典、元组、集合</td>
+      </tr>
+      <tr>
+        <td>四</td>
+        <td>函数与模块化</td>
+        <td>3课时</td>
+        <td>函数定义、参数类型、返回值、内置函数、math/random/datetime模块</td>
+      </tr>
+      <tr>
+        <td>五</td>
+        <td>算法与数据处理</td>
+        <td>3课时</td>
+        <td>累加累乘、数位分离、进制转换、穷举法、冒泡排序、选择排序</td>
+      </tr>
+      <tr>
+        <td>六</td>
+        <td>Python与三维可视化综合项目</td>
+        <td>3课时</td>
+        <td>参数化几何体、组合体与变换、参数化设计综合项目</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-warning">
+    模块六是本案例的特色模块，直接对接FreeCAD课题的参数化建模教学经验。学生用Python定义几何体参数（半径、高度、壁厚等），平台实时渲染3D模型，学生拖动参数滑块即可观察模型变化——将"代码→参数→3D模型→3D打印实物"的完整链条在浏览器内打通。
+  </div>
+
+  <h3>3.3 实施步骤</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:15%">阶段</th>
+        <th style="width:20%">时间</th>
+        <th>主要工作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>平台开发</td>
+        <td>2025.07 - 2025.12</td>
+        <td>完成PyCraft平台开发，包括Pyodide集成、Three.js可视化、错误诊断、评价系统、教师后台、题库系统</td>
+      </tr>
+      <tr>
+        <td>教学试验</td>
+        <td>2026.01 - 2026.06</td>
+        <td>在60人双班中开展教学试验，收集前测后测数据，与FreeCAD课程数据进行对比分析</td>
+      </tr>
+      <tr>
+        <td>迭代优化</td>
+        <td>2026.07 - 2026.12</td>
+        <td>根据教学反馈迭代平台功能，完善题库内容，形成可推广的教学方案</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 四、预期成效 -->
+  <h2><span class="num">4</span>预期成效与可推广性</h2>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="value">0</div>
+      <div class="label">安装配置时间（分钟）</div>
+    </div>
+    <div class="metric">
+      <div class="value">17</div>
+      <div class="label">课时完整覆盖</div>
+    </div>
+    <div class="metric">
+      <div class="value">30+</div>
+      <div class="label">错误诊断规则</div>
+    </div>
+    <div class="metric">
+      <div class="value">15+</div>
+      <div class="label">成就徽章</div>
+    </div>
+    <div class="metric">
+      <div class="value">4</div>
+      <div class="label">题型 × 4类考试</div>
+    </div>
+    <div class="metric">
+      <div class="value">60</div>
+      <div class="label">人教学验证规模</div>
+    </div>
+  </div>
+
+  <h3>4.1 对学生的成效</h3>
+  <p>学生打开浏览器即可开始编程，不再受环境配置困扰；代码运行结果即时可见，3D模型让抽象参数变得直观可感；遇到错误时获得中文诊断和修复建议，不再因看不懂报错而卡住放弃；每次操作获得积分和徽章反馈，学习过程从被动接受变为主动探索。模块六的参数化3D设计项目让学生体验"代码造物"的完整过程，将编程技能与工程设计思维融合，培养计算思维和跨学科解决问题能力。</p>
+
+  <h3>4.2 对教师的成效</h3>
+  <p>教师无需维护机房软件环境，将课堂时间从"装系统"还给"教编程"。题库系统支持一键出题、自动批改，使形成性评价的频率从每学期2-3次提升到每课均可进行。教师后台实时展示全班学习进度和数据，让"看不见的学习过程"变得可见可量化。批量导入学生账号功能将班级管理时间从小时级压缩到分钟级。</p>
+
+  <h3>4.3 可推广性</h3>
+  <p>PyCraft平台为纯前端应用，无需服务器部署，可通过以下方式快速推广：部署到学校官网或教育云平台，学生访问URL即可使用；打包为HTML文件通过U盘分发，支持完全离线使用；分享给兄弟学校，零成本复制。平台课程内容已完整覆盖江苏省高中信息技术Python全部考点，任何江苏省高中信息技术教师均可直接用于教学。与FreeCAD课题（2024B-178）的参数化建模教学形成"桌面端深度建模 + 浏览器端普及教学"的双轨格局，既有深度又有广度。</p>
+
+  <!-- 五、与课题的关系 -->
+  <h2><span class="num">5</span>与在研课题的关系</h2>
+
+  <p>本案例是在研课题"FreeCAD三维设计与3D打印"（课题编号2024B-178）的教学改革延伸。原课题在FreeCAD桌面环境中验证了"Python编程+参数化三维建模"的教学有效性，但受限于软件安装门槛，仅能在特定机房开展。本案例将这一教学理念迁移到浏览器环境，使参数化编程建模教学突破了场地和设备限制，可面向全体学生普及。</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:20%">维度</th>
+        <th style="width:40%">FreeCAD课题（原课题）</th>
+        <th style="width:40%">PyCraft平台（本案例）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>运行环境</td>
+        <td>FreeCAD桌面软件，需安装</td>
+        <td>浏览器，零安装</td>
+      </tr>
+      <tr>
+        <td>Python引擎</td>
+        <td>FreeCAD内置Python</td>
+        <td>Pyodide WebAssembly</td>
+      </tr>
+      <tr>
+        <td>3D可视化</td>
+        <td>FreeCAD原生3D视图</td>
+        <td>Three.js浏览器渲染</td>
+      </tr>
+      <tr>
+        <td>适用场景</td>
+        <td>通用技术课（深度建模+3D打印）</td>
+        <td>信息技术课（Python编程普及）</td>
+      </tr>
+      <tr>
+        <td>课时规模</td>
+        <td>21课时6模块</td>
+        <td>17课时6模块</td>
+      </tr>
+      <tr>
+        <td>验证规模</td>
+        <td>60人前测后测</td>
+        <td>60人（同批学生延伸验证）</td>
+      </tr>
+      <tr>
+        <td>教学定位</td>
+        <td>深度：工程级参数化建模</td>
+        <td>广度：编程基础+三维可视化启蒙</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <p>江苏省东台中学 · 通用技术教研组 · 2026年</p>
+    <p>主申请人：吴海燕 · 副申请人：王华军 · 课题编号：2024B-178</p>
+  </div>
+
+</div>
+</body>
+</html>

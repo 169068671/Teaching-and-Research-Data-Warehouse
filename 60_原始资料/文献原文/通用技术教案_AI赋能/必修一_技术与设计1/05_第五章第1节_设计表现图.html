@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章第1节 设计表现图 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第五章第1节 设计表现图</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第五章第一节内容，主要介绍设计表现图的基本概念、种类与绘制方法。设计表现图是设计师将构思转化为可视形象的重要工具，包括草图与效果图的绘制。教材从徒手绘图的线条练习入手，逐步过渡到透视基础与效果图的着色表现，强调图样作为设计交流媒介的功能。本节承接前期设计发现与构思的内容，为后续三视图等规范图样的学习奠定基础，是培养学生图样表达能力的关键起点，也是连接创意构思与工程实现的重要桥梁。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>高一学生在美术课中接触过简单素描，对线条和形体的表现有一定基础，但缺乏将技术构思转化为图样的系统训练。多数学生习惯用文字描述想法，对徒手绘图存在畏难情绪，担心画得不好看而不敢下笔。教学中应降低绘画门槛，强调表达功能而非艺术效果，结合校园文具、课桌等熟悉物品建立绘图信心。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识设计表现图在技术交流中的价值，体会图样是设计师的语言。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">理解从构思到图样转化的逻辑过程，建立分步表达的思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能运用草图快速记录和发散设计想法，不拘泥于单一方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">掌握徒手绘图的基本线条与透视要领，能绘制简单物品的草图。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过绘图练习体会设计物化的前期准备，为后续制作做铺垫。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>徒手绘图的基本线条练习</li>
+        <li>草图绘制的步骤与方法</li>
+        <li>透视的基本概念与简单应用</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>克服绘画畏难心理，敢于下笔</li>
+        <li>理解透视原理并应用于草图绘制</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园文具速写</strong>导入，从身边物品降低绘图门槛</li>
+        <li>采用分步示范法，先线条后形体再透视，循序渐进</li>
+        <li>组织小组互评鼓励，弱化美观强调表达完整性</li>
+        <li>结合实物观察与即时绘图，强化手脑联动</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：图样思维速记卡</div>
+        <p>一套印有校园常见物品轮廓提示的卡片，每张卡片标注物品名称并留出绘图区域。学生抽取卡片后在限定时间内完成徒手草图，卡片背面附线条练习网格供热身使用，帮助学生在游戏化练习中建立绘图自信。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>一支笔的设计对话</h4>
+            <p><strong>教师活动</strong>：展示一支造型独特的校园签字笔，要求学生用文字描述其外形，再请另一位同学仅凭文字还原绘制，对比还原效果。</p><p><strong>学生活动</strong>：体验文字描述的局限性，感受图样表达的必要性，引出本节主题。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：文字转图样体验</div>
+                <p>教师输入学生口述的文字描述，借助AI图像生成工具即时生成图片，让学生对比AI生成图与同学手绘图的差异，讨论哪种更贴近原始构思，体会图样表达中细节传递的重要性。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（15分钟）</span>
+            <h4>线条与草图的入门</h4>
+            <p><strong>教师活动</strong>：讲解直线、曲线、圆的徒手画法，示范从基本几何体到简单物品的草图绘制步骤，强调比例与结构优先。</p><p><strong>学生活动</strong>：在速记卡网格区进行线条热身，随后尝试绘制自己的文具盒草图。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深化实践（15分钟）</span>
+            <h4>透视初体验</h4>
+            <p><strong>教师活动</strong>：以校园走廊为例介绍一点透视概念，示范如何用透视线表现空间感，指导学生绘制课桌的透视图。</p><p><strong>学生活动</strong>：运用透视要领绘制课桌草图，标注主要结构线，小组内交换互评。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 交流展示（8分钟）</span>
+            <h4>草图画廊</h4>
+            <p><strong>教师活动</strong>：组织「草图画廊」展示活动，挑选有代表性的作品引导学生从表达完整性角度点评。</p><p><strong>学生活动</strong>：将草图张贴展示，相互观摩学习，记录改进建议。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结拓展（2分钟）</span>
+            <h4>图样是设计师的语言</h4>
+            <p><strong>教师活动</strong>：总结设计表现图的作用与绘制要领，预告下节三视图内容。</p><p><strong>学生活动</strong>：完成速记卡上的自评，整理本节绘图心得。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+设计表现图
+一、作用：记录构思、交流想法
+二、种类：草图、效果图
+三、绘制要领：
+  1. 线条练习（直线、曲线、圆）
+  2. 草图步骤：比例→结构→细节
+  3. 透视：一点透视入门
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

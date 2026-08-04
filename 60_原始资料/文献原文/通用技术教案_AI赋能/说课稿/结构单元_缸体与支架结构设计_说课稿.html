@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>说课稿 · 结构单元 缸体与支架结构设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 2.0;
+            padding: 20px 16px;
+        }
+        .container { max-width: 680px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 30px 20px 24px;
+            border-bottom: 3px solid #1B5E20;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            color: #1B5E20;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .mnemonic {
+            background: #e8f5e9;
+            border: 2px solid #1B5E20;
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .mnemonic .label {
+            color: #1B5E20;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .mnemonic .text {
+            color: #1B5E20;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #1B5E20;
+            font-size: 19px;
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 5px solid #1B5E20;
+        }
+        .section p {
+            margin-bottom: 14px;
+            text-indent: 2em;
+            font-size: 16px;
+        }
+        .section strong {
+            color: #1B5E20;
+        }
+        .process-step {
+            background: #f9fbf9;
+            border-left: 4px solid #4CAF50;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+        .process-step .step-title {
+            color: #2E7D32;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            text-indent: 2em;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .process-step p:last-child { margin-bottom: 0; }
+        .blackboard {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 22px 24px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin-top: 10px;
+        }
+        .blackboard .bk-center {
+            text-align: center;
+            font-size: 18px;
+            color: #81C784;
+            margin-bottom: 10px;
+        }
+        .closing {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>缸体与支架结构设计</h1>
+        <div class="subtitle">生态鱼缸的设计与制作 · 结构单元（4课时）· 说课稿</div>
+    </div>
+
+    <div class="mnemonic">
+        <div class="label">记忆口诀</div>
+        <div class="text">骨架承重</div>
+    </div>
+
+    <div class="section">
+        <h2>一、说教材</h2>
+        <p>各位评委好，今天我说课的题目是《缸体与支架结构设计》，这是"生态鱼缸的设计与制作"项目的第一单元。记忆口诀四个字——<strong>"骨架承重"</strong>。</p>
+        <p>本单元源自课标附录2案例2，隶属必修二"技术与设计2"第一单元。结构是设计的物质基础。我们用鱼缸这个真实项目来落地"结构"大概念——缸体是壳体结构，承受水压；支架是框架结构，承受总重。结构单元在整个项目中扮演<strong>"骨骼"</strong>角色，后面三个单元都建立在结构之上：流程在结构空间内展开，系统挂在结构上，控制传感器装在结构里。4课时，从认知到制作，一个完整闭环。</p>
+    </div>
+
+    <div class="section">
+        <h2>二、说学情</h2>
+        <p>高一学生，物理课学过力和压强，但对结构类型和稳定性缺乏系统认知。生活中的鱼缸他们见过，但"壁厚怎么定""支架为什么这么搭"，很少有学生深入想过。他们对AI工具有热情，对FreeCAD是零基础，需要引导。</p>
+    </div>
+
+    <div class="section">
+        <h2>三、说目标</h2>
+        <p>我定了三条。一是能识别壳体、框架、实体三类结构，理解稳定性与强度的决定因素。二是能用FreeCAD建模表达缸体与支架结构，完成受力分析。三是能小组协作完成缸体粘接和支架组装，通过注水测试验证设计。</p>
+    </div>
+
+    <div class="section">
+        <h2>四、说重难点</h2>
+        <p>重点是结构类型识别和支架受力分析。难点是水压分布的理解和结构尺寸的定量计算。突破策略是FreeCAD模型可视化加分层递进任务，让抽象的力看得见。</p>
+    </div>
+
+    <div class="section">
+        <h2>五、说教法</h2>
+        <p>我用"大概念贯通式项目学习法"，以"为鱼缸设计缸体与支架"驱动。五种方法组合：情境驱动法导入、探究实验法建直觉、AI辅助法做对比、建模分析法可视化、制作测试法验证。我特别设计了一个原创工具——<strong>"结构受力分析卡"</strong>，引导学生从承重、稳定、耐久、美观、成本五个维度量化评估结构方案，让选择有依据，不拍脑袋。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、说过程</h2>
+        <p>这是核心，4课时分四步走。</p>
+
+        <div class="process-step">
+            <div class="step-title">课时一 · 情境导入与概念建构</div>
+            <p>我抛出真实困境：小明要买鱼缸，亚克力一体缸、玻璃拼接缸、铝合金支架缸，价格差三倍，选哪个？学生讨论结构差异，自然引出探究需求。接着做两个小实验：纸片折W型承重、三角形vs四边形吸管框架按压，用手感建立"形状决定强度"的直觉。然后导入FreeCAD模型，观察5块玻璃拼合和4立柱8梁连接，建立空间认知。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时二 · 缸体设计与材料选择</div>
+            <p>驱动任务：为400×250×300mm缸体选材，承受30升水。先用AI对比普通玻璃、钢化玻璃、亚克力的性能，但强调要批判性审查AI输出。然后定量计算水压——P等于rho乘g乘h，底部最大2940帕。最后用"结构受力分析卡"五维评分，3.5分以上才能进制作环节。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时三 · 支架设计与受力分析</div>
+            <p>任务是承受45公斤总重不变形。在FreeCAD中分析铝型材支架：四角立柱均匀承载、两层横梁构成闭合框架。学生画三视图、标尺寸、讨论中层横梁的作用。重点是用剖面工具看支架内部受力传递路径。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时四 · 制作测试与总结</div>
+            <p>小组粘接缸体、组装支架，注水承重测试。这是物化能力的落地环节。测试通过的小组总结经验，没通过的分析原因。最后回顾：结构是骨骼，下一步流程单元就是在骨骼上布经络。</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>七、说板书</h2>
+        <p>我的板书走"中心辐射式"：中间是"结构=骨骼"，左上缸体壳体、左下支架框架、右上受力分析、右下五维评估，底部一行贯通链。</p>
+        <div class="blackboard">
+            <div class="bk-center">结构 = 骨骼</div>
+            　缸体（壳体）　　　　受力分析<br>
+            　　　　承水压　　　　　水压分布<br>
+            　　　　　结构=骨骼<br>
+            　支架（框架）　　　　结构受力分析卡<br>
+            　　　　承总重　　　　　五维评分<br>
+            ────────────────────<br>
+            　贯通链：结构→流程→系统→控制
+        </div>
+    </div>
+
+    <div class="closing">
+        以上是我的说课，请各位评委指正。
+    </div>
+
+</div>
+</body>
+</html>

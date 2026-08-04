@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEAM 3D打印课程 PPT总目录</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+
+  <!-- 封面 -->
+  <div class="slide bg-gradient active">
+    <div class="icon-large">🖨️</div>
+    <h1>代码造物</h1>
+    <p>STEAM理念下基于编程建模的高中3D打印校本课程</p>
+    <p class="small" style="margin-top:32px;">江苏省东台中学 · 课题编号 2024B-178 · 王华军 吴海燕</p>
+    <p class="small">21课时 · 45分钟/课时 · 六模块</p>
+  </div>
+
+  <!-- 预习提醒 -->
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习非常重要！</h1>
+    <p>每课时45分钟，内容紧凑</p>
+    <p style="font-size:28px;font-weight:700;margin-top:16px;">不预习 = 听不懂</p>
+    <p class="small" style="margin-top:24px;">每课时页面顶部都有 📖 课前预习 板块</p>
+    <p class="small">请务必提前15-20分钟完成预习</p>
+  </div>
+
+  <!-- 六模块总览 -->
+  <div class="slide bg-dark">
+    <h1>三阶六模块</h1>
+    <div class="card-grid-3">
+      <div class="ppt-card"><h3>🌍 模块一</h3><p>3D打印新视界与STEAM启蒙<br>2课时</p></div>
+      <div class="ppt-card"><h3>✏️ 模块二</h3><p>手动建模基础（FreeCAD）<br>3课时</p></div>
+      <div class="ppt-card"><h3>🐍 模块三</h3><p>参数化与循环建模<br>4课时</p></div>
+      <div class="ppt-card"><h3>⚙️ 模块四</h3><p>结构设计与原生装配<br>4课时</p></div>
+      <div class="ppt-card"><h3>🌉 模块五</h3><p>桥梁跨学科、FEM与打印<br>4课时</p></div>
+      <div class="ppt-card"><h3>🏆 模块六</h3><p>综合STEAM项目<br>4课时</p></div>
+    </div>
+  </div>
+
+  <!-- STEAM融合口径 -->
+  <div class="slide bg-gradient">
+    <div class="icon-large">🧩</div>
+    <h1>STEAM不是五项标签的简单叠加</h1>
+    <p>项目按真实需要自然调用一个或多个领域，不要求每个作业五项齐全</p>
+    <ul>
+      <li>模块二：T为主，个性化钥匙扣融入A</li>
+      <li>模块三：T + M，突出变量、循环、阵列和参数</li>
+      <li>模块四：T + E + M，突出结构、倾角、间隙和装配</li>
+      <li>模块五桥梁：S + T + E + M，完成FEM、打印与承重验证</li>
+      <li>模块六：根据自主选题说明真正使用到的融合点</li>
+    </ul>
+  </div>
+
+  <!-- 各模块PPT入口 -->
+  <div class="slide bg-light">
+    <h1 style="color:#667eea;">各模块PPT</h1>
+    <p style="margin-bottom:40px;">点击下方链接进入对应模块PPT</p>
+    <div class="card-grid">
+      <a href="module1.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>🌍 模块一 PPT</h3><p>3D打印启蒙（2课时，8页）</p></a>
+      <a href="module2.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>✏️ 模块二 PPT</h3><p>手动建模（3课时，12页）</p></a>
+      <a href="module3.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>🐍 模块三 PPT</h3><p>参数化与循环（4课时，13页）</p></a>
+      <a href="module4.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>⚙️ 模块四 PPT</h3><p>结构与装配（4课时，13页）</p></a>
+      <a href="module5.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>🌉 模块五 PPT</h3><p>桥梁FEM与打印（4课时，14页）</p></a>
+      <a href="module6.ppt.html" class="ppt-card light" style="text-decoration:none;"><h3>🏆 模块六 PPT</h3><p>结课综合项目（4课时，14页）</p></a>
+    </div>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>说课稿 · 系统单元 生态循环系统设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 2.0;
+            padding: 20px 16px;
+        }
+        .container { max-width: 680px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            padding: 30px 20px 24px;
+            border-bottom: 3px solid #1B5E20;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            color: #1B5E20;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .mnemonic {
+            background: #e8f5e9;
+            border: 2px solid #1B5E20;
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .mnemonic .label {
+            color: #1B5E20;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .mnemonic .text {
+            color: #1B5E20;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #1B5E20;
+            font-size: 19px;
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 5px solid #1B5E20;
+        }
+        .section p {
+            margin-bottom: 14px;
+            text-indent: 2em;
+            font-size: 16px;
+        }
+        .section strong {
+            color: #1B5E20;
+        }
+        .process-step {
+            background: #f9fbf9;
+            border-left: 4px solid #4CAF50;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border-radius: 0 8px 8px 0;
+        }
+        .process-step .step-title {
+            color: #2E7D32;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .process-step p {
+            text-indent: 2em;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .process-step p:last-child { margin-bottom: 0; }
+        .blackboard {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 22px 24px;
+            border-radius: 10px;
+            font-family: "KaiTi", "STKaiti", serif;
+            font-size: 15px;
+            line-height: 2.2;
+            margin-top: 10px;
+        }
+        .blackboard .bk-center {
+            text-align: center;
+            font-size: 18px;
+            color: #81C784;
+            margin-bottom: 10px;
+        }
+        .closing {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>生态循环系统设计</h1>
+        <div class="subtitle">生态鱼缸的设计与制作 · 系统单元（4课时）· 说课稿</div>
+    </div>
+
+    <div class="mnemonic">
+        <div class="label">记忆口诀</div>
+        <div class="text">血脉相连</div>
+    </div>
+
+    <div class="section">
+        <h2>一、说教材</h2>
+        <p>各位评委好，今天我说课的题目是《生态循环系统设计》，这是项目的第三单元。记忆口诀——<strong>"血脉相连"</strong>。</p>
+        <p>本单元隶属必修二"技术与设计2"第三单元，核心概念是"系统"。一个生态鱼缸不是几样东西的简单堆砌，而是一个有机系统：过滤子系统净化水质，增氧子系统补充溶氧，温控子系统维持恒温，生物子系统保持生态平衡。系统单元在项目中扮演<strong>"血脉"</strong>角色——结构是骨骼、流程是经络已就位，系统就是把血脉连通，让鱼缸真正"活"起来。承接前两个单元的物理成果，为控制单元的传感器安装提供平台。</p>
+    </div>
+
+    <div class="section">
+        <h2>二、说学情</h2>
+        <p>学生已完成缸体制作和造景，有了实体鱼缸。他们对"系统"这个词不陌生，但多停留在"一堆东西放一起"的模糊认知，缺乏"子系统关联"和"整体大于部分之和"的系统思维。FreeCAD已有基础，能做基本的模型操作。</p>
+    </div>
+
+    <div class="section">
+        <h2>三、说目标</h2>
+        <p>三条。一是理解系统的基本特性，能识别鱼缸的各个子系统及其功能。二是能分析子系统间的关联关系，提出整体优化方案。三是能用FreeCAD展示子系统空间关系，运用<strong>"系统关联图谱"</strong>进行量化评价。</p>
+    </div>
+
+    <div class="section">
+        <h2>四、说重难点</h2>
+        <p>重点是子系统功能识别和关联分析。难点是系统整体优化的权衡决策——比如过滤流量大了水质好但费电，小了省电但水质差。突破策略是<strong>"系统关联图谱"</strong>原创工具，把模糊的关联变成可视化的图谱和量化评分。</p>
+    </div>
+
+    <div class="section">
+        <h2>五、说教法</h2>
+        <p>"大概念贯通式项目学习法"，以"为鱼缸设计生态循环系统"驱动。四种方法：系统拆解法认识子系统、FreeCAD空间关系可视化法看布局、AI生态平衡预测法做辅助、系统关联图谱做量化评价。系统关联图谱从生态平衡性、空间合理性、经济性、可维护性、可靠性五个维度评分。</p>
+    </div>
+
+    <div class="section">
+        <h2>六、说过程</h2>
+        <p>核心部分，4课时四步走。</p>
+
+        <div class="process-step">
+            <div class="step-title">课时一 · 系统认知与模型拆解</div>
+            <p>我抛出问题：鱼缸里不放过滤器，三天后水会怎样？学生讨论，引出"系统"概念。用FreeCAD打开EcoFishTank模型，逐层显示部件：过滤箱、水泵、输水管、LED灯、温度传感器，让学生看到29个部件如何组成一个完整系统。讲解系统五特性：整体性、相关性、目的性、环境适应性、动态性。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时二 · 子系统设计与空间布局</div>
+            <p>任务：设计过滤、增氧、温控三个子系统。过滤子系统选过滤箱加水泵加输水管，增氧靠水流跌水增氧，温控预留加热棒和温度传感器位置。学生分组设计，用FreeCAD在模型中定位各子系统的空间位置，分析管路走向和水流路径。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时三 · 关联分析与方案评价</div>
+            <p>这是精华。各小组绘制系统关联图谱：过滤影响水质，水质影响水草存活，水草影响溶氧，溶氧影响鱼类存活——一条关联链。用"系统关联图谱"对经济型方案和高配型方案打分：生态平衡性看氮循环是否闭合，空间合理性看管路是否冲突，经济性看总成本，可维护性看清洗是否方便，可靠性看是否有冗余。AI做生态平衡预测参考，学生交叉验证后定稿。</p>
+        </div>
+
+        <div class="process-step">
+            <div class="step-title">课时四 · 整体优化与贯通总结</div>
+            <p>小组根据评分优化方案，比如调整水泵流量匹配过滤箱容量，增加备用气泵提高可靠性。然后回顾：结构是骨骼、流程是经络、系统是血脉，血脉通了，下一步控制单元就是给鱼缸装上"神经"，让它自己感知和调节。</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>七、说板书</h2>
+        <p>板书走"星状辐射式"：中心是"系统=血脉"，向外辐射过滤、增氧、温控、生物四个子系统，用箭头标注关联关系。底部贯通链。</p>
+        <div class="blackboard">
+            <div class="bk-center">系统 = 血脉</div>
+            　　　　　　过滤 → 水质<br>
+            　　　　　　　↓　　↓<br>
+            　增氧 ← 系统 → 温控<br>
+            　　　　　　　↑　　↑<br>
+            　　　　　　生物 ← 溶氧<br>
+            ────────────────────<br>
+            　贯通链：结构→流程→系统→控制
+        </div>
+    </div>
+
+    <div class="closing">
+        以上是我的说课，请评委指正。
+    </div>
+
+</div>
+</body>
+</html>

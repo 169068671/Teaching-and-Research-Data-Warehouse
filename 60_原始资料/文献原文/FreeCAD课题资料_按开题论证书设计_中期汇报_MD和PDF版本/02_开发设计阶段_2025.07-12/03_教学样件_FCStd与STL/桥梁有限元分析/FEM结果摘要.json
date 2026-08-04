@@ -1,0 +1,17 @@
+{
+  "job": "bridge_b31_100N_v2",
+  "solver": "CalculiX",
+  "exit_code": 0,
+  "converged": true,
+  "node_count": 28,
+  "element_count": 88,
+  "total_load_N": 100.0,
+  "max_displacement_mm": 0.0463875521119985,
+  "max_von_mises_MPa": 1.3132787038820968,
+  "material_assumption": {
+    "name": "PLA",
+    "E_MPa": 3000.0,
+    "nu": 0.35
+  },
+  "support_model": "left fixed; right roller in X"
+}

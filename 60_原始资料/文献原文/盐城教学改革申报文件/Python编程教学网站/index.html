@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyCraft · Python编程与三维可视化学习平台</title>
+    <meta name="description" content="面向高中生的Python编程教学平台，在浏览器中编写代码、实时查看3D可视化效果、智能错误诊断、AI助手辅导">
+
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- 样式 -->
+    <link rel="stylesheet" href="css/style.css?v=7">
+    <style>
+      /* 强制AI面板显示规则 - 防止缓存问题 */
+      .ai-panel.open { display: flex !important; }
+      .ai-fab.hidden { display: none !important; }
+    </style>
+
+</head>
+<body>
+
+    <!-- ============ 顶部导航栏 ============ -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="菜单">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <a href="#" class="navbar-logo" onclick="navigateTo('');return false;">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">PyCraft</span>
+                </a>
+            </div>
+            <nav class="navbar-nav">
+                <a href="#" class="nav-link" data-target="" onclick="navigateTo('');return false;">首页</a>
+                <a href="#lesson/1" class="nav-link" data-target="lesson/1" onclick="navigateTo('lesson/1');return false;">课程</a>
+                <a href="#progress" class="nav-link" data-target="progress" onclick="navigateTo('progress');return false;">进度</a>
+                <a href="#exam" class="nav-link" data-target="exam" onclick="navigateTo('exam');return false;">考试</a>
+                <a href="#about" class="nav-link" data-target="about" onclick="navigateTo('about');return false;">关于</a>
+                <a href="#admin" class="nav-link" data-target="admin" onclick="navigateTo('admin');return false;">管理</a>
+            </nav>
+            <div class="navbar-right">
+                <div class="pyodide-status" id="pyodide-status">
+                    <span class="status-dot loading"></span>
+                    <span class="status-text">加载中...</span>
+                </div>
+                <div class="user-xp-bar" id="user-xp-bar" style="display:none;">
+                    <span class="xp-label">XP</span>
+                    <span class="xp-value" id="xp-value">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ 侧边栏遮罩层（移动端） ============ -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ============ 侧边栏 ============ -->
+    <aside class="sidebar expanded" id="sidebar">
+        <!-- 由 renderSidebar() 动态填充 -->
+    </aside>
+
+    <!-- ============ 主内容区 ============ -->
+    <main class="main-content with-sidebar" id="main-content">
+        <!-- 由路由系统动态填充 -->
+    </main>
+
+    <!-- ============ AI助手浮动按钮 ============ -->
+    <button class="ai-fab" id="ai-fab" title="AI助手" aria-label="打开AI助手">
+        <span class="ai-fab-icon">AI</span>
+        <span class="ai-fab-badge">问</span>
+    </button>
+
+    <!-- ============ 成就弹窗 ============ -->
+    <div class="achievement-popup-overlay" id="achievement-popup-overlay">
+        <div class="achievement-popup" id="achievement-popup">
+            <div class="achievement-popup-light"></div>
+            <div class="achievement-popup-content">
+                <div class="achievement-popup-icon" id="achievement-icon">🏆</div>
+                <h2 class="achievement-popup-title" id="achievement-title">成就解锁！</h2>
+                <p class="achievement-popup-desc" id="achievement-desc"></p>
+                <div class="achievement-popup-xp" id="achievement-xp"></div>
+                <button class="btn btn-primary" onclick="document.getElementById('achievement-popup-overlay').classList.remove('show');">太棒了！</button>
+            </div>
+            <div class="confetti-container" id="confetti-container"></div>
+        </div>
+    </div>
+
+    <!-- ============ Toast通知容器 ============ -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- ============ 错误预警面板 ============ -->
+    <div class="error-diagnosis-panel" id="error-diagnosis-panel" style="display:none;">
+        <!-- 由错误诊断系统动态填充 -->
+    </div>
+
+    <!-- ============ JavaScript ============ -->
+    <script src="js/lessons-data.js?v=2"></script>
+    <script src="js/error-diagnosis.js?v=2"></script>
+    <script src="js/ai-assistant.js?v=2"></script>
+    <script src="js/evaluation.js?v=2"></script>
+    <script src="js/pyodide-runner.js?v=2"></script>
+    <script src="js/3d-visualizer.js?v=2"></script>
+    <script src="js/teacher-admin.js?v=2"></script>
+    <script src="js/quiz-system.js?v=1"></script>
+    <script src="js/app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一章第2节 技术的价值 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第一章第2节 技术的价值</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是《技术与设计1》第一章的核心内容，承接「技术的含义」，从价值论视角回答「技术为什么重要」。教材以「技术与人」「技术与社会」「技术与自然」三条主线展开，阐明技术具有<strong>保护人、解放人、发展人</strong>的价值，同时深刻影响社会生产、社会生活与社会文化，并提示技术对自然既有改造也有破坏的双重效应。教材编排大量贴近生活的案例（如电灯、汽车、杂交水稻），引导学生在真实情境中辨析技术价值的多维性，为后续学习技术的性质、设计与技术的关系奠定价值认知基础。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>高一学生对技术有丰富的感性体验，能列举大量技术应用，但对技术价值的认识多停留在「方便、好用」层面，缺乏从「保护—解放—发展」以及社会、文化、自然等多维度进行系统分析的能力。部分学生易将「技术价值」与「经济价值」等同，忽视技术的文化内涵与生态影响。教学中需借助校园生活情境搭建分析框架，帮助学生从单一评价走向多维思辨。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能结合校园与生活案例，多维度辨识技术保护人、解放人、发展人的价值，形成辩证的技术价值观。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能构建「需求—技术—价值」分析链，系统梳理某项技术的价值维度与潜在影响。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能基于价值分析发现校园中可改进的技术问题，提出初步改进设想。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用雷达图、思维导图等图示方式表达技术价值的多维评价结果。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能针对一项校园技术制作简易价值评估卡，体验价值量化的过程。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>技术保护人、解放人、发展人三层价值的内涵与区别</li>
+        <li>技术对社会生产、社会生活、社会文化的影响</li>
+        <li>技术的两面性与辩证价值观的建立</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>辩证认识技术对自然的双重影响，避免技术乐观主义或技术悲观主义</li>
+        <li>将抽象的价值概念迁移到校园真实情境进行多维度分析</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>真实情境驱动</strong>策略，以校园电子班牌为贯穿案例，引导学生在熟悉场景中建立价值分析框架</li>
+        <li>运用<strong>多维雷达图</strong>可视化工具，将抽象的价值评价转化为可比较的量化表达</li>
+        <li>组织<strong>辩论与对话</strong>，在「技术造福与困扰」的冲突讨论中深化辩证思维</li>
+        <li>实施<strong>迁移创作</strong>，由校园技术延伸至社会技术，完成价值评估卡的物化输出</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：技术价值雷达图</div>
+        <p>一张可涂写的六维雷达图模板，维度包括<strong>保护人、解放人、发展人、社会效益、文化影响、自然影响</strong>。学生对某项技术按0—5分打分并连线成多边形，直观呈现技术价值的多维结构与「长板—短板」。配套「价值证据卡」，要求每个打分点附一句事实依据，避免主观臆断。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>校园电子班牌带来了什么</h4>
+            <p><strong>教师活动</strong>：播放一段校园短片——电子班牌取代纸质通知栏，实时推送课表、值日、气象预警与表彰信息。提问：「这块小小的屏幕，究竟改变了我们什么？」引导学生从「方便」之外谈发现。</p><p><strong>学生活动</strong>：联系自身体验，自由表达电子班牌带来的变化，如「值日不用再跑教务处查表」「气象预警能提前收衣」等。</p><p>设计意图：以校园高频接触物为锚点，激活感性经验，自然引出「技术的价值」议题。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：社会影响数据补充</div>
+                <p>在学生畅谈体验后，教师调用AI检索「电子班牌/智慧校园在部分学校的应用数据与反馈」作为<strong>信息补充</strong>。学生并不直接采信，而是将AI提供的统计数据（如纸张节约量、信息触达率提升）作为<strong>佐证线索</strong>，自行判断是否纳入自己的分析。AI仅提供事实素材，价值判断的主导权始终在学生手中。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>价值三层楼：保护·解放·发展</h4>
+            <p><strong>教师活动</strong>：以电灯、汽车、杂交水稻为经典案例，提炼技术对人的三层价值：<strong>保护人</strong>（抵御伤害，如安全帽、疫苗）、<strong>解放人</strong>（替代繁重劳动，如洗衣机、拖拉机）、<strong>发展人</strong>（拓展潜能，如互联网、显微镜）。板书构建「需求—技术—价值」分析链。</p><p><strong>学生活动</strong>：小组合作，为校园电子班牌在「保护—解放—发展」三层各找一条价值证据，填入价值证据卡。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>技术对社会与自然的双重影响</h4>
+            <p><strong>教师活动</strong>：引导学生将视野从「人」扩展到「社会」与「自然」。以汽车为例，社会层面带动产业与出行方式变革，文化层面重塑时间观念与消费观念，自然层面却带来尾气与资源消耗。组织微辩论：「技术对自然，是改造者还是破坏者？」</p><p><strong>学生活动</strong>：正反两方围绕校园电子班牌的「社会影响」（信息公平、隐私、依赖屏幕）展开辩论，并尝试用雷达图给电子班牌六个维度打分。</p><p>设计意图：在冲突中体悟技术的两面性，建立辩证价值观。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：逻辑检验与反例检索</div>
+                <p>学生完成雷达图打分后，将分数与理由输入AI进行<strong>逻辑检验</strong>：请AI检查是否存在「高分但无证据」「自相矛盾」的打分，并检索可能被忽略的反例（如电子班牌对低视力同学的可读性问题）。学生据此<strong>修订</strong>自己的雷达图，但保留最终裁定权，AI只作提示不替代判断。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>为校园技术做一次价值体检</h4>
+            <p><strong>教师活动</strong>：布置迁移任务——选择校园中另一项技术（如饮水机、智能照明、体育电子计时器），运用雷达图与价值证据卡完成一次「价值体检」，并提出一条改进设想。</p><p><strong>学生活动</strong>：独立完成价值评估卡，同桌互评打分合理性，选取典型作品展示。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>价值不在「好」，而在「权衡」</h4>
+            <p><strong>教师活动</strong>：提炼本课主线——技术价值是多维的、辩证的，关键不在于简单地说「好」或「坏」，而在于权衡利弊、趋利避害地发展与应用技术。</p><p><strong>学生活动</strong>：用一句话写下「我对技术价值的新认识」，作为课堂收获。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第一章第2节 技术的价值
+
+一、技术对人的价值
+    保护人 ─ 抵御伤害
+    解放人 ─ 替代劳动
+    发展人 ─ 拓展潜能
+
+二、技术对社会的影响
+    社会生产 / 社会生活 / 社会文化
+
+三、技术与自然（两面性）
+    改造  vs  破坏  ── 辩证权衡
+
+工具：技术价值雷达图（六维）
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

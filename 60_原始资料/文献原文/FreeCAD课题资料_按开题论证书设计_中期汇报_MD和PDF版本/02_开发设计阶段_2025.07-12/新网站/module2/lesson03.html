@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第3课 · FreeCAD界面操作与草图绘制</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块二</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块二 · 第3课</div>
+  <h1>🖥️ FreeCAD界面操作与草图绘制</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 技术实践</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>复习模块一第2课的界面认识内容（菜单栏、树视图、3D视图、Python控制台）</li>
+      <li>在FreeCAD中切换到"Sketcher"工作台，浏览工具栏有哪些工具</li>
+      <li>尝试在3D视图中用鼠标旋转、平移、缩放，确保操作熟练</li>
+      <li>了解"草图"概念：草图是2D平面上的线段、圆弧组合，是3D建模的基础</li>
+      <li>思考：如果要画一个矩形，需要几条线段？如何确保它是正方形而不是梯形？</li>
+    </ul>
+    <div class="preview-warn">⚠️ 本课从界面操作直接进入草图绘制，不预习将无法跟上Sketcher工具操作。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>熟练掌握FreeCAD视图操作与文件管理（新建、保存、另存为）</li>
+      <li>切换到Sketcher工作台，了解草图工具栏</li>
+      <li>能在XY平面上创建草图</li>
+      <li>能用线段工具绘制基本图形（矩形、三角形）</li>
+      <li>理解草图是3D建模的第一步</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📁</span> 文件管理</h3>
+    <p><strong>新建文档：</strong>菜单 → 文件 → 新建（或Ctrl+N）</p>
+    <p><strong>保存文件：</strong>菜单 → 文件 → 保存（或Ctrl+S），保存为 .FCStd 格式</p>
+    <p><strong>命名规范：</strong>学号-姓名-项目名.FCStd（如 01-张三-钥匙扣.FCStd）</p>
+    <div class="code-block">
+      <pre>
+# 用Python控制台新建文档
+import FreeCAD
+doc = FreeCAD.newDocument("MySketch")
+print("文档已创建：", doc.Name)
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <div class="code-guide-grid">
+        <div class="code-guide-item"><strong>整体作用</strong>新建一个内部名称为<code>MySketch</code>的FreeCAD文档，并把文档对象保存到变量<code>doc</code>。</div>
+        <div class="code-guide-item"><strong>关键语句</strong><code>FreeCAD.newDocument("MySketch")</code>相当于菜单“文件→新建”；返回值是后续添加草图和实体的容器。</div>
+        <div class="code-guide-item"><strong>运行结果</strong>对象树出现新文档，控制台输出“文档已创建： MySketch”。此时文档尚未保存到磁盘。</div>
+        <div class="code-guide-item"><strong>易错点</strong>同名文档已经打开时可能产生命名冲突；新建后仍要按<code>Ctrl+S</code>保存为FCStd文件。</div>
+      </div>
+    </div>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">✏️</span> Sketcher草图工作台</h3>
+    <p>切换到Sketcher工作台：顶部工作台选择器 → Sketcher</p>
+    <p><strong>常用草图工具：</strong></p>
+    <p>📏 <strong>线段</strong>：画直线，点击起点和终点</p>
+    <p>⭕ <strong>圆</strong>：画圆，点击圆心和半径</p>
+    <p>🌙 <strong>圆弧</strong>：画弧线，点击起点、终点、半径</p>
+    <p>📐 <strong>矩形</strong>：画矩形，点击对角两点</p>
+    <p>🔹 <strong>多边形</strong>：画正多边形</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📋</span> 创建草图步骤</h3>
+    <p>1. 切换到Sketcher工作台</p>
+    <p>2. 点击"创建草图"按钮</p>
+    <p>3. 选择草图平面（XY平面 / XZ平面 / YZ平面）</p>
+    <p>4. 在平面上用工具绘制图形</p>
+    <p>5. 添加约束（第4课详细学习）</p>
+    <div class="code-block">
+      <pre>
+# 用Python创建草图（预览，第4课详细学）
+import FreeCAD
+import Part
+import Sketcher
+doc = FreeCAD.newDocument("SketchDemo")
+sketch = doc.addObject("Sketcher::SketchObject", "Sketch")
+# 画一条线段：从(0,0)到(60,0)
+sketch.addGeometry(Part.LineSegment(
+    FreeCAD.Vector(0, 0, 0),
+    FreeCAD.Vector(60, 0, 0)
+), False)
+doc.recompute()
+print("草图已创建，含1条线段")
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <ol class="code-steps">
+        <li><code>import FreeCAD / Part / Sketcher</code>：分别提供文档与坐标、线段几何、草图约束功能。</li>
+        <li><code>doc.addObject(...)</code>：在文档中创建名为Sketch的草图对象；未附着到实体表面时默认位于XY平面。</li>
+        <li><code>Part.LineSegment(...)</code>：用两个三维坐标定义线段，Z坐标均为0，所以线段落在草图平面内。</li>
+        <li><code>sketch.addGeometry(..., False)</code>：把线段加入草图；<code>False</code>表示它是普通几何，不是辅助构造线。</li>
+        <li><code>doc.recompute()</code>：让FreeCAD重新计算文档并刷新对象树和视图。</li>
+      </ol>
+      <div class="code-result"><strong>运行结果：</strong>新文档中出现一个Sketch对象，草图包含从(0,0)到(60,0)的一条60mm线段。</div>
+      <div class="code-warning"><strong>易错点：</strong>漏写<code>import Part</code>会导致<code>Part.LineSegment</code>未定义；两个端点相同会生成零长度几何；本例只有一条线，还不能Pad拉伸。</div>
+    </div>
+  </div>
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty easy">简单</span></h3>
+    <p>1. 在FreeCAD中新建文档，创建一个草图，画一个矩形（任意尺寸）</p>
+    <p>2. 保存文件，命名：学号-姓名-草图练习.FCStd</p>
+    <p>3. <strong>预习第4课</strong>：思考什么是"约束"？为什么画图需要约束？</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="index.html" class="prev">← 模块二目录</a>
+    <a href="lesson04.html" class="next">第4课：约束 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

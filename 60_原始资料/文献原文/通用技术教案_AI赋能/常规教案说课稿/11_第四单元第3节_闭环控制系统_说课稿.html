@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闭环控制系统 — 说课稿</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #ffffff; color: #333; line-height: 2.1; padding: 25px 18px; }
+.container { max-width: 720px; margin: 0 auto; }
+.title-box { text-align: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 3px solid #1a56c4; }
+.title-box h1 { color: #1a56c4; font-size: 23px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #1a56c4; color: #fff; padding: 8px 22px; border-radius: 22px; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+.mnemonic .label { font-size: 12px; font-weight: normal; opacity: 0.85; margin-right: 6px; }
+.section { margin-bottom: 20px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 5px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 10px; text-align: justify; }
+.ending { text-align: center; color: #1a56c4; font-weight: bold; font-size: 15px; margin-top: 25px; padding-top: 18px; border-top: 1px dashed #1a56c4; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title-box">
+    <h1>闭环控制系统 · 说课稿</h1>
+    <div class="mnemonic"><span class="label">记忆口诀</span>六环反馈，自动纠偏</div>
+</div>
+
+<div class="section">
+<h2>一说教材</h2>
+<p>各位评委好，今天我说课的题目是「闭环控制系统」。本节是苏教版必修二第四单元第3节，是整个必修二的收束性内容。教材以闭环方框图为工具，引导学生理解反馈核心机制，以及输入、传感器、比较器、执行器、输出、反馈六环节的协作关系。我采用OBE-GAI范式，以「智能温室大棚」为项目，预期产出是学生能运用反馈环分析法分析闭环系统并结合AI完成控制参数预测与方案设计。</p>
+</div>
+
+<div class="section">
+<h2>二说学情</h2>
+<p>高二学生在生物课学过人体体温调节、血糖调节等负反馈机制，对「反馈」有生物学认知基础，但没迁移到工程技术领域。前两节课学了开环闭环概念，能区分差异，但对六环节的具体功能和协作理解不深。用AI时需要学会做「改某个控制参数，系统响应会怎样」的预测和模拟。</p>
+</div>
+
+<div class="section">
+<h2>三说目标</h2>
+<p>五维目标：技术意识上形成「反馈使系统更智能」的观念；工程思维上掌握反馈环分析法，能从六环节系统分析；创新设计上能结合AI参数预测设计温室控制方案；图样表达上能画闭环方框图标注六环节和反馈路径；物化能力上能通过模拟实验体验传感器数据采集与控制响应。</p>
+</div>
+
+<div class="section">
+<h2>四说重难点</h2>
+<p>重点是闭环六环节及功能、反馈环分析法的运用、用AI预测控制参数对系统响应的影响。难点是理解反馈如何实现自动纠偏和动态平衡、从人体体温调节类比到工程控制的跨学科迁移、对AI预测做批判性判断和方案优化。</p>
+</div>
+
+<div class="section">
+<h2>五说教法</h2>
+<p>采用OBE反向设计，以产出一个智能温室大棚闭环控制方案为终点。用跨学科类比策略——以人体体温调节类比工程闭环控制，降低抽象概念认知门槛。设计分层提示词策略。原创工具是「闭环控制·反馈环分析法」：将系统拆解为输入、传感器、比较器、执行器、输出、反馈六环节，逐环节分析功能和信号流向。</p>
+</div>
+
+<div class="section">
+<h2>六说过程</h2>
+<p>环节一情境导入，问「从空调房走到烈日下身体会怎样？」引导学生回忆生物学：皮肤血管扩张散热、汗腺分泌增加、体温维持37度。再将人体体温调节映射到控制六环节：下丘脑设定值是输入，皮肤感受器是传感器，下丘脑是比较器，血管汗腺是执行器，体温是输出，体温变化被再次检测是反馈。点明人体就是精密闭环控制系统，工程闭环正是模仿这种机制。</p>
+<p>环节二概念建构，从类比迁移到工程，推导智能温室大棚六环节：输入是目标温度25度湿度60%，传感器是温湿度传感器，比较器是控制器，执行器是加热器风扇喷雾器遮阳帘，输出是实际温湿度，反馈是传感器持续检测传回控制器。重点讲反馈核心价值是「自动纠偏」。这时我用FreeCAD展示温室大棚结构模型，呈现传感器在棚内中央、控制器在控制柜、执行器分布各处的空间布局和信号传输路径。环节三深度探究，学生用AI预测三种参数组合效果：25度60%标准周期低风险、28度70%缩短15%但高能耗高风险、22度50%延长20%但低能耗极低风险，学生结合生物知识判断AI预测合理性后选25度60%。再用AI模拟一天传感器数据变化，分析各执行器何时启停。环节四迁移应用，高阶组用AI设计根据作物生长阶段自动调参的自适应策略，学生可质疑「仅靠时间判断不够准确，应增加图像识别传感器」体现批判性。环节五总结，点明结构是基础、流程是过程、系统是整体、控制是智慧，四者共同构成技术与工程的完整图景。</p>
+</div>
+
+<div class="section">
+<h2>七说板书</h2>
+<p>板书四块：一、反馈环分析法，输入→传感器→比较器→执行器→输出，反馈形成闭合回路；二、跨学科类比，人体体温调节等于天然闭环控制，下丘脑是比较器、皮肤感受器是传感器、血管汗腺是执行器、体温是输出；三、智能温室大棚，设定25度60%→传感器检测→控制器比较→风扇加热器喷雾器响应→温湿度变化→反馈；四、AI辅助，参数预测→学生判断→方案优化，AI给数据结合生物物理知识做决策。</p>
+</div>
+
+<div class="ending">以上就是我的说课，恳请评委指正。</div>
+</div>
+</body>
+</html>

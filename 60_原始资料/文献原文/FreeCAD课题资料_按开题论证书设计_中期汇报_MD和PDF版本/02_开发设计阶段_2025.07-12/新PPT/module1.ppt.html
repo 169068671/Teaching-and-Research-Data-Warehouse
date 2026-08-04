@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块一 PPT · 3D打印新视界与STEAM启蒙</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+
+  <!-- 第1页：封面 -->
+  <div class="slide bg-gradient active">
+    <div class="icon-large">🌍</div>
+    <h1>模块一</h1>
+    <h2>3D打印新视界与STEAM启蒙</h2>
+    <p class="small">2课时 · 第1-2课 · 基础启蒙阶段</p>
+  </div>
+
+  <!-- 第2页：预习提醒 -->
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习！</h1>
+    <div class="preview-box">
+      <h3>📖 模块一预习任务</h3>
+      <ul>
+        <li>搜索"3D打印"，了解基本概念</li>
+        <li>看1个3D打印视频（B站搜索FDM打印过程）</li>
+        <li>了解STEAM是哪五个学科</li>
+        <li>安装FreeCAD软件</li>
+      </ul>
+    </div>
+    <p class="small" style="margin-top:20px;color:white;">⚠️ 模块一只有2课时，不预习将跟不上</p>
+  </div>
+
+  <!-- 第3页：3D打印原理 -->
+  <div class="slide bg-dark">
+    <div class="icon-medium">🔬</div>
+    <h1>3D打印原理</h1>
+    <p>3D打印 = 增材制造 = 逐层堆积材料</p>
+    <div class="card-grid" style="margin-top:32px;">
+      <div class="ppt-card">
+        <h3>🔪 传统加工</h3>
+        <p>减材制造<br>从大块材料上切掉多余<br>像"切豆腐"</p>
+      </div>
+      <div class="ppt-card">
+        <h3>🧱 3D打印</h3>
+        <p>增材制造<br>一层一层往上堆<br>像"堆乐高"</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:24px;">FDM原理：塑料丝加热熔化→挤出→层层堆叠</p>
+  </div>
+
+  <!-- 第4页：3D打印类型 -->
+  <div class="slide bg-light">
+    <h1 style="color:#667eea;">3D打印三大类型</h1>
+    <div class="card-grid-3" style="margin-top:32px;">
+      <div class="ppt-card light">
+        <h3>🔴 FDM</h3>
+        <p style="color:#667eea;font-weight:700;">熔融沉积</p>
+        <p>塑料丝加热挤出<br>最常见·便宜易用<br>👉 本课程使用</p>
+      </div>
+      <div class="ppt-card light">
+        <h3>🔵 SLA</h3>
+        <p style="color:#667eea;font-weight:700;">光固化</p>
+        <p>紫外激光固化树脂<br>精度高<br>珠宝·牙模</p>
+      </div>
+      <div class="ppt-card light">
+        <h3>🟢 SLS</h3>
+        <p style="color:#667eea;font-weight:700;">激光烧结</p>
+        <p>激光烧结粉末<br>强度高<br>工业·金属</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第5页：应用场景 -->
+  <div class="slide bg-cool">
+    <div class="icon-medium">🚀</div>
+    <h1>3D打印能做什么</h1>
+    <div class="card-grid" style="margin-top:24px;">
+      <div class="ppt-card"><h3>🏥 医疗</h3><p>假肢·牙模·手术导板</p></div>
+      <div class="ppt-card"><h3>🏗️ 建筑</h3><p>房屋·建筑模型</p></div>
+      <div class="ppt-card"><h3>🏭 制造</h3><p>快速原型·小批量</p></div>
+      <div class="ppt-card"><h3>📚 教育</h3><p>STEAM教学模型（我们在做！）</p></div>
+    </div>
+  </div>
+
+  <!-- 第6页：STEAM理念 -->
+  <div class="slide bg-gradient">
+    <div class="icon-large">🧩</div>
+    <h1>STEAM理念</h1>
+    <div class="card-grid" style="margin-top:24px;">
+      <div class="ppt-card"><h3>🔬 Science</h3><p>材料特性·结构力学</p></div>
+      <div class="ppt-card"><h3>💻 Technology</h3><p>Python编程·FreeCAD</p></div>
+      <div class="ppt-card"><h3>⚙️ Engineering</h3><p>设计→建模→打印→迭代</p></div>
+      <div class="ppt-card"><h3>🎨 Arts</h3><p>造型设计·美学</p></div>
+    </div>
+    <p class="small" style="margin-top:24px;">+ 📐 Mathematics：几何·参数化·三角函数</p>
+    <p class="small">真实项目按需要融合一个或多个领域，不要求每项任务凑齐五项。</p>
+  </div>
+
+  <!-- 第7页：编程思维 -->
+  <div class="slide bg-dark code-slide">
+    <div class="icon-medium">💻</div>
+    <h1>编程思维启蒙</h1>
+    <div class="card-grid" style="margin-top:24px;">
+      <div class="ppt-card">
+        <h3>🖱️ 传统CAD</h3>
+        <p>鼠标拖拽画图<br>→ "数字工匠"</p>
+      </div>
+      <div class="ppt-card">
+        <h3>🐍 编程建模</h3>
+        <p>代码控制模型<br>→ "算法思维"</p>
+      </div>
+    </div>
+    <div class="code-block" style="margin-top:24px;">
+      <pre># 用三步代码创建立方体并读取体积
+import Part
+box = Part.makeBox(25, 25, 25)
+print("体积 =", box.Volume, "mm³")</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>逐行作用</strong>导入Part → 用长、宽、高创建立方体 → 读取Volume并输出。</div>
+      <div class="summary-item"><strong>运行结果</strong>体积=25×25×25=15625mm³；本段未show，所以3D视图暂不显示。</div>
+      <div class="summary-item"><strong>易错点</strong>Part和Volume区分大小写；三个尺寸必须为正数。</div>
+    </div>
+  </div>
+
+  <!-- 第8页：安全规范 -->
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>3D打印安全规范</h1>
+    <div class="card-grid" style="margin-top:24px;">
+      <div class="ppt-card" style="background:rgba(254,215,215,0.9);color:#742a2a;">
+        <h3>❌ 禁止</h3>
+        <p style="text-align:left;font-size:18px;">触摸喷嘴（200℃+）<br>打印中开门/移平台<br>用手直接取热模型</p>
+      </div>
+      <div class="ppt-card" style="background:rgba(198,246,213,0.9);color:#22543d;">
+        <h3>✅ 必须</h3>
+        <p style="text-align:left;font-size:18px;">等冷却后用铲刀取件<br>异常立即断电报告<br>保持区域整洁</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页 | 共8页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

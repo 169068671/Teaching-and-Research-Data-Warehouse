@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块五 · 桥梁跨学科项目、有限元与打印验证</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+  <div class="slide bg-gradient active">
+    <div class="icon-large">🖨️</div>
+    <h1>模块五</h1>
+    <h2>桥梁跨学科项目、有限元分析、切片与承重试验</h2>
+    <p class="small" style="margin-top:24px;">4课时 · 第14-17课 · 技术实践</p>
+  </div>
+
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习！</h1>
+    <div class="preview-box">
+      <h3>📖 课前预习</h3>
+      <ul>
+        <li>确认已安装Cura切片软件</li>
+        <li>了解STL=3D打印通用格式</li>
+        <li>了解切片=把模型切成一层层路径</li>
+        <li>思考桥梁结构、填充密度与承重能力的关系</li>
+        <li>复习3D打印安全规范</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide bg-dark code-slide">
+    <div class="icon-large">📄</div>
+    <h1>STL格式</h1>
+    <p>3D打印通用格式，用三角网格描述表面</p>
+    <p style="font-size:26px;font-weight:600;">打印机只认STL，不认FCStd</p>
+    <div class="code-block">
+      <pre># 导出STL
+import FreeCAD
+import FreeCADGui
+import Mesh
+selection = FreeCADGui.Selection.getSelection()
+Mesh.export([selection[0]], '学号-姓名-钥匙扣.stl')
+print('STL导出成功！')</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>逐行作用</strong>读取对象树选择列表，取第1个对象交给Mesh.export()转换为STL三角网格。</div>
+      <div class="summary-item"><strong>运行前</strong>在对象树中单击最终实体；导出后到文件目录确认STL实际存在。</div>
+      <div class="summary-item"><strong>易错点</strong>STL不保存参数和历史，必须同时保留FCStd；不要误选草图或单个零件特征。</div>
+    </div>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">🔍</div>
+    <h1>模型检查</h1>
+    <ul>
+      <li>破面（非流形）：面片有缺口</li>
+      <li>反转面：法线方向错误</li>
+      <li>零厚度：壁厚为0</li>
+      <li>Cura导入时自动检查并提示</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">⚙️</div>
+    <h1>Cura切片</h1>
+    <p>把3D模型切成一层层2D路径</p>
+    <ul>
+      <li>1. 导入STL</li>
+      <li>2. 设置参数（层高/填充/支撑）</li>
+      <li>3. 点『切片』</li>
+      <li>4. 保存G-code到SD卡</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">📏</div>
+    <h1>层高</h1>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>0.1mm</h3><p style="text-align:left;font-size:18px;">精细·慢·表面光滑</p></div>
+      <div class="ppt-card"><h3>0.2mm</h3><p style="text-align:left;font-size:18px;">标准·推荐·平衡</p></div>
+      <div class="ppt-card"><h3>0.3mm</h3><p style="text-align:left;font-size:18px;">快速·粗糙·有层纹</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">🔲</div>
+    <h1>填充</h1>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>20%</h3><p style="text-align:left;font-size:18px;">常用·够强度·省时省料</p></div>
+      <div class="ppt-card"><h3>50%</h3><p style="text-align:left;font-size:18px;">较高强度·受力件</p></div>
+      <div class="ppt-card"><h3>100%</h3><p style="text-align:left;font-size:18px;">实心·最结实·最慢</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">🏗️</div>
+    <h1>支撑</h1>
+    <p>悬空>45°需要支撑</p>
+    <p style="font-size:26px;font-weight:600;">支撑打印后需拆除</p>
+    <img src="assets/images/08_模块五_切片参数对比演示块.png" alt="作品">
+  </div>
+
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>安全规范</h1>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>❌ 禁止</h3><p style="text-align:left;font-size:18px;">触摸喷嘴200℃·打印中开门·手取热模型</p></div>
+      <div class="ppt-card"><h3>✅ 必须</h3><p style="text-align:left;font-size:18px;">等冷却用铲刀取·异常断电报告·保持整洁</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">🖨️</div>
+    <h1>打印流程</h1>
+    <ul>
+      <li>1. 开机→预热（喷嘴200℃·热床60℃）</li>
+      <li>2. 进料：PLA丝送入挤出机</li>
+      <li>3. 传输G-code→开始打印</li>
+      <li>4. 观察第一层是否贴牢</li>
+      <li>5. 完成→等冷却→铲刀取下</li>
+    </ul>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">🌉</div>
+    <h1>正弦拱桁架桥</h1>
+    <img src="assets/images/07_模块五_正弦拱桁架桥_有限元分析.png" alt="正弦拱桁架桥">
+  </div>
+
+  <div class="slide bg-dark">
+    <div class="icon-large">📊</div>
+    <h1>第15课：FreeCAD FEM有限元分析</h1>
+    <img src="assets/images/07_模块五_桥梁FEM变形对比.png" alt="桥梁FEM变形对比" style="width:58%;">
+    <p>100N · 28节点 · 88个B31梁单元 · 最大位移0.0464mm · 最大等效应力1.31MPa</p>
+  </div>
+
+  <div class="slide bg-light">
+    <div class="icon-large">🌉</div>
+    <h1>桥梁跨学科承重验证</h1>
+    <p class="small">融合点：S科学 + T技术 + E工程 + M数学；本项目不为凑齐五项强加A艺术</p>
+    <div class="card-grid">
+      <div class="ppt-card"><h3>结构</h3><p style="text-align:left;font-size:18px;">桥拱、桥面、支撑共同分散载荷</p></div>
+      <div class="ppt-card"><h3>打印</h3><p style="text-align:left;font-size:18px;">对比层高、填充和打印方向</p></div>
+      <div class="ppt-card"><h3>验证</h3><p style="text-align:left;font-size:18px;">逐级加载并记录最大承重</p></div>
+    </div>
+  </div>
+
+  <div class="slide bg-gradient">
+    <div class="icon-large">🎯</div>
+    <h1>本模块总结</h1>
+    <ul>
+      <li>STL导出 = Mesh.export</li>
+      <li>Cura切片 = 层高+填充+支撑</li>
+      <li>打印实操 = 预热→进料→打印→取件</li>
+      <li>桥梁融合点 = S/T/E/M：函数建模→FEM→切片→打印→承重验证</li>
+      <li>安全第一！</li>
+      <li>👉 下一步：结课综合项目</li>
+    </ul>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页 | 共14页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

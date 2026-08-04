@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeCAD配套模型索引 - 通用技术教案AI赋能</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  line-height: 1.8;
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+h1 { font-size: 28px; color: #1a237e; margin-bottom: 8px; }
+.subtitle { color: #666; font-size: 14px; margin-bottom: 30px; }
+.model-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  gap: 0;
+}
+.model-card img {
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+.model-info { padding: 24px; flex: 1; }
+.model-info h2 { font-size: 20px; color: #1a237e; margin-bottom: 12px; }
+.model-info .lesson { color: #e65100; font-weight: bold; font-size: 14px; margin-bottom: 8px; }
+.model-info .desc { font-size: 14px; color: #555; margin-bottom: 12px; }
+.model-info .components { font-size: 13px; color: #666; }
+.model-info .components li { list-style: none; padding: 2px 0; }
+.model-info .components li::before { content: "▸ "; color: #1a237e; }
+.files { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+.file-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.file-fcstd { background: #e3f2fd; color: #1565c0; }
+.file-step { background: #e8f5e9; color: #2e7d32; }
+.file-png { background: #fff3e0; color: #e65100; }
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-right: 4px;
+}
+.tag-structure { background: #fce4ec; color: #c62828; }
+.tag-cad { background: #e8eaf6; color: #283593; }
+.tag-control { background: #e0f2f1; color: #00695c; }
+.tag-making { background: #fff8e1; color: #f57f17; }
+@media (max-width: 768px) {
+  .model-card { flex-direction: column; }
+  .model-card img { width: 100%; height: 240px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>FreeCAD配套模型索引</h1>
+<p class="subtitle">通用技术教案AI赋能 · 4个三维模型 · 支持FreeCAD/STEP格式</p>
+
+<div class="model-card">
+  <img src="DeskLamp_render.png" alt="台灯模型">
+  <div class="model-info">
+    <span class="tag tag-making">物化能力</span>
+    <span class="tag tag-cad">图样表达</span>
+    <h2>台灯模型 (DeskLamp)</h2>
+    <div class="lesson">对应教案：必修一 第六章第4节《制作台灯模型或原型》</div>
+    <div class="desc">学生制作台灯原型的三维参考模型，包含底座、灯杆、灯罩、灯泡和开关旋钮五个部件。可用于课前展示结构分解、课中指导装配顺序、课后评价学生作品。</div>
+    <ul class="components">
+      <li>底座（圆柱体 r=60mm, h=15mm）</li>
+      <li>灯杆（圆柱体 r=8mm, h=180mm）</li>
+      <li>灯罩（截锥体 r1=45mm → r2=15mm, h=55mm）</li>
+      <li>灯泡（球体 r=12mm）</li>
+      <li>开关旋钮（圆柱体 r=6mm, h=8mm）</li>
+    </ul>
+    <div class="files">
+      <span class="file-badge file-fcstd">DeskLamp.FCStd</span>
+      <span class="file-badge file-step">DeskLamp.step</span>
+      <span class="file-badge file-png">渲染图 PNG</span>
+    </div>
+  </div>
+</div>
+
+<div class="model-card">
+  <img src="TrussBridge_render.png" alt="桁架桥模型">
+  <div class="model-info">
+    <span class="tag tag-structure">结构设计</span>
+    <span class="tag tag-cad">工程思维</span>
+    <h2>桁架桥模型 (TrussBridge)</h2>
+    <div class="lesson">对应教案：必修二 第一单元第3节《结构的设计》</div>
+    <div class="desc">Warren型桁架桥结构模型，含52个部件：上下弦杆、斜杆、端柱、横梁和桥面板。学生可观察桁架受力传递路径，分析各杆件受拉/受压状态，为纸桥承重比赛提供结构参考。</div>
+    <ul class="components">
+      <li>跨度 300mm，高度 60mm，宽度 80mm</li>
+      <li>6跨Warren桁架（双侧对称）</li>
+      <li>上下弦杆 + 斜撑 + 端柱</li>
+      <li>7根横梁连接两片桁架</li>
+      <li>桥面板（矩形板 300×80×5mm）</li>
+    </ul>
+    <div class="files">
+      <span class="file-badge file-fcstd">TrussBridge.FCStd</span>
+      <span class="file-badge file-step">TrussBridge.step</span>
+      <span class="file-badge file-png">渲染图 PNG</span>
+    </div>
+  </div>
+</div>
+
+<div class="model-card">
+  <img src="LBracket_render.png" alt="L支架模型">
+  <div class="model-info">
+    <span class="tag tag-cad">计算机辅助设计</span>
+    <span class="tag tag-making">图样表达</span>
+    <h2>L支架零件 (LBracket)</h2>
+    <div class="lesson">对应教案：必修一 第五章第3节《计算机辅助设计》</div>
+    <div class="desc">典型CAD练习零件，展示从2D草图到3D实体的建模流程：拉伸→打孔→开槽→圆角。学生可在FreeCAD中打开.FCStd文件查看建模历史树，理解参数化设计思想。</div>
+    <ul class="components">
+      <li>外形 120×50×120mm（L型截面）</li>
+      <li>8个安装孔（r=4mm，水平臂4个+垂直臂4个）</li>
+      <li>顶部凹槽特征（60×40×5mm）</li>
+      <li>内角圆角（r=6mm，应力释放）</li>
+      <li>孔位中心标记（辅助尺寸标注）</li>
+    </ul>
+    <div class="files">
+      <span class="file-badge file-fcstd">LBracket.FCStd</span>
+      <span class="file-badge file-step">LBracket.step</span>
+      <span class="file-badge file-png">渲染图 PNG</span>
+    </div>
+  </div>
+</div>
+
+<div class="model-card">
+  <img src="Greenhouse_render.png" alt="温室大棚模型">
+  <div class="model-info">
+    <span class="tag tag-control">闭环控制</span>
+    <span class="tag tag-structure">系统设计</span>
+    <h2>智能温室大棚框架 (Greenhouse)</h2>
+    <div class="lesson">对应教案：必修二 第四单元第3节《闭环控制系统》</div>
+    <div class="desc">人字屋面温室大棚结构模型，含55个部件：5组横向屋架、纵向系杆、屋脊梁、门框、传感器支架和控制箱。学生可直观理解闭环控制系统的硬件组成（传感器→控制器→执行器）在温室中的物理布局。</div>
+    <ul class="components">
+      <li>尺寸 200×120×130mm（W×D×H）</li>
+      <li>5组人字屋面桁架（间距30mm）</li>
+      <li>纵向系杆（檐口+基础双层）</li>
+      <li>门框（50×70mm）</li>
+      <li>传感器支架（室内顶部）</li>
+      <li>控制箱（外墙侧面，模拟控制器安装位）</li>
+    </ul>
+    <div class="files">
+      <span class="file-badge file-fcstd">Greenhouse.FCStd</span>
+      <span class="file-badge file-step">Greenhouse.step</span>
+      <span class="file-badge file-png">渲染图 PNG</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

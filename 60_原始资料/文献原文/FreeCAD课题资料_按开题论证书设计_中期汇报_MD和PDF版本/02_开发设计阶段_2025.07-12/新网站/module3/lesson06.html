@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第6课 · Python编程基础</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块三</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块三 · 第6课</div>
+  <h1>📝 Python编程基础</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 技术实践</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>确认FreeCAD的Python控制台能正常打开（视图→面板→Python控制台）</li>
+      <li>了解Python是世界上最流行的编程语言之一，语法简洁</li>
+      <li>思考：什么是『变量』？就是把数据起个名字存起来，如 age = 16</li>
+      <li>了解print()函数：在控制台输出文字，如 print('Hello')</li>
+      <li>在Python控制台中输入 print('Hello FreeCAD') 并回车，看结果</li>
+    </ul>
+    <div class="preview-warn">⚠️ Python是本课程编程建模的基础，不预习将无法理解变量和print的概念。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>理解Python变量的概念（变量=存数据的容器）</li>
+      <li>掌握print()函数输出</li>
+      <li>掌握注释的写法（#开头）</li>
+      <li>了解基本数据类型（整数、浮点数、字符串）</li>
+      <li>能在FreeCAD Python控制台中执行简单代码</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📦</span> 变量</h3>
+    <p>变量是存储数据的容器，给数据起个名字方便使用。</p>
+    <p>命名规则：字母开头，可含数字和下划线，不能有空格。</p>
+    <p>赋值：用等号=，如 length = 60 表示把60存入变量length。</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📤</span> print()函数</h3>
+    <p>print()在控制台输出内容，是调试代码最重要的工具。</p>
+    <p>用法：print('文字') 或 print(变量) 或 print('结果', 变量)。</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔢</span> 数据类型</h3>
+    <p>整数（int）：如 25、60、3</p>
+    <p>浮点数（float）：如 3.14、9.6、2.5</p>
+    <p>字符串（str）：如 'FreeCAD'、'钥匙扣'</p>
+    <p>注意：字符串必须用引号包起来</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">💬</span> 注释</h3>
+    <p>注释是给人看的说明，Python不执行。</p>
+    <p>单行注释：#开头，如 # 创建一个立方体</p>
+    <p>注释要写清楚代码做什么。</p>
+  </div>
+    <div class="code-block">
+      <pre># 在Python控制台输入以下代码试试：
+name = 'FreeCAD'
+version = 26
+print('软件名称：', name)
+print('版本号：', version)
+# 输出：软件名称： FreeCAD  版本号： 26</pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <div class="code-guide-grid">
+        <div class="code-guide-item"><strong>变量与赋值</strong><code>name = 'FreeCAD'</code>把字符串保存到name；<code>version = 26</code>把整数保存到version。等号表示“把右边的值交给左边变量”。</div>
+        <div class="code-guide-item"><strong>输出多个内容</strong><code>print('软件名称：', name)</code>用逗号连接固定文字和变量值，Python会自动在两项之间加入空格。</div>
+        <div class="code-guide-item"><strong>注释</strong>以<code>#</code>开头的内容只供人阅读，不会被Python执行；最后一行是在说明预期输出。</div>
+        <div class="code-guide-item"><strong>数据类型</strong><code>'FreeCAD'</code>带引号，是str字符串；<code>26</code>不带引号，是int整数，可直接参与数学运算。</div>
+      </div>
+      <div class="code-result"><strong>运行结果：</strong>控制台分两行输出“软件名称： FreeCAD”和“版本号： 26”。</div>
+      <div class="code-warning"><strong>易错点：</strong>字符串漏引号会被当成变量名并触发<code>NameError</code>；变量名区分大小写，<code>name</code>与<code>Name</code>不是同一个变量。</div>
+    </div>
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty easy">easy</span></h3>
+    <p>1. 在Python控制台中创建3个变量（姓名、年龄、班级）并print输出</p>
+    <p>2. 尝试不同数据类型：整数、浮点数、字符串</p>
+    <p>3. 写3行注释说明你写的代码做什么</p>
+    <p>4. 预习第7课：了解FreeCAD的Part模块能做什么</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="index.html" class="prev">← 上一课</a>
+    <a href="lesson07.html" class="next">下一课 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

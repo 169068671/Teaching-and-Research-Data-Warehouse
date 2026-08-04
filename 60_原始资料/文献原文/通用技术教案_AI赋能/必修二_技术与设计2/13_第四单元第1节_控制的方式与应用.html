@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四单元第1节 控制的方式与应用 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第四单元第1节 控制的方式与应用</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第四单元第1节「控制的方式与应用」是控制单元的起始课。本节教材从「什么是控制」「控制的方式」「控制的应用」三个层面展开，引导学生认识控制在生产生活中的广泛存在。教材首先阐述了控制是使被控对象按预定目标运行的过程，进而区分了人工控制与自动控制、开环控制与闭环控制等基本方式。本节是后续「开环控制系统」和「闭环控制系统」两节的基础，对学生建立控制思维、理解技术系统的运行机理具有重要意义。教材通过家电、交通、工业等案例，让学生体会控制技术的价值，培养技术意识。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生在日常生活中接触大量控制现象，如开关灯、调空调、用遥控器等，对控制有丰富的感性认识。但学生对控制的「目的性」和「方式分类」缺乏准确界定，容易混淆人工与自动、开环与闭环的分类标准。学生对控制系统的「输入—处理—输出」基本结构缺乏系统认识。本节需要通过丰富的案例辨析和结构化的提问工具，帮助学生建立控制的基本概念与分类框架。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">通过校园生活中的控制案例，体会控制技术的价值，形成关注控制的技术意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">学会从控制目的、控制方式、控制系统结构等角度分析控制现象，建立控制的系统思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够发现生活中的控制需求，尝试提出控制方式的初步设想。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能够用简单的框图表达控制系统的基本结构与流程。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过观察和记录控制案例，提升控制现象的观察与分析能力。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>控制的概念与目的性</li>
+        <li>控制方式的分类（人工与自动、开环与闭环）</li>
+        <li>控制在生活中的应用及价值</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>开环控制与闭环控制的本质区别及判断</li>
+        <li>控制系统「输入—处理—输出」结构的理解</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>案例丰富：以校园生活中的<strong>控制案例</strong>为载体，让概念有依托。</li>
+        <li>对比辨析：通过人工与自动、开环与闭环的对比，明晰分类标准。</li>
+        <li>工具支撑：运用控制三问，结构化引导学生分析控制现象。</li>
+        <li>小组探究：分组收集控制案例并分类，在交流中完善理解。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：控制三问</div>
+        <p>「控制三问」是一种引导学生系统分析控制现象的原创教学工具。该方法以「控什么—怎么控—为何控」三个递进问题为主线：第一问「控什么」明确被控对象与控制量，第二问「怎么控」分析控制方式与信息流向，第三问「为何控」追溯控制目的与价值。工具配有「控制分析卡」，以卡片形式记录三问的答案，帮助学生从现象到本质、从方式到目的层层深入，建立对控制的系统认识。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>自动门为谁开门——从身边现象认识控制</h4>
+            <p>教师播放校园图书馆自动感应门开门的短视频，提问：「门为什么会自动打开？它在控制什么？是谁在控制？」引导学生初步感知控制现象。教师再展示手动开门的对比场景，让学生感受人工控制与自动控制的区别。由此引出本节主题——控制无处不在，但不同控制方式有何差异？</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（10分钟）</span>
+            <h4>什么是控制——概念与分类框架</h4>
+            <p>教师讲解控制的概念：使被控对象按预定目标运行的过程，强调控制的目的性。教师介绍控制的基本分类：按是否有人参与分为人工控制与自动控制，按是否有反馈分为开环控制与闭环控制。以电风扇（开环、可人工可自动）和空调（闭环、自动）为例进行辨析，帮助学生建立分类框架。学生练习判断教室中常见控制现象的类型。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>控制三问——从现象到本质的分析工具</h4>
+            <p>教师介绍「控制三问」这一原创工具，讲解三个递进问题的分析路径：控什么（被控对象+控制量）→怎么控（控制方式+信息流向）→为何控（控制目的+价值）。教师以校园自动浇花系统为例进行示范演示：控什么（控水量，被控对象是水管阀门），怎么控（定时器自动控制，开环方式，信息从定时器流向阀门），为何控（保证植物定时浇水，节省人力）。学生用控制分析卡记录分析结果。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：控制案例素材补充</div>
+                <p>教师利用AI检索并分类整理不同领域的控制案例（如工业机器人、智能家居、交通信号灯），快速生成案例列表和简要分析。AI作为信息补充工具，帮助教师快速获取丰富的分类案例供学生课堂辨析使用，但案例的深入分析仍由学生运用控制三问自主完成，确保学生真正掌握分析方法而非依赖AI结论。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践应用（12分钟）</span>
+            <h4>校园控制案例大搜集——方法迁移</h4>
+            <p>学生分组到校园中寻找控制案例（如教室灯开关、饮水机、自动售货机、投影幕布升降等），用控制三问对每个案例进行分析并填写控制分析卡，判断其控制类型（人工/自动、开环/闭环）。各组汇总案例并按分类整理，形成「校园控制案例集」。各组展示典型案例并说明分类依据，其他组质疑和补充。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>控制让世界更智能——从认识走向设计</h4>
+            <p>教师总结本节核心：控制是使对象按预定目标运行的过程，有目的性；控制按是否有人参与和是否有反馈分为四类。强调控制三问是从现象到本质的分析工具。预告后续两节将深入开环和闭环控制系统的工作过程。布置课后任务：用控制三问分析家中三个控制案例。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+控制的方式与应用
+
+一、控制的概念
+  使被控对象按预定目标运行
+  核心特征：目的性
+
+二、控制分类
+  按是否有人参与：人工控制 / 自动控制
+  按是否有反馈：开环控制 / 闭环控制
+
+三、控制三问
+  ① 控什么（被控对象+控制量）
+  ② 怎么控（控制方式+信息流向）
+  ③ 为何控（控制目的+价值）
+
+四、控制系统结构
+  辸入 → 处理 → 输出
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第4课 · 几何约束与尺寸约束</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="logo">🖨️ 代码造物工坊</a>
+  <div class="nav-links">
+    <a href="index.html">模块二</a>
+    <a href="../index.html#modules">全部课程</a>
+  </div>
+</nav>
+<section class="lesson-header">
+  <div class="lesson-num">模块二 · 第4课</div>
+  <h1>📐 几何约束与尺寸约束</h1>
+  <div class="meta">
+    <span>⏱️ 45分钟</span>
+    <span>📖 预习必做</span>
+    <span>🎯 技术实践</span>
+  </div>
+</section>
+<div class="container">
+  <div class="preview-box fade-in">
+    <span class="preview-label">📖 课前预习（必须完成）</span>
+    <h3>上课前请完成以下预习任务</h3>
+    <ul>
+      <li>复习第3课：确保能在Sketcher中创建草图并画线段</li>
+      <li>理解"约束"概念：约束就是"规定图形之间的关系"，让图形不会随意变形</li>
+      <li>思考：画一个矩形，如果不加约束，拖动一个角点会发生什么？（答案：变形）</li>
+      <li>了解两种约束的区别：几何约束（管形状关系）vs 尺寸约束（管具体大小）</li>
+      <li>记住一个原则：先几何约束，后尺寸约束（先管形状，再管大小）</li>
+    </ul>
+    <div class="preview-warn">⚠️ 约束是手动建模的核心难点，不预习将无法理解约束逻辑，课堂操作会卡住。</div>
+  </div>
+  <div class="objectives fade-in">
+    <h3>🎯 本课教学目标</h3>
+    <ul>
+      <li>理解几何约束与尺寸约束的区别</li>
+      <li>掌握常用几何约束：水平、垂直、重合、相切、平行</li>
+      <li>掌握尺寸约束：长度、角度、半径</li>
+      <li>理解"完全约束"概念（草图不能随意变形=完全约束）</li>
+      <li>能判断草图是欠约束、完全约束还是过约束</li>
+    </ul>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔗</span> 几何约束（管形状关系）</h3>
+    <p>几何约束规定图形元素之间的<strong>关系</strong>，不管具体大小。</p>
+    <p>📏 <strong>水平（Horizontal）</strong>：线段保持水平方向</p>
+    <p>📐 <strong>垂直（Vertical）</strong>：线段保持垂直方向</p>
+    <p>🔵 <strong>重合（Coincident）</strong>：两个点重合在一起（角点连接）</p>
+    <p> Tangent <strong>相切（Tangent）</strong>：线段与圆弧相切</p>
+    <p>⫼ <strong>平行（Parallel）</strong>：两条线段保持平行</p>
+    <p>⊥ <strong>垂直（Perpendicular）</strong>：两条线段互相垂直</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">📏</span> 尺寸约束（管具体大小）</h3>
+    <p>尺寸约束规定图形的<strong>具体数值</strong>。</p>
+    <p>↔️ <strong>水平距离（DistanceX）</strong>：两点之间的水平距离（如底边长度60mm）</p>
+    <p>↕️ <strong>垂直距离（DistanceY）</strong>：两点之间的垂直距离（如高度18mm）</p>
+    <p>🔄 <strong>角度（Angle）</strong>：两条线段之间的夹角</p>
+    <p>⭕ <strong>半径（Radius）</strong>：圆或圆弧的半径</p>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">✅</span> 完全约束</h3>
+    <p><strong>完全约束</strong> = 草图的所有自由度都被约束，图形不能随意变形。</p>
+    <p>判断方法：草图所有线段和点都变为<strong>绿色</strong>（FreeCAD中绿色=完全约束）</p>
+    <p>三种状态：</p>
+    <p>🔴 <strong>欠约束</strong>：有未约束的自由度（白色），图形可变形 → 需要加更多约束</p>
+    <p>🟢 <strong>完全约束</strong>：所有自由度被约束（绿色），图形固定 → 理想状态</p>
+    <p>🔴 <strong>过约束</strong>：约束过多产生冲突（红色），有矛盾 → 需要删除多余约束</p>
+    <div class="code-block">
+      <pre>
+# 用Python添加约束（前置：sketch中已有矩形线段和圆）
+import Sketcher
+
+# 几何约束
+sketch.addConstraint(Sketcher.Constraint("Horizontal", 0))   # 线段0水平
+sketch.addConstraint(Sketcher.Constraint("Vertical", 1))     # 线段1垂直
+sketch.addConstraint(Sketcher.Constraint("Coincident", 0, 2, 1, 1))  # 角点重合
+
+# 尺寸约束
+sketch.addConstraint(Sketcher.Constraint("DistanceX", 0, 1, 0, 2, 60.0))  # 底边=60mm
+sketch.addConstraint(Sketcher.Constraint("Radius", 4, 2.5))  # 几何4圆孔半径=2.5mm
+      </pre>
+    </div>
+    <div class="code-guide">
+      <h4>代码解读</h4>
+      <div class="code-guide-grid">
+        <div class="code-guide-item"><strong>几何编号</strong><code>0</code>、<code>1</code>、<code>4</code>是草图中几何元素的索引，按加入草图的先后从0开始编号，不是长度数值。</div>
+        <div class="code-guide-item"><strong>点位编号</strong>线段的<code>1</code>代表起点、<code>2</code>代表终点；<code>Coincident(0,2,1,1)</code>让线0终点与线1起点重合。</div>
+        <div class="code-guide-item"><strong>形状约束</strong><code>Horizontal</code>和<code>Vertical</code>先固定方向，<code>Coincident</code>再连接角点，解决“形状关系”。</div>
+        <div class="code-guide-item"><strong>尺寸约束</strong><code>DistanceX(...,60.0)</code>控制水平距离为60mm；<code>Radius(4,2.5)</code>控制第4个几何元素的半径为2.5mm。</div>
+      </div>
+      <div class="code-result"><strong>运行结果：</strong>对应线段方向、角点连接、底边长度和圆孔半径被锁定；是否完全约束还取决于草图中其他自由度。</div>
+      <div class="code-warning"><strong>易错点：</strong>索引必须与自己的草图一致。若第4个元素不是圆，或几何编号超出范围，约束会报错；重复添加相同约束可能造成过约束。</div>
+    </div>
+  </div>
+  <div class="knowledge-card fade-in">
+    <h3><span class="emoji">🔑</span> 约束口诀</h3>
+    <p style="font-size:18px;font-weight:700;text-align:center;color:var(--primary);">先几何，后尺寸</p>
+    <p style="font-size:18px;font-weight:700;text-align:center;color:var(--primary);">先形状，后大小</p>
+    <p style="font-size:18px;font-weight:700;text-align:center;color:var(--primary);">看颜色，判状态</p>
+    <p style="text-align:center;color:var(--text-light);">白=欠约束，绿=完全约束，红=过约束</p>
+  </div>
+  <div class="task-box fade-in">
+    <h3>📝 课后任务 <span class="difficulty medium">中等</span></h3>
+    <p>1. 在草图中画一个矩形，添加几何约束（水平×2、垂直×2、重合×4）</p>
+    <p>2. 再添加尺寸约束（长60mm、宽18mm），使其达到完全约束（全绿）</p>
+    <p>3. 尝试画一个圆并添加半径约束（R2.5）</p>
+    <p>4. <strong>预习第5课</strong>：了解"拉伸"概念——如何把2D草图变成3D实体？</p>
+  </div>
+  <div class="lesson-nav">
+    <a href="lesson03.html" class="prev">← 第3课</a>
+    <a href="lesson05.html" class="next">第5课：拉伸与项目1 →</a>
+  </div>
+</div>
+<footer class="footer">
+  <p>江苏省东台中学 · 通用技术教研组 · 课题编号 2024B-178</p>
+  <p style="margin-top:8px;opacity:0.6;">⚠️ 课前预习是本课程的核心要求</p>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

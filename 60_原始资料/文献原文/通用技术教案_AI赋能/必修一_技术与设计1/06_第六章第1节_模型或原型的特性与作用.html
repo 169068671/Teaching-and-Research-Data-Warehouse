@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六章第1节 模型或原型的特性与作用 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第六章第1节 模型或原型的特性与作用</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第六章第一节内容，阐述模型与原型的概念、特性及其在设计过程中的重要作用。模型是设计思想的物化载体，按材料与精度可分为草模、概念模型、结构模型、功能模型和展示模型等不同类型。原型则是与最终产品在材料、结构、功能上高度一致的实体。教材强调模型与原型在方案验证、交流评价、优化改进中的不可替代性，是从图纸走向实物的关键环节。本节为后续材料选择、工艺规划等制作环节奠定认识基础，是培养学生物化能力的重要起点。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已完成设计图样学习，能绘制三视图，但对「为什么要做模型」缺乏深层认识，常认为直接制作成品更高效。学生对不同类型模型的区分模糊，缺乏实物制作经验。教学需通过校园科技节作品等真实案例，让学生体会模型在设计迭代中的价值，激发动手意愿。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识模型与原型在产品设计中的价值，理解「试错」的工程意义。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能区分不同类型模型的特性与适用阶段，建立迭代优化思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">理解模型对方案验证与改进的支撑作用，主动运用模型优化设计。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能将设计图样转化为模型制作思路，实现图物对应。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">初步掌握简单草模的制作方法，体会材料与工艺的初步选择。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>模型与原型的概念及区别</li>
+        <li>不同类型模型的特性与作用</li>
+        <li>模型在设计流程中的价值</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>根据设计阶段选择合适的模型类型</li>
+        <li>理解模型迭代对设计优化的意义</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园书立设计</strong>为案例贯穿，展示从草模到原型的演进</li>
+        <li>实物模型与数字模型对照展示，直观感受差异</li>
+        <li>小组讨论模型类型选择，培养工程决策能力</li>
+        <li>结合科技节作品激发制作兴趣</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：模型迭代对照表</div>
+        <p>一张记录设计迭代过程的表格工具，左侧列出草模、概念模型、结构模型、功能模型、原型五个阶段，每行设有「解决的核心问题」「使用的材料」「验证的内容」「发现的不足」四栏。学生在制作不同阶段模型时填写，清晰呈现设计从粗到精的演进逻辑。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>直接做成品行不行</h4>
+            <p><strong>教师活动</strong>：讲述某同学跳过模型直接制作校园书架成品却反复返工的故事，引发对「为什么要做模型」的思考。</p><p><strong>学生活动</strong>：讨论直接制作的弊端，初步感受模型的必要性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（13分钟）</span>
+            <h4>模型家族大揭秘</h4>
+            <p><strong>教师活动</strong>：讲解模型与原型的概念，分类介绍草模、概念模型、结构模型、功能模型、展示模型的特性与适用阶段。</p><p><strong>学生活动</strong>：在迭代对照表上记录各类模型特点，理解模型在设计流程中的定位。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：3D模型与实物对比</div>
+                <p>教师展示同一校园书立的FreeCAD数字模型与纸板草模、木质功能模型实物，在软件中旋转3D模型从各角度观察，与实物逐一对比。学生直观感受数字模型便于修改、实物模型便于验证手感与结构的各自优势，理解不同模型类型的互补关系。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 案例分析（10分钟）</span>
+            <h4>科技节作品的模型之路</h4>
+            <p><strong>教师活动</strong>：展示往届科技节优秀作品的模型迭代照片，引导学生分析每个阶段模型解决了什么问题。</p><p><strong>学生活动</strong>：小组讨论分析案例，填写迭代对照表，体会模型对设计优化的价值。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：模型方案优化建议</div>
+                <p>学生将自制草模的照片上传，借助AI图像识别工具获取结构合理性初步反馈，结合AI建议与小组讨论确定模型改进方向，体会AI辅助设计迭代的便捷。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践体验（15分钟）</span>
+            <h4>做个草模试试</h4>
+            <p><strong>教师活动</strong>：提供纸板、胶水等简易材料，指导学生为校园文具收纳方案制作一个草模。</p><p><strong>学生活动</strong>：小组合作完成草模制作，体验从图样到模型的转化过程。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结评价（2分钟）</span>
+            <h4>模型让设计更靠谱</h4>
+            <p><strong>教师活动</strong>：总结模型与原型的特性及作用，强调迭代思维。</p><p><strong>学生活动</strong>：完善迭代对照表，完成课堂反思。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+模型或原型的特性与作用
+一、概念：模型 vs 原型
+二、模型类型：
+  草模→概念模型→结构模型→功能模型→展示模型→原型
+三、作用：
+  验证方案、交流评价、优化改进
+四、核心：迭代思维
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

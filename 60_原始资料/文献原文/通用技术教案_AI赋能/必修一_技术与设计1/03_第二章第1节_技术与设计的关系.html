@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章第1节 技术与设计的关系 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第二章第1节 技术与设计的关系</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是从「认识技术」过渡到「从事设计」的桥梁。教材阐明技术与设计<strong>相互依存、相互促进</strong>：技术的发展为设计提供物质基础与条件，设计是技术发展的关键与核心；优秀设计推动技术进步，而先进技术又反哺设计创新。教材以汽车造型演变、建筑结构革新等案例说明二者如「双螺旋」般螺旋上升，为第二章后续设计过程、原则、评价的学习奠定关系认知。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已建立技术与价值的认识，但常把「技术」与「设计」混为一谈，认为设计就是「画图」。对二者相互促进的动态关系缺乏系统理解，难以举出「设计推动技术」的反向案例。教学需借助双螺旋图谱与校园设计情境，帮助学生区分二者并把握其互动规律。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能区分技术与设计的概念，理解二者相互依存、相互促进的关系。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能用「双螺旋」模型分析技术演进史中设计与技术的互动节点。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能基于一项技术的限制，提出受设计驱动的改进设想。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用双螺旋图谱绘制技术—设计互动路径，清晰呈现演进脉络。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能制作简易双螺旋关系模型，直观呈现互动结构。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>技术与设计的概念区分及相互依存关系</li>
+        <li>设计是技术发展的关键与核心</li>
+        <li>技术与设计相互促进的动态（双螺旋）规律</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>理解「设计推动技术」的反向作用，而非仅「技术决定设计」</li>
+        <li>用动态模型而非静态描述刻画二者关系</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>双螺旋可视化</strong>策略，将抽象关系转化为可绘制的螺旋路径</li>
+        <li>运用<strong>正反案例对照</strong>，分别呈现「技术推动设计」与「设计推动技术」</li>
+        <li>组织<strong>校园设计微任务</strong>，在真实情境中体悟关系</li>
+        <li>实施<strong>角色互换辩论</strong>，深化对相互促进的理解</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：设计—技术双螺旋图谱</div>
+        <p>一张印有两条平行螺旋轨道的图纸，左侧轨道标「技术」，右侧标「设计」，中间用横向连杆标注互动节点。学生在节点处填写具体事件（如『led技术成熟→超薄灯箱设计』『曲面屏设计需求→柔性屏技术突破』），可视化呈现二者螺旋上升、相互牵引的关系。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>校园里的「设计」藏在哪</h4>
+            <p><strong>教师活动</strong>：展示同一功能的两种校园物品——普通课桌与可升降调节课桌，提问：「同样是课桌，为什么会有这样的差别？是谁让它变好用的？」引出「设计」的角色。</p><p><strong>学生活动</strong>：讨论可升降课桌背后是「设计想法」还是「技术能力」起作用，初步区分二者。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>技术与设计：谁成就了谁</h4>
+            <p><strong>教师活动</strong>：明晰概念——技术是满足需求的工具与方法总和，设计是发现问题、构思方案、创造产品的创造性活动。讲解相互关系：技术为设计提供基础，设计是技术发展的关键与核心。以汽车「流线型设计需求→风洞技术发展」说明设计反向推动技术。</p><p><strong>学生活动</strong>：领取双螺旋图谱，沿两条轨道分别填入「技术节点」与「设计节点」，并用连杆标注互动。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：案例线索补充</div>
+                <p>学生填写节点受阻时，教师调用AI检索「某项校园/生活技术的演进案例」作为<strong>线索补充</strong>（如台灯从白炽到led再到护眼智能调光的演变）。学生从AI提供的素材中<strong>自主筛选</strong>可信且贴合双螺旋逻辑的事件填入图谱，AI不直接给出结论，仅拓宽案例来源。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>校园设计微任务：找到那个「连杆」</h4>
+            <p><strong>教师活动</strong>：布置微任务——针对「校园雨天伞具收纳混乱」问题，先构思一个设计设想，再分析实现它需要哪些技术支撑，体会「设计拉动技术需求」。组织角色互换辩论：「是技术成就设计，还是设计成就技术？」</p><p><strong>学生活动</strong>：小组完成设计设想与技术需求清单，参与辩论，在交锋中确认二者相互促进。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>为校园物品补一条螺旋路径</h4>
+            <p><strong>教师活动</strong>：选取校园一项物品（如电子班牌、饮水机），让学生补充其技术与设计的双螺旋路径，预测下一次设计突破可能拉动何种技术。</p><p><strong>学生活动</strong>：独立完善图谱，同桌互评逻辑自洽性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>双螺旋，没有终点</h4>
+            <p><strong>教师活动</strong>：提炼——技术与设计如双螺旋相互缠绕、螺旋上升，理解这种互动才能在未来设计中善用技术、推动技术。</p><p><strong>学生活动</strong>：用一句话概括技术与设计的关系。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第二章第1节 技术与设计的关系
+
+技术 ─ 满足需求的工具/方法
+设计 ─ 发现问题·构思方案·创造产品
+
+相互关系：
+  技术为设计提供基础
+  设计是技术发展的关键与核心
+  二者相互促进 · 螺旋上升
+
+模型：设计—技术双螺旋图谱
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

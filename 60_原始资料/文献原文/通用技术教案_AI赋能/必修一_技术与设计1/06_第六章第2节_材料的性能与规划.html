@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第六章第2节 材料的性能与规划 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第六章第2节 材料的性能与规划</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节是苏教版《技术与设计1》第六章第二节内容，介绍常用材料的种类、性能及材料规划的基本方法。材料是设计物化的物质基础，常见材料包括木材、金属、塑料、复合材料等，各有其力学性能、加工性能与外观特性。教材从材料的物理、化学、力学性能入手，讲解如何根据设计要求进行材料选择与规划，强调材料匹配对产品功能、成本与可持续性的影响。本节承接模型制作内容，为工艺选择与实物加工提供材料依据，是培养学生工程决策能力的重要环节。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生对木材、金属、塑料等材料有生活经验，但缺乏对材料性能的系统认识，选择材料多凭直觉。在校园制作项目中常出现材料与功能不匹配导致失败的情况。教学需借助实验体验和可视化手段，帮助学生建立材料性能与设计需求的对应关系，培养理性选择的习惯。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">认识材料性能对产品品质的决定作用，树立合理选材的意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握根据功能需求匹配材料性能的分析方法。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能在设计中尝试材料组合与替代，拓展方案可能性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能在图样上标注材料信息，规范表达选材方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">了解常见材料的加工特性，为合理工艺选择做准备。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>常见材料的种类与性能</li>
+        <li>材料性能与设计需求的匹配方法</li>
+        <li>材料规划的基本原则</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>综合权衡多种性能指标进行选材决策</li>
+        <li>理解材料性能与加工工艺的关联</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>以<strong>校园手机支架选材</strong>为任务驱动全课</li>
+        <li>实验体验与可视化结合，直观感知材料性能差异</li>
+        <li>运用材料性能雷达图工具辅助决策</li>
+        <li>小组辩论不同选材方案，培养权衡思维</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：材料性能雷达图</div>
+        <p>一种五边形雷达图工具，五个轴分别代表强度、韧性、加工难度、成本、环保性。学生将候选材料在各维度打分后连线成图，直观对比不同材料的综合性能，为选材决策提供可视化依据。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>支架为什么断了</h4>
+            <p><strong>教师活动</strong>：展示一个用薄纸板制作的校园手机支架承重断裂的照片，提问问题出在哪里，引出材料性能话题。</p><p><strong>学生活动</strong>：分析断裂原因，认识到选材不当的后果。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 新知探究（13分钟）</span>
+            <h4>材料的性能档案</h4>
+            <p><strong>教师活动</strong>：介绍木材、金属、塑料、复合材料的种类与力学、物理、加工性能，结合实物样本讲解。</p><p><strong>学生活动</strong>：观察材料样本，在材料性能雷达图上为各材料打分，建立性能档案。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：材料属性的3D可视化</div>
+                <p>教师在FreeCAD中为同一手机支架模型分别赋予木材、铝合金、ABS塑料三种材质属性，通过材料属性面板展示密度、弹性模量、屈服强度等参数，并渲染不同材质的外观效果。学生直观对比同一造型在不同材料下的性能与视觉差异，理解选材对产品的影响。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 实验体验（12分钟）</span>
+            <h4>材料性能小测试</h4>
+            <p><strong>教师活动</strong>：组织弯曲、硬度、导热等简易材料性能测试实验，提供木条、铝片、塑料片等样本。</p><p><strong>学生活动</strong>：分组完成测试，记录数据完善雷达图，感受材料性能差异。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 决策实践（13分钟）</span>
+            <h4>为支架选材料</h4>
+            <p><strong>教师活动</strong>：给出校园手机支架的设计要求，组织小组运用雷达图进行选材决策并说明理由。</p><p><strong>学生活动</strong>：小组讨论选材方案，完成选材报告，进行组间辩论。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：选材方案智能对比</div>
+                <p>学生将选材方案与设计要求输入AI助手，获取材料适配度分析与替代材料建议，结合AI反馈优化选材决策，体会数据辅助决策的优势。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（2分钟）</span>
+            <h4>好设计从选材开始</h4>
+            <p><strong>教师活动</strong>：总结材料性能与规划要点，强调选材的权衡思维。</p><p><strong>学生活动</strong>：整理雷达图与选材报告，完成课堂小结。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+材料的性能与规划
+一、常见材料：木材、金属、塑料、复合材料
+二、性能维度：
+  力学性能（强度、韧性）
+  物理性能（密度、导热）
+  加工性能
+三、选材原则：
+  功能匹配、成本合理、加工可行、环保可持续
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开环控制系统的工作过程 — 说课稿</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #ffffff; color: #333; line-height: 2.1; padding: 25px 18px; }
+.container { max-width: 720px; margin: 0 auto; }
+.title-box { text-align: center; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 3px solid #1a56c4; }
+.title-box h1 { color: #1a56c4; font-size: 23px; margin-bottom: 10px; }
+.mnemonic { display: inline-block; background: #1a56c4; color: #fff; padding: 8px 22px; border-radius: 22px; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+.mnemonic .label { font-size: 12px; font-weight: normal; opacity: 0.85; margin-right: 6px; }
+.section { margin-bottom: 20px; }
+.section h2 { color: #1a56c4; font-size: 17px; margin-bottom: 8px; border-left: 5px solid #1a56c4; padding-left: 10px; }
+.section p { font-size: 15px; margin-bottom: 10px; text-align: justify; }
+.ending { text-align: center; color: #1a56c4; font-weight: bold; font-size: 15px; margin-top: 25px; padding-top: 18px; border-top: 1px dashed #1a56c4; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="title-box">
+    <h1>开环控制系统的工作过程 · 说课稿</h1>
+    <div class="mnemonic"><span class="label">记忆口诀</span>单向五环，逆向溯因</div>
+</div>
+
+<div class="section">
+<h2>一说教材</h2>
+<p>各位评委好，今天我说课的题目是「开环控制系统的工作过程」。本节是苏教版必修二第四单元第2节，控制单元的方法深化课。教材深入剖析开环控制的工作过程，讲「输入量—控制器—执行器—被控对象—输出量」的信息流向，强调开环「没有反馈」的特征，控制精度取决于系统标定和环境稳定性。</p>
+</div>
+
+<div class="section">
+<h2>二说学情</h2>
+<p>学生已学控制基本概念和分类，能区分开环闭环，对「没有反馈」有初步认识。但对信息流向和方框图表达不够规范，容易混淆输入量、控制量和输出量。对开环精度受限的原因也缺深入理解，难以从结构上分析优劣。需要借助框图模型和逆向分析方法建立完整认识。</p>
+</div>
+
+<div class="section">
+<h2>三说目标</h2>
+<p>五维目标：技术意识上形成关注控制系统结构的意识；工程思维上掌握开环控制系统基本结构与工作过程，能用方框图表达分析；创新设计上能针对简单需求提开环设计方案；图样表达上能规范绘制方框图；物化能力上能通过模型搭建与逆向分析体验验证过程。</p>
+</div>
+
+<div class="section">
+<h2>四说重难点</h2>
+<p>重点是开环控制系统基本结构与信息流向、方框图绘制方法、工作过程分析。难点是输入量、控制量、输出量在具体系统中的识别区分，以及开环精度受限原因的结构化分析。</p>
+</div>
+
+<div class="section">
+<h2>五说教法</h2>
+<p>用案例解剖、模型辅助、逆向探究、实践搭建。原创工具是「逆向探究法」：看输出—溯执行—找控制—定输入。从输出结果出发逆向分析系统结构，配「逆向探究图」以倒序箭头标注每步结果，帮学生从「结果」反推「结构」。</p>
+</div>
+
+<div class="section">
+<h2>六说过程</h2>
+<p>环节一情境导入，再放校园自动感应门视频，但这次聚焦追问「门打开是结果，中间经过哪些环节？信号怎么一步步传递？」引导学生思考信息从传感器到门的传递路径。</p>
+<p>环节二结构建构，讲开环五环节：输入量→控制器→执行器→被控对象→输出量，信息单向流动无反馈回路。以自动门对应讲解：红外传感器信号是输入量，控制电路是控制器，电机是执行器，门是被控对象，门打开是输出量。强调开环「只管发指令不管结果」，有人挡门或传感器失灵系统无法自动修正。这时我用FreeCAD的方框图建模功能，用三维方块和箭头搭建自动门可视化模型，红色方块是输入，蓝色是控制器，绿色是执行器，黄色是被控对象，动画演示信号单向传递，用「断开箭头」模拟反馈缺失，让学生直观理解开环结构。环节三方法学习，介绍逆向探究法，以校园定时喷淋系统示范：看输出（草坪被浇水），溯执行（水管阀门打开），找控制（定时器按设定时间触发），定输入（时钟信号为输入量）。环节四实践应用，学生分组逆向分析校园自动售货机：看输出（饮料掉出），溯执行（电机转动推螺旋杆），找控制（主板按按键信号控制电机），定输入（投币按键信号），再正向绘制完整方框图。学生将分析描述输入AI，请AI辅助检验信息流向是否完整、环节对应是否正确、有无遗漏，但分析过程和方框图由学生自主完成。环节五总结，强调开环结构简单但精度受限，引出「什么场景开环不够用」为下节闭环埋伏笔。</p>
+</div>
+
+<div class="section">
+<h2>七说板书</h2>
+<p>板书三块：一、基本结构，输入量→控制器→执行器→被控对象→输出量，信息单向流动，特征是无反馈回路；二、逆向探究法，看输出、溯执行、找控制、定输入；三、开环的特点，优点结构简单成本低、局限精度受限无法自动修正。</p>
+</div>
+
+<div class="ending">以上就是我的说课，恳请评委指正。</div>
+</div>
+</body>
+</html>

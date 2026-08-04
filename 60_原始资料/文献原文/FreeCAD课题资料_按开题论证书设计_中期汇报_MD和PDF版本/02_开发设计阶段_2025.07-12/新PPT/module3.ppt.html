@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模块三 PPT · 编程建模入门</title>
+  <link rel="stylesheet" href="css/ppt.css">
+</head>
+<body>
+<div class="slides">
+
+  <!-- 第1页：封面 -->
+  <div class="slide bg-gradient active">
+    <div class="icon-large">🐍</div>
+    <h1>模块三</h1>
+    <h2>编程建模入门与逻辑构建</h2>
+    <p class="small">4课时 · 第6-9课 · 技术实践</p>
+  </div>
+
+  <!-- 第2页：预习 -->
+  <div class="slide bg-warm">
+    <div class="icon-large">⚠️</div>
+    <h1>课前预习！</h1>
+    <div class="preview-box">
+      <h3>📖 模块三预习任务</h3>
+      <ul>
+        <li>确认Python控制台可用（视图→面板→Python控制台）</li>
+        <li>了解Python是最流行的编程语言</li>
+        <li>了解变量=存数据的容器</li>
+        <li>了解print()=输出文字</li>
+        <li>在控制台输入 print('Hello FreeCAD') 试试</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第3页：变量 -->
+  <div class="slide bg-dark">
+    <div class="icon-medium">📦</div>
+    <h1>变量</h1>
+    <p>变量 = 存数据的容器，给数据起个名字</p>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>name = 'FreeCAD'
+version = 26
+height = 80.0
+print(name, version)</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">name = 'FreeCAD'</span>
+          <span class="explain-text">把字符串'FreeCAD'存入变量name。字符串必须用引号</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">version = 26</span>
+          <span class="explain-text">把整数26存入变量version。整数不用引号</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">height = 80.0</span>
+          <span class="explain-text">把浮点数80.0存入变量height。带小数点的数</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">print(name, version)</span>
+          <span class="explain-text">输出变量内容：FreeCAD 26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第4页：数据类型 -->
+  <div class="slide bg-light code-slide">
+    <h1 style="color:#667eea;">数据类型</h1>
+    <div class="card-grid-3" style="margin-top:24px;">
+      <div class="ppt-card light"><h3>🔢 整数 int</h3><p style="text-align:left;font-size:16px;">25, 60, 3<br>没有小数点<br>age = 16</p></div>
+      <div class="ppt-card light"><h3>🔢 浮点 float</h3><p style="text-align:left;font-size:16px;">3.14, 9.6, 2.5<br>有小数点<br>pi = 3.14</p></div>
+      <div class="ppt-card light"><h3>📝 字符串 str</h3><p style="text-align:left;font-size:16px;">'FreeCAD', '钥匙扣'<br>必须用引号<br>name = '张三'</p></div>
+    </div>
+    <div class="code-block" style="margin-top:24px;">
+      <pre># 用type()查看数据类型
+print(type(25))      # &lt;class 'int'&gt; 整数
+print(type(3.14))    # &lt;class 'float'&gt; 浮点数
+print(type('hello')) # &lt;class 'str'&gt; 字符串</pre>
+    </div>
+    <div class="code-summary">
+      <div class="summary-item"><strong>作用</strong>type(值)返回数据类型；print()把类型结果显示到控制台。</div>
+      <div class="summary-item"><strong>为什么重要</strong>int/float能参与计算，str用于文字；引号会把数字也变成字符串。</div>
+      <div class="summary-item"><strong>易错点</strong>'25'是str，不是int；字符串与数字不能直接相加。</div>
+    </div>
+  </div>
+
+  <!-- 第5页：print与注释 -->
+  <div class="slide bg-dark">
+    <div class="icon-medium">📤</div>
+    <h1>print() 与注释</h1>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre># 这是注释，Python不执行
+length = 60  # 行末注释
+width = 18
+print('长度:', length)
+print('宽度:', width)
+print('面积:', length * width)</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code"># 这是注释</span>
+          <span class="explain-text">#开头是注释，给人看的，Python忽略不执行</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">length = 60</span>
+          <span class="explain-text">创建变量length，值为60</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">print('长度:', length)</span>
+          <span class="explain-text">输出：长度: 60。字符串和变量用逗号隔开</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">length * width</span>
+          <span class="explain-text">乘法运算：60×18=1080。Python可以直接算术</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第6页：import Part -->
+  <div class="slide bg-gradient">
+    <div class="icon-medium">⚙️</div>
+    <h1>用代码创建3D模型</h1>
+    <p>import Part → 导入Part模块 → 用代码创建几何体</p>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>import Part
+
+box = Part.makeBox(60, 18, 3)
+Part.show(box)
+print('体积 =', box.Volume)</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">import Part</span>
+          <span class="explain-text">导入FreeCAD的Part模块，提供创建3D几何体的函数</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">Part.makeBox(60,18,3)</span>
+          <span class="explain-text">创建立方体：长60×宽18×高3mm。三个参数=X/Y/Z</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">Part.show(box)</span>
+          <span class="explain-text">把立方体显示在3D视图中。不show就看不到</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">box.Volume</span>
+          <span class="explain-text">获取体积属性：60×18×3=3240mm³</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第7页：makeCylinder -->
+  <div class="slide bg-dark">
+    <div class="icon-medium">🥫</div>
+    <h1>makeCylinder 创建圆柱</h1>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>import Part
+
+cyl = Part.makeCylinder(
+    15,    # 半径
+    40,    # 高度
+    FreeCAD.Vector(0, 0, 0)  # 圆心
+)
+Part.show(cyl)
+print('体积 =', round(cyl.Volume, 1))</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">makeCylinder(15, 40, ...)</span>
+          <span class="explain-text">参数1=半径15mm，参数2=高度40mm</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">FreeCAD.Vector(0,0,0)</span>
+          <span class="explain-text">参数3=圆心坐标(X,Y,Z)，(0,0,0)是原点</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">round(cyl.Volume, 1)</span>
+          <span class="explain-text">round()四舍五入保留1位小数</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code"># 半径 / # 高度</span>
+          <span class="explain-text">参数后加注释说明含义，代码更易读</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第8页：for循环 -->
+  <div class="slide bg-gradient">
+    <div class="icon-medium">🔁</div>
+    <h1>for循环 — 批量创建</h1>
+    <p>重复执行代码，不用复制粘贴</p>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>import Part
+
+for i in range(5):
+    x = i * 10
+    cyl = Part.makeCylinder(
+        3, 5, FreeCAD.Vector(x, 0, 0))
+    Part.show(cyl)
+print('创建了5个圆柱')</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">for i in range(5):</span>
+          <span class="explain-text">循环5次，i从0到4。注意末尾冒号</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">x = i * 10</span>
+          <span class="explain-text">每次x变化：0,10,20,30,40。圆柱间距10mm</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">缩进4格</span>
+          <span class="explain-text">循环体代码必须缩进（4空格），表示属于for</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">Part.show(cyl)</span>
+          <span class="explain-text">每次循环创建+显示1个圆柱，5次=5个</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第9页：for循环应用——乐高积木 -->
+  <div class="slide bg-light">
+    <h1 style="color:#667eea;">for循环应用 — 乐高积木8圆柱</h1>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>import Part
+
+box = Part.makeBox(31.8, 15.8, 9.6)
+shape = box
+
+for c in range(4):      # 4列
+    for r in range(2):  # 2行
+        x = 3.9 + c * 8
+        y = 3.9 + r * 8
+        stud = Part.makeCylinder(
+            2.45, 1.8,
+            FreeCAD.Vector(x, y, 9.6))
+        shape = shape.fuse(stud)
+Part.show(shape)</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">for c in range(4):</span>
+          <span class="explain-text">外循环4列（c=0,1,2,3）</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">for r in range(2):</span>
+          <span class="explain-text">内循环2行（r=0,1）。嵌套=4×2=8个圆柱</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">x = 3.9 + c * 8</span>
+          <span class="explain-text">圆柱X坐标：3.9,11.9,19.9,27.9，相邻中心距8mm</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">shape.fuse(stud)</span>
+          <span class="explain-text">fuse=布尔并，把圆柱合并到底座上</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第10页：def函数 -->
+  <div class="slide bg-dark">
+    <div class="icon-medium">📦</div>
+    <h1>def函数 — 封装重复代码</h1>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>import Part
+
+def make_brick(L, W, H, x=0, y=0):
+    """创建积木块"""
+    box = Part.makeBox(L, W, H,
+        FreeCAD.Vector(x, y, 0))
+    return box
+
+brick1 = make_brick(32, 16, 9.6)
+brick2 = make_brick(16, 16, 9.6, x=40)
+Part.show(brick1)
+Part.show(brick2)</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item">
+          <span class="explain-code">def make_brick(...):</span>
+          <span class="explain-text">定义函数，名为make_brick。注意冒号</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">L, W, H, x=0, y=0</span>
+          <span class="explain-text">参数：长宽高必填，x/y有默认值0可省略</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">"""创建积木块"""</span>
+          <span class="explain-text">docstring文档字符串，说明函数做什么</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">return box</span>
+          <span class="explain-text">返回创建的几何体，调用者可用变量接收</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">make_brick(32,16,9.6)</span>
+          <span class="explain-text">调用：传3参数，x/y用默认值0</span>
+        </div>
+        <div class="explain-item">
+          <span class="explain-code">make_brick(16,16,9.6,x=40)</span>
+          <span class="explain-text">调用：传4参数，x指定为40（位置偏移）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第11页：成果展示 -->
+  <div class="slide bg-light">
+    <h1 style="color:#667eea;">成果：参数化笔筒与循环阵列乐高</h1>
+    <div style="display:flex;justify-content:center;align-items:center;gap:28px;width:100%;margin:12px 0;">
+      <img src="assets/images/02_笔筒.png" alt="参数化笔筒" style="width:38%;max-height:320px;">
+      <img src="assets/images/04_乐高式积木块_2x4.png" alt="乐高积木块" style="width:38%;max-height:320px;">
+    </div>
+    <p>实践作业2：十二边参数化笔筒 · 实践作业3：循环生成凸点、空腔和加强管</p>
+    <p class="small">STEAM融合点：T技术 + M数学（变量、尺寸、循环与阵列关系）</p>
+  </div>
+
+  <!-- 第12页：新增课时——代码调试与打印检查 -->
+  <div class="slide bg-dark code-slide">
+    <div class="icon-medium">🧪</div>
+    <h1>第9课：调试与打印检查</h1>
+    <div class="code-with-explain">
+      <div class="code-block">
+        <pre>checked = brick.removeSplitter()
+valid = checked.isValid()
+solids = len(checked.Solids)
+size = checked.BoundBox
+
+print('有效:', valid)
+print('实体数:', solids)
+print(round(size.XLength, 1),
+      round(size.YLength, 1),
+      round(size.ZLength, 1))</pre>
+      </div>
+      <div class="code-explain">
+        <div class="explain-item"><span class="explain-code">removeSplitter()</span><span class="explain-text">清理布尔运算残余分割边</span></div>
+        <div class="explain-item"><span class="explain-code">isValid()</span><span class="explain-text">检查拓扑是否合法，应为True</span></div>
+        <div class="explain-item"><span class="explain-code">len(Solids)</span><span class="explain-text">统计实体数，应为1</span></div>
+        <div class="explain-item"><span class="explain-code">BoundBox</span><span class="explain-text">读取长宽高，应约31.8×15.8×11.4mm</span></div>
+        <div class="explain-item"><span class="explain-code">仍需目视检查</span><span class="explain-text">8凸点、3加强管、底部空腔、最小壁厚</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第13页：总结 -->
+  <div class="slide bg-gradient">
+    <div class="icon-medium">🎯</div>
+    <h1>模块三总结</h1>
+    <ul>
+      <li>变量 = 存数据的容器（name = 'FreeCAD'）</li>
+      <li>print() = 输出到控制台（调试必备）</li>
+      <li>import Part = 导入3D建模模块</li>
+      <li>makeBox/makeCylinder = 代码创建几何体</li>
+      <li>for循环 = 批量创建（不用复制粘贴）</li>
+      <li>def函数 = 封装代码（一次写好，多次调用）</li>
+      <li>模型验证 = 有效几何 + 单一实体 + 可打印结构</li>
+    </ul>
+    <p class="small" style="margin-top:24px;">👉 下一步：参数化设计与布尔运算（模块四）</p>
+  </div>
+
+</div>
+<div class="nav-hint">← → 翻页 | 共13页</div>
+<script>
+var slides=document.querySelectorAll('.slide');var cur=0;
+function show(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+</script>
+</body>
+</html>

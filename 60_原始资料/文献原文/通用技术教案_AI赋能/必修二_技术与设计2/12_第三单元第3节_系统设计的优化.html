@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三单元第3节 系统设计的优化 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第三单元第3节 系统设计的优化</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第三单元第3节「系统设计的优化」是系统单元的综合提升课。本节教材在学生掌握系统分析方法的基础上，引导其运用系统思维进行设计优化。教材从系统优化的意义出发，阐述了优化需要在系统目标指引下，综合考虑各子系统与要素的协调，实现系统整体最优。本节强调「优化是系统层面的」，不同于单一要素的改进，需要处理好局部与整体、短期与长期、效益与成本等关系。教材通过工程设计案例（如建筑节能、交通疏导）让学生体会系统优化的复杂性与艺术性，培养学生在多重约束下寻求整体最优的工程思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已学习系统分析的方法，能够对系统进行结构化分析，理解要素与联系。但学生在进行系统优化时，容易陷入「局部最优」思维，只关注单一子系统或要素的改进而忽视整体协调。学生对优化的「约束条件」和「目标函数」概念缺乏量化意识，难以在多重目标间进行权衡决策。本节需要借助参数可视化工具和结构化的优化方法，帮助学生建立系统整体最优的思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">体会系统优化在工程设计中的价值，形成追求整体最优的技术价值观。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">学会在系统目标指引下进行多目标权衡与优化决策，建立整体最优思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够针对具体系统提出整体协调的优化方案，体现系统设计的创新性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能够用系统优化图、参数对比图表达优化思路与方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过参数调整与模拟验证，体验系统优化方案的迭代过程。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>系统优化的意义与整体最优思想</li>
+        <li>系统优化中的约束条件与目标权衡</li>
+        <li>系统优化的步骤与方法</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>局部最优与整体最优的辩证关系及权衡决策</li>
+        <li>多目标优化中的约束条件识别与方案选择</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>问题驱动：以教室照明不均等<strong>真实问题</strong>驱动优化动机。</li>
+        <li>可视化辅助：借助FreeCAD系统参数3D可视化，直观呈现优化效果。</li>
+        <li>方法支撑：运用系统优化四步法，结构化引导学生完成优化。</li>
+        <li>迭代验证：通过参数调整与模拟，体验优化的迭代过程。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：系统优化四步法</div>
+        <p>「系统优化四步法」是一种引导学生进行系统层面优化的原创教学工具。该方法以「明目标—识约束—调参数—验整体」四步为主线：第一步明确系统优化的总体目标与分目标，第二步识别影响优化的约束条件（资源、技术、环境等），第三步调整子系统参数寻求协调方案，第四步验证整体效果是否达到最优。工具配有「优化决策矩阵」，以表格形式记录各方案在不同目标上的评分，帮助学生在权衡中做出整体最优决策。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>教室灯光不均匀——优化的真实起点</h4>
+            <p>教师展示教室照明实测数据：靠窗区域照度过高刺眼，角落区域照度不足昏暗，整体照明不均匀影响学习。提问：「如果只换角落的灯泡更亮，能解决问题吗？会带来什么新问题？」引导学生认识到局部改进可能引发新的系统失衡，由此引出系统优化需要整体思考的主题。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 原理探究（10分钟）</span>
+            <h4>整体最优不等于局部最优——优化的核心理念</h4>
+            <p>教师讲解系统优化的核心思想：整体最优不等于各子系统局部最优的简单叠加。以交通疏导为例，如果每条路都设为绿灯最长（局部最优），反而会导致整体拥堵。教师介绍系统优化需要处理的三对关系：局部与整体、短期与长期、效益与成本。强调优化要在系统总体目标指引下，协调各子系统和要素，实现整体功能最优。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>系统优化四步法——让优化有章可循</h4>
+            <p>教师介绍「系统优化四步法」这一原创工具，讲解四步操作：明目标（确定总体目标和分目标）、识约束（列出资源、技术、环境等约束条件）、调参数（调整子系统参数寻求协调）、验整体（验证整体效果是否最优）。教师以教室照明优化为例示范：目标是照度均匀且节能，约束是灯具数量固定、布线位置已定、预算有限，调参数包括调整灯具角度、更换灯罩、分区控制，验整体通过照度模拟验证均匀度和能耗变化。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：系统参数3D可视化</div>
+                <p>教师在FreeCAD中加载教室三维模型，通过参数化调整灯具位置、角度和功率，实时渲染教室照度分布热力图。学生可以直观看到不同参数组合下教室各区域的照度变化——蓝色区域表示照度不足，红色区域表示照度过高，绿色区域表示照度适宜。教师通过调整灯具角度和分区控制参数，展示从「不均匀」到「均匀」的优化过程，让学生直观理解系统参数调整如何影响整体效果。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 方案设计（12分钟）</span>
+            <h4>优化教室照明系统——综合实战</h4>
+            <p>学生分组运用「系统优化四步法」为教室照明系统设计优化方案。各组填写优化决策矩阵：明确目标（照度均匀度、节能率、舒适度），列出约束条件（预算、灯具数量、施工时间），提出至少两种参数调整方案，对各方案在三个目标维度上评分，选择整体最优方案。各组展示方案并说明权衡决策过程，接受其他组的质疑。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：优化方案数据分析</div>
+                <p>学生将优化方案的参数（如灯具功率、角度、分区方案）输入AI，请AI辅助计算预期照度均匀度、能耗变化和成本估算。AI作为数据分析的辅助工具，帮助学生快速获得方案的量化预测结果，但约束条件识别和最终权衡决策仍由学生小组讨论完成，培养学生利用数据辅助进行系统优化决策的能力。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>在权衡中寻找最优——系统优化的智慧</h4>
+            <p>教师总结本节核心：系统优化追求整体最优而非局部最优，需要用系统优化四步法在约束条件下协调各子系统参数。强调工程优化是「在约束中寻找最优」的智慧，没有理想化的完美方案，只有权衡后的最优选择。布置课后任务：用系统优化四步法分析家中某一系统（如空调系统、热水系统）的优化空间。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+系统设计的优化
+
+一、核心理念
+  整体最优 ≠ 局部最优之和
+
+二、三对关系
+  局部↔整体  短期↔长期  效益↔成本
+
+三、系统优化四步法
+  ① 明目标（总体+分目标）
+  ② 识约束（资源/技术/环境）
+  ③ 调参数（子系统协调）
+  ④ 验整体（效果最优）
+
+四、优化决策矩阵
+  方案 × 目标 → 评分 → 择优
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

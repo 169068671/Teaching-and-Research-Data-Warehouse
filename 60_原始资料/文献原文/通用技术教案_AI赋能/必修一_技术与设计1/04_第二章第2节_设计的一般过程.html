@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章第2节 设计的一般过程 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第二章第2节 设计的一般过程</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>本节系统呈现设计的标准流程，是全章的方法论核心。教材将设计的一般过程归纳为五个阶段：<strong>发现与明确问题、制定设计方案、制作模型或原型、测试评估及优化、编写产品说明书</strong>，并强调各阶段并非线性单向，而是反复迭代的循环过程（注：设计的一般原则在第4节，本节聚焦流程本身）。教材以台灯、多功能笔筒等案例贯穿，帮助学生建立「从问题到产品」的完整路径认知，为后续每一环节的深化学习提供框架。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已理解技术与设计的关系，但对设计「怎么做」缺乏完整流程意识，常误以为设计就是直接动手制作。对「迭代」「评估优化」的循环性认识不足，倾向于一次性完成。教学需借助流程导航卡与校园真实设计任务，让学生在动手中体会流程的反复性。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">能完整复述设计一般过程的五个阶段及其循环迭代特性。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">能用流程图分析设计各阶段的输入、输出与反馈关系。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能在制定方案阶段提出多方案并依据评估进行优选。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能用流程图、草图表达设计过程及方案构思。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">能针对校园问题制作简易原型，体验测试优化环节。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>设计一般过程的五个阶段及其衔接关系</li>
+        <li>设计过程的循环迭代性，而非线性单向</li>
+        <li>测试评估及优化对产品质量的决定作用</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>理解并实践「评估—优化—再测试」的迭代循环</li>
+        <li>在制定方案阶段避免过早收敛，保持方案多样性</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>采用<strong>流程导航卡</strong>支架策略，让流程节点可视化、可操作</li>
+        <li>运用<strong>真实微项目</strong>驱动，以校园书架整理问题贯穿全程</li>
+        <li>组织<strong>故意制造缺陷</strong>活动，在测试失败中体会优化的必要</li>
+        <li>实施<strong>迭代日志</strong>记录，显性化设计的反复过程</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：设计过程流程导航卡</div>
+        <p>一组可排序的流程卡，分别代表五个阶段，每卡含<strong>阶段名、关键任务、输出物、易错提醒</strong>四栏。学生可像拼拼图一样排列流程顺序，并在卡间用反馈箭头标注『回退优化』路径。配套『迭代日志』表格，记录每一轮测试发现的问题与对应优化措施，使循环过程可视化。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>一团乱的书架，怎么设计解决方案</h4>
+            <p><strong>教师活动</strong>：呈现班级图书角书架杂乱照片，提问：「如果让你设计一个解决方案，你会从哪一步开始？」收集学生起点，引出『过程』议题。</p><p><strong>学生活动</strong>：说出自己会先做什么，暴露对流程的朴素认识。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 概念建构（15分钟）</span>
+            <h4>五块积木搭起设计的路</h4>
+            <p><strong>教师活动</strong>：讲解五阶段——发现与明确问题、制定设计方案、制作模型或原型、测试评估及优化、编写产品说明书。重点强调『优化』使流程回退，形成循环。以台灯设计为例示范五阶段串联。</p><p><strong>学生活动</strong>：领取流程导航卡，排列五阶段顺序，并标注可能的回退反馈箭头，小组互查顺序与反馈是否合理。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：阶段任务补充</div>
+                <p>学生对某阶段『关键任务』不确定时，教师调用AI检索该阶段的典型任务清单作为<strong>补充提示</strong>（如『制定方案阶段』通常包含方案构思、方案筛选、方案呈现）。学生对照提示<strong>自主完善</strong>导航卡内容，AI仅提供任务参考，方案与判断由学生完成。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 深度探究（15分钟）</span>
+            <h4>故意造个坏书架：体会迭代的力量</h4>
+            <p><strong>教师活动</strong>：组织微项目——为图书角设计一个简易分隔书立。第一阶段各组快速制作初代原型；进入测试环节时，教师故意设置『书本侧倒』『取书不便』等测试场景，迫使各组回退到方案阶段优化。</p><p><strong>学生活动</strong>：在迭代日志中记录问题与优化措施，完成至少一轮『测试—优化—再测试』循环，体悟流程的循环性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 迁移应用（8分钟）</span>
+            <h4>用流程图规划我的设计项目</h4>
+            <p><strong>教师活动</strong>：布置迁移——选取一个校园待改进问题（如雨伞收纳、文具整理），用流程导航卡规划完整设计路径，标注可能的迭代节点。</p><p><strong>学生活动</strong>：独立完成流程规划图，同桌互评阶段完整性与反馈合理性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结反思（2分钟）</span>
+            <h4>设计是循环，不是直跑</h4>
+            <p><strong>教师活动</strong>：总结——设计一般过程五阶段首尾相衔、循环迭代，优秀产品诞生于反复的测试与优化。</p><p><strong>学生活动</strong>：用一句话写出『迭代』给自己带来的启示。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+第二章第2节 设计的一般过程
+
+① 发现与明确问题
+② 制定设计方案
+③ 制作模型或原型
+④ 测试评估及优化 ←┐
+⑤ 编写产品说明书    │
+   ↑________________|  循环迭代
+
+关键：流程非直线，而是循环
+工具：设计过程流程导航卡 + 迭代日志
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

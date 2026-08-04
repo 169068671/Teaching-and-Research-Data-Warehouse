@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四单元第2节 开环控制系统的工作过程 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第四单元第2节 开环控制系统的工作过程</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第四单元第2节「开环控制系统的工作过程」是控制单元的方法深化课。本节教材在学生认识控制基本方式的基础上，深入剖析开环控制系统的工作过程。教材从开环控制的基本结构出发，阐述了「输入量—控制器—执行器—被控对象—输出量」的信息流向，介绍了开环控制系统的方框图表示方法。本节强调开环控制「没有反馈」的特征，其控制精度取决于系统标定与环境稳定性。教材通过自动门、洗衣机、红绿灯等案例，让学生体会开环控制在生活中的广泛应用，培养学生用方框图表达和分析控制系统的工程思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已学习控制的基本概念与分类，能够区分开环与闭环控制，对开环控制「没有反馈」的特征有初步认识。但学生对开环控制系统的「信息流向」和「方框图」表达不够规范，容易混淆输入量、控制量与输出量的关系。学生对开环控制精度受限的原因缺乏深入理解，难以从结构上分析其优劣。本节需要借助框图模型和逆向分析方法，帮助学生建立开环控制系统的完整认识。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">体会开环控制系统在生活中的广泛应用，形成关注控制系统结构的技术意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握开环控制系统的基本结构与工作过程，能够用方框图表达和分析。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够针对简单控制需求，提出开环控制系统的初步设计方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能够规范绘制开环控制系统的方框图，清晰表达信息流向。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过模型搭建与逆向分析，体验开环控制系统的搭建与验证过程。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>开环控制系统的基本结构与信息流向</li>
+        <li>开环控制系统方框图的绘制方法</li>
+        <li>开环控制的工作过程分析</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>输入量、控制量、输出量在具体系统中的识别与区分</li>
+        <li>开环控制精度受限原因的结构化分析</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>案例解剖：以自动门等<strong>开环案例</strong>为载体，逆向剖析工作过程。</li>
+        <li>模型辅助：借助FreeCAD框图模型，直观展示开环控制的信息流向。</li>
+        <li>逆向探究：运用逆向探究法，从输出反推输入与结构，深化理解。</li>
+        <li>实践搭建：小组搭建简单开环控制模型，在做中验证原理。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：逆向探究法</div>
+        <p>「逆向探究法」是一种引导学生从输出结果出发逆向分析开环控制系统结构的原创教学工具。该方法以「看输出—溯执行—找控制—定输入」四步逆向路径为主线：第一步观察系统的输出结果（如门打开），第二步追溯执行器及其动作，第三步找到控制器及其判断逻辑，第四步确定输入量与触发条件。工具配有「逆向探究图」，以倒序箭头标注每步分析结果，帮助学生从「结果」反推「结构」，深化对开环控制工作过程的理解。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>自动门怎么知道要开门——从现象到结构</h4>
+            <p>教师再次展示校园图书馆自动感应门开门的视频，但这次聚焦追问：「门打开是最终结果，那中间经过了哪些环节？信号是怎么一步步传递的？」引导学生思考信息从传感器到门的传递路径。教师由此引出：理解控制系统的工作过程，需要分析信息流向的完整路径。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 结构建构（10分钟）</span>
+            <h4>开环控制的五个环节——信息流向解析</h4>
+            <p>教师讲解开环控制系统的基本结构：输入量→控制器→执行器→被控对象→输出量，信息单向流动，没有反馈回路。以自动门为例对应讲解：红外传感器信号（输入量）→控制电路（控制器）→电机（执行器）→门（被控对象）→门打开（输出量）。教师强调开环控制「只管发指令不管结果」的特征，控制精度依赖系统标定和环境稳定性，如果有人挡门或传感器失灵，系统无法自动修正。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：开环控制系统框图模型</div>
+                <p>教师在FreeCAD中使用方框图建模功能，以三维方块和箭头搭建自动门开环控制系统的可视化模型：红色方块表示输入（传感器），蓝色方块表示控制器，绿色方块表示执行器，黄色方块表示被控对象，箭头表示信息流向。教师通过动画演示信号从传感器到门的单向传递过程，并用「断开箭头」的方式模拟反馈缺失的场景，让学生直观理解开环控制「没有反馈回路」的结构特征和信息单向流动特点。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>逆向探究法——从结果反推结构</h4>
+            <p>教师介绍「逆向探究法」这一原创工具，讲解四步逆向路径：看输出（观察最终结果）→溯执行（追溯执行器及动作）→找控制（找到控制器及逻辑）→定输入（确定输入量及触发条件）。教师以校园定时喷淋系统为例示范逆向分析：看输出（草坪被浇水），溯执行（水管阀门打开），找控制（定时器按设定时间触发），定输入（时钟信号为输入量）。学生在逆向探究图上以倒序箭头标注每步分析结果。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践应用（12分钟）</span>
+            <h4>逆向分析校园自动售货机——方法迁移</h4>
+            <p>学生分组运用「逆向探究法」分析校园自动售货机的工作过程，绘制逆向探究图和正向方框图。各组依次完成：看输出（饮料掉出），溯执行（电机转动推出螺旋杆），找控制（主板按按键信号控制电机），定输入（投币/按键信号为输入量），然后正向绘制完整方框图。各组展示分析成果并相互评价方框图的规范性。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：方框图逻辑检验</div>
+                <p>学生将逆向分析得到的方框图信息流描述输入AI，请AI辅助检验信息流向是否完整、各环节对应关系是否正确、是否遗漏关键环节。AI作为逻辑检验的辅助工具，帮助学生发现分析中可能出现的环节遗漏或信息流向错误，但分析过程和最终方框图仍由学生自主完成，确保学生真正掌握逆向分析技能。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>没有反馈的控制——开环的智慧与局限</h4>
+            <p>教师总结本节核心：开环控制系统信息单向流动，无反馈回路，结构简单但精度受限。逆向探究法是从输出反推结构的有效分析工具。教师引导学生思考：「开环控制适合什么场景？什么场景下开环不够用？」为下节闭环控制系统埋下伏笔。布置课后任务：用逆向探究法分析家中一个开环控制系统。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+开环控制系统的工作过程
+
+一、基本结构（信息单向流动）
+  输入量 → 控制器 → 执行器 → 被控对象 → 输出量
+
+  特征：无反馈回路
+
+二、逆向探究法
+  ① 看输出（观察结果）
+  ② 溯执行（追溯执行器）
+  ③ 找控制（找到控制器）
+  ④ 定输入（确定输入量）
+
+三、开环的特点
+  优点：结构简单、成本低
+  局限：精度受限、无法自动修正
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

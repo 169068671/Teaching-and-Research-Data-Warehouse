@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三单元第2节 系统分析的方法 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第三单元第2节 系统分析的方法</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第三单元第2节「系统分析的方法」是系统单元的核心方法课。本节教材在学生认识系统基本概念的基础上，引导其掌握系统分析的科学方法。教材从系统分析的基本原则（整体性、科学性、综合性）出发，介绍了系统分析的一般步骤：阐明问题—设置目标—分析条件—提出方案—评价优化。本节强调系统分析要「见树木更见森林」，既关注要素又关注联系，既分析结构又分析功能。教材通过水利工程、交通系统等典型案例，让学生体会系统分析在解决复杂问题中的价值，培养学生整体性、综合性的工程思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已学习系统的基本概念，能够识别系统的要素与边界，对「整体大于部分之和」有初步理解。但学生在分析系统时，容易陷入「只见要素不见联系」的还原思维，忽视要素间的相互作用与系统的整体涌现性。学生对系统分析的步骤缺乏系统认识，分析时容易跳跃或遗漏环节。本节需要借助结构化的分析工具和典型案例，帮助学生建立系统分析的科学方法。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">体会系统分析在解决复杂问题中的价值，形成整体性、综合性的技术思维。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握系统分析的基本原则与一般步骤，能够运用系统方法分析实际问题。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够在系统分析基础上提出改进或创新的初步方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能够绘制系统结构图和功能关系图，清晰表达系统分析的成果。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过案例分析实践，提升系统观察、记录与归纳的表达能力。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>系统分析的基本原则（整体性、科学性、综合性）</li>
+        <li>系统分析的一般步骤与方法</li>
+        <li>系统分析中要素与联系的辩证关系</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>系统整体性思维的确立及对「涌现性」的理解</li>
+        <li>系统分析步骤在复杂问题中的灵活运用</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>案例驱动：以校园广播系统等<strong>真实系统</strong>为案例，让分析有抓手。</li>
+        <li>工具支撑：借助系统解剖四步法，结构化引导学生完成系统分析。</li>
+        <li>对比辨析：通过还原思维与系统思维的对比，凸显系统分析的整体性。</li>
+        <li>小组研讨：分组分析不同系统，在交流中深化方法理解。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：系统解剖四步法</div>
+        <p>「系统解剖四步法」是一种引导学生系统化分析实际系统的原创教学工具。该方法以「定边界—列要素—理关系—析功能」四步为主线：第一步确定系统的边界与范围，第二步枚举系统内的关键要素，第三步梳理要素间的相互作用与层级关系，第四步分析系统整体功能与涌现性。工具配有「系统解剖表」，以表格形式记录每步分析结果，帮助学生从「见要素」走向「见联系」，最终形成系统整体认识。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>广播系统失灵了——从故障看系统</h4>
+            <p>教师讲述校园广播系统在运动会开幕式上突然失灵的场景：话筒正常但喇叭无声，排查后发现是功放与喇叭之间的线路接头氧化。教师提问：「为什么一个接头的问题影响了整个广播系统？如果只看单个设备能发现问题吗？」引导学生认识到系统问题不能只看要素，还要看要素间的联系，由此引出系统分析的必要性。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 原则建构（10分钟）</span>
+            <h4>系统分析的三条铁律——原则与方法</h4>
+            <p>教师讲解系统分析的三大基本原则：整体性（先看整体再看部分）、科学性（用数据和逻辑而非直觉）、综合性（多角度多因素综合考虑）。教师对比「还原思维」（把系统拆成零件逐个看）与「系统思维」（既看零件又看联系），强调系统分析的目标是理解整体涌现性——即系统具有各要素简单相加所不具备的新功能。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：系统分析案例补充</div>
+                <p>教师利用AI检索并整理不同领域的系统分析典型案例（如都江堰水利工程、城市交通系统、人体循环系统），快速生成案例摘要和要素关系说明，作为课堂讲解的补充素材。AI帮助教师从多学科视角丰富案例资源，让学生体会系统分析方法的普适性，但案例的深入分析仍由师生在课堂中共同完成。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>系统解剖四步法——结构化分析工具</h4>
+            <p>教师介绍「系统解剖四步法」这一原创工具，讲解四步操作：定边界（明确系统范围与外部环境）、列要素（枚举系统内关键组成部分）、理关系（梳理要素间的输入输出与层级）、析功能（分析整体功能与涌现性）。教师以校园广播系统为例进行完整示范：边界为「从话筒到喇叭的完整声音传输链」，要素包括话筒、功放、线路、喇叭、电源，关系为「话筒→功放→线路→喇叭」的信号流和「电源→各设备」的能量流，功能为「将声音信号放大并覆盖全校」。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践应用（12分钟）</span>
+            <h4>解剖校园照明系统——方法迁移</h4>
+            <p>学生分组运用「系统解剖四步法」分析校园照明系统，填写系统解剖表。各组依次完成：确定照明系统的边界（教学楼+操场+路灯），列举要素（灯具、开关、线路、配电箱、定时器），梳理要素关系（配电箱→线路→灯具，定时器→开关），分析整体功能与涌现性（分区照明、定时控制、应急联动等功能是单个灯具不具备的）。各组展示分析成果并相互评价。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>见树木更见森林——系统思维的凝练</h4>
+            <p>教师总结本节核心：系统分析要坚持整体性、科学性、综合性原则，运用系统解剖四步法从要素到联系再到功能层层深入。强调系统思维的核心是「见树木更见森林」，理解整体涌现性是系统分析的最高目标。布置课后任务：用系统解剖四步法分析家里的空调系统或暖气系统。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+系统分析的方法
+
+一、基本原则
+  整体性  科学性  综合性
+
+二、还原思维 vs 系统思维
+  见零件    vs    见零件+见联系
+
+三、系统解剖四步法
+  ① 定边界（系统范围）
+  ② 列要素（组成部分）
+  ③ 理关系（输入输出/层级）
+  ④ 析功能（整体涌现性）
+
+四、整体涌现性
+  1+1 > 2
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

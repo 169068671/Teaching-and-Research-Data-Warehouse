@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeCAD课程后测卷</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333}
+h1{text-align:center;color:#2c3e50;border-bottom:2px solid #2c3e50;padding-bottom:10px}
+h2{color:#2c3e50;margin-top:30px;border-left:4px solid #2c3e50;padding-left:10px}
+.info-box{background:#f0f4f8;padding:15px;border-radius:5px;margin:20px 0}
+.info-box label{display:inline-block;width:120px;font-weight:bold}
+.info-box input{padding:5px;border:1px solid #ccc;border-radius:3px;width:200px}
+.question{margin:20px 0;padding:15px;background:#fafafa;border-radius:5px}
+.question h3{margin-top:0;color:#34495e}
+.options{margin-left:20px}
+.option{margin:8px 0}
+.option label{cursor:pointer}
+.option input{margin-right:8px}
+.dimension-tag{display:inline-block;background:#2c3e50;color:#fff;padding:2px 8px;border-radius:3px;font-size:12px;margin-left:10px}
+.submit-box{text-align:center;margin:30px 0}
+.submit-box button{padding:12px 40px;background:#2c3e50;color:#fff;border:none;border-radius:5px;font-size:16px;cursor:pointer}
+.submit-box button:hover{background:#34495e}
+.result{display:none;background:#e8f5e9;padding:15px;border-radius:5px;margin:20px 0}
+.warning{color:#c0392b;font-size:14px}
+</style>
+</head>
+<body>
+
+<h1>STEAM理念下基于编程建模的高中3D打印校本课程 · 后测卷</h1>
+
+<div class="info-box">
+  <p><strong>课程名称：</strong>STEAM理念下基于编程建模的高中3D打印校本课程的开发与研究</p>
+  <p><strong>课题编号：</strong>2024B-178</p>
+  <p><strong>测试类型：</strong>后测（课程最后一课时实施）</p>
+  <p><strong>测试时长：</strong>40分钟</p>
+  <p><strong>满分：</strong>100分</p>
+  <p class="warning"><strong>注意：</strong>本卷只填匿名编号，不填姓名。编号与前测一致：选修一班 A01—A30，选修二班 B01—B30。</p>
+</div>
+
+<div class="info-box">
+  <label>匿名编号：</label>
+  <input type="text" id="studentId" placeholder="如 A01 或 B15" required>
+  <label>选修班：</label>
+  <select id="className">
+    <option value="选修一班">选修一班</option>
+    <option value="选修二班">选修二班</option>
+  </select>
+  <label>日期：</label>
+  <input type="date" id="testDate">
+</div>
+
+<h2>一、空间想象 <span class="dimension-tag">space</span></h2>
+
+<div class="question">
+  <h3>第1题（10分）</h3>
+  <p>一个长方体中间挖了一个圆柱形通孔（沿竖直方向）。从正上方看是什么形状？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q1" value="A">A. 矩形中间有一个圆形</label></div>
+    <div class="option"><label><input type="radio" name="q1" value="B">B. 圆形中间有一个矩形</label></div>
+    <div class="option"><label><input type="radio" name="q1" value="C">C. 只有矩形（孔看不见）</label></div>
+    <div class="option"><label><input type="radio" name="q1" value="D">D. 只有圆形</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第2题（10分）</h3>
+  <p>在FreeCAD中，要把一个二维圆形变成三维圆柱体，应该使用什么操作？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q2" value="A">A. 旋转</label></div>
+    <div class="option"><label><input type="radio" name="q2" value="B">B. 拉伸</label></div>
+    <div class="option"><label><input type="radio" name="q2" value="C">C. 镜像</label></div>
+    <div class="option"><label><input type="radio" name="q2" value="D">D. 阵列</label></div>
+  </div>
+</div>
+
+<h2>二、问题分解 <span class="dimension-tag">decompose</span></h2>
+
+<div class="question">
+  <h3>第3题（10分）</h3>
+  <p>用FreeCAD设计一个带盖的储物盒，下面哪种分解步骤最合理？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q3" value="A">A. 一次性画出整个盒子</label></div>
+    <div class="option"><label><input type="radio" name="q3" value="B">B. 分别设计盒体（草图→拉伸→抽壳）和盖子（草图→拉伸），再考虑装配关系</label></div>
+    <div class="option"><label><input type="radio" name="q3" value="C">C. 先画盖子再画盒子</label></div>
+    <div class="option"><label><input type="radio" name="q3" value="D">D. 找现成模型改</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第4题（10分）</h3>
+  <p>要把多个零件装配成一个整体（如积木装配体），合理的步骤是？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q4" value="A">A. 先导入所有零件，再逐个添加约束</label></div>
+    <div class="option"><label><input type="radio" name="q4" value="B">B. 先画装配体再画零件</label></div>
+    <div class="option"><label><input type="radio" name="q4" value="C">C. 把零件粘在一起</label></div>
+    <div class="option"><label><input type="radio" name="q4" value="D">D. 不用约束，随便摆</label></div>
+  </div>
+</div>
+
+<h2>三、参数化思维 <span class="dimension-tag">parametric</span></h2>
+
+<div class="question">
+  <h3>第5题（10分）</h3>
+  <p>在FreeCAD中，如果想让笔筒的高度可以随时调整，正确的做法是？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q5" value="A">A. 画的时候随便给个高度</label></div>
+    <div class="option"><label><input type="radio" name="q5" value="B">B. 用参数（变量）表示高度，拉伸时引用该参数，改参数即可调整</label></div>
+    <div class="option"><label><input type="radio" name="q5" value="C">C. 画完再拉伸修改</label></div>
+    <div class="option"><label><input type="radio" name="q5" value="D">D. 删掉重画</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第6题（10分）</h3>
+  <p>关于FreeCAD中的"约束"，下面哪种说法正确？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q6" value="A">A. 约束越多越好</label></div>
+    <div class="option"><label><input type="radio" name="q6" value="B">B. 几何约束管形状关系（如垂直、相切），尺寸约束管大小（如长度、半径），先用几何约束再用尺寸约束</label></div>
+    <div class="option"><label><input type="radio" name="q6" value="C">C. 只用尺寸约束就够了</label></div>
+    <div class="option"><label><input type="radio" name="q6" value="D">D. 约束没用</label></div>
+  </div>
+</div>
+
+<h2>四、调试迭代 <span class="dimension-tag">debug</span></h2>
+
+<div class="question">
+  <h3>第7题（10分）</h3>
+  <p>在FreeCAD中拉伸草图时提示"无法生成实体"，最可能的原因是？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q7" value="A">A. 草图未闭合或有重叠线段</label></div>
+    <div class="option"><label><input type="radio" name="q7" value="B">B. 电脑配置太低</label></div>
+    <div class="option"><label><input type="radio" name="q7" value="C">C. 没保存文件</label></div>
+    <div class="option"><label><input type="radio" name="q7" value="D">D. 软件版本不对</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第8题（10分）</h3>
+  <p>装配时发现两个零件位置不对，正确的处理方法是？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q8" value="A">A. 删掉所有零件重来</label></div>
+    <div class="option"><label><input type="radio" name="q8" value="B">B. 检查约束类型是否正确、约束方向是否选反，逐个约束预览确认后再修改</label></div>
+    <div class="option"><label><input type="radio" name="q8" value="C">C. 不管它</label></div>
+    <div class="option"><label><input type="radio" name="q8" value="D">D. 手动拖动零件到正确位置</label></div>
+  </div>
+</div>
+
+<h2>五、工程实践 <span class="dimension-tag">engineering</span></h2>
+
+<div class="question">
+  <h3>第9题（10分）</h3>
+  <p>3D打印前需要在切片软件（如Cura）中设置参数，下面哪个参数会影响打印质量与时间的平衡？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q9" value="A">A. 文件名</label></div>
+    <div class="option"><label><input type="radio" name="q9" value="B">B. 层高（层高越小质量越好但时间越长）</label></div>
+    <div class="option"><label><input type="radio" name="q9" value="C">C. 电脑屏幕亮度</label></div>
+    <div class="option"><label><input type="radio" name="q9" value="D">D. 打印机颜色</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第10题（10分）</h3>
+  <p>关于"零件—装配—切片—打印"这个完整链路，下面哪种理解最准确？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q10" value="A">A. 只要会画零件就行，其他不重要</label></div>
+    <div class="option"><label><input type="radio" name="q10" value="B">B. 这是工程师从设计到制造的完整流程，每一步都要考虑前后衔接：零件要能装配、装配体要能切片、切片参数要适合打印</label></div>
+    <div class="option"><label><input type="radio" name="q10" value="C">C. 切片和打印是打印机的事，设计师不用管</label></div>
+    <div class="option"><label><input type="radio" name="q10" value="D">D. 装配没用，直接打印零件就行</label></div>
+  </div>
+</div>
+
+<h2>六、学习兴趣 <span class="dimension-tag">interest</span></h2>
+
+<div class="question">
+  <h3>第11题（请在1—5之间选择）</h3>
+  <p>学完本课程后，你对三维设计（3D建模）的兴趣程度：</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q11" value="1">1 = 完全没兴趣</label></div>
+    <div class="option"><label><input type="radio" name="q11" value="2">2 = 兴趣不大</label></div>
+    <div class="option"><label><input type="radio" name="q11" value="3">3 = 一般</label></div>
+    <div class="option"><label><input type="radio" name="q11" value="4">4 = 比较有兴趣</label></div>
+    <div class="option"><label><input type="radio" name="q11" value="5">5 = 非常有兴趣</label></div>
+  </div>
+</div>
+
+<div class="question">
+  <h3>第12题（请在1—5之间选择）</h3>
+  <p>学完本课程后，你认为三维设计对自己的未来（学习、生活、职业）有帮助吗？</p>
+  <div class="options">
+    <div class="option"><label><input type="radio" name="q12" value="1">1 = 完全没用</label></div>
+    <div class="option"><label><input type="radio" name="q12" value="2">2 = 用处不大</label></div>
+    <div class="option"><label><input type="radio" name="q12" value="3">3 = 不确定</label></div>
+    <div class="option"><label><input type="radio" name="q12" value="4">4 = 可能有帮助</label></div>
+    <div class="option"><label><input type="radio" name="q12" value="5">5 = 很有帮助</label></div>
+  </div>
+</div>
+
+<div class="submit-box">
+  <button onclick="submitTest()">提交试卷</button>
+</div>
+
+<div class="result" id="result">
+  <h3>提交成功</h3>
+  <p id="resultText"></p>
+  <p>请将下方数据复制保存，或截图交卷：</p>
+  <textarea id="exportData" style="width:100%;height:120px" readonly></textarea>
+  <br><button onclick="downloadCSV()">下载CSV</button>
+</div>
+
+<script>
+function submitTest(){
+  const id=document.getElementById('studentId').value.trim();
+  const cls=document.getElementById('className').value;
+  const date=document.getElementById('testDate').value;
+  if(!id){alert('请填写匿名编号');return}
+  const answers={};
+  for(let i=1;i<=12;i++){
+    const sel=document.querySelector(`input[name="q${i}"]:checked`);
+    if(!sel){alert(`第${i}题未作答`);return}
+    answers[`q${i}`]=sel.value;
+  }
+  const space=(answers.q1==='A'?10:0)+(answers.q2==='B'?10:0);
+  const decompose=(answers.q3==='B'?10:0)+(answers.q4==='A'?10:0);
+  const parametric=(answers.q5==='B'?10:0)+(answers.q6==='B'?10:0);
+  const debug=(answers.q7==='A'?10:0)+(answers.q8==='B'?10:0);
+  const engineering=(answers.q9==='B'?10:0)+(answers.q10==='B'?10:0);
+  const interest=((parseInt(answers.q11)+parseInt(answers.q12))/2)*20;
+  const post=Math.round((space+decompose+parametric+debug+engineering)/5*10)/10;
+
+  const record={
+    id:cls+'_'+id,
+    post:post,
+    space:space*5,
+    decompose:decompose*5,
+    parametric:parametric*5,
+    debug:debug*5,
+    engineering:engineering*5,
+    interest:interest,
+    test_date:date,
+    test_type:'post'
+  };
+
+  document.getElementById('result').style.display='block';
+  document.getElementById('resultText').textContent=`编号 ${record.id}，后测总分 ${record.post}，已提交。`;
+  const csv=`id,post,space,decompose,parametric,debug,engineering,interest,test_date,test_type\n${record.id},${record.post},${record.space},${record.decompose},${record.parametric},${record.debug},${record.engineering},${record.interest},${record.test_date},${record.test_type}`;
+  document.getElementById('exportData').value=csv;
+  let all=JSON.parse(localStorage.getItem('fc_posttest')||'[]');
+  all.push(record);
+  localStorage.setItem('fc_posttest',JSON.stringify(all));
+}
+
+function downloadCSV(){
+  const data=document.getElementById('exportData').value;
+  const blob=new Blob([data],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=`后测_${document.getElementById('studentId').value.trim()}_${document.getElementById('testDate').value}.csv`;
+  a.click();
+}
+</script>
+
+</body>
+</html>

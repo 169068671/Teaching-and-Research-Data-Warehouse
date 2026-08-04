@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四单元第3节 闭环控制系统的工作过程 — 教学设计</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 960px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d72e0);
+            color: #fff;
+            padding: 40px 35px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.25);
+        }
+        .header h1 { font-size: 28px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 15px; opacity: 0.9; }
+        .header .meta { margin-top: 15px; font-size: 13px; opacity: 0.85; }
+        .header .meta span { margin-right: 20px; }
+        .content { background: #fff; padding: 40px 35px; border-radius: 0 0 12px 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+        .section-card {
+            border-left: 5px solid #1a56c4;
+            background: #fafcff;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            border-radius: 0 8px 8px 0;
+        }
+        .section-card h2 {
+            color: #1a56c4;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-card h2 .icon { margin-right: 10px; font-size: 22px; }
+        .section-card h3 { color: #e65100; font-size: 16px; margin: 15px 0 10px; }
+        .section-card p { margin-bottom: 12px; text-align: justify; font-size: 15px; }
+        .section-card ul, .section-card ol { margin-left: 24px; margin-bottom: 12px; }
+        .section-card li { margin-bottom: 8px; font-size: 15px; }
+        .goal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .goal-item {
+            background: #fff;
+            border: 1px solid #e0e8f5;
+            border-left: 4px solid #1a56c4;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+        .goal-item .label { color: #1a56c4; font-weight: bold; font-size: 15px; }
+        .goal-item .desc { color: #555; font-size: 14px; margin-top: 4px; }
+        .timeline { position: relative; padding-left: 35px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(#1a56c4, #e65100);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%;
+            background: #fff; border: 4px solid #1a56c4;
+        }
+        .timeline-item .time-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 3px 12px; border-radius: 20px;
+            font-size: 13px; margin-bottom: 8px;
+        }
+        .timeline-item h4 { color: #333; font-size: 16px; margin-bottom: 8px; }
+        .timeline-item p { font-size: 14px; margin-bottom: 8px; }
+        .ai-tag {
+            display: inline-block;
+            background: #1a56c4; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .freecad-tag {
+            display: inline-block;
+            background: #e65100; color: #fff;
+            padding: 4px 14px; border-radius: 20px;
+            font-size: 13px; margin: 5px 0; font-weight: bold;
+        }
+        .ai-block {
+            background: #eaf2ff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 2px solid #e65100;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #f0f7ff, #fff8f0);
+            border: 2px dashed #1a56c4;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 15px 0;
+        }
+        .tool-box .tool-title { color: #e65100; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
+        .table-style { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+        .table-style th { background: #1a56c4; color: #fff; padding: 10px 12px; text-align: left; }
+        .table-style td { border: 1px solid #ddd; padding: 10px 12px; }
+        .table-style tr:nth-child(even) { background: #f9fafc; }
+        .blackboard {
+            background: #2c3e50; color: #ecf0f1;
+            padding: 25px 30px; border-radius: 8px;
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 15px; line-height: 2.2;
+            margin: 15px 0; white-space: pre-line;
+        }
+        .reflect-box { background: #f9fbe7; border-left: 4px solid #8bc34a; padding: 16px 20px; border-radius: 6px; margin: 12px 0; }
+        .highlight { background: #fff9c4; padding: 2px 5px; border-radius: 3px; }
+        .footer { text-align: center; color: #999; font-size: 13px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+    <h1>第四单元第3节 闭环控制系统的工作过程</h1>
+    <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》教学设计</div>
+    <div class="meta">
+        <span>课时：1课时（45分钟）</span>
+        <span>课型：新授课</span>
+        <span>授课对象：高一学生</span>
+    </div>
+</div>
+<div class="content">
+
+<div class="section-card">
+    <h2><span class="icon">一</span>教材分析</h2>
+    <p>《技术与设计2》第四单元第3节「闭环控制系统的工作过程」是控制单元的综合应用课，也是本册教材的收束内容。本节教材在学生掌握开环控制系统的基础上，深入剖析闭环控制系统的工作过程。教材从闭环控制的基本结构出发，阐述了「输入量—控制器—执行器—被控对象—输出量—检测装置—反馈」的完整信息回路，突出了反馈环节的核心作用。本节强调闭环控制通过反馈实现「自我调节」的特征，其控制精度与稳定性优于开环。教材通过空调恒温、水位控制、人体体温调节等案例，让学生体会闭环控制的科学性与普适性，培养学生用方框图表达和分析复杂控制系统的工程思维。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">二</span>学情分析</h2>
+    <p>学生已学习开环控制系统的工作过程，能够绘制开环方框图，理解「没有反馈」的特征。但学生对闭环控制中「反馈」环节的作用机理缺乏深入理解，容易将反馈简单理解为「返回信息」而忽视其比较与调节功能。学生对闭环控制系统在扰动下的稳定性分析缺乏直观体验，难以理解反馈如何实现自我调节。本节需要借助跨学科类比（如人体调节）和仿真模型，帮助学生建立闭环控制的完整认识。</p>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">三</span>教学目标（五维核心素养）</h2>
+    <div class="goal-grid">
+        <div class="goal-item">
+            <div class="label">技术意识</div>
+            <div class="desc">体会闭环控制系统在生活与工程中的广泛应用，形成关注反馈与调节的技术意识。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">工程思维</div>
+            <div class="desc">掌握闭环控制系统的基本结构与工作过程，能够用方框图表达和分析反馈回路。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">创新设计</div>
+            <div class="desc">能够针对需要精确控制的场景，提出闭环控制系统的初步设计方案。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">图样表达</div>
+            <div class="desc">能够规范绘制闭环控制系统的方框图，清晰表达反馈回路。</div>
+        </div>
+        <div class="goal-item">
+            <div class="label">物化能力</div>
+            <div class="desc">通过仿真模型与类比分析，体验闭环控制系统的搭建与调节过程。</div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">四</span>教学重难点</h2>
+    <h3>教学重点</h3>
+    <ul>
+        <li>闭环控制系统的基本结构与反馈回路</li>
+        <li>闭环与开环控制系统的本质区别</li>
+        <li>闭环控制系统的工作过程分析</li>
+    </ul>
+    <h3>教学难点</h3>
+    <ul>
+        <li>反馈环节的比较与调节功能的理解</li>
+        <li>闭环控制在扰动下稳定性的分析</li>
+    </ul>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">五</span>教学策略与方法</h2>
+    <ul>
+        <li>类比切入：以<strong>人体体温调节</strong>等跨学科类比切入，化解反馈抽象性。</li>
+        <li>仿真辅助：借助FreeCAD闭环控制仿真模型，直观呈现反馈调节过程。</li>
+        <li>对比深化：通过开环与闭环的对比，凸显反馈的核心作用。</li>
+        <li>实践分析：小组分析生活案例，在交流中深化理解。</li>
+    </ul>
+    <div class="tool-box">
+        <div class="tool-title">原创教学工具：跨学科类比法</div>
+        <p>「跨学科类比法」是一种借助生物、物理等跨学科现象帮助学生理解闭环控制原理的原创教学工具。该方法以「找原型—析回路—画框图—比异同」四步为主线：第一步找到与控制系统类似的跨学科现象（如人体体温调节类比空调恒温），第二步分析该现象的反馈回路与调节机制，第三步将其类比为控制系统方框图，第四步比较类比对象与控制系统的异同，深化理解。工具配有「类比对照表」，以双栏形式呈现类比对象与控制系统的对应要素，帮助学生迁移理解反馈原理。</p>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">六</span>教学过程</h2>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <span class="time-tag">环节一 · 情境导入（5分钟）</span>
+            <h4>空调为什么能恒温——从生活现象发现反馈</h4>
+            <p>教师播放教室空调从开机到恒温运行的短视频，展示温度曲线变化：从高温逐渐下降到设定值后保持稳定，有人开门时温度波动但很快恢复。提问：「空调怎么知道什么时候该停、什么时候该继续制冷？它和自动门有什么不同？」引导学生发现空调能根据温度反馈自我调节，由此引出闭环控制的核心特征——反馈。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节二 · 结构建构（10分钟）</span>
+            <h4>反馈回路——闭环控制的核心结构</h4>
+            <p>教师讲解闭环控制系统的基本结构：在开环基础上增加检测装置和反馈回路，形成「输入量→控制器→执行器→被控对象→输出量→检测装置→反馈→比较→控制器」的完整信息回路。教师以人体体温调节为跨学科类比帮助学生理解：体温设定值（输入量）→大脑体温中枢（控制器）→汗腺/血管（执行器）→身体（被控对象）→体温（输出量）→皮肤温度感受器（检测装置）→神经信号反馈→大脑比较调节。强调反馈不是简单「返回信息」，而是「检测—比较—调节」的闭环过程。</p>
+            
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD演示：闭环控制系统仿真模型</div>
+                <p>教师在FreeCAD中搭建空调恒温闭环控制系统的仿真模型，以三维方框图展示完整信息回路：增加蓝色方块表示温度传感器（检测装置），用弯曲箭头从输出量连回控制器表示反馈回路。教师运行仿真动画，展示温度从高温逐渐下降到设定值并保持稳定的过程。通过模拟「开门扰动」场景，展示温度波动后传感器检测到偏差、反馈触发控制器调节、温度恢复稳定的过程，让学生直观理解闭环控制的「自我调节」机制。</p>
+            </div>
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节三 · 方法学习（15分钟）</span>
+            <h4>跨学科类比法——用熟悉现象理解抽象原理</h4>
+            <p>教师介绍「跨学科类比法」这一原创工具，讲解四步操作：找原型（找到跨学科类比现象）→析回路（分析反馈回路与调节机制）→画框图（类比为控制系统方框图）→比异同（比较类比对象与控制系统的异同）。教师以「骑自行车保持平衡」为跨学科原型示范：找原型（骑车平衡），析回路（眼睛感知倾斜→大脑判断→调整身体重心和车把），画框图（目标平衡→大脑→肌肉→自行车→倾斜角→眼睛→反馈），比异同（人脑控制与机器控制的异同点）。学生填写类比对照表完成分析。</p>
+            
+            
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节四 · 实践应用（12分钟）</span>
+            <h4>分析电热水器恒温系统——方法迁移</h4>
+            <p>学生分组运用「跨学科类比法」分析家用电热水器恒温控制系统。各组依次完成：找原型（类比人体出汗散热调节体温），析回路（温度传感器→主板比较→加热管启停→水温→传感器反馈），画框图（绘制完整闭环方框图，标注输入量、控制器、执行器、被控对象、输出量、检测装置、反馈回路），比异同（人体调节与电热水器调节在响应速度、精度等方面的差异）。各组展示分析成果并相互评价。</p>
+            
+            
+            <div class="ai-block">
+                <div class="ai-title">AI应用环节：反馈回路分析辅助</div>
+                <p>学生将分析得到的闭环控制系统方框图描述输入AI，请AI辅助检验反馈回路是否完整闭合、检测装置和比较环节是否标注正确、信息流向是否形成闭环。AI作为逻辑检验的辅助工具，帮助学生发现分析中可能遗漏的反馈环节或标注错误，但分析过程和最终方框图仍由学生自主完成，确保学生真正掌握闭环控制系统的分析方法。</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <span class="time-tag">环节五 · 总结提升（3分钟）</span>
+            <h4>反馈让控制更智能——闭环的智慧</h4>
+            <p>教师总结本节核心：闭环控制系统在开环基础上增加检测装置和反馈回路，通过「检测—比较—调节」实现自我调节，控制精度和稳定性优于开环。跨学科类比法是理解反馈原理的有效工具。教师引导学生回顾本册教材从结构到流程到系统到控制的知识脉络，体会工程设计「结构→流程→系统→控制」的递进逻辑。布置课后任务：用跨学科类比法分析家中一个闭环控制系统。</p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="section-card">
+    <h2><span class="icon">七</span>板书设计</h2>
+    <div class="blackboard">
+闭环控制系统的工作过程
+
+一、基本结构（信息闭环流动）
+  输入量 → 控制器 → 执行器 → 被控对象 → 输出量
+                    ↑                          ↓
+                    ←—— 检测装置（反馈）←——
+
+  核心特征：有反馈回路、能自我调节
+
+二、跨学科类比法
+  ① 找原型（跨学科现象）
+  ② 析回路（反馈机制）
+  ③ 画框图（类比方框图）
+  ④ 比异同（深化理解）
+
+三、开环 vs 闭环
+  无反馈     vs     有反馈
+  精度受限    vs     精度高
+  无法修正    vs     自我调节
+    </div>
+</div>
+
+<div class="footer">苏教版2019高中通用技术教学设计 | AI赋能·FreeCAD建模融合</div>
+</div>
+</div>
+</body>
+</html>

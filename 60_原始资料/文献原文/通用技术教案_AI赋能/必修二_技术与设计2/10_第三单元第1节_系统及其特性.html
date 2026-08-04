@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教案10：第三单元第1节 系统及其特性</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.8;
+            padding: 30px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1a56c4, #2d7df0);
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 20px rgba(26,86,196,0.15);
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; }
+        .header .subtitle { font-size: 14px; opacity: 0.9; }
+        .header .meta {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            font-size: 13px;
+            flex-wrap: wrap;
+        }
+        .header .meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .content {
+            background: #fff;
+            padding: 40px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .section {
+            border-left: 4px solid #1a56c4;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            background: #fafcff;
+            border-radius: 0 8px 8px 0;
+        }
+        .section h2 {
+            color: #1a56c4;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #e65100;
+            border-radius: 3px;
+        }
+        .section h3 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin: 15px 0 8px 0;
+        }
+        .section p { margin-bottom: 10px; font-size: 14px; text-align: justify; }
+        .section ul, .section ol { margin-left: 25px; margin-bottom: 10px; font-size: 14px; }
+        .section li { margin-bottom: 6px; }
+        .tag-ai {
+            display: inline-block;
+            background: #1a56c4;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-freecad {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .tag-paradigm {
+            display: inline-block;
+            background: #00897b;
+            color: #fff;
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+            margin-top: 15px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #1a56c4;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 5px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 4px;
+            width: 14px;
+            height: 14px;
+            background: #fff;
+            border: 3px solid #1a56c4;
+            border-radius: 50%;
+        }
+        .timeline-item .time-label {
+            display: inline-block;
+            background: #e65100;
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .timeline-item h4 {
+            color: #1a56c4;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .timeline-item p, .timeline-item ul, .timeline-item ol {
+            font-size: 14px;
+        }
+        .ai-block {
+            background: #e8f0fe;
+            border: 1px solid #1a56c4;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .ai-block .ai-title {
+            color: #1a56c4;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .freecad-block {
+            background: #fff3e0;
+            border: 1px solid #e65100;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .freecad-block .fc-title {
+            color: #e65100;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .prompt-box {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: "Courier New", monospace;
+            font-size: 13px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .prompt-box .label { color: #e65100; font-weight: bold; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 13px;
+        }
+        th {
+            background: #1a56c4;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .obj-card {
+            background: #fff;
+            border: 2px solid #1a56c4;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .obj-card .icon { font-size: 22px; margin-bottom: 6px; }
+        .obj-card h4 { color: #1a56c4; font-size: 13px; margin-bottom: 6px; }
+        .obj-card p { font-size: 12px; text-align: center; }
+        .blackboard {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 13px;
+            line-height: 2;
+            white-space: pre-line;
+        }
+        .tool-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid #43a047;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 12px 0;
+        }
+        .tool-box h4 { color: #2e7d32; font-size: 14px; margin-bottom: 8px; }
+        .reflection-list li { margin-bottom: 8px; }
+        .obe-tag {
+            background: #7b1fa2;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .pbl-tag {
+            background: #00695c;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .lens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .lens-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border-top: 4px solid #e65100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .lens-card h4 { color: #e65100; font-size: 13px; margin-bottom: 6px; }
+        .lens-card p { font-size: 12px; text-align: center; }
+        .layer-card {
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin: 8px 0;
+        }
+        .layer-basic { background: #e3f2fd; border-left: 4px solid #1976d2; }
+        .layer-advanced { background: #fff3e0; border-left: 4px solid #e65100; }
+        .layer-extra { background: #f3e5f5; border-left: 4px solid #7b1fa2; }
+        .layer-card h4 { font-size: 13px; margin-bottom: 6px; }
+        .layer-card p { font-size: 13px; margin-bottom: 4px; }
+        .chain-flow {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            border: 2px solid #006064;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .chain-step {
+            display: inline-block;
+            background: #006064;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 16px;
+            margin: 3px;
+            font-size: 12px;
+        }
+        .chain-arrow { color: #e65100; font-weight: bold; margin: 0 2px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>第三单元第1节 系统及其特性</h1>
+        <div class="subtitle">苏教版2019高中通用技术必修二《技术与设计2》| 教学设计教案</div>
+        <div class="meta">
+            <span>课时：1课时（45分钟）</span>
+            <span>课型：项目化探究课</span>
+            <span>项目化学习+AI赋能核心案例</span>
+            <span>五维透视分析</span>
+        </div>
+    </div>
+    <div class="content">
+
+        <!-- 一、教材分析 -->
+        <div class="section">
+            <h2>一、教材分析</h2>
+            <p>本节为苏教版《技术与设计2》第三单元"系统及其设计"的第1节，是系统单元的入门与奠基课。教材从系统的基本概念出发，引导学生认识系统的五个基本特性：整体性、相关性、目的性、环境适应性、动态性，为后续"系统分析"和"系统设计"奠定理论基础。</p>
+            <p>本节在必修二四大模块（结构、流程、系统、控制）中具有枢纽地位——系统思维是连接前三单元与第四单元控制的重要桥梁。结合项目化学习+AI赋能模式（参考"智行湿地"案例），本课以"校园食堂系统优化"为项目载体，采用"全链条"教学路径：情境导入→系统分析→方案设计→模拟验证→多元评价。预期学习产出定义为：<strong>学生能运用"五维透视镜"工具分析一个真实系统，结合AI辅助完成系统拆解与优化方案设计，形成系统思维与权衡决策能力。</strong></p>
+        </div>
+
+        <!-- 二、学情分析 -->
+        <div class="section">
+            <h2>二、学情分析</h2>
+            <p>高二学生已学习结构与流程两个单元，具备了从局部角度分析技术问题的能力，但对"系统"这一整体性视角仍较陌生。学生在生活中接触过各种系统（如交通系统、教育系统），但往往只见树木不见森林，缺乏将系统拆解为子系统并分析其关联的能力。对"整体大于部分之和"等系统特性有朴素感知，但难以用准确的语言表述。AI工具方面，学生习惯用AI获取信息，但尚未学会用AI进行"如果改变某子系统，其他子系统会怎样"的关联推演和预测分析。</p>
+        </div>
+
+        <!-- 三、教学目标 -->
+        <div class="section">
+            <h2>三、教学目标（五维核心素养）</h2>
+            <div class="objectives-grid">
+                <div class="obj-card">
+                    <div class="icon">🔍</div>
+                    <h4>技术意识</h4>
+                    <p>理解系统概念在技术与工程中的普遍性，形成整体性看待技术问题的意识</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">⚙️</div>
+                    <h4>工程思维</h4>
+                    <p>掌握"五维透视镜"分析法，能从五个维度系统分析技术系统</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">💡</div>
+                    <h4>创新设计</h4>
+                    <p>能结合AI预测结果，提出系统优化方案并进行权衡决策</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">📐</div>
+                    <h4>图样表达</h4>
+                    <p>能绘制系统组成框图，清晰表达系统与子系统的层次关系</p>
+                </div>
+                <div class="obj-card">
+                    <div class="icon">🔨</div>
+                    <h4>物化能力</h4>
+                    <p>能通过纸塔挑战体验系统整体性，将抽象概念转化为具身经验</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四、教学重难点 -->
+        <div class="section">
+            <h2>四、教学重难点</h2>
+            <h3>教学重点</h3>
+            <ul>
+                <li>系统五个基本特性的理解：整体性、相关性、目的性、环境适应性、动态性</li>
+                <li>"五维透视镜"分析法的运用，能对真实系统进行多维度拆解</li>
+                <li>运用AI辅助系统拆解和关联分析，进行方案预测与权衡决策</li>
+            </ul>
+            <h3>教学难点</h3>
+            <ul>
+                <li>理解"整体大于部分之和"的深层含义，认识系统整体性</li>
+                <li>分析子系统之间的相关性，理解"牵一发而动全身"的关联效应</li>
+                <li>对AI预测的优化方案效果进行批判性权衡决策</li>
+            </ul>
+        </div>
+
+        <!-- 五、教学策略与方法 -->
+        <div class="section">
+            <h2>五、教学策略与方法</h2>
+            <p><span class="pbl-tag">项目化学习+AI赋能</span> 本课参考"智行湿地"案例的全链条教学模式，以"校园食堂系统优化"为项目驱动，采用五环节全链条路径：</p>
+            <div class="chain-flow">
+                <span class="chain-step">情境导入</span><span class="chain-arrow">→</span>
+                <span class="chain-step">系统分析</span><span class="chain-arrow">→</span>
+                <span class="chain-step">方案设计</span><span class="chain-arrow">→</span>
+                <span class="chain-step">模拟验证</span><span class="chain-arrow">→</span>
+                <span class="chain-step">多元评价</span>
+            </div>
+            <p><span class="tag-paradigm">分层任务策略</span></p>
+            <div class="layer-card layer-basic">
+                <h4>基础层：系统拆解与框图绘制</h4>
+                <p>用AI辅助将校园食堂系统拆解为子系统，绘制系统组成框图，标注各子系统的功能。</p>
+            </div>
+            <div class="layer-card layer-advanced">
+                <h4>提升层：AI辅助数据关联分析</h4>
+                <p>用AI预测不同优化方案的效果（如增加窗口对等待时间和人力成本的影响），进行数据驱动的关联分析。</p>
+            </div>
+            <div class="layer-card layer-extra">
+                <h4>拓展层：AI辅助深度优化方案</h4>
+                <p>用AI设计综合考虑多维度因素的深度优化方案，进行系统级权衡决策。</p>
+            </div>
+            <div class="tool-box">
+                <h4>原创教学工具：五维透视镜</h4>
+                <p>从五个维度对任何系统进行"透视"分析，像医生用X光看人体一样看系统：</p>
+                <div class="lens-grid">
+                    <div class="lens-card">
+                        <h4>整体性</h4>
+                        <p>系统整体功能是否大于各部分功能之和？</p>
+                    </div>
+                    <div class="lens-card">
+                        <h4>相关性</h4>
+                        <p>各子系统之间如何相互影响、相互制约？</p>
+                    </div>
+                    <div class="lens-card">
+                        <h4>目的性</h4>
+                        <p>系统存在的根本目的是什么？各子系统是否服务于该目的？</p>
+                    </div>
+                    <div class="lens-card">
+                        <h4>环境适应性</h4>
+                        <p>系统如何适应外部环境变化？有无自适应机制？</p>
+                    </div>
+                    <div class="lens-card">
+                        <h4>动态性</h4>
+                        <p>系统随时间如何变化演化？是否处于动态平衡？</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 六、教学过程 -->
+        <div class="section">
+            <h2>六、教学过程</h2>
+            <div class="timeline">
+
+                <!-- 环节一 -->
+                <div class="timeline-item">
+                    <span class="time-label">5分钟</span>
+                    <h4>环节一：情境导入——纸塔挑战体验系统整体性</h4>
+                    <p><strong>体验活动（纸塔挑战）：</strong>每组发放20张A4纸和一卷胶带，限时3分钟搭建尽可能高的纸塔。关键规则：先让每位组员单独用5张纸搭一座小塔（3分钟），然后全组用剩余15张纸合作搭一座大塔（3分钟）。</p>
+                    <p><strong>对比发现：</strong>教师引导学生观察：单独搭的小塔最高约30cm，而全组合作搭的大塔往往能达到80cm以上——这远不是5座小塔简单叠加的高度。教师提问："为什么全组合作搭的塔比5个人单独搭的塔加起来还高？这说明什么？"</p>
+                    <p><strong>概念引出：</strong>教师点明——这就是系统的<strong>整体性</strong>："整体大于部分之和"。当各部分以合理的方式组合时，系统整体会产生各部分单独存在时不具备的新功能。一座高塔不是5座小塔的简单叠加，而是通过结构重组涌现出的新质。</p>
+                    <p><strong>项目任务发布：</strong>教师宣布本课项目——"校园食堂系统优化"，学生将作为"系统分析师"，用五维透视镜分析食堂系统，并用AI辅助设计优化方案。</p>
+                    <div class="freecad-block">
+                        <div class="fc-title">FreeCAD模型引用 | 系统组成装配模型</div>
+                        <p>教师展示一个用FreeCAD建立的多子系统装配体模型（如一个简易机械装置，包含动力子系统、传动子系统、执行子系统、支撑子系统），通过装配体的爆炸图和组合图展示"多个零件组装成功能完整的系统"的过程，直观呈现系统整体性——单个零件无法实现功能，只有组合成系统才能运转。</p>
+                        <ul>
+                            <li><strong>爆炸图：</strong>展示各子系统（零件组）的独立状态</li>
+                            <li><strong>装配图：</strong>展示各子系统组装后的整体运转效果</li>
+                            <li><strong>关联展示：</strong>旋转装配体展示各子系统之间的连接和依赖关系</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 环节二 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节二：概念建构——五维透视镜与系统特性</h4>
+                    <p><strong>Step 1：五维特性讲解（8分钟）</strong></p>
+                    <p>教师以校园食堂系统为例，逐一讲解系统五个特性：</p>
+                    <ul>
+                        <li><strong>整体性：</strong>食堂系统的整体功能是"为师生提供餐饮服务"，这不是厨房、窗口、就餐区、收银系统各部分功能的简单叠加，而是它们协同运作涌现的整体效果。就像刚才纸塔挑战——组合方式决定了整体效能。</li>
+                        <li><strong>相关性：</strong>厨房出餐速度影响窗口排队长度，排队长度影响就餐区拥挤度，就餐区拥挤度又影响师生是否愿意来食堂——各子系统相互关联、牵一发而动全身。</li>
+                        <li><strong>目的性：</strong>食堂系统的根本目的是"在有限时间和空间内为尽可能多的师生提供满意的餐饮服务"。所有子系统的设计都应服务于这一目的。</li>
+                        <li><strong>环境适应性：</strong>食堂需适应不同季节（夏季增加冷饮、冬季增加热汤）、不同时段（早中晚高峰差异）、不同人群（教师/学生口味偏好）等环境变化。</li>
+                        <li><strong>动态性：</strong>食堂系统不是静态的——师生人数逐年变化、菜品流行趋势更替、设备逐渐老化，系统始终处于动态变化中，需要持续调整。</li>
+                    </ul>
+
+                    <p><strong>Step 2：五维透视镜应用示范（4分钟）</strong></p>
+                    <p>教师示范用五维透视镜快速分析一个简单系统（如自行车），让学生理解分析框架的运用方式。然后学生分组选择一个日常系统（如共享单车系统、校园广播系统等）进行快速五维分析练习。</p>
+
+                    <p><strong>Step 3：系统组成框图绘制规范（3分钟）</strong></p>
+                    <p>教师讲解系统框图的绘制规范：用方框表示系统和子系统，用箭头表示关联关系（物质流、信息流、能量流），用层次结构表达系统与子系统的从属关系。</p>
+                </div>
+
+                <!-- 环节三 -->
+                <div class="timeline-item">
+                    <span class="time-label">15分钟</span>
+                    <h4>环节三：深度探究——AI辅助系统拆解与优化方案</h4>
+                    <p><strong>Step 1：AI辅助系统拆解（5分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 校园食堂系统拆解</div>
+                        <p>学生用AI辅助将校园食堂系统拆解为子系统，并分析各子系统的功能和关联关系。</p>
+                        <div class="prompt-box">
+<span class="label">【基础层提示词】</span>
+请将校园食堂系统拆解为若干子系统，
+列出每个子系统的名称、功能和与其他子系统的关联关系，
+用层次结构呈现。
+                        </div>
+                        <p><strong>AI典型回复（示例）：</strong></p>
+                        <ul>
+                            <li>采购子系统：负责食材采购和库存管理 → 关联：为厨房提供原材料</li>
+                            <li>厨房子系统：负责食材加工和烹饪 → 关联：依赖采购子系统供料，为窗口供餐</li>
+                            <li>服务子系统：含窗口打饭、收银结算 → 关联：依赖厨房供餐，服务就餐者</li>
+                            <li>就餐子系统：含桌椅、环境维护 → 关联：为师生提供就餐空间</li>
+                            <li>管理子系统：含人员调度、质量控制 → 关联：协调所有子系统运行</li>
+                        </ul>
+                        <p>学生根据AI拆解结果绘制系统组成框图，并检查AI的拆解是否合理、有无遗漏的子系统。</p>
+                    </div>
+
+                    <p><strong>Step 2：AI辅助优化方案预测与权衡决策（7分钟）</strong></p>
+                    <div class="ai-block">
+                        <div class="ai-title">AI工程顾问 | 优化方案效果预测</div>
+                        <p>学生针对食堂系统的某个问题（如午餐高峰排队过长），用AI预测不同优化方案的效果。</p>
+                        <div class="prompt-box">
+<span class="label">【提升层提示词】</span>
+校园食堂午餐高峰排队时间过长（平均15分钟），
+请预测以下三种优化方案的效果：
+方案1：增加窗口从3个到5个
+方案2：引入预约取餐系统
+方案3：优化厨房出餐流程
+请从等待时间、人力成本、实施难度、师生满意度
+四个维度给出预测数据。
+                        </div>
+                        <p><strong>AI典型预测回复（示例）：</strong></p>
+                        <table>
+                            <tr><th>方案</th><th>等待时间</th><th>人力成本变化</th><th>实施难度</th><th>满意度提升</th></tr>
+                            <tr><td>增加窗口至5个</td><td>减少约40%（→9分钟）</td><td>增加约60%</td><td>低</td><td>中等</td></tr>
+                            <tr><td>预约取餐系统</td><td>减少约60%（→6分钟）</td><td>增加约20%（系统维护）</td><td>中</td><td>高</td></tr>
+                            <tr><td>优化厨房流程</td><td>减少约20%（→12分钟）</td><td>无明显增加</td><td>高</td><td>中等</td></tr>
+                        </table>
+                        <p><strong>学生权衡决策环节：</strong>学生需基于AI预测进行权衡决策。典型决策过程："AI说增加窗口能让等待时间减少40%，但人力成本增加60%。考虑到食堂是公益性质，人力成本增加60%意味着可能需要提高餐费或缩减其他开支，这个代价太大。预约取餐系统虽然等待时间减少更多、满意度更高，但需要开发APP或小程序，实施难度中等。我倾向于<strong>组合方案</strong>：先优化厨房流程（低成本、无额外人力），同时试点预约取餐系统，根据效果再决定是否扩展。"</p>
+                        <p>教师强调：这正是系统思维的核心——<strong>不能只看单一指标，要综合考虑多个子系统的联动效应</strong>。AI给出的数据是决策参考，但权衡取舍的判断权在学生手中。</p>
+                    </div>
+
+                    <p><strong>Step 3：优化方案设计（3分钟）</strong></p>
+                    <p>学生根据权衡决策结果，设计具体的系统优化方案，画出优化后的系统框图（标注变化部分），并填写《AI交互记录表》。</p>
+                </div>
+
+                <!-- 环节四 -->
+                <div class="timeline-item">
+                    <span class="time-label">8分钟</span>
+                    <h4>环节四：迁移应用——方案展示与多元评价</h4>
+                    <p><strong>Step 1：方案展示（5分钟）</strong></p>
+                    <p>各组展示优化方案（2-3组），每组2分钟，包含：系统拆解结果、问题诊断、AI预测数据、权衡决策过程、最终方案。其他组进行提问和评价。</p>
+
+                    <p><strong>Step 2：多元评价（3分钟）</strong></p>
+                    <p>采用多元评价量规，从四个维度评价各组方案：</p>
+                    <table>
+                        <tr><th>评价维度</th><th>权重</th><th>评价要点</th></tr>
+                        <tr><td>系统思维</td><td>30%</td><td>五维分析是否全面、子系统拆解是否合理</td></tr>
+                        <tr><td>探究实践</td><td>30%</td><td>AI交互记录是否完整、方案是否有数据支撑</td></tr>
+                        <tr><td>协作表达</td><td>20%</td><td>团队合作情况、展示表达清晰度</td></tr>
+                        <tr><td>学科素养</td><td>20%</td><td>系统特性理解深度、权衡决策合理性</td></tr>
+                    </table>
+                    <p>评价方式：教师评价（50%）+ 学生互评（30%）+ 自我评价（20%）。</p>
+                </div>
+
+                <!-- 环节五 -->
+                <div class="timeline-item">
+                    <span class="time-label">2分钟</span>
+                    <h4>环节五：总结反思——系统思维升华</h4>
+                    <p>教师总结："今天我们用五维透视镜分析了校园食堂系统，大家发现——改变一个子系统会影响其他子系统，这就是系统相关性的体现。AI能帮我们预测这些影响，但最终的权衡决策需要我们自己做，因为每所学校的情况不同，没有万能方案。"</p>
+                    <p>提问引导反思："你在分析中有没有发现AI遗漏的关联？系统思维对你日常解决问题有什么启发？"预告下节课"系统分析"将深入学习定量分析方法。</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 七、板书设计 -->
+        <div class="section">
+            <h2>七、板书设计</h2>
+            <div class="blackboard">系统及其特性
+
+一、什么是系统？
+  由相互联系的若干部分组成的具有整体功能的有机整体
+
+二、五维透视镜
+  整体性：整体 > 部分之和（纸塔挑战）
+  相关性：牵一发而动全身（窗口↔排队↔满意度）
+  目的性：所有子系统服务于系统目标
+  环境适应性：适应外部变化（季节/时段/人群）
+  动态性：系统随时间演化
+
+三、AI辅助系统优化
+  拆解 → 预测 → 权衡 → 决策
+  （AI给数据，学生做判断）
+
+四、食堂系统框图
+  管理 ←→ 采购 → 厨房 → 窗口 → 就餐
+                ↕        ↕
+              库存管理  收银结算</div>
+        </div>
+
+        <!-- 八、教学反思预设 -->
+        <div class="section">
+            <h2>八、教学反思预设</h2>
+            <ul class="reflection-list">
+                <li><strong>纸塔挑战效果：</strong>体验活动能有效让学生直观感受"整体大于部分之和"，但需控制时间（3+3分钟），避免变成纯粹的手工活动。可提前裁好A4纸以节约分发时间。</li>
+                <li><strong>五维特性理解深度：</strong>五个特性在一节课内全部讲透有难度，整体性和相关性是核心，应重点突破；目的性、环境适应性和动态性可略讲，后续"系统分析"课再深化。预期部分学生对"相关性"的理解可能停留在表面，需通过食堂系统的具体关联实例帮助内化。</li>
+                <li><strong>AI辅助决策深度：</strong>AI给出的"增加窗口从3个到5个，等待时间减少40%，但人力成本增加60%"等预测数据是教学亮点，但学生可能直接采信而不质疑数据来源。需在教学中追问"AI怎么知道是40%而不是50%？"引导学生理解AI预测是基于一般模型的估算，具体学校的数据可能不同。</li>
+                <li><strong>分层任务覆盖：</strong>基础层拆解和提升层预测是核心要求，拓展层深度优化建议设为课后任务。课堂时间优先保证五维分析和AI辅助决策两个核心环节。</li>
+                <li><strong>FreeCAD系统模型展示：</strong>多子系统装配体模型能直观展示系统整体性，但需注意选择学生容易理解的简单机械装置，避免过于复杂的工程模型分散注意力。</li>
+                <li><strong>多元评价实施：</strong>四维评价量规较全面，但课堂时间有限可能无法充分互评。建议将自评和互评延伸到课后完成，课堂聚焦2-3组展示和教师点评。</li>
+            </ul>
+        </div>
+
+        <!-- 九、AI应用说明 -->
+        <div class="section">
+            <h2>九、AI应用说明</h2>
+            <h3>范式定位：项目化学习+AI赋能（核心案例）</h3>
+            <p>本教案参考"智行湿地"案例的全链条教学模式，AI在"系统分析→方案设计→模拟验证"三个环节发挥<strong>"系统分析顾问"</strong>作用，核心功能是<strong>预测子系统变化对整体系统的影响</strong>，辅助学生进行权衡决策。具体应用：</p>
+            <table>
+                <tr><th>全链条环节</th><th>AI应用方式</th><th>顾问定位体现</th><th>学生决策任务</th></tr>
+                <tr><td>系统分析</td><td>AI辅助系统拆解为子系统</td><td>提供专业分析框架参考</td><td>检查拆解合理性、补充遗漏</td></tr>
+                <tr><td>方案设计</td><td>AI预测不同优化方案的多维度效果</td><td>提供量化预测数据</td><td>综合多维度进行权衡决策</td></tr>
+                <tr><td>模拟验证</td><td>AI模拟方案实施后的系统响应</td><td>提供系统联动效应预判</td><td>判断预测合理性并调整方案</td></tr>
+            </table>
+            <h3>分层提示词设计</h3>
+            <div class="prompt-box">
+<span class="label">【基础层】</span>请将校园食堂系统拆解为若干子系统，
+列出每个子系统的名称、功能和其他子系统的关联关系。
+<span class="label">【提升层】</span>校园食堂午餐高峰排队过长（平均15分钟），
+请预测"增加窗口从3个到5个"和"引入预约取餐系统"两种方案的效果，
+从等待时间、人力成本、实施难度、满意度四个维度对比。
+<span class="label">【拓展层】</span>请为校园食堂系统设计一个综合优化方案，
+同时考虑午餐高峰排队、菜品浪费、人力调配三个问题，
+分析各优化措施之间的关联影响，评估方案的系统级效果。
+            </div>
+            <h3>AI交互记录表</h3>
+            <table>
+                <tr><th>字段</th><th>说明</th></tr>
+                <tr><td>系统拆解结果</td><td>记录AI给出的子系统拆解及关联关系</td></tr>
+                <tr><td>拆解合理性判断</td><td>学生判断AI拆解是否合理、有无遗漏</td></tr>
+                <tr><td>AI预测结果</td><td>记录AI对各优化方案的多维度预测数据</td></tr>
+                <tr><td>学生决策</td><td>记录最终选择的方案或组合方案</td></tr>
+                <tr><td>决策理由</td><td>说明选择该方案的理由（须引用AI数据+个人判断）</td></tr>
+                <tr><td>AI遗漏的关联</td><td>记录学生发现的AI未考虑到的系统关联（批判性核心）</td></tr>
+            </table>
+            <h3>多元评价量规</h3>
+            <table>
+                <tr><th>评价维度</th><th>权重</th><th>优秀（90-100）</th><th>合格（60-89）</th><th>待改进（<60）</th></tr>
+                <tr><td>系统思维</td><td>30%</td><td>五维分析全面、拆解合理、关联清晰</td><td>能从3个以上维度分析</td><td>分析维度不足2个</td></tr>
+                <tr><td>探究实践</td><td>30%</td><td>AI交互完整、有批判判断、方案有数据支撑</td><td>有AI交互记录和方案</td><td>无AI交互或全盘接受</td></tr>
+                <tr><td>协作表达</td><td>20%</td><td>分工明确、展示清晰、能有效回应提问</td><td>能完成基本展示</td><td>表达混乱或未参与</td></tr>
+                <tr><td>学科素养</td><td>20%</td><td>系统特性理解深、权衡决策有据</td><td>基本理解系统特性</td><td>概念理解有误</td></tr>
+            </table>
+            <h3>FreeCAD模型引用说明</h3>
+            <div class="freecad-block">
+                <div class="fc-title">FreeCAD模型引用 | 系统组成装配模型</div>
+                <p>本课引用一个<strong>包含多个子系统的FreeCAD装配体模型</strong>（如简易机械装置），通过爆炸图和装配图的对比展示，直观呈现系统整体性：</p>
+                <ul>
+                    <li><strong>爆炸图：</strong>展示动力、传动、执行、支撑等子系统（零件组）的独立状态——单独无法实现功能</li>
+                    <li><strong>装配图：</strong>展示各子系统组装后的整体运转效果——组合后系统产生新功能</li>
+                    <li><strong>关联展示：</strong>旋转装配体展示各子系统之间的连接和依赖关系——体现系统相关性</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

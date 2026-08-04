@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教案7 · 设计的评价与优化 — AI赋能技术与工程教学</title>
+<style>
+:root {
+  --primary: #1a56c4;
+  --accent: #e65100;
+  --bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text: #333;
+  --text-light: #666;
+  --border: #ddd;
+  --ai-bg: #e3f2fd;
+  --ai-color: #1565c0;
+  --model-bg: #fff3e0;
+  --model-color: #e65100;
+  --timeline-line: #1a56c4;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "PingFang SC","Microsoft YaHei",sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  line-height: 1.8;
+}
+.container { max-width: 960px; margin: 0 auto; }
+.header-block {
+  background: linear-gradient(135deg, var(--primary), #2d6fd6);
+  color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-block h1 { margin: 0 0 8px 0; font-size: 26px; border: none; }
+.header-block .subtitle { opacity: 0.9; font-size: 14px; }
+.header-block .meta-tags { margin-top: 12px; }
+.header-block .meta-tags span {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-right: 8px;
+}
+h2 {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 6px;
+  margin-top: 35px;
+  font-size: 20px;
+}
+h3 { color: #444; font-size: 16px; margin-top: 20px; }
+h4 { color: var(--primary); font-size: 15px; }
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--primary);
+}
+.card.accent { border-left-color: var(--accent); }
+.card.ai-card { border-left-color: var(--ai-color); }
+.card.model-card { border-left-color: var(--model-color); }
+p { margin: 8px 0; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin: 2px 4px 2px 0;
+  font-weight: 500;
+}
+.tag-ai { background: var(--ai-bg); color: var(--ai-color); }
+.tag-model { background: var(--model-bg); color: var(--model-color); }
+.tag-tool { background: #e8f5e9; color: #2e7d32; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+th { background: var(--primary); color: #fff; }
+tr:nth-child(even) { background: #f9f9f9; }
+.timeline { position: relative; padding-left: 30px; margin: 20px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--timeline-line);
+  border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 25px; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+.tl-item.accent-dot::before { border-color: var(--accent); }
+.tl-header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.tl-time {
+  background: var(--primary);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tl-title { font-weight: 600; font-size: 16px; color: var(--primary); }
+.tl-body {
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.tl-body p { margin: 6px 0; }
+.ai-block {
+  background: var(--ai-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--ai-color);
+}
+.ai-block .ai-label {
+  color: var(--ai-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.model-block {
+  background: var(--model-bg);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-left: 3px solid var(--model-color);
+}
+.model-block .model-label {
+  color: var(--model-color);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.blackboard {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  font-family: "PingFang SC","Microsoft YaHei",monospace;
+  line-height: 2;
+}
+.blackboard .bb-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #7f8c8d;
+  padding-bottom: 8px;
+}
+.prompt-box {
+  background: #f8f9fa;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.prompt-box strong { color: var(--primary); }
+.footer-note {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 13px;
+  margin-top: 30px;
+  padding: 15px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header-block">
+  <h1>教案7 · 第七章第1节 设计的评价与优化</h1>
+  <div class="subtitle">苏教版2019高中通用技术必修一《技术与设计1》| AI赋能技术与工程教学</div>
+  <div class="meta-tags">
+    <span>1课时 · 45分钟</span>
+    <span>原创工具：评价矩阵·五维雷达法</span>
+    <span>AI融合范式：项目化学习+AI赋能</span>
+    <span>FreeCAD模型：优化对比模型</span>
+  </div>
+</div>
+
+<h2>一、教材分析</h2>
+<div class="card">
+<p>本节"设计的评价与优化"是苏教版《技术与设计1》第七章"设计评价"的第1节，也是必修一设计流程的收束环节。经过前六章的学习，学生已完整经历了发现与明确问题、方案构思、计算机辅助设计、模型制作的全部过程，产出了台灯原型等设计成果；本节则要求学生回过头来对这些成果进行系统性评价，并基于评价发现的问题实施优化，形成"设计→评价→优化→再设计"的闭环。</p>
+<p>核心概念包括"评价的目的与原则""评价的方法与工具""优化的策略与实施"三部分。评价不是简单的"打分排名"，而是以设计目标和用户需求为标尺，运用结构化工具对设计方案进行多维审视；优化也不是随意修改，而是以评价结果为依据，有针对性地改进设计短板。本节承前——以台灯原型等前序成果为评价对象；启后——为必修二的结构设计、流程设计等更复杂项目奠定"评价驱动优化"的方法论基础。</p>
+</div>
+
+<h2>二、学情分析</h2>
+<div class="card">
+<p>高一学生在日常生活中常做"好不好用"的直觉判断，但缺乏结构化评价的方法论——评价维度单一（往往只看外观或功能），权重意识薄弱（不区分维度的重要性差异），且评价易受主观偏好主导。在互评环节，学生常出现"一律好评"或"随意差评"两极分化，缺乏有理有据的评判能力。此外，学生对自己的设计成果往往有"敝帚自珍"心理，难以客观面对评价意见，优化动力不足。教学中需引入可视化评价工具（雷达图）降低评价门槛，用"自评→互评→AI辅助量规优化"的递进设计，帮助学生逐步建立客观、多维、有依据的评价习惯。</p>
+</div>
+
+<h2>三、教学目标（五维核心素养）</h2>
+<div class="card">
+<table>
+<tr><th>素养维度</th><th>具体目标</th></tr>
+<tr><td>技术意识</td><td>认识设计评价在设计流程中的质量保障价值，理解"评价不是终点而是优化的起点"，形成"以评促优"的工程质量意识。</td></tr>
+<tr><td>工程思维</td><td>掌握评价矩阵·五维雷达法（功能/美观/成本/安全/可持续），能用加权评分的方式对设计成果进行结构化评价，并基于评价短板制定优化策略。</td></tr>
+<tr><td>创新设计</td><td>能根据评价结果提出至少一项有针对性的优化方案，并在优化中体现创新性改进（如功能增强、材料替代、结构简化）。</td></tr>
+<tr><td>图样表达</td><td>能用雷达图直观呈现评价结果，用对比图（优化前后）清晰展示改进效果，提升设计成果的可视化表达能力。</td></tr>
+<tr><td>物化能力</td><td>将评价意见转化为可实施的优化操作，对台灯原型等实物成果进行至少一轮优化改进，体会"评价—优化—再验证"的迭代物化过程。</td></tr>
+</table>
+</div>
+
+<h2>四、教学重难点</h2>
+<div class="card">
+<p><strong>教学重点：</strong>运用评价矩阵·五维雷达法对设计成果进行结构化评价，并基于评价结果实施有针对性的优化。</p>
+<p><strong>教学难点：</strong>评价量规的自主设计——学生需自行确定评价维度与权重，并能批判性地评估AI对量规的检查建议，决定采纳或否决，形成有主见的评价标准。</p>
+</div>
+
+<h2>五、教学策略与方法</h2>
+<div class="card">
+<p><strong>策略框架：</strong>采用项目化学习+AI赋能范式，以"班级设计作品互评"为项目情境，全链条贯穿"自评→互评→AI辅助量规优化→方案改进→成果展示"。</p>
+<p><strong>核心方法：</strong></p>
+<ul>
+<li><span class="tag tag-tool">原创工具</span> <strong>评价矩阵·五维雷达法</strong>：以功能（是否满足核心需求）、美观（造型与色彩是否协调）、成本（材料与工艺是否经济）、安全（使用是否可靠无害）、可持续（材料是否可回收、能耗是否合理）为五维评价框架，学生自主设定各维度权重（总和100%），用雷达图可视化评价结果。</li>
+<li><strong>AI辅助量规优化</strong>：学生先自设评价量规，再用AI检查"维度是否遗漏"和"权重是否合理"，学生决定是否采纳AI建议——AI是"量规审核员"而非"量规生成器"。</li>
+<li><strong>分层任务</strong>：基础层完成五维评价与雷达图绘制；提升层基于评价短板做一轮优化；拓展层用AI快速对比多个方案的优劣并给出优化优先级建议。</li>
+<li><strong>多元评价</strong>：自评30% + 互评30% + AI辅助评价20% + 教师评价20%，多视角交叉验证评价的客观性。</li>
+</ul>
+</div>
+
+<h2>六、教学过程</h2>
+<div class="timeline">
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">5分钟</span>
+<span class="tl-title">环节一：情境导入——班级设计展，谁的作品最好？</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>展示班级设计作品照片墙（台灯原型、手机支架、笔筒等前序课成果），抛出问题："如果要在班级设计展上评出'最佳设计奖'，你会怎么评？只看好看就行吗？"</p>
+<p><strong>学生活动：</strong>学生自由发言，多数会提到"好不好用""好不好看""贵不贵"等零散维度。教师在黑板上板书学生提到的评价维度。</p>
+<p><strong>过渡设问：</strong>教师追问——"大家提到了很多维度，但每个维度的重要性一样吗？一个台灯，'安全'和'美观'哪个更重要？如果不对权重做出区分，评价结果公平吗？"引出结构化评价工具的必要性。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节二：概念建构——评价矩阵·五维雷达法</span>
+</div>
+<div class="tl-body">
+<p><strong>教师活动：</strong>引出本课原创工具，讲解五维评价框架的内涵与权重设定原则。</p>
+<h4>评价矩阵·五维雷达法</h4>
+<table>
+<tr><th>维度</th><th>评价要点</th><th>典型权重参考</th></tr>
+<tr><td>功能</td><td>是否满足核心使用需求？性能是否达标？</td><td>25%-35%</td></tr>
+<tr><td>美观</td><td>造型是否协调？色彩搭配是否舒适？比例是否匀称？</td><td>15%-20%</td></tr>
+<tr><td>成本</td><td>材料是否经济？工艺是否复杂？是否适合量产？</td><td>15%-20%</td></tr>
+<tr><td>安全</td><td>结构是否稳固？材料是否无害？使用是否有隐患？</td><td>20%-25%</td></tr>
+<tr><td>可持续</td><td>材料是否可回收？能耗是否合理？是否过度包装？</td><td>10%-15%</td></tr>
+</table>
+<p><strong>权重设定原则：</strong>权重不是固定的，应根据设计目标和用户需求调整。例如教室台灯的安全权重应高于美观（教室环境人多，安全优先），而礼品笔筒的美观权重可高于成本（礼品场景重外观轻价格）。</p>
+<p><strong>学生活动：</strong>学生针对自己的台灯原型，自主设定五维权重（总和100%），并对自己的作品逐维打分（1-5分），在任务单上绘制雷达图。这是"先自评"的关键环节——学生带着自己设计的量规进入下一步。</p>
+
+<div class="model-block">
+<div class="model-label">FreeCAD模型引用点</div>
+<p>教师展示<strong>模型优化对比</strong>——同一产品（如手机支架）的初版模型和优化版模型并置呈现。初版模型存在底板过薄（易变形）、无圆角（边缘锐利有安全隐患）、卡槽过浅（手机易滑落）等问题；优化版模型加厚底板至5mm、施加R3圆角、加深卡槽至10mm。教师用对比视图直观展示"评价发现问题→优化解决问题"的成果差异，让学生理解评价与优化的因果关系。同时展示两个版本的模型树差异，让学生看到优化是如何在CAD中实现的。</p>
+</div>
+</div>
+</div>
+
+<div class="tl-item accent-dot">
+<div class="tl-header">
+<span class="tl-time">15分钟</span>
+<span class="tl-title">环节三：深度探究——互评与AI辅助量规优化</span>
+<span class="tag tag-ai">AI应用环节</span>
+</div>
+<div class="tl-body">
+<p><strong>学生活动（互评阶段，前7分钟）：</strong>学生交换台灯原型和自评雷达图，用对方设定的量规给对方作品打分，并填写"互评意见表"——至少指出一项优点和一项可改进之处。互评完成后，学生对比自评与互评的分数差异，思考"为什么别人对我的评价和自己不同"。</p>
+<p><strong>教师活动：</strong>引导归纳自评与互评的常见偏差——自评易"高估优点、忽略短板"，互评易"关注外观、忽视功能和安全"。这种偏差正是评价量规需要优化的原因。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 量规审核员</div>
+<p>学生将自己设计的评价量规（五维维度+权重+打分标准）提交给AI，请AI检查两个问题：①"是否遗漏了重要的评价维度？"②"权重分配是否合理？"学生逐条判断AI的检查意见，决定采纳或否决。</p>
+<div class="prompt-box"><strong>量规审核提示词：</strong>"我设计了一个台灯原型的评价量规，五个维度和权重如下：功能30%、美观20%、成本15%、安全20%、可持续15%。打分标准是1-5分。请检查：①我是否遗漏了重要的评价维度？②权重分配是否合理？请给出具体建议和理由。"</div>
+<p><strong>典型交互示例：</strong></p>
+<div class="prompt-box">AI："建议如下：①维度基本完整，但'易用性'（如开关是否方便、调节是否灵活）可从'功能'中独立出来，因为台灯的交互体验与基本照明功能有区别；②权重方面，台灯作为教室用品，安全权重20%略低，建议提升至25%，相应降低美观至15%，因为教室场景安全优先于装饰。"<br>学生判断：建议①有道理，易用性确实和基本功能不同，我的台灯开关位置确实不方便，之前没纳入评价；建议②部分采纳——安全提升至25%合理，但美观不降至15%，因为阅读角台灯也需要一定美观性，调整为18%，可持续降至12%。</div>
+</div>
+
+<p><strong>学生活动（量规优化阶段，后8分钟）：</strong>学生根据自评、互评和AI检查的综合结果，修订自己的评价量规——可能新增维度（如"易用性"）、调整权重（如提升安全权重）、细化打分标准（如将"功能"从笼统的1-5分细化为"照明亮度""照明均匀度""防眩光"三个子项）。用修订后的量规重新评价自己的台灯原型，对比修订前后的评价结果差异。</p>
+
+<div class="ai-block">
+<div class="ai-label">AI应用环节 · 批判性使用要求</div>
+<p>学生须在任务单上填写：<strong>①</strong> 我原始量规的维度与权重；<strong>②</strong> AI检查意见（逐条列出）；<strong>③</strong> 我的判断（采纳/否决+理由）；<strong>④</strong> 修订后量规。重点考查学生是否能给出"否决理由"——即使采纳也要说明为什么AI的建议在自己的项目情境下成立。</p>
+</div>
+
+<p><strong>拓展任务（高阶组）：</strong>用AI快速对比班级3-4个台灯原型的优劣。学生向AI输入各原型的五维评分数据，请AI生成对比分析报告和优化优先级建议，学生判断AI的分析是否符合实际。</p>
+<div class="prompt-box"><strong>方案对比提示词：</strong>"以下是四个台灯原型的五维评分（1-5分）：A组-功能4/美观3/成本4/安全3/可持续4；B组-功能3/美观5/成本2/安全4/可持续3；C组-功能5/美观2/成本3/安全5/可持续2；D组-功能3/美观4/成本5/安全2/可持续5。请分析各组优劣，并给出优化优先级建议。"</div>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">8分钟</span>
+<span class="tl-title">环节四：迁移应用——方案优化与成果展示</span>
+</div>
+<div class="tl-body">
+<p><strong>学生活动：</strong>学生根据修订后量规的评价结果，识别自己台灯原型的最大短板（雷达图中得分最低的维度），制定并实施一项优化改进。改进可以是实物操作（如给底座加配重提升安全分），也可以是方案改进（如重新设计灯罩开孔提升功能分）。</p>
+<p><strong>成果展示：</strong>优化完成后，每组用1分钟展示"评价发现的问题→优化方案→优化效果"，重点说明优化前后雷达图的变化。教师引导学生关注"优化是否有效提升了短板维度的得分"。</p>
+<p><strong>教师活动：</strong>引导归纳优化策略类型——功能优化（增强核心性能）、安全优化（消除隐患）、成本优化（简化工艺或替代材料）、美观优化（调整造型色彩）、可持续优化（选用可回收材料）。帮助学生建立"评价短板→对应策略"的映射关系。</p>
+</div>
+</div>
+
+<div class="tl-item">
+<div class="tl-header">
+<span class="tl-time">2分钟</span>
+<span class="tl-title">环节五：总结反思</span>
+</div>
+<div class="tl-body">
+<p><strong>师生共结：</strong>回顾评价矩阵·五维雷达法，强调"评价的核心不是打分，而是发现短板驱动优化"。量规不是老师给的标尺，而是学生根据项目需求自主设计的工具——AI帮我们检查量规的完整性，但量规的设计权和修订权始终在学生手中。</p>
+<p><strong>课后任务：</strong>整理优化后的台灯原型和评价量规，准备班级设计展。思考"这套五维评价方法还能用在哪些设计项目上"，体会评价方法论的迁移价值。</p>
+</div>
+</div>
+
+</div>
+
+<h2>七、板书设计</h2>
+<div class="blackboard">
+<div class="bb-title">设计的评价与优化 — 评价矩阵·五维雷达法</div>
+<p>一、评价 = 以目标为标尺的多维审视（非打分排名）</p>
+<p>二、五维评价框架</p>
+<p>　　功能 · 美观 · 成本 · 安全 · 可持续</p>
+<p>　　权重 = 按项目需求设定（总和100%）</p>
+<p>三、评价流程：自评 → 互评 → AI审核量规 → 优化</p>
+<p>四、优化 = 评价短板 → 针对策略 → 再验证</p>
+<p>五、AI = 量规审核员（检查 > 代劳）</p>
+</div>
+
+<h2>八、教学反思预设</h2>
+<div class="card">
+<p><strong>优势预设：</strong>评价矩阵·五维雷达法将抽象的"评价"转化为可操作的结构化工具，雷达图的可视化特性降低了评价门槛，学生能直观看到自己设计的长板与短板。"先自设量规再用AI检查"的设计确保了学生是评价标准的主人，AI只起查漏补缺的辅助作用，避免了"AI直接给量规、学生照搬"的思维惰性。自评→互评→AI审核的递进设计，让学生在多视角碰撞中逐步建立客观评价能力。</p>
+<p><strong>风险预设：</strong>①五维权重的设定对高一学生有难度，部分学生可能随意填数字，需教师提供"权重设定参考表"并在巡视时追问"你为什么给安全20%而不是30%"；②互评环节可能出现"人情分"（给熟人高分），需强调互评匿名性和"至少一项改进建议"的硬性要求；③AI可能建议增加过多维度（如把"创新性""人机工程"都加上），导致量规过于复杂，教师需引导学生"维度不宜超过6个，否则权重分散失去聚焦"。</p>
+<p><strong>改进方向：</strong>下次可引入"用户测试"环节——邀请非本班同学作为"用户"试用台灯原型并给出反馈，将用户评价纳入五维框架，使评价更贴近真实市场环境。</p>
+</div>
+
+<h2>九、AI应用说明</h2>
+<div class="card ai-card">
+<p><span class="tag tag-ai">AI融合范式</span> 本教案采用项目化学习+AI赋能范式，AI定位为"量规审核员"和"方案对比分析者"。</p>
+<h4>AI介入节点与设计意图</h4>
+<table>
+<tr><th>节点</th><th>AI角色</th><th>学生行为</th><th>设计意图</th></tr>
+<tr><td>环节三</td><td>量规审核员</td><td>提交自设量规，获取维度与权重检查</td><td>查漏补缺，不替代设计</td></tr>
+<tr><td>环节三</td><td>方案对比分析者</td><td>输入多组评分数据，获取优劣对比</td><td>快速处理多方案数据</td></tr>
+<tr><td>环节四</td><td>（不介入）</td><td>独立制定并实施优化方案</td><td>确保优化决策自主性</td></tr>
+</table>
+<h4>"学生先设、AI后查"的设计依据</h4>
+<p>本教案的AI应用核心原则是"学生先设量规、AI后查量规"而非"AI直接给量规"。这一时序设计的依据是：评价标准的设计本身就是高阶工程思维训练——学生需要根据项目目标和用户需求权衡各维度的重要性，这个过程是AI无法替代的认知活动。AI的价值在于"查漏"（发现遗漏的维度）和"提醒"（指出权重可能不合理），但是否采纳、如何修订完全由学生决定。</p>
+<h4>分层任务设计说明</h4>
+<p>基础层学生完成五维评价与雷达图绘制即可，AI仅用于量规检查；提升层学生在AI辅助量规优化后需实施一轮实物优化；拓展层学生额外用AI做多方案对比分析，体验AI在数据处理效率上的优势。三层任务对应"评价→优化→对比"的能力递进。</p>
+<h4>批判性使用要求</h4>
+<p>学生必须记录"否决AI建议的理由"。典型案例：AI可能建议将"美观"权重降至10%，但学生在"教室阅读角台灯"场景下认为美观仍重要（阅读环境需要舒适氛围），否决此建议并将理由记为"阅读角台灯需兼顾美观以营造阅读氛围，不能仅重功能安全"。这种"基于项目情境的否决"正是批判性使用的体现。</p>
+</div>
+
+<div class="card model-card">
+<p><span class="tag tag-model">FreeCAD模型引用</span> 本教案引用<strong>模型优化对比</strong>（同一产品的初版与优化版模型并置展示），直观呈现评价驱动优化的成果差异。初版模型的短板（底板薄、无圆角、卡槽浅）与优化版模型的改进（加厚、圆角、加深）一一对应，让学生理解"评价发现问题→优化解决问题"的因果链条。模型树对比还可展示优化在CAD中的具体实现方式，为学生的优化操作提供技术参照。</p>
+</div>
+
+<div class="footer-note">
+苏教版2019高中通用技术必修一《技术与设计1》· 第七章第1节 设计的评价与优化 · AI赋能教学设计
+</div>
+
+</div>
+</body>
+</html>
