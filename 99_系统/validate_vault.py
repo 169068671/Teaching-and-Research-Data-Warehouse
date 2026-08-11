@@ -8,6 +8,7 @@ from pathlib import Path
 
 VAULT = Path(__file__).resolve().parents[1]
 SKIP_PARTS = {".git", "node_modules", "__pycache__", ".trash"}
+RAW_SOURCE_PREFIXES = {("60_原始资料", "文献原文")}
 SENSITIVE_NAMES = {
     ".env",
     "id_rsa",
@@ -34,6 +35,12 @@ def included(path: Path) -> bool:
 
 def relative(path: Path) -> str:
     return path.relative_to(VAULT).as_posix()
+
+
+def managed_markdown(path: Path) -> bool:
+    """Return False for mirrored source documents that must remain unmodified."""
+    parts = path.relative_to(VAULT).parts
+    return not any(parts[: len(prefix)] == prefix for prefix in RAW_SOURCE_PREFIXES)
 
 
 def check_frontmatter(path: Path, text: str, errors: list[str]) -> None:
@@ -110,11 +117,12 @@ def main() -> int:
             except (UnicodeDecodeError, json.JSONDecodeError) as exc:
                 errors.append(f"JSON 无法解析：{rel}（{exc}）")
         elif suffix == ".md":
-            markdown_files.append(path)
-            try:
-                check_frontmatter(path, path.read_text(encoding="utf-8"), errors)
-            except UnicodeDecodeError as exc:
-                errors.append(f"Markdown 不是 UTF-8：{rel}（{exc}）")
+            if managed_markdown(path):
+                markdown_files.append(path)
+                try:
+                    check_frontmatter(path, path.read_text(encoding="utf-8"), errors)
+                except UnicodeDecodeError as exc:
+                    errors.append(f"Markdown 不是 UTF-8：{rel}（{exc}）")
         elif suffix == ".base":
             base_files.append(path)
             try:
@@ -146,4 +154,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
